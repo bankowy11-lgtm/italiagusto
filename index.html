@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Italia Gusto – Włoskie Produkty Premium</title>
+<meta name="description" content="Włoskie produkty premium – wina, likiery, oliwy. Zamów online, płatność przy odbiorze.">
+<meta name="theme-color" content="#0c0904">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Italia Gusto">
+<link id="apple-touch-icon" rel="apple-touch-icon" href="">
+<link id="pwa-manifest" rel="manifest" href="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #09070400;
+  --bg-body: #0c0904;
+  --bg2: #161008;
+  --card: #1c1408;
+  --card-hover: #241c0e;
+  --gold: #c9a84c;
+  --gold2: #e8c97a;
+  --gold3: #8a6e28;
+  --cream: #f0e8d5;
+  --text: #ede4d4;
+  --muted: #7a6a54;
+  --border: rgba(201,168,76,0.2);
+  --border2: rgba(201,168,76,0.5);
+  --red-wine: #7a1e1e;
+  --green: #1e4a1e;
+  --radius: 8px;
+  --shadow: 0 8px 40px rgba(0,0,0,0.6);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg-body);color:var(--text);font-family:'Raleway',sans-serif;font-weight:400;min-height:100vh;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%;height:100%;object-fit:cover}
+button{cursor:pointer;border:none;font-family:'Raleway',sans-serif}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#0c0904}
+::-webkit-scrollbar-thumb{background:var(--gold3);border-radius:3px}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:100;background:rgba(12,9,4,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 24px}
+.header-inner{max-width:1440px;margin:0 auto;display:flex;align-items:center;gap:20px;height:68px}
+.logo{display:flex;align-items:center;gap:12px;flex-shrink:0;cursor:pointer}
+.logo-flag{display:flex;flex-direction:column;width:20px;height:30px;border-radius:3px;overflow:hidden}
+.logo-flag span{flex:1;display:block}
+.logo-flag .f1{background:#009246}.logo-flag .f2{background:#fff}.logo-flag .f3{background:#ce2b37}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--gold);letter-spacing:2px;line-height:1}
+.logo-sub{font-size:9px;letter-spacing:4px;color:var(--muted);text-transform:uppercase}
+.search-bar{flex:1;max-width:400px;position:relative}
+.search-bar input{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:24px;padding:9px 16px 9px 40px;color:var(--text);font-size:14px;font-family:'Raleway',sans-serif;outline:none;transition:border-color .2s}
+.search-bar input:focus{border-color:var(--gold)}
+.search-bar input::placeholder{color:var(--muted)}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:14px}
+.header-actions{margin-left:auto;display:flex;align-items:center;gap:12px}
+.cart-btn{display:flex;align-items:center;gap:8px;background:var(--gold);color:#0c0904;border-radius:24px;padding:9px 18px;font-weight:600;font-size:13px;letter-spacing:.5px;transition:background .2s,transform .1s}
+.cart-btn:hover{background:var(--gold2)}
+.cart-btn:active{transform:scale(.97)}
+.cart-count{background:#0c0904;color:var(--gold);border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+
+/* CATEGORIES */
+.categories-bar{background:var(--bg2);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none}
+.categories-bar::-webkit-scrollbar{display:none}
+.cats-inner{max-width:1440px;margin:0 auto;display:flex;gap:4px;padding:12px 24px}
+.cat-pill{display:flex;align-items:center;gap:6px;padding:7px 16px;border-radius:20px;font-size:13px;font-weight:500;white-space:nowrap;background:transparent;color:var(--muted);border:1px solid transparent;transition:all .2s;cursor:pointer}
+.cat-pill:hover{color:var(--text);border-color:var(--border)}
+.cat-pill.active{background:rgba(201,168,76,0.15);color:var(--gold);border-color:var(--gold)}
+
+/* HERO */
+.hero{max-width:1440px;margin:0 auto;padding:60px 24px 40px;text-align:center;position:relative}
+.hero-ornament{font-size:12px;letter-spacing:6px;color:var(--gold);text-transform:uppercase;margin-bottom:16px;opacity:.7}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,6vw,80px);font-weight:300;line-height:1.1;color:var(--cream);margin-bottom:16px}
+.hero-title em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:15px;color:var(--muted);max-width:500px;margin:0 auto 32px;line-height:1.7}
+.hero-divider{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto}
+.payment-badge{display:inline-flex;align-items:center;gap:8px;margin-top:20px;background:rgba(201,168,76,0.1);border:1px solid var(--border);border-radius:20px;padding:6px 16px;font-size:12px;color:var(--gold);letter-spacing:.5px}
+
+/* PRODUCTS SECTION */
+.products-section{max-width:1440px;margin:0 auto;padding:32px 24px 60px}
+.section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:28px}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:400;color:var(--cream)}
+.product-count{font-size:13px;color:var(--muted)}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+
+/* PRODUCT CARD */
+.product-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:transform .25s,border-color .25s,box-shadow .25s;position:relative}
+.product-card:hover{transform:translateY(-4px);border-color:var(--border2);box-shadow:0 16px 50px rgba(0,0,0,.5)}
+.card-img{width:100%;height:200px;overflow:hidden;position:relative;background:var(--bg2)}
+.card-img img{transition:transform .4s;object-fit:contain;padding:12px}
+.product-card:hover .card-img img{transform:scale(1.05)}
+.badge{position:absolute;top:10px;right:10px;z-index:2;background:var(--gold);color:#0c0904;font-size:10px;font-weight:700;letter-spacing:.5px;padding:3px 10px;border-radius:12px;text-transform:uppercase}
+.badge.promo{background:var(--red-wine);color:var(--cream)}
+.badge.info{background:var(--bg2);color:var(--gold);border:1px solid var(--gold)}
+.card-body{padding:16px}
+.card-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--cream);margin-bottom:8px;line-height:1.3}
+.card-short-desc{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-prices{display:flex;flex-direction:column;gap:3px}
+.price-unit{font-size:17px;font-weight:600;color:var(--gold)}
+.price-carton{font-size:12px;color:var(--muted)}
+.price-inquiry{font-size:14px;color:var(--muted);font-style:italic}
+
+/* PRODUCT MODAL */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s}
+.overlay.open{opacity:1;pointer-events:all}
+.modal-box{background:var(--bg2);border:1px solid var(--border2);border-radius:12px;max-width:900px;width:100%;max-height:90vh;overflow-y:auto;position:relative;transform:translateY(20px);transition:transform .3s}
+.overlay.open .modal-box{transform:translateY(0)}
+.modal-close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:18px;transition:all .2s;z-index:10;cursor:pointer}
+.modal-close:hover{background:rgba(255,255,255,.1);color:var(--text)}
+.modal-inner{display:grid;grid-template-columns:1fr 1fr;min-height:400px}
+@media(max-width:650px){.modal-inner{grid-template-columns:1fr}}
+.modal-img-side{background:var(--card);border-radius:12px 0 0 12px;overflow:hidden;cursor:zoom-in;position:relative;min-height:300px}
+.modal-img-side img{width:100%;height:100%;object-fit:contain;padding:20px;transition:transform .3s}
+.modal-img-side:hover img{transform:scale(1.03)}
+.modal-img-side .zoom-hint{position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.5);color:var(--muted);font-size:10px;padding:4px 8px;border-radius:10px}
+.modal-info{padding:32px;display:flex;flex-direction:column;gap:16px}
+.modal-category-tag{font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase}
+.modal-name{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;line-height:1.2;color:var(--cream)}
+.modal-desc{font-size:13px;color:var(--muted);line-height:1.7;flex:1}
+.modal-divider{height:1px;background:var(--border)}
+.order-type-selector{display:flex;gap:8px}
+.type-btn{flex:1;padding:10px;border-radius:6px;background:var(--card);border:1px solid var(--border);color:var(--muted);font-size:13px;font-weight:500;transition:all .2s;text-align:center;cursor:pointer}
+.type-btn.active{background:rgba(201,168,76,0.15);border-color:var(--gold);color:var(--gold)}
+.type-btn:hover:not(.active){border-color:var(--muted)}
+.qty-row{display:flex;align-items:center;gap:12px}
+.qty-label{font-size:13px;color:var(--muted)}
+.qty-ctrl{display:flex;align-items:center;gap:0;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.qty-ctrl button{width:36px;height:36px;background:var(--card);color:var(--text);font-size:18px;display:flex;align-items:center;justify-content:center;transition:background .2s;cursor:pointer;border:none}
+.qty-ctrl button:hover{background:var(--card-hover)}
+.qty-ctrl span{width:44px;text-align:center;font-weight:600;font-size:15px;border-left:1px solid var(--border);border-right:1px solid var(--border);height:36px;display:flex;align-items:center;justify-content:center}
+.price-display{background:rgba(201,168,76,0.08);border:1px solid var(--border);border-radius:6px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
+.price-display .p-label{font-size:12px;color:var(--muted)}
+.price-display .p-value{font-size:22px;font-weight:700;color:var(--gold);font-family:'Cormorant Garamond',serif}
+.add-cart-btn{background:var(--gold);color:#0c0904;border-radius:8px;padding:13px;font-weight:700;font-size:14px;letter-spacing:.5px;transition:all .2s;width:100%;text-transform:uppercase}
+.add-cart-btn:hover{background:var(--gold2)}
+.add-cart-btn:disabled{background:var(--muted);cursor:not-allowed}
+
+/* IMAGE LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:500;display:flex;align-items:center;justify-content:center;cursor:zoom-out;opacity:0;pointer-events:none;transition:opacity .3s}
+.lightbox.open{opacity:1;pointer-events:all}
+.lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:8px}
+
+/* CART SIDEBAR */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:300;opacity:0;pointer-events:none;transition:opacity .3s}
+.cart-overlay.open{opacity:1;pointer-events:all}
+.cart-sidebar{position:fixed;top:0;right:0;height:100vh;width:380px;max-width:100vw;background:var(--bg2);border-left:1px solid var(--border);z-index:301;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .3s}
+.cart-sidebar.open{transform:translateX(0)}
+.cart-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.cart-title{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream)}
+.close-btn{background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;line-height:1;transition:color .2s;padding:4px}
+.close-btn:hover{color:var(--text)}
+.cart-items{flex:1;overflow-y:auto;padding:16px}
+.cart-empty{text-align:center;padding:60px 20px;color:var(--muted)}
+.cart-empty-icon{font-size:48px;margin-bottom:12px;opacity:.4}
+.cart-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);align-items:center}
+.cart-item-img{width:60px;height:60px;border-radius:6px;overflow:hidden;background:var(--card);flex-shrink:0}
+.cart-item-img img{object-fit:contain;padding:4px}
+.cart-item-info{flex:1;min-width:0}
+.cart-item-name{font-size:13px;font-weight:600;color:var(--cream);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cart-item-type{font-size:11px;color:var(--muted)}
+.cart-item-price{font-size:14px;color:var(--gold);font-weight:600;flex-shrink:0}
+.remove-item{background:none;border:none;color:var(--muted);font-size:16px;cursor:pointer;padding:4px;transition:color .2s}
+.remove-item:hover{color:#e55}
+.cart-footer{padding:20px 24px;border-top:1px solid var(--border)}
+.cart-total{display:flex;justify-content:space-between;margin-bottom:16px;font-size:15px}
+.cart-total-label{color:var(--muted)}
+.cart-total-value{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--gold)}
+.payment-info{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted);margin-bottom:16px;background:rgba(255,255,255,.03);border-radius:6px;padding:8px 12px}
+.checkout-btn{width:100%;background:var(--gold);color:#0c0904;border-radius:8px;padding:14px;font-weight:700;font-size:15px;letter-spacing:.5px;transition:all .2s}
+.checkout-btn:hover{background:var(--gold2)}
+
+/* ORDER MODAL */
+.order-modal-box{background:var(--bg2);border:1px solid var(--border2);border-radius:12px;max-width:500px;width:100%;padding:36px;position:relative;transform:translateY(20px);transition:transform .3s;max-height:90vh;overflow-y:auto}
+.overlay.open .order-modal-box{transform:translateY(0)}
+.order-title{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--cream);margin-bottom:6px}
+.order-sub{font-size:13px;color:var(--muted);margin-bottom:24px;line-height:1.5}
+.form-group{margin-bottom:16px}
+.form-label{display:block;font-size:12px;font-weight:600;letter-spacing:.5px;color:var(--muted);margin-bottom:6px;text-transform:uppercase}
+.form-input{width:100%;background:var(--card);border:1px solid var(--border);border-radius:6px;padding:11px 14px;color:var(--text);font-size:14px;font-family:'Raleway',sans-serif;outline:none;transition:border-color .2s}
+.form-input:focus{border-color:var(--gold)}
+.form-input::placeholder{color:var(--muted)}
+textarea.form-input{resize:vertical;min-height:80px}
+.order-summary{background:var(--card);border-radius:6px;padding:14px;margin-bottom:20px;max-height:150px;overflow-y:auto}
+.order-summary-row{display:flex;justify-content:space-between;font-size:13px;padding:3px 0;color:var(--muted)}
+.order-summary-row strong{color:var(--text)}
+.order-total-row{display:flex;justify-content:space-between;font-size:15px;padding-top:10px;margin-top:6px;border-top:1px solid var(--border);font-weight:600;color:var(--cream)}
+.whatsapp-btn{width:100%;background:#25D366;color:#fff;border-radius:8px;padding:14px;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .2s;margin-top:4px}
+.whatsapp-btn:hover{background:#1db954;transform:translateY(-1px)}
+.wa-icon{width:22px;height:22px;fill:white}
+
+/* PWA INSTALL BANNER */
+.pwa-banner{position:fixed;bottom:20px;right:20px;z-index:400;background:var(--bg2);border:1px solid var(--border2);border-radius:16px;padding:16px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 12px 40px rgba(0,0,0,.6);max-width:320px;transform:translateY(120px);opacity:0;transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .3s;pointer-events:none}
+.pwa-banner.show{transform:translateY(0);opacity:1;pointer-events:all}
+.pwa-icon{width:48px;height:48px;border-radius:12px;overflow:hidden;flex-shrink:0;background:var(--gold)}
+.pwa-icon canvas{width:48px;height:48px}
+.pwa-text{}
+.pwa-title{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--cream);margin-bottom:2px}
+.pwa-sub{font-size:11px;color:var(--muted);line-height:1.4}
+.pwa-btns{display:flex;gap:8px;margin-top:10px}
+.pwa-install-btn{background:var(--gold);color:#0c0904;border:none;border-radius:8px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;transition:background .2s;font-family:'Raleway',sans-serif}
+.pwa-install-btn:hover{background:var(--gold2)}
+.pwa-dismiss-btn{background:none;border:1px solid var(--border);border-radius:8px;padding:7px 10px;font-size:12px;color:var(--muted);cursor:pointer;transition:all .2s;font-family:'Raleway',sans-serif}
+.pwa-dismiss-btn:hover{color:var(--text);border-color:var(--muted)}
+.pwa-close{position:absolute;top:10px;right:12px;background:none;border:none;color:var(--muted);font-size:16px;cursor:pointer;line-height:1;padding:2px;transition:color .2s}
+.pwa-close:hover{color:var(--text)}
+
+/* TOAST */
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--gold);color:#0c0904;border-radius:24px;padding:10px 24px;font-size:13px;font-weight:600;z-index:999;opacity:0;pointer-events:none;transition:all .3s;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 24px 24px}
+.footer-inner{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;margin-bottom:32px}
+@media(max-width:600px){.footer-inner{grid-template-columns:1fr}}
+.footer-logo-text{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold);margin-bottom:8px}
+.footer-desc{font-size:12px;color:var(--muted);line-height:1.7}
+.footer-heading{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.footer-links{display:flex;flex-direction:column;gap:8px}
+.footer-link{font-size:13px;color:var(--muted);transition:color .2s}
+.footer-link:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted)}
+.admin-link{color:var(--bg2);transition:color .3s;cursor:pointer;user-select:none;font-size:10px}
+.admin-link:hover{color:var(--muted)}
+
+/* ADMIN PANEL */
+.admin-page{min-height:100vh;background:var(--bg-body)}
+.admin-login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.admin-login-box{background:var(--bg2);border:1px solid var(--border2);border-radius:12px;padding:48px;max-width:420px;width:100%;text-align:center}
+.admin-lock{font-size:48px;margin-bottom:20px}
+.admin-login-title{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--cream);margin-bottom:8px}
+.admin-login-sub{font-size:13px;color:var(--muted);margin-bottom:28px}
+.admin-login-input{width:100%;background:var(--card);border:1px solid var(--border);border-radius:6px;padding:12px 16px;color:var(--text);font-size:15px;font-family:'Raleway',sans-serif;outline:none;text-align:center;letter-spacing:3px;margin-bottom:16px;transition:border-color .2s}
+.admin-login-input:focus{border-color:var(--gold)}
+.admin-login-btn{width:100%;background:var(--gold);color:#0c0904;border-radius:8px;padding:13px;font-weight:700;font-size:14px;transition:all .2s;border:none;cursor:pointer}
+.admin-login-btn:hover{background:var(--gold2)}
+.admin-error{color:#e55;font-size:13px;margin-top:10px;min-height:18px}
+.admin-header{background:var(--bg2);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.admin-logo{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold)}
+.admin-nav{display:flex;gap:4px}
+.admin-tab{padding:8px 18px;border-radius:6px;font-size:13px;font-weight:500;color:var(--muted);background:none;border:none;cursor:pointer;transition:all .2s}
+.admin-tab.active{background:rgba(201,168,76,0.15);color:var(--gold)}
+.admin-tab:hover:not(.active){color:var(--text)}
+.admin-back{font-size:13px;color:var(--muted);cursor:pointer;transition:color .2s;background:none;border:none;padding:6px 12px}
+.admin-back:hover{color:var(--gold)}
+.admin-content{max-width:1200px;margin:0 auto;padding:32px 24px}
+.admin-section-title{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--cream);margin-bottom:20px}
+.orders-table{width:100%;border-collapse:collapse;font-size:13px}
+.orders-table th{text-align:left;padding:10px 12px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border);font-weight:600}
+.orders-table td{padding:12px;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:top}
+.orders-table tr:hover td{background:rgba(255,255,255,.02)}
+.order-id{font-family:'Cormorant Garamond',serif;color:var(--gold);font-size:14px}
+.order-date{color:var(--muted);font-size:11px}
+.order-items-list{color:var(--text)}
+.order-items-list div{padding:1px 0}
+.status-badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.status-new{background:rgba(201,168,76,0.2);color:var(--gold)}
+.status-done{background:rgba(30,74,30,0.4);color:#6fc66f}
+.status-btn{background:none;border:1px solid var(--border);border-radius:5px;padding:4px 10px;font-size:11px;color:var(--muted);cursor:pointer;transition:all .2s}
+.status-btn:hover{border-color:var(--gold);color:var(--gold)}
+.no-orders{text-align:center;padding:60px;color:var(--muted)}
+.no-orders-icon{font-size:40px;margin-bottom:12px;opacity:.3}
+.shopping-list{display:flex;flex-direction:column;gap:0}
+.shop-item{display:flex;align-items:center;gap:14px;padding:14px 16px;border-bottom:1px solid var(--border);transition:background .2s;border-radius:6px}
+.shop-item:hover{background:rgba(255,255,255,.02)}
+.shop-item.checked-item{opacity:.45}
+.shop-checkbox{width:22px;height:22px;border-radius:4px;border:2px solid var(--border2);background:none;appearance:none;cursor:pointer;transition:all .2s;flex-shrink:0}
+.shop-checkbox:checked{background:var(--gold);border-color:var(--gold)}
+.shop-item-name{flex:1;font-size:14px;font-weight:500;color:var(--text)}
+.shop-item-qty{font-size:13px;color:var(--muted);white-space:nowrap}
+.shop-item-qty span{color:var(--gold);font-weight:600}
+.shop-clear-btn{margin-top:20px;background:none;border:1px solid var(--border);border-radius:6px;padding:10px 20px;font-size:13px;color:var(--muted);cursor:pointer;transition:all .2s}
+.shop-clear-btn:hover{border-color:var(--gold);color:var(--gold)}
+.admin-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;margin-bottom:32px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:20px;text-align:center}
+.stat-value{font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--gold);font-weight:600}
+.stat-label{font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+
+/* PRODUCT MANAGEMENT */
+.pm-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;gap:12px;flex-wrap:wrap}
+.pm-search{flex:1;min-width:180px;background:var(--card);border:1px solid var(--border);border-radius:6px;padding:9px 14px;color:var(--text);font-family:'Raleway',sans-serif;font-size:13px;outline:none;transition:border-color .2s}
+.pm-search:focus{border-color:var(--gold)}
+.pm-search::placeholder{color:var(--muted)}
+.add-product-btn{display:flex;align-items:center;gap:8px;background:var(--gold);color:#0c0904;border-radius:6px;padding:9px 18px;font-weight:700;font-size:13px;border:none;cursor:pointer;white-space:nowrap;transition:background .2s}
+.add-product-btn:hover{background:var(--gold2)}
+.pm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.pm-card{background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:border-color .2s}
+.pm-card:hover{border-color:var(--border2)}
+.pm-card-inner{display:flex;gap:12px;padding:14px;align-items:flex-start}
+.pm-thumb{width:64px;height:64px;flex-shrink:0;border-radius:6px;overflow:hidden;background:var(--bg2)}
+.pm-thumb img{object-fit:contain;padding:4px;width:100%;height:100%}
+.pm-info{flex:1;min-width:0}
+.pm-name{font-size:14px;font-weight:600;color:var(--cream);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pm-cat{font-size:11px;color:var(--muted);margin-bottom:8px}
+.pm-prices-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.pm-price-box{display:flex;align-items:center;gap:4px;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:4px 8px}
+.pm-price-label{font-size:10px;color:var(--muted);white-space:nowrap}
+.pm-price-input{width:64px;background:none;border:none;outline:none;color:var(--gold);font-weight:700;font-size:14px;font-family:'Raleway',sans-serif;text-align:right}
+.pm-price-unit{font-size:10px;color:var(--muted);margin-left:1px}
+.pm-actions{display:flex;gap:6px;padding:0 14px 12px;justify-content:flex-end}
+.pm-save-btn{background:rgba(201,168,76,0.15);border:1px solid var(--gold);color:var(--gold);border-radius:5px;padding:5px 14px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s}
+.pm-save-btn:hover{background:var(--gold);color:#0c0904}
+.pm-delete-btn{background:rgba(229,85,85,.1);border:1px solid rgba(229,85,85,.3);color:#e88;border-radius:5px;padding:5px 10px;font-size:12px;cursor:pointer;transition:all .2s}
+.pm-delete-btn:hover{background:rgba(229,85,85,.25)}
+.pm-custom-badge{display:inline-block;background:rgba(201,168,76,.2);color:var(--gold);font-size:9px;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:10px;margin-left:6px;vertical-align:middle}
+.pm-hidden-badge{display:inline-block;background:rgba(255,255,255,.05);color:var(--muted);font-size:9px;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:10px;margin-left:4px}
+
+/* PRODUCT FORM MODAL */
+.pf-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:600;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s}
+.pf-overlay.open{opacity:1;pointer-events:all}
+.pf-box{background:var(--bg2);border:1px solid var(--border2);border-radius:12px;max-width:580px;width:100%;max-height:90vh;overflow-y:auto;padding:36px;position:relative;transform:translateY(20px);transition:transform .3s}
+.pf-overlay.open .pf-box{transform:translateY(0)}
+.pf-title{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--cream);margin-bottom:20px}
+.pf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:500px){.pf-row{grid-template-columns:1fr}}
+.pf-img-preview{width:100%;height:140px;background:var(--card);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-top:8px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px}
+.pf-img-preview img{object-fit:contain;padding:8px;max-height:140px}
+.pf-submit-btn{width:100%;background:var(--gold);color:#0c0904;border-radius:8px;padding:13px;font-weight:700;font-size:14px;border:none;cursor:pointer;transition:all .2s;margin-top:8px}
+.pf-submit-btn:hover{background:var(--gold2)}
+.pm-cat-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.pm-cat-chip{padding:5px 12px;border-radius:14px;font-size:12px;background:var(--card);border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s}
+.pm-cat-chip.active{background:rgba(201,168,76,.15);border-color:var(--gold);color:var(--gold)}
+
+/* WHATSAPP CONFIG NOTICE */
+.config-notice{background:rgba(201,168,76,0.1);border:1px solid var(--border2);border-radius:8px;padding:16px 20px;margin-bottom:24px;font-size:13px;color:var(--gold);line-height:1.6}
+.config-input{display:flex;gap:10px;align-items:center;margin-top:10px}
+.config-input input{flex:1;background:var(--card);border:1px solid var(--border);border-radius:6px;padding:8px 12px;color:var(--text);font-family:'Raleway',sans-serif;font-size:13px;outline:none;transition:border-color .2s}
+.config-input input:focus{border-color:var(--gold)}
+.config-save-btn{background:var(--gold);color:#0c0904;border-radius:6px;padding:8px 16px;font-weight:600;font-size:13px;border:none;cursor:pointer;white-space:nowrap}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .header-inner{gap:10px}
+  .search-bar{max-width:200px}
+  .logo-sub{display:none}
+  .cart-btn span:first-child{display:none}
+  .footer-inner{grid-template-columns:1fr;gap:24px}
+  .products-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+  .card-img{height:160px}
+  .admin-stats{grid-template-columns:1fr 1fr}
+  .orders-table{font-size:12px}
+  .orders-table th:nth-child(3),.orders-table td:nth-child(3){display:none}
+}
+@media(max-width:480px){
+  .search-bar{display:none}
+  .hero-title{font-size:36px}
+  .cats-inner{padding:10px 16px}
+  .products-section{padding:24px 16px 40px}
+  .admin-tab span{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- MAIN STORE -->
+<div id="store-page">
+  <header>
+    <div class="header-inner">
+      <div class="logo" id="logo-click">
+        <div class="logo-flag"><span class="f1"></span><span class="f2"></span><span class="f3"></span></div>
+        <div><div class="logo-text">ITALIA GUSTO</div><div class="logo-sub">Produkty Włoskie Premium</div></div>
+      </div>
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Szukaj produktów...">
+      </div>
+      <div class="header-actions">
+        <button class="cart-btn" id="cart-btn">
+          <span>🛒 Koszyk</span>
+          <span class="cart-count" id="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="categories-bar">
+    <div class="cats-inner" id="categories-container"></div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-ornament">✦ Prosto z Włoch ✦</div>
+    <h1 class="hero-title">Smaki <em>Italii</em><br>pod Twoje drzwi</h1>
+    <p class="hero-sub">Wyselekcjonowane wina, likiery, oliwy i produkty premium importowane bezpośrednio z Włoch.</p>
+    <div class="hero-divider"></div>
+    <div class="payment-badge">💶 Płatność przy odbiorze – bezpieczne zakupy</div>
+  </div>
+
+  <div class="products-section">
+    <div class="section-header">
+      <h2 class="section-title" id="section-title">Wszystkie produkty</h2>
+      <span class="product-count" id="product-count"></span>
+    </div>
+    <div class="products-grid" id="products-grid"></div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo-text">Italia Gusto</div>
+        <p class="footer-desc">Importujemy najlepsze produkty włoskie – wina, likiery, oliwy i więcej. Każdy produkt pochodzi od sprawdzonych producentów.</p>
+      </div>
+      <div>
+        <div class="footer-heading">Kategorie</div>
+        <div class="footer-links" id="footer-cats"></div>
+      </div>
+      <div>
+        <div class="footer-heading">Zamówienia</div>
+        <div class="footer-links">
+          <span class="footer-link">💶 Płatność przy odbiorze</span>
+          <span class="footer-link">📦 Zamówienia w sztukach lub kartonach</span>
+          <span class="footer-link">📱 Potwierdzenie przez WhatsApp</span>
+          <span class="footer-link">🚚 Dostawa na terenie całego kraju</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Italia Gusto. Wszelkie prawa zastrzeżone.</span>
+      <span class="admin-link" id="admin-link" title="">⚙</span>
+    </div>
+  </footer>
+</div>
+
+<!-- PRODUCT MODAL -->
+<div class="overlay" id="product-overlay">
+  <div class="modal-box" id="product-modal-box"></div>
+</div>
+
+<!-- IMAGE LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cart-sidebar">
+  <div class="cart-header">
+    <h2 class="cart-title">🛒 Twój koszyk</h2>
+    <button class="close-btn" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items-list"></div>
+  <div class="cart-footer" id="cart-footer" style="display:none">
+    <div class="cart-total">
+      <span class="cart-total-label">Razem do zapłaty:</span>
+      <span class="cart-total-value" id="cart-total">0 zł</span>
+    </div>
+    <div class="payment-info">💶 Płatność gotówką przy odbiorze towaru</div>
+    <button class="checkout-btn" onclick="openOrderModal()">Złóż zamówienie →</button>
+  </div>
+</div>
+
+<!-- ORDER FORM MODAL -->
+<div class="overlay" id="order-overlay">
+  <div class="order-modal-box">
+    <button class="modal-close" onclick="closeOrderModal()">✕</button>
+    <h2 class="order-title">Złóż zamówienie</h2>
+    <p class="order-sub">Wypełnij formularz, a skontaktujemy się z Tobą przez WhatsApp w celu potwierdzenia.</p>
+    <div id="order-summary-box"></div>
+    <div class="form-group">
+      <label class="form-label">Imię i Nazwisko *</label>
+      <input class="form-input" id="order-name" type="text" placeholder="Jan Kowalski" required>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Numer telefonu *</label>
+      <input class="form-input" id="order-phone" type="tel" placeholder="+48 600 000 000" required>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Adres dostawy *</label>
+      <input class="form-input" id="order-address" type="text" placeholder="ul. Kwiatowa 1, 00-001 Warszawa" required>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Uwagi do zamówienia</label>
+      <textarea class="form-input" id="order-notes" placeholder="Np. dostępność, preferowany termin..."></textarea>
+    </div>
+    <button class="whatsapp-btn" onclick="submitOrder()">
+      <svg class="wa-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Wyślij zamówienie przez WhatsApp
+    </button>
+  </div>
+</div>
+
+<!-- PWA INSTALL BANNER -->
+<div class="pwa-banner" id="pwa-banner">
+  <button class="pwa-close" onclick="dismissInstall()" title="Zamknij">✕</button>
+  <div class="pwa-icon"><canvas id="pwa-icon-canvas" width="48" height="48"></canvas></div>
+  <div class="pwa-text">
+    <div class="pwa-title">Zainstaluj Italia Gusto</div>
+    <div class="pwa-sub">Dodaj do ekranu głównego i korzystaj jak z aplikacji</div>
+    <div class="pwa-btns">
+      <button class="pwa-install-btn" id="pwa-install-btn">📲 Zainstaluj</button>
+      <button class="pwa-dismiss-btn" onclick="dismissInstall()">Nie teraz</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- ADMIN PANEL (hidden by default) -->
+<div id="admin-page" style="display:none">
+  <!-- Login or Dashboard rendered by JS -->
+</div>
+
+<!-- PRODUCT FORM MODAL -->
+<div class="pf-overlay" id="pf-overlay">
+  <div class="pf-box" id="pf-box"></div>
+</div>
+
+<script>
+// ============================================================
+// CONFIGURATION – ZMIEŃ TE WARTOŚCI
+// ============================================================
+let CONFIG = JSON.parse(localStorage.getItem('ig_config') || 'null') || {
+  whatsappNumber: '48XXXXXXXXX', // Wpisz swój numer WhatsApp (bez + i spacji)
+  shopName: 'Italia Gusto',
+  adminPassword: 'italia2025',
+};
+
+// ============================================================
+// PRODUCT DATA
+// ============================================================
+const PRODUCTS = [
+  // FRAGOLINO
+  {id:1,name:"Fragolino Rosso Corte Viola",desc:"Corte Viola Fragolino Rosso to włoskie, półsłodkie czerwone wino musujące z regionu Emilia-Romagna. Powstaje ze szczepu Sangiovese i Uva Fragola. Jasno-głęboka czerwień. W aromacie pyszny słodki owocowy bukiet z wyraźnymi perfumami dojrzałej truskawki. W smaku słodki i harmonijny. Idealne do deserów.",category:"fragolino",unitPrice:17,cartonPrice:100,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000000-1c08c1c08f/fragolino-corte-viola.jpeg?ph=f4fc59d3f3",badge:"Bestseller"},
+  {id:2,name:"Fragolino Bianco Corte Viola",desc:"Białe, musujące, półsłodkie wino z Włoch. Cudowny zapach zielonej poziomki. To wyśmienite połączenie delikatnie musującego wina z aromatem świeżych zielonych truskawek, poziomek i malin. Idealne na letnią imprezę!",category:"fragolino",unitPrice:17,cartonPrice:100,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000002-1491e1491f/xl_32133.jpeg?ph=f4fc59d3f3"},
+  {id:3,name:"Fragolino Fiorelli Bianco",desc:"Fragolino Fiorelli Bianco to białe, słodkie, aromatyzowane wino musujące z winogron szczepu Isabella, produkowane w Piemoncie. Aromat i smak świeżych truskawek, poziomek i malin. We Włoszech serwowane jako aperitif lub wino deserowe.",category:"fragolino",unitPrice:17,cartonPrice:100,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000080-d1430d1431/b.jpeg?ph=f4fc59d3f3"},
+  {id:4,name:"FRAGOLINO ROSSO Fiorelli",desc:"Włoskie czerwone, słodkie, aromatyzowane wino musujące z winogron szczepu Isabella. Czerwona barwa i wyjątkowy bukiet z dominującymi aromatami truskawki i maliny. Pasuje do deserów, jako aperitif lub dodatek do koktajli.",category:"fragolino",unitPrice:17,cartonPrice:100,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000014-50ebb50ebd/R.jpeg?ph=f4fc59d3f3"},
+  {id:5,name:"Fragolino Platina Rosso",desc:"Aromatyzowane wino musujące o smaku truskawkowym marki Platina. Czerwone, słodkie i orzeźwiające. Idealne schłodzone jako aperitif lub towarzysz letnich chwil.",category:"fragolino",unitPrice:17,cartonPrice:100,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000072-28c1f28c20/t_7aa3ddf25d31458f90b0cfe21c04eb04.jpeg?ph=f4fc59d3f3"},
+  // LAMBRUSCO & WINA
+  {id:6,name:"Lambrusco Grasparossa – półwytrawne",desc:"Lambrusco Grasparossa to czerwone wino musujące z regionu Emilia-Romagna, okolic Modeny. Intensywny rubinowy kolor z wyraźnymi nutami owocowymi: wiśni, malin i jagód. Doskonałe z wędlinami, serami i lokalnymi specjałami.",category:"lambrusco",unitPrice:17,cartonPrice:100,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000036-e0e67e0e69/2e55fb_4598a07ae7a14df1ac4747f139dda576~mv2.jpeg?ph=f4fc59d3f3"},
+  {id:7,name:"Lambrusco Grasparossa – półsłodkie",desc:"Półsłodka wersja Lambrusco Grasparossa z regionu Modeny. Intensywny rubinowy kolor, nuty wiśni, malin i jagód. W wersji słodkiej świetnie pasuje do ciast i tart owocowych.",category:"lambrusco",unitPrice:17,cartonPrice:100,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000040-ae4feae501/lambrusco-grasparossa.jpeg?ph=f4fc59d3f3"},
+  {id:8,name:"Lambrusco Rosato di Modena DOP",desc:"Włoskie wino różowe z regionu Modena. Półwytrawne, lekko musujące, o intensywnym owocowym bukiecie. Aromaty jeżyn, śliwek i nuty kwiatowe. Produkowane z różnych szczepów Lambrusco.",category:"lambrusco",unitPrice:17,cartonPrice:100,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000032-9fbcd9fbce/5863501-14297601-20230314111017-nowy.jpeg?ph=f4fc59d3f3"},
+  {id:9,name:"Vino Merlot Veneto IGT – La Pieve",desc:"Czerwone wino wytrawne z regionu Veneto w północnych Włoszech. Produkowane ze szczepu Merlot, znane z miękkości i owocowego charakteru. La Pieve to sprawdzona włoska etykieta.",category:"lambrusco",unitPrice:17,cartonPrice:100,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000022-e815be815d/417601-12483601-20240813114509.jpeg?ph=f4fc59d3f3"},
+  {id:10,name:"Vino Garda DOC Frizzante – La Pieve",desc:"Włoskie wino wytrawne, lekko musujące (frizzante) z regionu jeziora Garda. Białe, o świeżym owocowym aromacie. Idealne na letnie dni i jako aperitif.",category:"lambrusco",unitPrice:17,cartonPrice:100,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000020-1c15e1c160/11415101.jpeg?ph=f4fc59d3f3"},
+  {id:11,name:"VERDUZZO VENETO IGT – musujące",desc:"Włoskie białe wino musujące z regionu Veneto. Intensywny złoty kolor. W smaku świeże i zbalansowane, z nutami brzoskwini, suszonych owoców i kandyzowanej pomarańczy. Doskonałe do deserów lub jako aperitif.",category:"lambrusco",unitPrice:17,cartonPrice:100,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000034-8480b8480d/2e55fb_caf0e94f3874499db89782e81fad0536~mv2.jpeg?ph=f4fc59d3f3"},
+  {id:12,name:"Rosato Veneto IGT Vino Frizzante",desc:"Włoskie różowe wino musujące z regionu Veneto. Żywa perlistość, świeże i owocowe, z nutami truskawek i malin. Idealne na letnie dni lub jako aperitif.",category:"lambrusco",unitPrice:17,cartonPrice:100,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000030-f0668f066b/5878001-9314001-20240715001953.jpeg?ph=f4fc59d3f3"},
+  {id:13,name:"Chianti DOCG – czerwone wytrawne",desc:"Chianti DOCG produkowane głównie z winogron Sangiovese (min. 80%). Rubinowy kolor z ceglastymi odcieniami. Nuty czerwonych owoców, suszonych ziół, akcenty balsamiczne. Doskonałe do pizza, makaronu bolognese, mięsa z grilla.",category:"lambrusco",unitPrice:0,cartonPrice:0,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000026-c09e0c09e3/4516101_chianti-stazione-di-posta.jpeg?ph=f4fc59d3f3",badge:"Na zapytanie"},
+  // PROSECCO
+  {id:14,name:"Prosecco DOC Treviso Extra Dry",desc:"Włoskie wino musujące Montasolo z regionu Treviso. Produkowane z winogron Glera. Jasno-słomkowy kolor, delikatne i trwałe bąbelki. Aromat zielonego jabłka, gruszki i kwiatów akacji. Rześkie i orzeźwiające.",category:"prosecco",unitPrice:30,cartonPrice:180,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000126-cd6e0cd6e1/montasolo-prosecco-doc-extra-dry-75cl-41784518607086.jpeg?ph=f4fc59d3f3",badge:"Nowość"},
+  {id:15,name:"Prosecco DOC Extra Dry – Musti Nobilis",desc:"Eleganckie Prosecco De Castellane wytwarzane metodą Charmata. Jasno-słomkowy kolor z delikatnymi, trwałymi bąbelkami. Nuty jabłka, gruszki, białych kwiatów i cytrusów. Idealne do aperitifu, owoców morza i lekkich deserów.",category:"prosecco",unitPrice:30,cartonPrice:180,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000066-4e65c4e65e/2e55fb_4cd03e2edf404b74870483fbbc1030fc~mv2.png?ph=f4fc59d3f3"},
+  {id:16,name:"Valdobbiadene Prosecco Superiore DOCG",desc:"Wyjątkowe Prosecco Valdo Marca Oro z Valdobbiadene, produkowane z winogron Glera. Platynowo żółty kolor, żywe bąbelki. Pełne, lekko słodkie, nuty jabłka, lipy i miodu. Doskonałe na specjalne okazje.",category:"prosecco",unitPrice:50,cartonPrice:300,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000070-bdc58bdc5b/marca-oro.jpeg?ph=f4fc59d3f3",badge:"Premium"},
+  // APERITIVO
+  {id:17,name:"La Gioiosa Aperitiv Spritz 0.7L",desc:"Elegancki i nowoczesny aperitif La Gioiosa łączący to, co najlepsze z włoskiego Prosecco i owocowych goryczy. Orzeźwiający, cytrusowy smak. Idealny jako aperitif przed posiłkiem.",category:"aperitivo",unitPrice:30,cartonPrice:180,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000092-4c17b4c17d/OIP%20%282%29.jpeg?ph=f4fc59d3f3"},
+  {id:18,name:"La Gioiosa Hugo Spritz 0.7L",desc:"Gotowy do spożycia Hugo Spritz na bazie doskonałego białego wina La Gioiosa. Charakterystyczny aromat kwiatów czarnego bzu, nuty mięty i limonki. Podawaj z lodem i plasterkiem limonki.",category:"aperitivo",unitPrice:30,cartonPrice:180,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000084-3134c3134e/3cab72490267ea207e16b994f040f32846ee25e8.jpeg?ph=f4fc59d3f3"},
+  {id:19,name:"Hugo Spritz 0.7L – karton 6 szt.",desc:"Musujące białe wino o przyjemnym aromacie kwiatów czarnego bzu i nucie świeżej mięty i limonki. Opakowanie 6 sztuk. Doskonały gotowy aperitif na każdą okazję.",category:"aperitivo",unitPrice:17,cartonPrice:100,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000082-00aac00ab0/hugo-1.png?ph=f4fc59d3f3"},
+  {id:20,name:"Aperol Spritz 0.7L – karton 6 szt.",desc:"Gotowy do podania Aperol Spritz. Uzyskany z naparów skórek pomarańczy, ziół, przypraw i korzeni. Świeży i cytrusowy smak z przyjemną goryczkową nutą końcową. Opakowanie 6 szt.",category:"aperitivo",unitPrice:17,cartonPrice:100,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000048-b365cb3660/2e55fb_facb9cc9c58e460f85cde1f05e4bf29e~mv2.jpeg?ph=f4fc59d3f3"},
+  {id:21,name:"Likier Aperol Aperitivo 1L",desc:"Legendarny włoski aperitif o jasnopomarańczowym kolorze, wymyślony przez braci Barbieri w 1919 r. Słodko-gorzki smak z nutami pomarańczy i rabarbaru. Główny składnik słynnego koktajlu Aperol Spritz.",category:"aperitivo",unitPrice:65,cartonPrice:390,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000102-b3869b386a/OIP%20%283%29.jpeg?ph=f4fc59d3f3",badge:"Klasyk"},
+  {id:40,name:"Hugo Blue & Rosé – karton 6 szt.",desc:"Błękitna i różowa wariacja kultowego Hugo Spritz! Lekkie, musujące i pełne owocowej energii. Dominujące nuty kwiatu czarnego bzu, soczystej limonki i świeżej mięty wzbogacone akcentami jagód. Idealny na letnie garden party i spotkania przy grillu.",category:"aperitivo",unitPrice:17,cartonPrice:100,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000144-1af0b1af0d/Gemini_Generated_Image_ddtzm0ddtzm0ddtz.png?ph=f4fc59d3f3",badge:"Nowość"},
+  // LIKIERY
+  {id:22,name:"Likier Amaretto 0.7L",desc:"Słodki włoski likier o charakterystycznym migdałowym smaku. Wytwarzany z migdałów lub pestek moreli i wiśni. Czerwonobursztynowy kolor, lekko gorzkawy posmak. Doskonały na czysto lub w koktajlach.",category:"likiery",unitPrice:35,cartonPrice:210,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000050-33e9533e97/2e55fb_a6c4dea0d97e49ebbefa0f2336125e99~mv2.jpeg?ph=f4fc59d3f3"},
+  {id:23,name:"Likier Limoncello Cytrynowy 0.7L",desc:"Tradycyjny włoski likier cytrynowy produkowany przez macerację skórek cytrynowych w alkoholu. Intensywny, świeży smak cytrynowy. Serwowany bardzo schłodzony jako digestif po posiłku.",category:"likiery",unitPrice:30,cartonPrice:180,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000058-0563b0563c/5802301-14422301-20231123120803.jpeg?ph=f4fc59d3f3",badge:"Włoski klasyk"},
+  {id:24,name:"Likier Bananowy 0.5L",desc:"Kremowy likier o delikatnym smaku bananowym. Aksamitna konsystencja, łagodny i słodki smak. Doskonały jako digestif lub składnik słodkich koktajli.",category:"likiery",unitPrice:25,cartonPrice:150,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000060-f024bf024c/5833501-17223401-20240312201835.jpeg?ph=f4fc59d3f3"},
+  {id:25,name:"Likier Kawowy Śmietankowy 0.5L",desc:"Kremowy likier kawowy z delikatną nutą śmietanki. Bogaty i intensywny smak kawy. Idealny na ciepło lub zimno, doskonały jako składnik deserów i napojów.",category:"likiery",unitPrice:25,cartonPrice:150,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000062-ed02eed030/5833501-11318603-20240901001412.jpeg?ph=f4fc59d3f3"},
+  {id:26,name:"Likier Pistacjowy 0.5L",desc:"Wyjątkowy likier o intensywnym smaku pistacji. Luksusowy włoski przysmak. Zielonkawy kolor, kremowa konsystencja. Doskonały schłodzony lub jako składnik wyjątkowych deserów.",category:"likiery",unitPrice:25,cartonPrice:150,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000064-2894e28952/5833501-15318801-20240619120423.jpeg?ph=f4fc59d3f3"},
+  {id:27,name:"Likier Melonowy 0.5L",desc:"Kremowy likier o słodkim smaku melona. Piękny zielony kolor, orzeźwiający aromat. Idealne samodzielnie lub jako baza do koktajli.",category:"likiery",unitPrice:25,cartonPrice:150,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000074-4c0f74c0f9/5833501-17223301-20240312201835.jpeg?ph=f4fc59d3f3"},
+  // BEZALKOHOLOWE
+  {id:28,name:"GINZERO Bezalkoholowy 0.7L",desc:"Gin bezalkoholowy destylowany z ziół i botanicznych składników: jałowca, kolendry, skórki cytrynowej. Zachowuje charakterystyczny smak ginu bez alkoholu. Doskonały z tonikiem i cytryną.",category:"bezalkoholowe",unitPrice:35,cartonPrice:210,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000122-02a7a02a7c/ginzero00.png?ph=f4fc59d3f3"},
+  {id:29,name:"Limoncello Zero Bezalkoholowy 700ml",desc:"Poczuj słońce włoskiego wybrzeża! Intensywnie cytrusowy, orzeźwiający i delikatnie słodki likier cytrynowy bez alkoholu. Doskonały do picia na zimno, jako baza do koktajli lub dodatek do deserów.",category:"bezalkoholowe",unitPrice:35,cartonPrice:210,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000110-772187721a/Zrzut%20ekranu%202025-09-24%20180858.png?ph=f4fc59d3f3"},
+  // OLIWY & KAWA
+  {id:41,name:"Oliwa Extra Vergine Grezzo Fiorentini 1L – niefiltrowana",desc:"Wysokiej jakości, niefiltrowana oliwa tłoczona na zimno z wyselekcjonowanych oliwek. Naturalny, lekko mętny wygląd oraz pełnia aromatu. Intensywny, owocowy aromat z delikatną nutą goryczki i pikantności. Doskonała do sałatek, makaronów i jako wykończenie gotowych potraw.",category:"oliwy",unitPrice:50,cartonPrice:300,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000142-3427d3427f/oliwa1.jpeg?ph=f4fc59d3f3",badge:"Nowość"},
+  {id:30,name:"Oliwa Monini Classico Extra Vergine 3L",desc:"Klasyczna oliwa extra vergine Monini – najlepiej sprzedająca się oliwa we Włoszech. Powstaje z oliwek zebranych prawie dojrzałych, przetwarzanych w ciągu 24h. Przyjemny świeży zapach skoszonej trawy.",category:"oliwy",unitPrice:120,cartonPrice:720,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000134-db616db618/monini-oliwa-z-oliwek.jpeg?ph=f4fc59d3f3",badge:"Bestseller"},
+  {id:31,name:"Oliwa Extra Vergine Monini 1L",desc:"Oliwa z oliwek extra vergine Classico Monini – od lat najlepiej sprzedająca się oliwa we Włoszech. Oliwki zbierane prawie dojrzałe, przetwarzane w ciągu 24 godzin. Przyjemny świeży smak.",category:"oliwy",unitPrice:50,cartonPrice:300,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000046-c4a7ac4a7c/2e55fb_a3910e1c2ff8477699dd662febdefafa~mv2.jpeg?ph=f4fc59d3f3",badge:"Promocja"},
+  {id:32,name:"Oliwa Extra Vergine Coppini 1L – 100% Włoska",desc:"Oliwa z oliwek extra virgin 100% włoska najwyższej jakości, z pierwszego tłoczenia, uzyskana mechanicznie na zimno. Niefiltrowana. Intensywny smak, lekko owocowy zapach. 100% Włochy.",category:"oliwy",unitPrice:70,cartonPrice:420,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000108-0fe5f0fe61/OIP%20%284%29.jpeg?ph=f4fc59d3f3",badge:"100% IT"},
+  {id:33,name:"Lavazza Qualità Oro 1kg – rynek włoski",desc:"Kawa ziarnista Lavazza 100% Arabica z Włoch, z ziaren z Ameryki Centralnej i Afryki. Jedwabisty, intensywny i słodki smak. Przeznaczona na rynek włoski – oryginał. Stopień palenia: średni.",category:"oliwy",unitPrice:120,cartonPrice:720,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000104-4b6b94b6bb/Lavazza-Qualita-Oro-Espresso-1kg-ziarnista-na-rynek-wloski.jpeg?ph=f4fc59d3f3",badge:"Oryginał IT"},
+  // MOCNE
+  {id:34,name:"Rum Reserva Ron Superior 7 Anos 0.7L",desc:"Rum z Panamy dojrzewający 7 lat w beczkach z białego dębu. Blend destylatów o bursztynowym kolorze. Nuty winogron, mlecznej czekolady, wanilii, cynamonu i suszonych śliwek. Gładki i zrównoważony.",category:"mocne",unitPrice:45,cartonPrice:270,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000076-d11b5d11b8/5354001-14414101-20231124115542.jpeg?ph=f4fc59d3f3"},
+  {id:35,name:"Brandy Włoska 0.7L",desc:"Brandy dojrzewająca we Włoszech w dębowych beczkach. Delikatny i elegancki smak oraz wyrafinowany aromat. Doskonała do picia na czysto lub w klasycznych koktajlach.",category:"mocne",unitPrice:50,cartonPrice:300,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000056-7e35d7e35f/2e55fb_cfbf15e96cc241c5ba299a447dfd1378~mv2-0.jpeg?ph=f4fc59d3f3"},
+  {id:36,name:"The Black Mine Whisky 0.7L",desc:"Mieszanka whisky amerykańskiej i kanadyjskiej. Dojrzewana 3 lata w beczkach z amerykańskiego dębu. Łączy najlepsze ziarna. Bogaty, złożony smak.",category:"mocne",unitPrice:50,cartonPrice:300,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000054-e4cf6e4cf8/2e55fb_ccc729b4ae0640028b6cfd72e25ae710~mv2.jpeg?ph=f4fc59d3f3"},
+  // DOM
+  {id:37,name:"Płyn do Mycia Naczyń Cytrynowy 3L",desc:"Ekonomiczny format 3L o świeżym zapachu cytryny. Skutecznie usuwa tłuszcz i zabrudzenia. Wydajny i oszczędny – wystarcza na długo. Włoska jakość.",category:"dom",unitPrice:20,cartonPrice:120,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000130-9410b9410c/piati-3L.jpeg?ph=f4fc59d3f3"},
+  {id:38,name:"Żel do Naczyń Dexal 1L",desc:"Żel do mycia naczyń Dexal skutecznie usuwa zabrudzenia i tłuszcz, jednocześnie dbając o zdrowie skóry. Intensywna formuła, ekonomiczne użycie.",category:"dom",unitPrice:15,cartonPrice:90,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000128-78b3e78b3f/piati%20gel.jpeg?ph=f4fc59d3f3"},
+  {id:39,name:"Żwirek dla Kotów Premium Radames 8L",desc:"Higieniczny, chłonny żwirek klasy premium – Argilla Rossa Attapulgite 8L. Długotrwała świeżość, doskonała absorpcja. Opatentowana technologia włoska.",category:"dom",unitPrice:20,cartonPrice:120,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000132-10bf310bf4/zwirek.jpeg?ph=f4fc59d3f3"},
+  {id:42,name:"Schiuma di Marsiglia Bucato 5L",desc:"Płyn do prania inspirowany tradycyjnym mydłem marsylskim. Skutecznie usuwa zabrudzenia, dbając o delikatność tkanin. Skoncentrowana formuła – do kilkudziesięciu prań. Idealny do ubrań białych i kolorowych, do prania ręcznego i w pralce.",category:"dom",unitPrice:35,cartonPrice:210,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000136-28e7d28e7f/Bucato.jpeg?ph=f4fc59d3f3",badge:"Nowość"},
+  {id:43,name:"Calgon 4w1 Power Gel Odkamieniacz 2250ml",desc:"Skuteczny żel 4w1 do ochrony pralki. Usuwa osady z twardej wody, chroni grzałkę i wnętrze pralki, zapobiega gromadzeniu brudu i poprawia efektywność prania. Regularne stosowanie wydłuża żywotność urządzenia. Pojemność 2250 ml.",category:"dom",unitPrice:70,cartonPrice:420,img:"https://f4fc59d3f3.cbaul-cdnwnd.com/85d31112df68cf7481718ad35efbb486/200000140-3936639368/calgon%202%2C25.jpeg?ph=f4fc59d3f3",badge:"Nowość"},
+];
+
+const CATEGORIES = {
+  all:          {label:'Wszystkie',    icon:'🇮🇹'},
+  fragolino:    {label:'Fragolino',     icon:'🍓'},
+  lambrusco:    {label:'Lambrusco & Wina', icon:'🍷'},
+  prosecco:     {label:'Prosecco',      icon:'🥂'},
+  aperitivo:    {label:'Aperitify & Spritz', icon:'🍊'},
+  likiery:      {label:'Likiery',       icon:'🍸'},
+  bezalkoholowe:{label:'Bezalkoholowe', icon:'🌿'},
+  oliwy:        {label:'Oliwy & Kawa',  icon:'🫒'},
+  mocne:        {label:'Alkohole Mocne',icon:'🥃'},
+  dom:          {label:'Dom & Higiena', icon:'🏠'},
+};
+
+// ============================================================
+// STATE
+// ============================================================
+let state = {
+  cart: [],
+  category: 'all',
+  searchQuery: '',
+  adminAuth: false,
+  adminTab: 'orders',
+  shopChecked: JSON.parse(localStorage.getItem('ig_shop_checked') || '{}'),
+};
+let logoClickCount = 0, logoClickTimer = null;
+
+// ============================================================
+// HELPERS
+// ============================================================
+function getOrders() { return JSON.parse(localStorage.getItem('ig_orders') || '[]'); }
+function saveOrders(orders) { localStorage.setItem('ig_orders', JSON.stringify(orders)); }
+function saveShopChecked() { localStorage.setItem('ig_shop_checked', JSON.stringify(state.shopChecked)); }
+function fmt(n) { return n.toFixed(0) + ' zł'; }
+function genId() { return Date.now().toString(36) + Math.random().toString(36).substr(2,4); }
+function getCartTotal() {
+  return state.cart.reduce((s, item) => {
+    const p = PRODUCTS.find(x => x.id === item.productId);
+    return s + (item.type === 'unit' ? p.unitPrice : p.cartonPrice) * item.qty;
+  }, 0);
+}
+function getCartCount() { return state.cart.reduce((s, i) => s + i.qty, 0); }
+
+// ============================================================
+// TOAST
+// ============================================================
+function showToast(msg, dur = 2400) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), dur);
+}
+
+// ============================================================
+// CATEGORIES
+// ============================================================
+function renderCategories() {
+  const c = document.getElementById('categories-container');
+  c.innerHTML = Object.entries(CATEGORIES).map(([key, cat]) =>
+    `<button class="cat-pill${state.category === key ? ' active' : ''}" onclick="setCategory('${key}')">
+      <span>${cat.icon}</span><span>${cat.label}</span>
+    </button>`
+  ).join('');
+  const fc = document.getElementById('footer-cats');
+  if (fc) fc.innerHTML = Object.entries(CATEGORIES).slice(1).map(([k, c]) =>
+    `<span class="footer-link" onclick="setCategory('${k}');window.scrollTo({top:0,behavior:'smooth'})">${c.icon} ${c.label}</span>`
+  ).join('');
+}
+
+function setCategory(cat) {
+  state.category = cat;
+  renderCategories();
+  renderProducts();
+  const title = document.getElementById('section-title');
+  if (title) title.textContent = CATEGORIES[cat].label;
+}
+
+// ============================================================
+// PRODUCTS
+// ============================================================
+function renderProducts() {
+  const grid = document.getElementById('products-grid');
+  if (!grid) return;
+  const q = state.searchQuery.toLowerCase();
+  // Merge base products with full overrides (for desc/img/category edits on base products)
+  const fullOv = JSON.parse(localStorage.getItem('ig_full_overrides') || '{}');
+  const overrides = getPriceOverrides();
+  const hidden = getHiddenProducts();
+  const customs = getCustomProducts();
+  const base = PRODUCTS.map(p => {
+    const fo = fullOv[p.id] || {};
+    const ov = overrides[p.id] || {};
+    return { ...p, ...fo,
+      unitPrice: fo.unitPrice !== undefined ? fo.unitPrice : (ov.unitPrice !== undefined ? ov.unitPrice : p.unitPrice),
+      cartonPrice: fo.cartonPrice !== undefined ? fo.cartonPrice : (ov.cartonPrice !== undefined ? ov.cartonPrice : p.cartonPrice),
+    };
+  });
+  const all = [...base, ...customs].filter(p => !hidden.includes(p.id));
+  const filtered = all.filter(p =>
+    (state.category === 'all' || p.category === state.category) &&
+    (!q || p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q))
+  );
+  const count = document.getElementById('product-count');
+  if (count) count.textContent = filtered.length + ' produktów';
+  if (!filtered.length) {
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:60px;color:var(--muted)"><div style="font-size:40px;margin-bottom:12px">🔍</div><div>Nie znaleziono produktów</div></div>`;
+    return;
+  }
+  grid.innerHTML = filtered.map(p => {
+    const hasPrice = p.unitPrice > 0;
+    const badgeClass = p.badge === 'Promocja' ? ' promo' : p.badge === 'Na zapytanie' ? ' info' : '';
+    return `<div class="product-card" onclick="openProductModal(${p.id})">
+      ${p.badge ? `<span class="badge${badgeClass}">${p.badge}</span>` : ''}
+      <div class="card-img"><img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.opacity='.3'"></div>
+      <div class="card-body">
+        <div class="card-name">${p.name}</div>
+        <div class="card-short-desc">${p.desc}</div>
+        <div class="card-prices">
+          ${hasPrice
+            ? `<span class="price-unit">${fmt(p.unitPrice)} / szt.</span>
+               <span class="price-carton">Karton 6 szt.: ${fmt(p.cartonPrice)}</span>`
+            : `<span class="price-inquiry">Cena na zapytanie</span>`}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ============================================================
+// PRODUCT MODAL
+// ============================================================
+let currentProduct = null, orderType = 'unit', orderQty = 1;
+
+function openProductModal(id) {
+  const all = getAllProducts();
+  // Apply full overrides for base products
+  const fullOv = JSON.parse(localStorage.getItem('ig_full_overrides') || '{}');
+  currentProduct = all.find(p => p.id === id);
+  if (!currentProduct) return;
+  if (fullOv[id]) currentProduct = { ...currentProduct, ...fullOv[id] };
+  orderType = 'unit'; orderQty = 1;
+  const overlay = document.getElementById('product-overlay');
+  const box = document.getElementById('product-modal-box');
+  box.innerHTML = buildModalHTML(currentProduct);
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function buildModalHTML(p) {
+  const hasPrice = p.unitPrice > 0;
+  const catLabel = CATEGORIES[p.category]?.label || '';
+  const price = orderType === 'unit' ? p.unitPrice : p.cartonPrice;
+  const total = price * orderQty;
+  return `
+    <button class="modal-close" onclick="closeProductModal()">✕</button>
+    <div class="modal-inner">
+      <div class="modal-img-side" onclick="openLightbox('${p.img}')">
+        <img src="${p.img}" alt="${p.name}" onerror="this.style.opacity='.3'">
+        <span class="zoom-hint">🔍 Kliknij, aby powiększyć</span>
+      </div>
+      <div class="modal-info">
+        <span class="modal-category-tag">${CATEGORIES[p.category]?.icon} ${catLabel}</span>
+        <h2 class="modal-name">${p.name}</h2>
+        <p class="modal-desc">${p.desc}</p>
+        <div class="modal-divider"></div>
+        ${hasPrice ? `
+        <div>
+          <div style="font-size:11px;letter-spacing:1px;color:var(--muted);text-transform:uppercase;margin-bottom:8px">Wybierz opakowanie</div>
+          <div class="order-type-selector">
+            <div class="type-btn${orderType==='unit'?' active':''}" onclick="setOrderType('unit',${p.id})">
+              <div style="font-size:16px">🍾</div>
+              <div style="font-weight:600">Sztuka</div>
+              <div style="font-size:12px;margin-top:2px">${fmt(p.unitPrice)}</div>
+            </div>
+            <div class="type-btn${orderType==='carton'?' active':''}" onclick="setOrderType('carton',${p.id})">
+              <div style="font-size:16px">📦</div>
+              <div style="font-weight:600">Karton (6 szt.)</div>
+              <div style="font-size:12px;margin-top:2px">${fmt(p.cartonPrice)}</div>
+            </div>
+          </div>
+        </div>
+        <div class="qty-row">
+          <span class="qty-label">Ilość:</span>
+          <div class="qty-ctrl">
+            <button onclick="changeQty(-1,${p.id})">−</button>
+            <span id="modal-qty">${orderQty}</span>
+            <button onclick="changeQty(1,${p.id})">+</button>
+          </div>
+        </div>
+        <div class="price-display">
+          <div><div class="p-label">Łączna cena</div><div style="font-size:11px;color:var(--muted);margin-top:2px">${orderType==='unit'?'za '+orderQty+' szt.':'za '+orderQty+' karton'+(orderQty>1?'y':'')}</div></div>
+          <div class="p-value" id="modal-total-price">${fmt(total)}</div>
+        </div>
+        <button class="add-cart-btn" onclick="addToCart(${p.id})">🛒 Dodaj do koszyka</button>
+        ` : `<div style="text-align:center;padding:20px;color:var(--muted);font-style:italic">Cena dostępna na zapytanie.<br>Skontaktuj się z nami przez WhatsApp.</div>`}
+      </div>
+    </div>`;
+}
+
+function setOrderType(type, id) {
+  orderType = type; orderQty = 1;
+  const p = PRODUCTS.find(x => x.id === id);
+  document.getElementById('product-modal-box').innerHTML = buildModalHTML(p);
+}
+
+function changeQty(delta, id) {
+  orderQty = Math.max(1, Math.min(99, orderQty + delta));
+  const p = PRODUCTS.find(x => x.id === id);
+  const qEl = document.getElementById('modal-qty');
+  const tEl = document.getElementById('modal-total-price');
+  if (qEl) qEl.textContent = orderQty;
+  if (tEl) {
+    const price = orderType === 'unit' ? p.unitPrice : p.cartonPrice;
+    tEl.textContent = fmt(price * orderQty);
+  }
+}
+
+function closeProductModal() {
+  document.getElementById('product-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('product-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeProductModal();
+});
+
+// ============================================================
+// LIGHTBOX
+// ============================================================
+function openLightbox(src) {
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightbox-img').src = src;
+  lb.classList.add('open');
+}
+function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
+
+// ============================================================
+// CART
+// ============================================================
+function addToCart(id) {
+  const p = PRODUCTS.find(x => x.id === id);
+  const existing = state.cart.find(i => i.productId === id && i.type === orderType);
+  if (existing) existing.qty += orderQty;
+  else state.cart.push({ productId: id, type: orderType, qty: orderQty });
+  updateCartUI();
+  showToast(`✓ Dodano do koszyka!`);
+  closeProductModal();
+}
+
+function removeFromCart(idx) {
+  state.cart.splice(idx, 1);
+  updateCartUI();
+}
+
+function updateCartUI() {
+  const count = document.getElementById('cart-count');
+  if (count) count.textContent = getCartCount();
+  renderCartItems();
+}
+
+function renderCartItems() {
+  const list = document.getElementById('cart-items-list');
+  const footer = document.getElementById('cart-footer');
+  if (!state.cart.length) {
+    list.innerHTML = `<div class="cart-empty"><div class="cart-empty-icon">🛒</div><div>Koszyk jest pusty</div><div style="font-size:12px;margin-top:6px">Dodaj produkty, aby złożyć zamówienie</div></div>`;
+    if (footer) footer.style.display = 'none';
+    return;
+  }
+  list.innerHTML = state.cart.map((item, idx) => {
+    const p = PRODUCTS.find(x => x.id === item.productId);
+    const price = item.type === 'unit' ? p.unitPrice : p.cartonPrice;
+    return `<div class="cart-item">
+      <div class="cart-item-img"><img src="${p.img}" alt="${p.name}" onerror="this.style.opacity='.3'"></div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${p.name}</div>
+        <div class="cart-item-type">${item.type === 'unit' ? '🍾 ' + item.qty + ' szt.' : '📦 ' + item.qty + ' karton'+(item.qty>1?'y':'')+' ('+item.qty*6+' szt.)'}</div>
+      </div>
+      <span class="cart-item-price">${fmt(price * item.qty)}</span>
+      <button class="remove-item" onclick="removeFromCart(${idx})" title="Usuń">×</button>
+    </div>`;
+  }).join('');
+  const total = document.getElementById('cart-total');
+  if (total) total.textContent = fmt(getCartTotal());
+  if (footer) footer.style.display = '';
+}
+
+function openCart() {
+  document.getElementById('cart-sidebar').classList.add('open');
+  document.getElementById('cart-overlay').classList.add('open');
+  renderCartItems();
+}
+function closeCart() {
+  document.getElementById('cart-sidebar').classList.remove('open');
+  document.getElementById('cart-overlay').classList.remove('open');
+}
+document.getElementById('cart-btn').addEventListener('click', openCart);
+
+// ============================================================
+// ORDER FORM
+// ============================================================
+function openOrderModal() {
+  if (!state.cart.length) return;
+  closeCart();
+  const overlay = document.getElementById('order-overlay');
+  renderOrderSummary();
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeOrderModal() {
+  document.getElementById('order-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('order-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeOrderModal();
+});
+
+function renderOrderSummary() {
+  const box = document.getElementById('order-summary-box');
+  const rows = state.cart.map(item => {
+    const p = PRODUCTS.find(x => x.id === item.productId);
+    const price = item.type === 'unit' ? p.unitPrice : p.cartonPrice;
+    const label = item.type === 'unit' ? item.qty+' szt.' : item.qty+' karton'+(item.qty>1?'y':'');
+    return `<div class="order-summary-row"><strong>${p.name}</strong><span>${label} – ${fmt(price*item.qty)}</span></div>`;
+  }).join('');
+  box.innerHTML = `<div class="order-summary">${rows}
+    <div class="order-total-row"><span>RAZEM:</span><span style="color:var(--gold)">${fmt(getCartTotal())}</span></div>
+  </div>`;
+}
+
+function submitOrder() {
+  const name = document.getElementById('order-name').value.trim();
+  const phone = document.getElementById('order-phone').value.trim();
+  const address = document.getElementById('order-address').value.trim();
+  const notes = document.getElementById('order-notes').value.trim();
+  if (!name || !phone || !address) { showToast('⚠ Wypełnij wymagane pola!'); return; }
+
+  const orderItems = state.cart.map(item => {
+    const p = PRODUCTS.find(x => x.id === item.productId);
+    const price = item.type === 'unit' ? p.unitPrice : p.cartonPrice;
+    const label = item.type === 'unit' ? item.qty+' szt.' : item.qty+' karton'+(item.qty>1?'y':'');
+    return { productId: p.id, productName: p.name, type: item.type, qty: item.qty, unitPrice: price, total: price * item.qty };
+  });
+  const order = { id: genId(), date: new Date().toISOString(), customer: { name, phone, address, notes }, items: orderItems, total: getCartTotal(), status: 'new' };
+  const orders = getOrders(); orders.unshift(order); saveOrders(orders);
+
+  // WhatsApp message
+  let msg = `🇮🇹 *NOWE ZAMÓWIENIE – Italia Gusto*\n\n`;
+  msg += `📋 Nr: ${order.id.toUpperCase()}\n`;
+  msg += `👤 Klient: ${name}\n📱 Tel: ${phone}\n📍 Adres: ${address}\n`;
+  if (notes) msg += `📝 Uwagi: ${notes}\n`;
+  msg += `\n🛒 *ZAMÓWIONE PRODUKTY:*\n`;
+  orderItems.forEach(i => { msg += `• ${i.productName} – ${i.type==='unit'?i.qty+' szt.':i.qty+' karton'+(i.qty>1?'y':'')} → ${fmt(i.total)}\n`; });
+  msg += `\n💶 *ŁĄCZNIE DO ZAPŁATY: ${fmt(order.total)}*\n`;
+  msg += `\n_(Płatność przy odbiorze)_`;
+
+  const waNum = CONFIG.whatsappNumber.replace(/\D/g,'');
+  const waUrl = `https://wa.me/${waNum}?text=${encodeURIComponent(msg)}`;
+  window.open(waUrl, '_blank');
+
+  state.cart = [];
+  updateCartUI();
+  closeOrderModal();
+  showToast('✓ Zamówienie wysłane przez WhatsApp!', 3500);
+}
+
+// ============================================================
+// SEARCH
+// ============================================================
+document.getElementById('search-input').addEventListener('input', function() {
+  state.searchQuery = this.value;
+  if (state.category !== 'all') { state.category = 'all'; renderCategories(); }
+  const title = document.getElementById('section-title');
+  if (title) title.textContent = this.value ? 'Wyniki wyszukiwania' : 'Wszystkie produkty';
+  renderProducts();
+});
+
+// ============================================================
+// ADMIN ACCESS (logo click 5x or footer icon)
+// ============================================================
+document.getElementById('logo-click').addEventListener('click', function() {
+  logoClickCount++;
+  clearTimeout(logoClickTimer);
+  if (logoClickCount >= 5) { logoClickCount = 0; showAdmin(); }
+  else logoClickTimer = setTimeout(() => { logoClickCount = 0; }, 2000);
+});
+document.getElementById('admin-link').addEventListener('click', showAdmin);
+
+function showAdmin() {
+  document.getElementById('store-page').style.display = 'none';
+  document.getElementById('product-overlay').style.display = 'none';
+  document.getElementById('order-overlay').style.display = 'none';
+  const ap = document.getElementById('admin-page');
+  ap.style.display = 'block';
+  if (!state.adminAuth) renderAdminLogin();
+  else renderAdminDashboard();
+}
+
+function showStore() {
+  document.getElementById('store-page').style.display = '';
+  document.getElementById('admin-page').style.display = 'none';
+}
+
+// ============================================================
+// ADMIN LOGIN
+// ============================================================
+function renderAdminLogin() {
+  document.getElementById('admin-page').innerHTML = `
+    <div class="admin-login">
+      <div class="admin-login-box">
+        <div class="admin-lock">🔐</div>
+        <h2 class="admin-login-title">Panel Administratora</h2>
+        <p class="admin-login-sub">Italia Gusto – dostęp tylko dla właściciela</p>
+        <input class="admin-login-input" type="password" id="admin-pass-input" placeholder="••••••••••" onkeydown="if(event.key==='Enter')doAdminLogin()">
+        <button class="admin-login-btn" onclick="doAdminLogin()">Zaloguj się</button>
+        <div class="admin-error" id="admin-error"></div>
+        <button onclick="showStore()" style="margin-top:20px;background:none;border:none;color:var(--muted);font-size:13px;cursor:pointer">← Wróć do sklepu</button>
+      </div>
+    </div>`;
+  setTimeout(() => { const el = document.getElementById('admin-pass-input'); if (el) el.focus(); }, 100);
+}
+
+function doAdminLogin() {
+  const val = document.getElementById('admin-pass-input')?.value;
+  if (val === CONFIG.adminPassword) {
+    state.adminAuth = true;
+    renderAdminDashboard();
+  } else {
+    const err = document.getElementById('admin-error');
+    if (err) { err.textContent = '✗ Nieprawidłowe hasło'; setTimeout(() => { err.textContent=''; }, 2000); }
+  }
+}
+
+// ============================================================
+// ADMIN DASHBOARD
+// ============================================================
+function renderAdminDashboard() {
+  const orders = getOrders();
+  const newOrders = orders.filter(o => o.status === 'new').length;
+  const total = orders.reduce((s,o) => s + o.total, 0);
+  document.getElementById('admin-page').innerHTML = `
+    <div class="admin-page">
+      <div class="admin-header">
+        <div class="admin-logo">🇮🇹 Italia Gusto – Panel Admina</div>
+        <div class="admin-nav">
+          <button class="admin-tab${state.adminTab==='orders'?' active':''}" onclick="switchAdminTab('orders')">📋 <span>Zamówienia</span> ${newOrders?`<span style="background:var(--gold);color:#0c0904;border-radius:10px;padding:1px 7px;font-size:10px;margin-left:4px">${newOrders}</span>`:''}
+          </button>
+          <button class="admin-tab${state.adminTab==='shopping'?' active':''}" onclick="switchAdminTab('shopping')">🛍️ <span>Lista zakupów</span></button>
+          <button class="admin-tab${state.adminTab==='products'?' active':''}" onclick="switchAdminTab('products')">📦 <span>Produkty</span></button>
+          <button class="admin-tab${state.adminTab==='settings'?' active':''}" onclick="switchAdminTab('settings')">⚙️ <span>Ustawienia</span></button>
+        </div>
+        <button class="admin-back" onclick="showStore()">← Sklep</button>
+      </div>
+      <div class="admin-content">
+        ${state.adminTab === 'orders' ? renderOrdersTab(orders) : ''}
+        ${state.adminTab === 'shopping' ? renderShoppingTab(orders) : ''}
+        ${state.adminTab === 'products' ? renderProductsTab() : ''}
+        ${state.adminTab === 'settings' ? renderSettingsTab() : ''}
+      </div>
+    </div>`;
+}
+
+function switchAdminTab(tab) { state.adminTab = tab; renderAdminDashboard(); }
+
+function renderOrdersTab(orders) {
+  const stats = `<div class="admin-stats">
+    <div class="stat-card"><div class="stat-value">${orders.length}</div><div class="stat-label">Wszystkich zamówień</div></div>
+    <div class="stat-card"><div class="stat-value">${orders.filter(o=>o.status==='new').length}</div><div class="stat-label">Nowych</div></div>
+    <div class="stat-card"><div class="stat-value">${orders.filter(o=>o.status==='done').length}</div><div class="stat-label">Zrealizowanych</div></div>
+    <div class="stat-card"><div class="stat-value">${fmt(orders.reduce((s,o)=>s+o.total,0))}</div><div class="stat-label">Łączna wartość</div></div>
+  </div>`;
+  if (!orders.length) return stats + `<div class="no-orders"><div class="no-orders-icon">📋</div><div style="font-size:18px;margin-bottom:6px">Brak zamówień</div><div style="font-size:13px;color:var(--muted)">Zamówienia pojawią się tutaj automatycznie.</div></div>`;
+  const rows = orders.map((o, idx) => {
+    const d = new Date(o.date);
+    const dateStr = d.toLocaleDateString('pl-PL') + ' ' + d.toLocaleTimeString('pl-PL', {hour:'2-digit',minute:'2-digit'});
+    const itemsList = o.items.map(i => `<div>${i.productName} – ${i.type==='unit'?i.qty+' szt.':i.qty+' karton'+(i.qty>1?'y':'')} (${fmt(i.total)})</div>`).join('');
+    return `<tr>
+      <td><div class="order-id">#${o.id.toUpperCase()}</div><div class="order-date">${dateStr}</div></td>
+      <td><div style="font-weight:600">${o.customer.name}</div><div style="color:var(--muted);font-size:11px">${o.customer.phone}</div><div style="color:var(--muted);font-size:11px">${o.customer.address}</div></td>
+      <td><div class="order-items-list">${itemsList}</div></td>
+      <td style="color:var(--gold);font-weight:700">${fmt(o.total)}</td>
+      <td><span class="status-badge status-${o.status}">${o.status==='new'?'Nowe':'Zrealizowane'}</span></td>
+      <td>
+        <button class="status-btn" onclick="toggleOrderStatus(${idx})">${o.status==='new'?'✓ Zrealizuj':'↩ Przywróć'}</button>
+        <button class="status-btn" onclick="deleteOrder(${idx})" style="margin-top:4px;color:#e55;">🗑</button>
+      </td>
+    </tr>`;
+  }).join('');
+  return stats + `<h2 class="admin-section-title">Zamówienia klientów</h2>
+    <div style="overflow-x:auto"><table class="orders-table">
+      <thead><tr><th>Nr / Data</th><th>Klient</th><th>Zamówione produkty</th><th>Kwota</th><th>Status</th><th>Akcje</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table></div>
+    <button class="shop-clear-btn" onclick="if(confirm('Usunąć wszystkie zrealizowane zamówienia?'))clearDoneOrders()">🗑 Usuń zrealizowane</button>`;
+}
+
+function toggleOrderStatus(idx) {
+  const orders = getOrders();
+  orders[idx].status = orders[idx].status === 'new' ? 'done' : 'new';
+  saveOrders(orders); renderAdminDashboard();
+}
+function deleteOrder(idx) {
+  if (!confirm('Na pewno usunąć to zamówienie?')) return;
+  const orders = getOrders(); orders.splice(idx, 1); saveOrders(orders); renderAdminDashboard();
+}
+function clearDoneOrders() {
+  saveOrders(getOrders().filter(o => o.status === 'new'));
+  renderAdminDashboard();
+}
+
+function renderShoppingTab(orders) {
+  const activeOrders = orders.filter(o => o.status === 'new');
+  const aggregate = {};
+  activeOrders.forEach(o => {
+    o.items.forEach(item => {
+      const key = `${item.productId}_${item.type}`;
+      const bottles = item.type === 'unit' ? item.qty : item.qty * 6;
+      if (!aggregate[key]) aggregate[key] = { name: item.productName, type: item.type, bottles: 0, cartons: 0 };
+      if (item.type === 'unit') aggregate[key].bottles += item.qty;
+      else aggregate[key].cartons += item.qty;
+    });
+  });
+  const items = Object.entries(aggregate);
+  if (!items.length) return `<h2 class="admin-section-title">Lista zakupów</h2>
+    <div class="no-orders"><div class="no-orders-icon">🛍️</div><div style="font-size:16px;margin-bottom:6px">Brak aktywnych zamówień</div><div style="font-size:13px;color:var(--muted)">Lista zakupów generuje się automatycznie z nowych zamówień.</div></div>`;
+  const listHTML = items.map(([key, item]) => {
+    const checked = !!state.shopChecked[key];
+    const qtyText = item.type === 'unit'
+      ? `<span>${item.bottles}</span> szt.`
+      : `<span>${item.cartons}</span> karton${item.cartons>1?'y':''} (<span>${item.cartons*6}</span> szt.)`;
+    return `<div class="shop-item${checked?' checked-item':''}">
+      <input type="checkbox" class="shop-checkbox" ${checked?'checked':''} onchange="toggleShopItem('${key}',this.checked)">
+      <div class="shop-item-name">${item.name}</div>
+      <div class="shop-item-qty">${qtyText}</div>
+    </div>`;
+  }).join('');
+  return `<h2 class="admin-section-title">Lista zakupów</h2>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:20px">Automatycznie wygenerowana z <strong style="color:var(--text)">${activeOrders.length}</strong> aktywnych zamówień. Zaznaczaj produkty gdy zostaną zakupione.</p>
+    <div class="shopping-list">${listHTML}</div>
+    <button class="shop-clear-btn" onclick="clearShopChecked()">↺ Odznacz wszystkie</button>
+    <button class="shop-clear-btn" style="margin-left:10px" onclick="printShoppingList()">🖨️ Drukuj listę</button>`;
+}
+
+function toggleShopItem(key, checked) {
+  if (checked) state.shopChecked[key] = true;
+  else delete state.shopChecked[key];
+  saveShopChecked();
+  // Update just the item class without full re-render
+  const items = document.querySelectorAll('.shop-item');
+  items.forEach(el => {
+    const cb = el.querySelector('.shop-checkbox');
+    if (cb) el.classList.toggle('checked-item', cb.checked);
+  });
+}
+
+function clearShopChecked() {
+  state.shopChecked = {}; saveShopChecked(); renderAdminDashboard();
+}
+
+function printShoppingList() {
+  const content = document.querySelector('.shopping-list');
+  if (!content) return;
+  const w = window.open('', '_blank');
+  w.document.write(`<html><head><title>Lista zakupów – Italia Gusto</title>
+    <style>body{font-family:sans-serif;padding:20px}h1{font-size:20px;margin-bottom:20px}
+    .item{padding:8px 0;border-bottom:1px solid #eee;display:flex;gap:12px;align-items:center}
+    .cb{width:18px;height:18px;border:2px solid #999;border-radius:3px;flex-shrink:0}
+    .checked{text-decoration:line-through;opacity:.4}
+    </style></head><body><h1>🇮🇹 Lista zakupów – Italia Gusto</h1>
+    <p style="color:#999;font-size:12px">Wygenerowano: ${new Date().toLocaleString('pl-PL')}</p><br>`);
+  document.querySelectorAll('.shop-item').forEach(el => {
+    const checked = el.classList.contains('checked-item');
+    const name = el.querySelector('.shop-item-name')?.textContent || '';
+    const qty = el.querySelector('.shop-item-qty')?.textContent || '';
+    w.document.write(`<div class="item ${checked?'checked':''}"><div class="cb"></div><div style="flex:1">${name}</div><div>${qty}</div></div>`);
+  });
+  w.document.write('</body></html>'); w.document.close(); w.print();
+}
+
+function renderSettingsTab() {
+  return `<h2 class="admin-section-title">Ustawienia</h2>
+    <div class="config-notice">
+      <strong>📱 Numer WhatsApp</strong><br>
+      Wprowadź swój numer telefonu, na który klienci będą wysyłać zamówienia. Format: numer z kodem kraju, bez + i spacji (np. 48600000000).<br>
+      <div class="config-input">
+        <input type="text" id="wa-number-input" value="${CONFIG.whatsappNumber}" placeholder="48600000000">
+        <button class="config-save-btn" onclick="saveWaNumber()">Zapisz</button>
+      </div>
+    </div>
+    <div class="config-notice" style="margin-top:16px">
+      <strong>🔐 Hasło administratora</strong><br>
+      Obecne hasło: <span style="letter-spacing:2px">${'•'.repeat(CONFIG.adminPassword.length)}</span><br>
+      <div class="config-input">
+        <input type="password" id="new-pass-input" placeholder="Nowe hasło...">
+        <button class="config-save-btn" onclick="saveNewPass()">Zmień</button>
+      </div>
+    </div>
+    <div class="config-notice" style="margin-top:16px;border-color:rgba(229,85,85,.4);background:rgba(229,85,85,.08);color:#e88">
+      <strong>⚠️ Strefa niebezpieczna</strong><br>
+      <div class="config-input">
+        <span style="flex:1;font-size:12px">Usuń wszystkie zamówienia z bazy danych</span>
+        <button class="config-save-btn" style="background:#e55;color:#fff" onclick="if(confirm('NA PEWNO usunąć WSZYSTKIE zamówienia?')){saveOrders([]);renderAdminDashboard();showToast('Usunięto wszystkie zamówienia')}">Wyczyść</button>
+      </div>
+    </div>`;
+}
+
+function saveWaNumber() {
+  const val = document.getElementById('wa-number-input')?.value.replace(/\D/g,'');
+  if (!val) { showToast('⚠ Nieprawidłowy numer'); return; }
+  CONFIG.whatsappNumber = val;
+  localStorage.setItem('ig_config', JSON.stringify(CONFIG));
+  showToast('✓ Numer WhatsApp zapisany!');
+}
+
+function saveNewPass() {
+  const val = document.getElementById('new-pass-input')?.value;
+  if (!val || val.length < 4) { showToast('⚠ Hasło za krótkie (min. 4 znaki)'); return; }
+  CONFIG.adminPassword = val;
+  localStorage.setItem('ig_config', JSON.stringify(CONFIG));
+  showToast('✓ Hasło zmienione!');
+}
+
+// ============================================================
+// PRODUCT MANAGEMENT – storage helpers
+// ============================================================
+function getCustomProducts() { return JSON.parse(localStorage.getItem('ig_custom_products') || '[]'); }
+function saveCustomProducts(arr) { localStorage.setItem('ig_custom_products', JSON.stringify(arr)); }
+function getPriceOverrides() { return JSON.parse(localStorage.getItem('ig_price_overrides') || '{}'); }
+function savePriceOverrides(obj) { localStorage.setItem('ig_price_overrides', JSON.stringify(obj)); }
+function getHiddenProducts() { return JSON.parse(localStorage.getItem('ig_hidden_products') || '[]'); }
+function saveHiddenProducts(arr) { localStorage.setItem('ig_hidden_products', JSON.stringify(arr)); }
+
+// Merge base + custom products with price overrides applied
+function getAllProducts() {
+  const overrides = getPriceOverrides();
+  const hidden = getHiddenProducts();
+  const custom = getCustomProducts();
+  const base = PRODUCTS.map(p => {
+    const ov = overrides[p.id] || {};
+    return { ...p,
+      unitPrice: ov.unitPrice !== undefined ? ov.unitPrice : p.unitPrice,
+      cartonPrice: ov.cartonPrice !== undefined ? ov.cartonPrice : p.cartonPrice,
+      name: ov.name !== undefined ? ov.name : p.name,
+      badge: ov.badge !== undefined ? ov.badge : p.badge,
+      hidden: hidden.includes(p.id),
+      isCustom: false,
+    };
+  });
+  return [...base, ...custom.map(p => ({ ...p, isCustom: true, hidden: hidden.includes(p.id) }))];
+}
+
+// Override getProducts for store display (respects hidden)
+function getVisibleProducts() {
+  return getAllProducts().filter(p => !p.hidden);
+}
+
+// State for product admin tab
+let pmFilter = { cat: 'all', q: '' };
+let editingProductId = null;
+
+// ============================================================
+// PRODUCTS TAB RENDER
+// ============================================================
+function renderProductsTab() {
+  const all = getAllProducts();
+  const customCount = getCustomProducts().length;
+  const hiddenCount = getHiddenProducts().length;
+
+  const catFilter = `<div class="pm-cat-filter">
+    <span class="pm-cat-chip${pmFilter.cat==='all'?' active':''}" onclick="setPmCat('all')">Wszystkie (${all.length})</span>
+    ${Object.entries(CATEGORIES).slice(1).map(([k,c]) => {
+      const n = all.filter(p => p.category === k).length;
+      return `<span class="pm-cat-chip${pmFilter.cat===k?' active':''}" onclick="setPmCat('${k}')">${c.icon} ${c.label} (${n})</span>`;
+    }).join('')}
+  </div>`;
+
+  const filtered = all.filter(p =>
+    (pmFilter.cat === 'all' || p.category === pmFilter.cat) &&
+    (!pmFilter.q || p.name.toLowerCase().includes(pmFilter.q.toLowerCase()))
+  );
+
+  const cards = filtered.map(p => {
+    const catLabel = CATEGORIES[p.category]?.label || p.category;
+    const catIcon = CATEGORIES[p.category]?.icon || '📦';
+    return `<div class="pm-card">
+      <div class="pm-card-inner">
+        <div class="pm-thumb"><img src="${p.img}" alt="${p.name}" onerror="this.style.opacity='.3'"></div>
+        <div class="pm-info">
+          <div class="pm-name" title="${p.name}">${p.name}${p.isCustom?'<span class="pm-custom-badge">własny</span>':''}${p.hidden?'<span class="pm-hidden-badge">ukryty</span>':''}</div>
+          <div class="pm-cat">${catIcon} ${catLabel}</div>
+          <div class="pm-prices-row">
+            <div class="pm-price-box">
+              <span class="pm-price-label">szt.</span>
+              <input class="pm-price-input" id="price-unit-${p.id}" type="number" value="${p.unitPrice}" min="0" step="0.5">
+              <span class="pm-price-unit">zł</span>
+            </div>
+            <div class="pm-price-box">
+              <span class="pm-price-label">karton</span>
+              <input class="pm-price-input" id="price-carton-${p.id}" type="number" value="${p.cartonPrice}" min="0" step="0.5">
+              <span class="pm-price-unit">zł</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm-actions">
+        <button class="pm-save-btn" onclick="saveProductPrice(${p.id}, ${p.isCustom})">💾 Zapisz ceny</button>
+        <button class="pm-save-btn" style="background:rgba(255,255,255,.05);border-color:var(--border);color:var(--muted)" onclick="editProduct(${p.id}, ${p.isCustom})">✏️</button>
+        <button class="pm-save-btn" style="${p.hidden?'background:rgba(201,168,76,.15);border-color:var(--gold);color:var(--gold)':'background:rgba(255,255,255,.05);border-color:var(--border);color:var(--muted)'}" onclick="toggleProductHidden(${p.id})" title="${p.hidden?'Pokaż w sklepie':'Ukryj w sklepie'}">${p.hidden?'👁 Pokaż':'🙈 Ukryj'}</button>
+        ${p.isCustom ? `<button class="pm-delete-btn" onclick="deleteCustomProduct(${p.id})">🗑</button>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+
+  return `<div class="pm-toolbar">
+    <h2 class="admin-section-title" style="margin:0">Zarządzanie produktami</h2>
+    <button class="add-product-btn" onclick="openProductForm(null)">＋ Dodaj produkt</button>
+  </div>
+  <div style="display:flex;gap:16px;margin-bottom:16px;font-size:12px;color:var(--muted)">
+    <span>📦 Łącznie: <strong style="color:var(--text)">${all.length}</strong></span>
+    <span>✨ Własne: <strong style="color:var(--gold)">${customCount}</strong></span>
+    <span>🙈 Ukryte: <strong style="color:var(--text)">${hiddenCount}</strong></span>
+  </div>
+  ${catFilter}
+  <div class="pm-toolbar" style="margin-bottom:16px">
+    <input class="pm-search" placeholder="🔍 Szukaj produktu..." value="${pmFilter.q}" oninput="pmFilter.q=this.value;document.getElementById('pm-grid-wrap').innerHTML=reRenderPmGrid()">
+  </div>
+  <div id="pm-grid-wrap"><div class="pm-grid">${cards || '<div style="color:var(--muted);padding:40px;text-align:center">Brak produktów w tej kategorii</div>'}</div></div>`;
+}
+
+function reRenderPmGrid() {
+  const all = getAllProducts();
+  const filtered = all.filter(p =>
+    (pmFilter.cat === 'all' || p.category === pmFilter.cat) &&
+    (!pmFilter.q || p.name.toLowerCase().includes(pmFilter.q.toLowerCase()))
+  );
+  const cards = filtered.map(p => {
+    const catLabel = CATEGORIES[p.category]?.label || p.category;
+    const catIcon = CATEGORIES[p.category]?.icon || '📦';
+    return `<div class="pm-card">
+      <div class="pm-card-inner">
+        <div class="pm-thumb"><img src="${p.img}" alt="${p.name}" onerror="this.style.opacity='.3'"></div>
+        <div class="pm-info">
+          <div class="pm-name" title="${p.name}">${p.name}${p.isCustom?'<span class="pm-custom-badge">własny</span>':''}${p.hidden?'<span class="pm-hidden-badge">ukryty</span>':''}</div>
+          <div class="pm-cat">${catIcon} ${catLabel}</div>
+          <div class="pm-prices-row">
+            <div class="pm-price-box">
+              <span class="pm-price-label">szt.</span>
+              <input class="pm-price-input" id="price-unit-${p.id}" type="number" value="${p.unitPrice}" min="0" step="0.5">
+              <span class="pm-price-unit">zł</span>
+            </div>
+            <div class="pm-price-box">
+              <span class="pm-price-label">karton</span>
+              <input class="pm-price-input" id="price-carton-${p.id}" type="number" value="${p.cartonPrice}" min="0" step="0.5">
+              <span class="pm-price-unit">zł</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pm-actions">
+        <button class="pm-save-btn" onclick="saveProductPrice(${p.id}, ${p.isCustom})">💾 Zapisz ceny</button>
+        <button class="pm-save-btn" style="background:rgba(255,255,255,.05);border-color:var(--border);color:var(--muted)" onclick="editProduct(${p.id}, ${p.isCustom})">✏️</button>
+        <button class="pm-save-btn" style="${p.hidden?'background:rgba(201,168,76,.15);border-color:var(--gold);color:var(--gold)':'background:rgba(255,255,255,.05);border-color:var(--border);color:var(--muted)'}" onclick="toggleProductHidden(${p.id})" title="${p.hidden?'Pokaż w sklepie':'Ukryj w sklepie'}">${p.hidden?'👁 Pokaż':'🙈 Ukryj'}</button>
+        ${p.isCustom ? `<button class="pm-delete-btn" onclick="deleteCustomProduct(${p.id})">🗑</button>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+  return `<div class="pm-grid">${cards || '<div style="color:var(--muted);padding:40px;text-align:center">Brak produktów</div>'}</div>`;
+}
+
+function setPmCat(cat) { pmFilter.cat = cat; renderAdminDashboard(); }
+
+// ============================================================
+// SAVE PRICE
+// ============================================================
+function saveProductPrice(id, isCustom) {
+  const unitEl = document.getElementById(`price-unit-${id}`);
+  const cartonEl = document.getElementById(`price-carton-${id}`);
+  if (!unitEl || !cartonEl) return;
+  const unitPrice = parseFloat(unitEl.value) || 0;
+  const cartonPrice = parseFloat(cartonEl.value) || 0;
+
+  if (isCustom) {
+    const customs = getCustomProducts();
+    const idx = customs.findIndex(p => p.id === id);
+    if (idx >= 0) { customs[idx].unitPrice = unitPrice; customs[idx].cartonPrice = cartonPrice; }
+    saveCustomProducts(customs);
+  } else {
+    const overrides = getPriceOverrides();
+    if (!overrides[id]) overrides[id] = {};
+    overrides[id].unitPrice = unitPrice;
+    overrides[id].cartonPrice = cartonPrice;
+    savePriceOverrides(overrides);
+  }
+  // Animate button
+  const btn = unitEl.closest('.pm-card').querySelector('.pm-save-btn');
+  if (btn) { btn.textContent = '✓ Zapisano!'; btn.style.background = 'rgba(111,198,111,.2)'; btn.style.borderColor = '#6fc66f'; btn.style.color = '#6fc66f';
+    setTimeout(() => { btn.textContent = '💾 Zapisz ceny'; btn.style.cssText=''; }, 1800); }
+  renderProducts(); // refresh store
+  showToast('✓ Cena zaktualizowana!');
+}
+
+// ============================================================
+// TOGGLE HIDDEN
+// ============================================================
+function toggleProductHidden(id) {
+  const hidden = getHiddenProducts();
+  const idx = hidden.indexOf(id);
+  if (idx >= 0) hidden.splice(idx, 1);
+  else hidden.push(id);
+  saveHiddenProducts(hidden);
+  renderProducts();
+  renderAdminDashboard();
+}
+
+// ============================================================
+// PRODUCT FORM (add / edit)
+// ============================================================
+function openProductForm(id) {
+  editingProductId = id;
+  const all = getAllProducts();
+  const p = id !== null ? all.find(x => x.id === id) : null;
+
+  const catOptions = Object.entries(CATEGORIES).slice(1).map(([k,c]) =>
+    `<option value="${k}" ${p?.category===k?'selected':''}>${c.icon} ${c.label}</option>`
+  ).join('');
+
+  document.getElementById('pf-box').innerHTML = `
+    <button class="modal-close" onclick="closePF()" style="position:absolute;top:16px;right:16px">✕</button>
+    <h2 class="pf-title">${p ? '✏️ Edytuj produkt' : '＋ Dodaj nowy produkt'}</h2>
+    <div class="form-group">
+      <label class="form-label">Nazwa produktu *</label>
+      <input class="form-input" id="pf-name" type="text" placeholder="np. Fragolino Rosso Premium" value="${p?.name||''}">
+    </div>
+    <div class="pf-row">
+      <div class="form-group">
+        <label class="form-label">Kategoria *</label>
+        <select class="form-input" id="pf-cat" style="cursor:pointer">${catOptions}</select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Etykieta (badge)</label>
+        <input class="form-input" id="pf-badge" type="text" placeholder="np. Nowość, Bestseller" value="${p?.badge||''}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Krótki opis *</label>
+      <textarea class="form-input" id="pf-desc" rows="3" placeholder="Opisz produkt...">${p?.desc||''}</textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label">URL zdjęcia *</label>
+      <input class="form-input" id="pf-img" type="url" placeholder="https://..." value="${p?.img||''}" oninput="updatePfImgPreview(this.value)">
+      <div class="pf-img-preview" id="pf-img-preview">
+        ${p?.img ? `<img src="${p.img}" onerror="this.style.display='none'">` : '<span>Podgląd zdjęcia pojawi się tutaj</span>'}
+      </div>
+    </div>
+    <div class="pf-row">
+      <div class="form-group">
+        <label class="form-label">Cena za sztukę (zł) *</label>
+        <input class="form-input" id="pf-unit" type="number" min="0" step="0.5" placeholder="0.00" value="${p?.unitPrice||''}">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Cena za karton 6 szt. (zł) *</label>
+        <input class="form-input" id="pf-carton" type="number" min="0" step="0.5" placeholder="0.00" value="${p?.cartonPrice||''}">
+      </div>
+    </div>
+    <button class="pf-submit-btn" onclick="submitProductForm()">${p ? '💾 Zapisz zmiany' : '＋ Dodaj produkt'}</button>
+  `;
+  document.getElementById('pf-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function updatePfImgPreview(url) {
+  const prev = document.getElementById('pf-img-preview');
+  if (!prev) return;
+  if (url) prev.innerHTML = `<img src="${url}" onerror="this.style.display='none';this.nextElementSibling?.remove();this.parentElement.innerHTML='<span style=color:var(--muted)>Nie można załadować zdjęcia</span>'"><span></span>`;
+  else prev.innerHTML = '<span style="color:var(--muted)">Podgląd zdjęcia pojawi się tutaj</span>';
+}
+
+function closePF() {
+  document.getElementById('pf-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+  editingProductId = null;
+}
+
+document.getElementById('pf-overlay').addEventListener('click', function(e) { if (e.target === this) closePF(); });
+
+function submitProductForm() {
+  const name = document.getElementById('pf-name')?.value.trim();
+  const cat = document.getElementById('pf-cat')?.value;
+  const desc = document.getElementById('pf-desc')?.value.trim();
+  const img = document.getElementById('pf-img')?.value.trim();
+  const unitPrice = parseFloat(document.getElementById('pf-unit')?.value) || 0;
+  const cartonPrice = parseFloat(document.getElementById('pf-carton')?.value) || 0;
+  const badge = document.getElementById('pf-badge')?.value.trim() || undefined;
+
+  if (!name || !desc || !img) { showToast('⚠ Wypełnij wymagane pola!'); return; }
+
+  if (editingProductId !== null) {
+    // Editing
+    const customs = getCustomProducts();
+    const custIdx = customs.findIndex(p => p.id === editingProductId);
+    if (custIdx >= 0) {
+      // It's a custom product — edit directly
+      customs[custIdx] = { ...customs[custIdx], name, category: cat, desc, img, unitPrice, cartonPrice, badge };
+      saveCustomProducts(customs);
+    } else {
+      // It's a base product — save overrides for non-price fields too
+      const overrides = getPriceOverrides();
+      if (!overrides[editingProductId]) overrides[editingProductId] = {};
+      overrides[editingProductId] = { ...overrides[editingProductId], name, unitPrice, cartonPrice, badge };
+      savePriceOverrides(overrides);
+      // For category/desc/img changes on base products, save as full override in custom override store
+      const fullOverrides = JSON.parse(localStorage.getItem('ig_full_overrides') || '{}');
+      fullOverrides[editingProductId] = { name, category: cat, desc, img, unitPrice, cartonPrice, badge };
+      localStorage.setItem('ig_full_overrides', JSON.stringify(fullOverrides));
+    }
+    showToast('✓ Produkt zaktualizowany!');
+  } else {
+    // New product
+    const customs = getCustomProducts();
+    const newId = Date.now();
+    customs.push({ id: newId, name, category: cat, desc, img, unitPrice, cartonPrice, badge, isCustom: true });
+    saveCustomProducts(customs);
+    showToast('✓ Produkt dodany!');
+  }
+
+  closePF();
+  renderProducts();
+  renderAdminDashboard();
+}
+
+function editProduct(id, isCustom) {
+  openProductForm(id);
+}
+
+function deleteCustomProduct(id) {
+  if (!confirm('Na pewno usunąć ten produkt?')) return;
+  const customs = getCustomProducts().filter(p => p.id !== id);
+  saveCustomProducts(customs);
+  renderProducts();
+  renderAdminDashboard();
+  showToast('✓ Produkt usunięty');
+}
+
+// ============================================================
+// INIT
+// ============================================================
+renderCategories();
+renderProducts();
+
+// Show WhatsApp number setup notice if not configured
+if (CONFIG.whatsappNumber === '48XXXXXXXXX') {
+  setTimeout(() => {
+    showToast('⚙ Skonfiguruj numer WhatsApp w Panelu Admina', 5000);
+  }, 2000);
+}// ============================================================
+// PWA – ICON, MANIFEST, SERVICE WORKER, INSTALL PROMPT
+// ============================================================
+(function initPWA() {
+
+  // --- 1. Generate beautiful app icon on canvas ---
+  function drawAppIcon(size) {
+    const canvas = document.createElement('canvas');
+    canvas.width = size; canvas.height = size;
+    const ctx = canvas.getContext('2d');
+    const s = size;
+
+    // Background – deep dark olive/black
+    const bg = ctx.createLinearGradient(0, 0, s, s);
+    bg.addColorStop(0, '#1a1005');
+    bg.addColorStop(1, '#0c0904');
+    ctx.fillStyle = bg;
+    // Rounded rect
+    const r = s * 0.22;
+    ctx.beginPath();
+    ctx.moveTo(r, 0); ctx.lineTo(s-r, 0); ctx.quadraticCurveTo(s, 0, s, r);
+    ctx.lineTo(s, s-r); ctx.quadraticCurveTo(s, s, s-r, s);
+    ctx.lineTo(r, s); ctx.quadraticCurveTo(0, s, 0, s-r);
+    ctx.lineTo(0, r); ctx.quadraticCurveTo(0, 0, r, 0);
+    ctx.closePath(); ctx.fill();
+
+    // Italian flag stripe (left side accent)
+    const stripeW = s * 0.045;
+    ctx.fillStyle = '#009246'; ctx.fillRect(0, r, stripeW, s - r*2);
+    ctx.fillStyle = '#ffffff'; ctx.fillRect(stripeW, r, stripeW, s - r*2);
+    ctx.fillStyle = '#ce2b37'; ctx.fillRect(stripeW*2, r, stripeW, s - r*2);
+
+    // Gold circle background for wine glass
+    const cx = s * 0.54, cy = s * 0.45;
+    const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, s*0.38);
+    glow.addColorStop(0, 'rgba(201,168,76,0.18)');
+    glow.addColorStop(1, 'rgba(201,168,76,0)');
+    ctx.fillStyle = glow;
+    ctx.beginPath(); ctx.arc(cx, cy, s*0.38, 0, Math.PI*2); ctx.fill();
+
+    // Wine glass silhouette
+    const gx = cx, gy = cy;
+    const scale = s / 192;
+    ctx.save();
+    ctx.translate(gx, gy);
+    ctx.scale(scale, scale);
+
+    // Gold gradient for glass
+    const goldGrad = ctx.createLinearGradient(-30, -60, 30, 60);
+    goldGrad.addColorStop(0, '#e8c97a');
+    goldGrad.addColorStop(0.5, '#c9a84c');
+    goldGrad.addColorStop(1, '#8a6e28');
+    ctx.strokeStyle = goldGrad;
+    ctx.lineWidth = 5.5;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+
+    // Bowl of glass (wide ellipse shape)
+    ctx.beginPath();
+    ctx.moveTo(-28, -50);
+    ctx.bezierCurveTo(-32, -20, -30, 10, -8, 22);
+    ctx.lineTo(8, 22);
+    ctx.bezierCurveTo(30, 10, 32, -20, 28, -50);
+    ctx.closePath();
+    // Fill with wine color
+    const wineFill = ctx.createLinearGradient(-28, -50, 28, 22);
+    wineFill.addColorStop(0, 'rgba(122,30,30,0.85)');
+    wineFill.addColorStop(1, 'rgba(80,10,10,0.6)');
+    ctx.fillStyle = wineFill;
+    ctx.fill();
+    ctx.stroke();
+
+    // Stem
+    ctx.beginPath();
+    ctx.moveTo(-2, 22); ctx.lineTo(2, 22);
+    ctx.lineTo(3, 55); ctx.lineTo(-3, 55);
+    ctx.closePath();
+    ctx.fillStyle = goldGrad; ctx.fill();
+
+    // Base
+    ctx.beginPath();
+    ctx.moveTo(-20, 55); ctx.lineTo(20, 55);
+    ctx.lineTo(18, 62); ctx.lineTo(-18, 62);
+    ctx.closePath();
+    ctx.fillStyle = goldGrad; ctx.fill();
+
+    // Bubbles in wine
+    ctx.fillStyle = 'rgba(232,201,122,0.5)';
+    [[0, 5, 2.5], [-10, -10, 2], [10, -20, 2], [-5, -35, 1.8], [8, -5, 1.5]].forEach(([bx, by, br]) => {
+      ctx.beginPath(); ctx.arc(bx, by, br, 0, Math.PI*2); ctx.fill();
+    });
+
+    ctx.restore();
+
+    // "IG" lettermark below glass
+    ctx.fillStyle = '#c9a84c';
+    ctx.font = `bold ${s*0.11}px serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'alphabetic';
+    ctx.fillText('ITALIA', s*0.54, s*0.82);
+    ctx.fillStyle = 'rgba(201,168,76,0.55)';
+    ctx.font = `${s*0.072}px serif`;
+    ctx.fillText('GUSTO', s*0.54, s*0.92);
+
+    return canvas;
+  }
+
+  // Draw mini icon (48px in banner)
+  const miniCanvas = document.getElementById('pwa-icon-canvas');
+  if (miniCanvas) {
+    const src = drawAppIcon(48);
+    miniCanvas.getContext('2d').drawImage(src, 0, 0);
+  }
+
+  // Generate icons at different sizes and register manifest
+  const icon192 = drawAppIcon(192).toDataURL('image/png');
+  const icon512 = drawAppIcon(512).toDataURL('image/png');
+  const icon180 = drawAppIcon(180).toDataURL('image/png');
+
+  // Apple touch icon
+  const appleLink = document.getElementById('apple-touch-icon');
+  if (appleLink) appleLink.href = icon180;
+
+  // --- 2. Create and inject Web App Manifest ---
+  const manifest = {
+    name: 'Italia Gusto – Włoskie Produkty',
+    short_name: 'Italia Gusto',
+    description: 'Włoskie produkty premium – wina, likiery, oliwy. Zamów online, płatność przy odbiorze.',
+    start_url: './',
+    display: 'standalone',
+    orientation: 'portrait-primary',
+    background_color: '#0c0904',
+    theme_color: '#c9a84c',
+    lang: 'pl',
+    categories: ['shopping', 'food'],
+    icons: [
+      { src: icon192, sizes: '192x192', type: 'image/png', purpose: 'any maskable' },
+      { src: icon512, sizes: '512x512', type: 'image/png', purpose: 'any maskable' },
+    ],
+    screenshots: [],
+    shortcuts: [
+      { name: 'Wszystkie produkty', short_name: 'Produkty', url: './', icons: [{ src: icon192, sizes: '192x192' }] },
+    ]
+  };
+  const manifestBlob = new Blob([JSON.stringify(manifest)], { type: 'application/manifest+json' });
+  const manifestURL = URL.createObjectURL(manifestBlob);
+  const manifestLink = document.getElementById('pwa-manifest');
+  if (manifestLink) manifestLink.href = manifestURL;
+
+  // --- 3. Inline Service Worker for offline caching ---
+  const swCode = `
+const CACHE = 'italia-gusto-v1';
+const ASSETS = ['./', location.href];
+self.addEventListener('install', e => {
+  e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS).catch(()=>{})));
+  self.skipWaiting();
+});
+self.addEventListener('activate', e => {
+  e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))));
+  self.clients.claim();
+});
+self.addEventListener('fetch', e => {
+  if (e.request.method !== 'GET') return;
+  e.respondWith(
+    caches.match(e.request).then(cached => {
+      const network = fetch(e.request).then(res => {
+        if (res && res.status === 200 && e.request.url.startsWith('http')) {
+          const clone = res.clone();
+          caches.open(CACHE).then(c => c.put(e.request, clone));
+        }
+        return res;
+      }).catch(() => cached);
+      return cached || network;
+    })
+  );
+});`;
+
+  const swBlob = new Blob([swCode], { type: 'application/javascript' });
+  const swURL = URL.createObjectURL(swBlob);
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register(swURL, { scope: './' })
+      .then(() => console.log('SW registered'))
+      .catch(e => console.log('SW note:', e.message));
+  }
+
+  // --- 4. Install prompt ---
+  let deferredPrompt = null;
+  const banner = document.getElementById('pwa-banner');
+  const installBtn = document.getElementById('pwa-install-btn');
+
+  // Check if already installed
+  const isInstalled = window.matchMedia('(display-mode: standalone)').matches
+    || window.navigator.standalone
+    || localStorage.getItem('ig_pwa_installed');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (!localStorage.getItem('ig_pwa_dismissed') && !isInstalled) {
+      setTimeout(() => banner?.classList.add('show'), 3000);
+    }
+  });
+
+  window.addEventListener('appinstalled', () => {
+    localStorage.setItem('ig_pwa_installed', '1');
+    banner?.classList.remove('show');
+    showToast('✓ Aplikacja zainstalowana! 🎉');
+  });
+
+  if (installBtn) {
+    installBtn.addEventListener('click', async () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        deferredPrompt = null;
+        if (outcome === 'accepted') {
+          localStorage.setItem('ig_pwa_installed', '1');
+          banner?.classList.remove('show');
+        }
+      } else {
+        // Fallback instructions
+        showToast('Otwórz menu przeglądarki → "Dodaj do ekranu głównego"', 5000);
+        banner?.classList.remove('show');
+      }
+    });
+  }
+
+  window.dismissInstall = function() {
+    banner?.classList.remove('show');
+    localStorage.setItem('ig_pwa_dismissed', Date.now());
+  };
+
+  // Auto-show after 5 days reset
+  const dismissed = parseInt(localStorage.getItem('ig_pwa_dismissed') || '0');
+  if (dismissed && Date.now() - dismissed > 5*24*60*60*1000) {
+    localStorage.removeItem('ig_pwa_dismissed');
+  }
+
+})();
+
+</script>
+</body>
+</html>
