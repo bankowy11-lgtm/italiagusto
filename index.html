@@ -582,6 +582,14 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 24p
   </div>
 </div>
 
+<!-- ORDER DETAIL MODAL (ADMIN) -->
+<div class="overlay" id="order-detail-overlay">
+  <div class="order-modal-box">
+    <button class="modal-close" onclick="closeOrderDetail()">✕</button>
+    <div id="order-detail-box"></div>
+  </div>
+</div>
+
 <!-- PWA INSTALL BANNER -->
 <div class="pwa-banner" id="pwa-banner">
   <button class="pwa-close" onclick="dismissInstall()" title="Zamknij">✕</button>
@@ -1274,6 +1282,10 @@ document.getElementById('order-overlay').addEventListener('click', function(e) {
   if (e.target === this) closeOrderModal();
 });
 
+document.getElementById('order-detail-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeOrderDetail();
+});
+
 function renderOrderSummary() {
   const box = document.getElementById('order-summary-box');
   const rows = state.cart.map(item => {
@@ -1581,7 +1593,8 @@ function renderOrdersTab(orders) {
         <select class="status-select" style="display:block;margin-top:6px" onchange="setOrderStatus('${o._fsId}', this.value)">${statusOptions}</select>
       </td>
       <td>
-        <button class="status-btn" onclick="deleteOrder('${o._fsId}')" style="color:#e55;">🗑 Usuń</button>
+        <button class="status-btn" onclick="viewOrderDetail('${o._fsId}')">👁 Podgląd</button>
+        <button class="status-btn" onclick="deleteOrder('${o._fsId}')" style="color:#e55;margin-top:6px">🗑 Usuń</button>
       </td>
     </tr>`;
   }).join('');
@@ -1597,6 +1610,83 @@ function setOrderStatus(fsId, newStatus) {
   if (!ORDER_STATUSES[newStatus]) return;
   updateOrderInFirestore(fsId, { status: newStatus });
 }
+
+// ============================================================
+// PODGLĄD I DRUK POJEDYNCZEGO ZAMÓWIENIA (ADMIN)
+// ============================================================
+function viewOrderDetail(fsId) {
+  const o = _firestoreOrders.find(x => x._fsId === fsId);
+  if (!o) return;
+  const d = new Date(o.date);
+  const dateStr = d.toLocaleDateString('pl-PL') + ' ' + d.toLocaleTimeString('pl-PL', {hour:'2-digit',minute:'2-digit'});
+  const status = o.status && ORDER_STATUSES[o.status] ? o.status : 'new';
+  const itemsRows = o.items.map(i => {
+    const label = i.type === 'unit' ? i.qty+' szt.' : i.qty+' karton'+(i.qty>1?'y':'');
+    return `<div class="order-summary-row"><strong>${i.productName}</strong><span>${label} – ${fmt(i.total)}</span></div>`;
+  }).join('');
+  document.getElementById('order-detail-box').innerHTML = `
+    <h2 class="order-title">Zamówienie #${o.id.toUpperCase()}</h2>
+    <p class="order-sub">${dateStr} · <span class="status-badge status-${status}">${ORDER_STATUSES[status].label}</span></p>
+    <div class="order-summary">
+      <div class="order-summary-row"><strong>Klient</strong><span>${o.customer.name}</span></div>
+      <div class="order-summary-row"><strong>Telefon</strong><span>${o.customer.phone}</span></div>
+      <div class="order-summary-row"><strong>Adres</strong><span>${o.customer.address}</span></div>
+      ${o.customer.notes ? `<div class="order-summary-row"><strong>Uwagi</strong><span>${o.customer.notes}</span></div>` : ''}
+    </div>
+    <div class="order-summary">
+      ${itemsRows}
+    </div>
+    <div class="order-total-row" style="margin-bottom:16px"><span>RAZEM DO ZAPŁATY:</span><span style="color:var(--gold)">${fmt(o.total)}</span></div>
+    <button class="whatsapp-btn" style="background:var(--gold)" onclick="printOrderForCustomer('${o._fsId}')">🖨️ Drukuj dla klienta</button>
+  `;
+  document.getElementById('order-detail-overlay').classList.add('open');
+}
+
+function closeOrderDetail() {
+  document.getElementById('order-detail-overlay').classList.remove('open');
+}
+
+function printOrderForCustomer(fsId) {
+  const o = _firestoreOrders.find(x => x._fsId === fsId);
+  if (!o) return;
+  const d = new Date(o.date);
+  const dateStr = d.toLocaleDateString('pl-PL') + ' ' + d.toLocaleTimeString('pl-PL', {hour:'2-digit',minute:'2-digit'});
+  const itemsRowsHtml = o.items.map(i => {
+    const label = i.type === 'unit' ? i.qty+' szt.' : i.qty+' karton'+(i.qty>1?'y':'');
+    return `<tr><td>${i.productName}</td><td style="text-align:center">${label}</td><td style="text-align:right">${fmt(i.total)}</td></tr>`;
+  }).join('');
+  const w = window.open('', '_blank');
+  w.document.write(`<html><head><title>Zamówienie #${o.id.toUpperCase()} – Italia Gusto</title>
+    <style>
+      body{font-family:sans-serif;padding:24px;color:#111}
+      h1{font-size:20px;margin-bottom:4px}
+      .sub{color:#777;font-size:12px;margin-bottom:20px}
+      .box{border:1px solid #ddd;border-radius:8px;padding:16px;margin-bottom:20px}
+      .row{display:flex;justify-content:space-between;padding:4px 0;font-size:13px}
+      table{width:100%;border-collapse:collapse;margin-bottom:16px}
+      th,td{padding:8px;border-bottom:1px solid #eee;font-size:13px;text-align:left}
+      .total{display:flex;justify-content:space-between;font-size:18px;font-weight:700;padding-top:12px;border-top:2px solid #111}
+      .footer{margin-top:24px;font-size:12px;color:#777}
+    </style></head><body>
+    <h1>🇮🇹 Italia Gusto – Potwierdzenie zamówienia</h1>
+    <div class="sub">Nr zamówienia: #${o.id.toUpperCase()} · ${dateStr}</div>
+    <div class="box">
+      <div class="row"><strong>Klient</strong><span>${o.customer.name}</span></div>
+      <div class="row"><strong>Telefon</strong><span>${o.customer.phone}</span></div>
+      <div class="row"><strong>Adres</strong><span>${o.customer.address}</span></div>
+      ${o.customer.notes ? `<div class="row"><strong>Uwagi</strong><span>${o.customer.notes}</span></div>` : ''}
+    </div>
+    <table>
+      <thead><tr><th>Produkt</th><th style="text-align:center">Ilość</th><th style="text-align:right">Kwota</th></tr></thead>
+      <tbody>${itemsRowsHtml}</tbody>
+    </table>
+    <div class="total"><span>RAZEM DO ZAPŁATY:</span><span>${fmt(o.total)}</span></div>
+    <div class="footer">Płatność gotówką przy odbiorze · Wygenerowano: ${new Date().toLocaleString('pl-PL')}</div>
+    </body></html>`);
+  w.document.close();
+  w.print();
+}
+
 function deleteOrder(fsId) {
   if (!confirm('Na pewno usunąć to zamówienie?')) return;
   deleteOrderFromFirestore(fsId);
