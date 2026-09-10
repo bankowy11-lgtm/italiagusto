@@ -1,0 +1,95 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nauka — Klasa 5</title>
+<meta name="theme-color" content="#dd5f2a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Nauka klasa 5">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMDAiIGZpbGw9IiNkZDVmMmEiLz4KPHRleHQgeD0iMjU2IiB5PSIzMzAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIyMjAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjU8L3RleHQ+Cjwvc3ZnPgo=">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMDAiIGZpbGw9IiNkZDVmMmEiLz4KPHRleHQgeD0iMjU2IiB5PSIzMzAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIyMjAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjU8L3RleHQ+Cjwvc3ZnPgo=">
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiTmF1a2EgLSBLbGFzYSA1Iiwic2hvcnRfbmFtZSI6Ik5hdWthIGtsYXNhIDUiLCJzdGFydF91cmwiOiIuIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiI2ZhZjdmMCIsInRoZW1lX2NvbG9yIjoiI2RkNWYyYSJ9">
+<style>
+  :root{
+    --paper:#faf7f0; --paper-2:#f2ede2; --grid-line: rgba(64,84,120,0.10);
+    --ink:#20242c; --ink-soft:#5c6472; --card:#ffffff; --card-edge: rgba(32,36,44,0.10);
+    --accent:#dd5f2a; --accent-ink:#ffffff; --accent-soft:#fde6d8;
+    --good:#2f9e6e; --good-soft:#e1f5ec;
+    --sans: -apple-system, "Segoe UI", system-ui, Roboto, sans-serif;
+    --mono: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#15181f; --paper-2:#1b1f27; --grid-line: rgba(140,160,200,0.09);
+      --ink:#e9ebf0; --ink-soft:#9aa1ae; --card:#1e222b; --card-edge: rgba(255,255,255,0.08);
+      --accent:#f07a44; --accent-ink:#1a1006; --accent-soft:#3a2418;
+      --good:#4fc98d; --good-soft:#173226;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#15181f; --paper-2:#1b1f27; --grid-line: rgba(140,160,200,0.09);
+    --ink:#e9ebf0; --ink-soft:#9aa1ae; --card:#1e222b; --card-edge: rgba(255,255,255,0.08);
+    --accent:#f07a44; --accent-ink:#1a1006; --accent-soft:#3a2418;
+    --good:#4fc98d; --good-soft:#173226;
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0;
+    background: linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0/32px 32px, linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0/32px 32px, var(--paper);
+    color:var(--ink); font-family:var(--sans); min-height:100vh;
+  }
+  .wrap{ max-width:620px; margin:0 auto; padding:32px 16px 60px; }
+  .hero{ text-align:center; padding: 6px 0 32px; }
+  .hero .eyebrow{ font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); font-weight:700; }
+  .hero h1{ font-size:clamp(28px,7vw,36px); margin:8px 0 10px; font-weight:800; text-wrap:balance; }
+  .hero p{ color:var(--ink-soft); font-size:14.5px; max-width:44ch; margin:0 auto; line-height:1.55; }
+
+  .subject-grid{ display:flex; flex-direction:column; gap:10px; }
+  .subject{ display:flex; align-items:center; gap:14px; width:100%; background:var(--card); border:1px solid var(--card-edge); border-radius:14px; padding:16px; text-decoration:none; color:var(--ink); }
+  a.subject:active{ transform:scale(0.99); }
+  .subject.disabled{ opacity:.55; }
+  .subject .s-icon{ font-size:26px; width:50px; height:50px; border-radius:12px; background:var(--paper-2); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .subject.ready .s-icon{ background:var(--accent-soft); }
+  .subject .s-body{ flex:1; min-width:0; }
+  .subject .s-title{ font-weight:800; font-size:15.5px; }
+  .subject .s-desc{ font-size:12.5px; color:var(--ink-soft); margin-top:2px; line-height:1.4; }
+  .subject .s-badge{ font-family:var(--mono); font-size:10px; font-weight:700; padding:4px 9px; border-radius:6px; flex-shrink:0; }
+  .subject .s-badge.ready{ background:var(--good-soft); color:var(--good); }
+  .subject .s-badge.soon{ background:var(--paper-2); color:var(--ink-soft); }
+
+  .footnote{ text-align:center; font-size:12.5px; color:var(--ink-soft); margin: 34px 0 0; line-height:1.6; max-width:40ch; margin-left:auto; margin-right:auto; }
+</style>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="eyebrow">Szkoła podstawowa &middot; klasa 5</div>
+    <h1>Nauka — Klasa 5</h1>
+    <p>Jedno miejsce na naukę i testy ze wszystkich przedmiotów. Zaczynamy od matematyki — kolejne przedmioty będą dochodzić z czasem.</p>
+  </div>
+
+  <div class="subject-grid" id="subjectGrid"></div>
+
+  <p class="footnote">Strona rośnie sukcesywnie — nowe przedmioty pojawią się tutaj, gdy będą gotowe.</p>
+</div>
+
+<script>
+(function(){
+  var subjects = [
+    { icon:'&#128209;', title:'Matematyka', desc:'Liczby naturalne, figury geometryczne, ułamki zwykłe', href:'../matematyka/', ready:true },
+    { icon:'&#128214;', title:'Język polski', desc:'Gramatyka, ortografia, lektury', href:null, ready:false },
+    { icon:'&#127793;', title:'Przyroda', desc:'Świat roślin, zwierząt i zjawisk przyrody', href:null, ready:false },
+    { icon:'&#127963;&#65039;', title:'Historia', desc:'Dawne dzieje i wydarzenia', href:null, ready:false },
+    { icon:'&#127468;&#127463;', title:'Język angielski', desc:'Słownictwo i gramatyka', href:null, ready:false }
+  ];
+  var grid = document.getElementById('subjectGrid');
+  grid.innerHTML = subjects.map(function(s){
+    var tag = s.ready ? 'a' : 'div';
+    var hrefAttr = s.ready ? ' href="'+s.href+'"' : '';
+    var cls = 'subject' + (s.ready ? ' ready' : ' disabled');
+    return '<'+tag+' class="'+cls+'"'+hrefAttr+'>'+
+      '<span class="s-icon">'+s.icon+'</span>'+
+      '<span class="s-body"><span class="s-title">'+s.title+'</span><span class="s-desc">'+s.desc+'</span></span>'+
+      '<span class="s-badge '+(s.ready?'ready':'soon')+'">'+(s.ready?'gotowe':'wkrótce')+'</span>'+
+    '</'+tag+'>';
+  }).join('');
+})();
+</script>
