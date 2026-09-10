@@ -1,0 +1,367 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Obliczenia przybliżone — Klasa 5</title>
+<meta name="theme-color" content="#dd5f2a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Obl. przybliżone">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMDAiIGZpbGw9IiNkZDVmMmEiLz4KPHRleHQgeD0iMjU2IiB5PSIzMjAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIxMzAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuKJiDwvdGV4dD4KPC9zdmc+Cg==">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMDAiIGZpbGw9IiNkZDVmMmEiLz4KPHRleHQgeD0iMjU2IiB5PSIzMjAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIxMzAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuKJiDwvdGV4dD4KPC9zdmc+Cg==">
+<style>
+  :root{
+    --paper:#faf7f0; --paper-2:#f2ede2; --grid-line: rgba(64,84,120,0.10);
+    --ink:#20242c; --ink-soft:#5c6472; --card:#ffffff; --card-edge: rgba(32,36,44,0.10);
+    --accent:#dd5f2a; --accent-ink:#ffffff; --accent-soft:#fde6d8;
+    --blue:#2f6f9e; --blue-soft:#e2eef6;
+    --good:#2f9e6e; --good-soft:#e1f5ec; --bad:#d64545; --bad-soft:#fbe4e4;
+    --sans: -apple-system, "Segoe UI", system-ui, Roboto, sans-serif;
+    --mono: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#15181f; --paper-2:#1b1f27; --grid-line: rgba(140,160,200,0.09);
+      --ink:#e9ebf0; --ink-soft:#9aa1ae; --card:#1e222b; --card-edge: rgba(255,255,255,0.08);
+      --accent:#f07a44; --accent-ink:#1a1006; --accent-soft:#3a2418;
+      --blue:#6fb2dd; --blue-soft:#1c2c37; --good:#4fc98d; --good-soft:#173226; --bad:#ef6b6b; --bad-soft:#3a1c1c;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#15181f; --paper-2:#1b1f27; --grid-line: rgba(140,160,200,0.09);
+    --ink:#e9ebf0; --ink-soft:#9aa1ae; --card:#1e222b; --card-edge: rgba(255,255,255,0.08);
+    --accent:#f07a44; --accent-ink:#1a1006; --accent-soft:#3a2418;
+    --blue:#6fb2dd; --blue-soft:#1c2c37; --good:#4fc98d; --good-soft:#173226; --bad:#ef6b6b; --bad-soft:#3a1c1c;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background: linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0/32px 32px, linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0/32px 32px, var(--paper);
+    color: var(--ink); font-family: var(--sans); min-height:100vh; -webkit-text-size-adjust: 100%;
+  }
+  *:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  h1,h2{ text-wrap:balance; }
+
+  .topbar{ position:sticky; top:0; z-index:20; display:flex; align-items:center; gap:10px; padding:10px 16px; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--card-edge); }
+  .topbar a.back{ color:var(--ink-soft); text-decoration:none; font-size:13px; font-weight:600; display:flex; align-items:center; gap:4px; }
+  .app-name{ font-weight:800; font-size:15px; margin-left:8px; }
+  .tabs{ display:flex; gap:6px; margin-left:auto; background:var(--paper-2); border-radius:10px; padding:3px; }
+  .tab-btn{ font:inherit; font-weight:700; font-size:13px; color:var(--ink-soft); background:none; border:none; padding:8px 14px; border-radius:8px; cursor:pointer; }
+  .tab-btn.active{ background:var(--card); color:var(--accent); box-shadow:0 1px 3px var(--card-edge); }
+
+  .wrap{ max-width:720px; margin:0 auto; padding: 22px 16px 60px; }
+  .view[hidden]{ display:none; }
+  .hero{ text-align:center; padding: 14px 0 26px; }
+  .hero h1{ font-size:clamp(24px,6vw,32px); margin:0 0 8px; font-weight:800; }
+  .hero p{ color:var(--ink-soft); font-size:14.5px; max-width:46ch; margin:0 auto; line-height:1.5; }
+
+  .card{ background:var(--card); border:1px solid var(--card-edge); border-radius:14px; padding:20px 20px 22px; margin-bottom:16px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+  .card h2{ font-size:18px; margin:0 0 4px; display:flex; align-items:center; gap:9px; }
+  .card h2 .tag{ font-family:var(--mono); font-size:11px; font-weight:700; color:var(--accent); background:var(--accent-soft); padding:3px 8px; border-radius:6px; }
+  .card p{ line-height:1.65; font-size:14.5px; margin:10px 0; }
+  .card p.soft{ color:var(--ink-soft); font-size:13.5px; }
+  .eqn{ font-family:var(--mono); font-weight:700; }
+  .eqn-steps{ font-family:var(--mono); font-weight:700; font-variant-numeric:tabular-nums; background:var(--paper-2); border-radius:10px; padding:14px 14px; margin:12px 0; font-size:15px; line-height:2; }
+  .eqn-steps .res{ color:var(--accent); }
+
+  .numberline{ position:relative; height:54px; margin:16px 4px 8px; }
+  .numberline .track{ position:absolute; left:0; right:0; top:24px; height:3px; background:var(--card-edge); border-radius:2px; }
+  .numberline .pt{ position:absolute; top:14px; width:2px; height:24px; background:var(--ink-soft); }
+  .numberline .pt.mark{ background:var(--blue); }
+  .numberline .lbl{ position:absolute; top:40px; transform:translateX(-50%); font-family:var(--mono); font-size:11px; color:var(--ink-soft); }
+  .numberline .dot{ position:absolute; top:18px; width:14px; height:14px; border-radius:50%; background:var(--accent); transform:translate(-50%,0); box-shadow:0 0 0 3px var(--accent-soft); }
+  .numberline .dot .dl{ position:absolute; top:-22px; left:50%; transform:translateX(-50%); font-family:var(--mono); font-weight:700; font-size:12px; color:var(--accent); white-space:nowrap; }
+
+  table.reftable{ width:100%; border-collapse:collapse; font-family:var(--mono); font-size:13px; }
+  table.reftable th{ text-align:left; font-family:var(--sans); font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft); padding:6px 8px; border-bottom:1px solid var(--card-edge); }
+  table.reftable td{ padding:7px 8px; border-bottom:1px solid var(--grid-line); }
+  .table-scroll{ overflow-x:auto; }
+
+  .cta-row{ text-align:center; margin-top:8px; }
+  .btn{ font:inherit; font-weight:700; font-size:14.5px; color:var(--accent-ink); background:var(--accent); border:none; border-radius:10px; padding:13px 26px; cursor:pointer; box-shadow: 0 4px 0 0 color-mix(in srgb, var(--accent) 65%, black); }
+  .btn:active{ transform:translateY(3px); box-shadow:0 1px 0 0 color-mix(in srgb, var(--accent) 65%, black); }
+  .btn.secondary{ background:var(--paper-2); color:var(--ink); box-shadow:none; border:1px solid var(--card-edge); }
+  .btn.secondary:active{ transform:translateY(2px); }
+  .btn-row{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+
+  .level-grid{ display:flex; flex-direction:column; gap:10px; }
+  .level-card{ display:flex; align-items:center; gap:14px; text-align:left; width:100%; background:var(--card); border:1px solid var(--card-edge); border-radius:12px; padding:14px 16px; cursor:pointer; }
+  .level-card .num{ font-family:var(--mono); font-weight:800; font-size:19px; color:var(--accent); background:var(--accent-soft); width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .level-card .body{ flex:1; }
+  .level-card .body .t{ font-weight:700; font-size:14.5px; }
+  .level-card .body .d{ font-size:12.5px; color:var(--ink-soft); margin-top:2px; }
+  .level-card .best{ font-family:var(--mono); font-size:12px; color:var(--ink-soft); text-align:right; flex-shrink:0; }
+  .level-card .best b{ color:var(--good); display:block; font-size:15px; }
+
+  .quiz-top{ display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+  .progress-bar{ flex:1; height:6px; background:var(--paper-2); border-radius:4px; overflow:hidden; }
+  .progress-bar__fill{ height:100%; background:var(--accent); width:0%; transition:width .25s; }
+  .quiz-stats{ font-family:var(--mono); font-size:12.5px; color:var(--ink-soft); white-space:nowrap; }
+  .quiz-stats b{ color:var(--ink); }
+  .quiz-card{ background:var(--card); border:1px solid var(--card-edge); border-radius:16px; padding:28px 20px; text-align:center; }
+  .quiz-hint{ font-size:12.5px; color:var(--ink-soft); margin-bottom:10px; }
+  .quiz-expr{ font-family:var(--mono); font-weight:700; font-size:clamp(26px,8vw,36px); margin:6px 0 22px; }
+  .answer-row{ display:flex; gap:10px; justify-content:center; align-items:center; }
+  .answer-row input{ font:inherit; font-family:var(--mono); font-weight:700; font-size:22px; text-align:center; width:130px; padding:10px 8px; border-radius:10px; border:2px solid var(--card-edge); background:var(--paper-2); color:var(--ink); font-variant-numeric:tabular-nums; }
+  .answer-row input:focus{ border-color:var(--accent); outline:none; }
+  .answer-row input.correct{ border-color:var(--good); background:var(--good-soft); color:var(--good); }
+  .answer-row input.wrong{ border-color:var(--bad); background:var(--bad-soft); color:var(--bad); }
+  .feedback{ margin-top:18px; min-height:52px; }
+  .feedback .msg{ font-weight:700; font-size:14.5px; }
+  .feedback .msg.good{ color:var(--good); }
+  .feedback .msg.bad{ color:var(--bad); }
+  .feedback .explain{ font-size:13px; color:var(--ink-soft); margin-top:5px; line-height:1.5; font-family:var(--mono); }
+
+  .results-card{ text-align:center; }
+  .results-score{ font-family:var(--mono); font-weight:800; font-size:44px; color:var(--accent); margin:6px 0 2px; }
+  .results-sub{ color:var(--ink-soft); font-size:13.5px; margin-bottom:18px; }
+  .results-msg{ font-weight:700; font-size:16px; margin-bottom:18px; }
+</style>
+
+<div class="topbar">
+  <a class="back" href="../">&#8592; Matematyka 5</a>
+  <div class="app-name">Obliczenia przybliżone</div>
+  <div class="tabs">
+    <button class="tab-btn active" id="tabLesson">Nauka</button>
+    <button class="tab-btn" id="tabTest">Test</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="view" id="view-lesson">
+    <div class="hero">
+      <h1>Obliczenia przybliżone</h1>
+      <p>Zaokrąglanie liczb i szybkie szacowanie wyników — przydatne, gdy nie potrzebujesz dokładnego wyniku, tylko orientacyjny.</p>
+    </div>
+
+    <div class="card">
+      <h2>Jak zaokrąglać? <span class="tag">zasada</span></h2>
+      <p>Patrzymy na cyfrę zaraz <b>za</b> miejscem, do którego zaokrąglamy. Jeśli to 5, 6, 7, 8 lub 9 — zaokrąglamy w górę. Jeśli 0, 1, 2, 3 lub 4 — zostaje w dole.</p>
+      <div class="numberline">
+        <div class="track"></div>
+        <div class="pt mark" style="left:0%"></div><div class="lbl" style="left:0%">240</div>
+        <div class="pt mark" style="left:100%"></div><div class="lbl" style="left:100%">250</div>
+        <div class="dot" style="left:70%"><span class="dl">247</span></div>
+      </div>
+      <p class="soft">247 jest bliżej 250 niż 240, więc zaokrąglamy w górę: 247 ≈ 250 (do pełnych dziesiątek).</p>
+    </div>
+
+    <div class="card">
+      <h2>Przykłady <span class="tag">krok po kroku</span></h2>
+      <div class="eqn-steps">Zaokrąglij 247 do pełnych dziesiątek<br>cyfra jedności: 7 → ≥ 5, więc w górę<br>247 ≈ <span class="res">250</span></div>
+      <div class="eqn-steps">Zaokrąglij 384 do pełnych setek<br>cyfra dziesiątek: 8 → ≥ 5, więc w górę<br>384 ≈ <span class="res">400</span></div>
+      <div class="eqn-steps">Zaokrąglij 1240 do pełnych tysięcy<br>cyfra setek: 2 → &lt; 5, zostaje w dole<br>1240 ≈ <span class="res">1000</span></div>
+    </div>
+
+    <div class="card">
+      <h2>Szacowanie wyniku działania <span class="tag">po co to?</span></h2>
+      <p>Zamiast dokładnie liczyć, zaokrąglamy liczby, a potem liczymy na okrągłych — to szybki sposób na sprawdzenie, czy wynik "ma sens".</p>
+      <div class="eqn-steps">198 + 305 (zaokrąglij do pełnych setek)<br>198 ≈ 200, 305 ≈ 300<br>200 + 300 = <span class="res">500</span></div>
+      <div class="eqn-steps">197 × 4 (zaokrąglij pierwszy czynnik do dziesiątek)<br>197 ≈ 200<br>200 × 4 = <span class="res">800</span></div>
+      <p class="soft">To wynik przybliżony, nie dokładny — do dokładnego obliczenia trzeba policzyć "na czysto".</p>
+    </div>
+
+    <div class="cta-row">
+      <button class="btn" id="btnGoTest">Przejdź do testu →</button>
+    </div>
+  </div>
+
+  <div class="view" id="view-test" hidden>
+    <div id="testSelect">
+      <div class="hero">
+        <h1>Wybierz poziom</h1>
+        <p>10 pytań, bez zegara.</p>
+      </div>
+      <div class="level-grid" id="levelGrid"></div>
+    </div>
+
+    <div id="testPlay" hidden>
+      <div class="quiz-top">
+        <div class="progress-bar"><div class="progress-bar__fill" id="qProgressFill"></div></div>
+        <div class="quiz-stats">Pytanie <b id="qProgress">1/10</b> &nbsp;&middot;&nbsp; Wynik <b id="qScore">0</b></div>
+      </div>
+      <div class="quiz-card">
+        <div class="quiz-hint" id="qHint"></div>
+        <div class="quiz-expr" id="qExpr">? ≈ ?</div>
+        <div class="answer-row">
+          <input type="number" inputmode="numeric" id="qInput" autocomplete="off">
+          <button class="btn" id="qSubmit">Sprawdź</button>
+        </div>
+        <div class="feedback" id="qFeedback"></div>
+      </div>
+    </div>
+
+    <div id="testResults" hidden>
+      <div class="card results-card">
+        <div class="results-sub">Twój wynik</div>
+        <div class="results-score" id="rScore">0/10</div>
+        <div class="results-msg" id="rMsg">Brawo!</div>
+        <div class="btn-row">
+          <button class="btn" id="btnRetry">Spróbuj ponownie</button>
+          <button class="btn secondary" id="btnOtherLevel">Inny poziom</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var $ = function(id){ return document.getElementById(id); };
+  function randInt(min,max){ return Math.floor(Math.random()*(max-min+1))+min; }
+  function choice(a){ return a[Math.floor(Math.random()*a.length)]; }
+  function loadJSON(k,f){ try{ var v=localStorage.getItem(k); return v?JSON.parse(v):f; }catch(e){ return f; } }
+  function saveJSON(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+  function roundTo(n, place){ return Math.round(n/place)*place; }
+
+  var viewLesson = $('view-lesson'), viewTest = $('view-test');
+  var tabLesson = $('tabLesson'), tabTest = $('tabTest');
+  function showTab(name){
+    viewLesson.hidden = name !== 'lesson';
+    viewTest.hidden = name !== 'test';
+    tabLesson.classList.toggle('active', name==='lesson');
+    tabTest.classList.toggle('active', name==='test');
+    window.scrollTo(0,0);
+    if (name === 'test') Test.showSelect();
+  }
+  tabLesson.addEventListener('click', function(){ showTab('lesson'); });
+  tabTest.addEventListener('click', function(){ showTab('test'); });
+  $('btnGoTest').addEventListener('click', function(){ showTab('test'); });
+
+  /* ---- generators ---- */
+  var PLACE_NAME = { 10:'jedności', 100:'dziesiątek', 1000:'setek' };
+  var PLACE_WORD = { 10:'pełnych dziesiątek', 100:'pełnych setek', 1000:'pełnych tysięcy' };
+  function genRounding(){
+    var place = choice([10,100,1000]);
+    var range = place===10 ? [11,499] : place===100 ? [101,4999] : [1001,29999];
+    var n = randInt(range[0], range[1]);
+    // avoid numbers already exact multiples (boring question)
+    if (n % place === 0) n += 1;
+    var checkDigit = Math.floor(n/(place/10)) % 10;
+    var rounded = roundTo(n, place);
+    var dir = checkDigit >= 5 ? 'w górę' : 'w dół';
+    return {
+      hint: 'Zaokrąglij do '+PLACE_WORD[place]+':',
+      expr: String(n),
+      answer: rounded,
+      explain: 'Patrzymy na cyfrę '+PLACE_NAME[place]+': to '+checkDigit+'. Ponieważ '+checkDigit+(checkDigit>=5?' ≥ 5':' < 5')+', zaokrąglamy '+dir+': '+n+' ≈ '+rounded+'.'
+    };
+  }
+  function genEstimateSum(){
+    var baseA = randInt(1,9)*100, baseB = randInt(1,9)*100;
+    var a = baseA + randInt(-40,40), b = baseB + randInt(-40,40);
+    if (a<=0) a = baseA+10; if (b<=0) b = baseB+10;
+    var ra = roundTo(a,100), rb = roundTo(b,100);
+    var answer = ra+rb;
+    return {
+      hint: 'Oszacuj wynik (zaokrąglij do pełnych setek):',
+      expr: a+' + '+b,
+      answer: answer,
+      explain: a+' ≈ '+ra+', '+b+' ≈ '+rb+'. Potem: '+ra+' + '+rb+' = '+answer+'.'
+    };
+  }
+  function genEstimateProduct(){
+    var base = randInt(2,9)*10;
+    var a = base + randInt(-4,4);
+    if (a<=0) a = base+2;
+    var b = randInt(2,9);
+    var ra = roundTo(a,10);
+    var answer = ra*b;
+    return {
+      hint: 'Oszacuj wynik (zaokrąglij pierwszy czynnik do pełnych dziesiątek):',
+      expr: a+' × '+b,
+      answer: answer,
+      explain: a+' ≈ '+ra+'. Potem: '+ra+' × '+b+' = '+answer+'.'
+    };
+  }
+
+  var LEVELS = [
+    { key:'round', title:'Zaokrąglanie', desc:'Do dziesiątek, setek i tysięcy', gens:[genRounding] },
+    { key:'estimate', title:'Szacowanie wyniku', desc:'Zaokrąglij, a potem policz', gens:[genEstimateSum, genEstimateProduct] }
+  ];
+  var LS_BEST = 'przybl_best_v1';
+
+  var Test = (function(){
+    var selectEl = $('testSelect'), playEl = $('testPlay'), resultsEl = $('testResults');
+    var levelGrid = $('levelGrid');
+    var progFill = $('qProgressFill'), progText = $('qProgress'), scoreText = $('qScore');
+    var hintEl = $('qHint'), exprEl = $('qExpr'), inputEl = $('qInput'), submitBtn = $('qSubmit'), feedbackEl = $('qFeedback');
+    var st = { level:null, idx:0, total:10, score:0, current:null, locked:false };
+
+    function renderLevels(){
+      var best = loadJSON(LS_BEST, {});
+      levelGrid.innerHTML = LEVELS.map(function(l){
+        var b = best[l.key];
+        return '<button class="level-card" data-key="'+l.key+'">'+
+          '<span class="num">≈</span>'+
+          '<span class="body"><span class="t">'+l.title+'</span><span class="d">'+l.desc+'</span></span>'+
+          '<span class="best">'+(b!==undefined ? ('<b>'+b+'/10</b>najlepszy wynik') : 'jeszcze nie grano')+'</span>'+
+        '</button>';
+      }).join('');
+    }
+    levelGrid.addEventListener('click', function(e){
+      var btn = e.target.closest ? e.target.closest('.level-card') : null;
+      if (!btn) return;
+      start(btn.dataset.key);
+    });
+
+    function start(key){
+      st.level = LEVELS.filter(function(l){ return l.key===key; })[0];
+      st.idx = 0; st.score = 0; st.locked = false;
+      selectEl.hidden = true; resultsEl.hidden = true; playEl.hidden = false;
+      scoreText.textContent = '0';
+      nextQuestion();
+    }
+    function nextQuestion(){
+      st.locked = false;
+      var gen = choice(st.level.gens);
+      st.current = gen();
+      progText.textContent = (st.idx+1) + '/' + st.total;
+      progFill.style.width = ((st.idx)/st.total*100) + '%';
+      hintEl.textContent = st.current.hint;
+      exprEl.textContent = st.current.expr + ' ≈ ?';
+      inputEl.value = ''; inputEl.className = ''; inputEl.disabled = false;
+      submitBtn.disabled = false;
+      feedbackEl.innerHTML = '';
+      inputEl.focus();
+    }
+    function submit(){
+      if (st.locked) return;
+      var raw = inputEl.value.trim();
+      if (raw === '') { inputEl.focus(); return; }
+      st.locked = true;
+      var val = parseInt(raw, 10);
+      var correct = val === st.current.answer;
+      inputEl.disabled = true; submitBtn.disabled = true;
+      inputEl.classList.add(correct ? 'correct' : 'wrong');
+      if (correct){
+        st.score++;
+        scoreText.textContent = st.score;
+        feedbackEl.innerHTML = '<div class="msg good">Dobrze! ✓</div><div class="explain">'+st.current.explain+'</div>';
+      } else {
+        feedbackEl.innerHTML = '<div class="msg bad">Prawidłowa odpowiedź: '+st.current.answer+'</div><div class="explain">'+st.current.explain+'</div>';
+      }
+      setTimeout(function(){
+        st.idx++;
+        if (st.idx < st.total) nextQuestion(); else finish();
+      }, correct ? 1400 : 2800);
+    }
+    submitBtn.addEventListener('click', submit);
+    inputEl.addEventListener('keydown', function(e){ if (e.key === 'Enter') submit(); });
+
+    function finish(){
+      playEl.hidden = true; resultsEl.hidden = false;
+      progFill.style.width = '100%';
+      var best = loadJSON(LS_BEST, {});
+      var prev = best[st.level.key] || 0;
+      if (st.score > prev){ best[st.level.key] = st.score; saveJSON(LS_BEST, best); }
+      $('rScore').textContent = st.score + '/' + st.total;
+      var msg = st.score >= 9 ? 'Świetne wyczucie liczb! 🏆' : st.score >= 7 ? 'Bardzo dobrze!' : st.score >= 4 ? 'Nieźle, poćwicz jeszcze trochę.' : 'Wróć do części „Nauka” i spróbuj ponownie.';
+      $('rMsg').textContent = msg;
+    }
+    $('btnRetry').addEventListener('click', function(){ start(st.level.key); });
+    $('btnOtherLevel').addEventListener('click', showSelect);
+    function showSelect(){ selectEl.hidden = false; playEl.hidden = true; resultsEl.hidden = true; renderLevels(); }
+    return { showSelect: showSelect };
+  })();
+})();
+</script>
