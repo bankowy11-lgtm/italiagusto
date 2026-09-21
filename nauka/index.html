@@ -57,6 +57,24 @@
   .subject .s-badge.soon{ background:var(--paper-2); color:var(--ink-soft); }
 
   .footnote{ text-align:center; font-size:12.5px; color:var(--ink-soft); margin: 34px 0 0; line-height:1.6; max-width:40ch; margin-left:auto; margin-right:auto; }
+
+  .progress-card{ background:var(--card); border:1px solid var(--card-edge); border-radius:16px; padding:20px; margin-bottom:22px; }
+  .progress-card[hidden]{ display:none; }
+  .progress-head{ display:flex; align-items:center; gap:16px; margin-bottom:16px; }
+  .progress-ring{ position:relative; width:64px; height:64px; flex-shrink:0; }
+  .progress-ring svg{ transform:rotate(-90deg); }
+  .progress-ring .track{ fill:none; stroke:var(--paper-2); stroke-width:8; }
+  .progress-ring .fill{ fill:none; stroke:var(--accent); stroke-width:8; stroke-linecap:round; transition:stroke-dashoffset .5s; }
+  .progress-ring .pct{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-weight:800; font-size:15px; }
+  .progress-title{ font-weight:800; font-size:15px; }
+  .progress-sub{ font-size:12px; color:var(--ink-soft); margin-top:2px; font-family:var(--mono); }
+  .progress-rows{ display:flex; flex-direction:column; gap:9px; }
+  .progress-row{ display:flex; align-items:center; gap:10px; }
+  .progress-row .pr-icon{ font-size:15px; width:22px; text-align:center; flex-shrink:0; }
+  .progress-row .pr-name{ font-size:12.5px; font-weight:600; width:88px; flex-shrink:0; }
+  .progress-row .pr-bar{ flex:1; height:8px; background:var(--paper-2); border-radius:5px; overflow:hidden; }
+  .progress-row .pr-fill{ height:100%; background:var(--accent); border-radius:5px; }
+  .progress-row .pr-val{ font-family:var(--mono); font-size:11px; color:var(--ink-soft); width:52px; text-align:right; flex-shrink:0; }
 </style>
 
 <div class="wrap">
@@ -64,6 +82,23 @@
     <div class="eyebrow">Szkoła podstawowa &middot; klasa 5</div>
     <h1>Nauka — Klasa 5</h1>
     <p>Jedno miejsce na naukę i testy ze wszystkich przedmiotów. Zaczynamy od matematyki — kolejne przedmioty będą dochodzić z czasem.</p>
+  </div>
+
+  <div class="progress-card" id="progressCard" hidden>
+    <div class="progress-head">
+      <div class="progress-ring">
+        <svg width="64" height="64" viewBox="0 0 64 64">
+          <circle class="track" cx="32" cy="32" r="27"></circle>
+          <circle class="fill" id="progressRingFill" cx="32" cy="32" r="27" stroke-dasharray="169.6" stroke-dashoffset="169.6"></circle>
+        </svg>
+        <div class="pct" id="progressPct">0%</div>
+      </div>
+      <div>
+        <div class="progress-title">Twój postęp</div>
+        <div class="progress-sub" id="progressSub">0 / 0 pkt</div>
+      </div>
+    </div>
+    <div class="progress-rows" id="progressRows"></div>
   </div>
 
   <div class="subject-grid" id="subjectGrid"></div>
@@ -95,5 +130,62 @@
       '<span class="s-badge '+(s.ready?'ready':'soon')+'">'+(s.ready?'gotowe':'wkrótce')+'</span>'+
     '</'+tag+'>';
   }).join('');
+
+  /* ---- progress dashboard ---- */
+  /* Update this list whenever a new topic (with a test) is added anywhere in Nauka. */
+  var PROGRESS_MANIFEST = [
+    { subject:'Matematyka', icon:'&#128209;', key:'dzial_pam_best_v1', levels:['addsub','mult'] },
+    { subject:'Matematyka', icon:'&#128209;', key:'pot_best_v1', levels:['squares','ten','mixed','order'] },
+    { subject:'Matematyka', icon:'&#128209;', key:'kolej_best_v1', levels:['noparen','paren'] },
+    { subject:'Matematyka', icon:'&#128209;', key:'rzym_best_v1', levels:['basic','big'] },
+    { subject:'Matematyka', icon:'&#128209;', key:'przybl_best_v1', levels:['round','estimate'] },
+    { subject:'Matematyka', icon:'&#128209;', key:'pierwsze_best_v1', levels:['easy','hard'] },
+    { subject:'Historia', icon:'&#127963;&#65039;', key:'hist_zycie_pierwszych_ludzi_best_v1', levels:null },
+    { subject:'Biologia', icon:'&#127793;', key:'bio_skladniki_chemiczne_best_v1', levels:null },
+    { subject:'Biologia', icon:'&#127793;', key:'bio_komorka_zwierzeca_best_v1', levels:null }
+  ];
+  function loadJSON(k,f){ try{ var v=localStorage.getItem(k); return v!==null?JSON.parse(v):f; }catch(e){ return f; } }
+  function computeProgress(){
+    var bySubject = {};
+    var totalEarned = 0, totalMax = 0;
+    PROGRESS_MANIFEST.forEach(function(entry){
+      var max = (entry.levels ? entry.levels.length : 1) * 10;
+      var earned = 0;
+      if (entry.levels){
+        var obj = loadJSON(entry.key, {});
+        entry.levels.forEach(function(lv){ earned += (obj[lv] || 0); });
+      } else {
+        earned = loadJSON(entry.key, 0) || 0;
+      }
+      earned = Math.min(earned, max);
+      if (!bySubject[entry.subject]) bySubject[entry.subject] = { icon: entry.icon, earned:0, max:0 };
+      bySubject[entry.subject].earned += earned;
+      bySubject[entry.subject].max += max;
+      totalEarned += earned; totalMax += max;
+    });
+    return { totalEarned:totalEarned, totalMax:totalMax, bySubject:bySubject };
+  }
+  (function renderProgress(){
+    var p = computeProgress();
+    if (p.totalEarned <= 0) return; // hide until the kid has actually played something
+    var card = document.getElementById('progressCard');
+    card.hidden = false;
+    var pct = p.totalMax ? Math.round((p.totalEarned/p.totalMax)*100) : 0;
+    document.getElementById('progressPct').textContent = pct + '%';
+    document.getElementById('progressSub').textContent = p.totalEarned + ' / ' + p.totalMax + ' pkt';
+    var circumference = 169.6;
+    document.getElementById('progressRingFill').style.strokeDashoffset = String(circumference * (1 - pct/100));
+    var rowsEl = document.getElementById('progressRows');
+    rowsEl.innerHTML = Object.keys(p.bySubject).map(function(name){
+      var s = p.bySubject[name];
+      var spct = s.max ? Math.round((s.earned/s.max)*100) : 0;
+      return '<div class="progress-row">'+
+        '<span class="pr-icon">'+s.icon+'</span>'+
+        '<span class="pr-name">'+name+'</span>'+
+        '<span class="pr-bar"><span class="pr-fill" style="width:'+spct+'%"></span></span>'+
+        '<span class="pr-val">'+s.earned+'/'+s.max+'</span>'+
+      '</div>';
+    }).join('');
+  })();
 })();
 </script>
