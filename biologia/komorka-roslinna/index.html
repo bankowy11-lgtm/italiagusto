@@ -1,0 +1,337 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Komórka roślinna — Klasa 5</title>
+<meta name="theme-color" content="#3f8f3f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Komórka roślinna">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMDAiIGZpbGw9IiMzZjhmM2YiLz4KPHRleHQgeD0iMjU2IiB5PSIzMjAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIyMDAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmMmZiZWUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjM8L3RleHQ+Cjwvc3ZnPgo=">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMDAiIGZpbGw9IiMzZjhmM2YiLz4KPHRleHQgeD0iMjU2IiB5PSIzMjAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIyMDAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmMmZiZWUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjM8L3RleHQ+Cjwvc3ZnPgo=">
+<style>
+  :root{
+    --paper:#f7faf3; --paper-2:#eef3e6; --grid-line: rgba(60,100,50,0.10);
+    --ink:#212a1e; --ink-soft:#5f6e57; --card:#ffffff; --card-edge: rgba(33,42,30,0.11);
+    --accent:#3f8f3f; --accent-ink:#ffffff; --accent-soft:#e1f0dd;
+    --blue:#3f7d9e; --blue-soft:#e2eef3;
+    --good:#2f9e6e; --good-soft:#e1f5ec; --bad:#c0483f; --bad-soft:#f8e2df;
+    --sans: -apple-system, "Segoe UI", system-ui, Roboto, sans-serif;
+    --mono: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#141a11; --paper-2:#1a2116; --grid-line: rgba(150,200,130,0.09);
+      --ink:#e9f0e4; --ink-soft:#9cab92; --card:#1f2919; --card-edge: rgba(255,255,255,0.08);
+      --accent:#68c968; --accent-ink:#0e1a0e; --accent-soft:#20351d;
+      --blue:#6fb2dd; --blue-soft:#1c2c37;
+      --good:#4fc98d; --good-soft:#173226; --bad:#e07a6f; --bad-soft:#3a201c;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#141a11; --paper-2:#1a2116; --grid-line: rgba(150,200,130,0.09);
+    --ink:#e9f0e4; --ink-soft:#9cab92; --card:#1f2919; --card-edge: rgba(255,255,255,0.08);
+    --accent:#68c968; --accent-ink:#0e1a0e; --accent-soft:#20351d;
+    --blue:#6fb2dd; --blue-soft:#1c2c37;
+    --good:#4fc98d; --good-soft:#173226; --bad:#e07a6f; --bad-soft:#3a201c;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background: linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0/32px 32px, linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0/32px 32px, var(--paper);
+    color: var(--ink); font-family: var(--sans); min-height:100vh; -webkit-text-size-adjust: 100%;
+  }
+  *:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  h1,h2{ text-wrap:balance; }
+
+  .topbar{ position:sticky; top:0; z-index:20; display:flex; align-items:center; gap:10px; padding:10px 16px; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--card-edge); }
+  .topbar a.back{ color:var(--ink-soft); text-decoration:none; font-size:13px; font-weight:600; display:flex; align-items:center; gap:4px; }
+  .app-name{ font-weight:800; font-size:15px; margin-left:8px; }
+  .tabs{ display:flex; gap:6px; margin-left:auto; background:var(--paper-2); border-radius:10px; padding:3px; }
+  .tab-btn{ font:inherit; font-weight:700; font-size:13px; color:var(--ink-soft); background:none; border:none; padding:8px 14px; border-radius:8px; cursor:pointer; }
+  .tab-btn.active{ background:var(--card); color:var(--accent); box-shadow:0 1px 3px var(--card-edge); }
+
+  .wrap{ max-width:720px; margin:0 auto; padding: 22px 16px 60px; }
+  .view[hidden]{ display:none; }
+  .hero{ text-align:center; padding: 14px 0 26px; }
+  .hero h1{ font-size:clamp(22px,6vw,28px); margin:0 0 8px; font-weight:800; }
+  .hero p{ color:var(--ink-soft); font-size:14.5px; max-width:46ch; margin:0 auto; line-height:1.5; }
+
+  .card{ background:var(--card); border:1px solid var(--card-edge); border-radius:14px; padding:20px 20px 22px; margin-bottom:16px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+  .card h2{ font-size:17.5px; margin:0 0 4px; display:flex; align-items:center; gap:9px; }
+  .card h2 .tag{ font-family:var(--mono); font-size:11px; font-weight:700; color:var(--accent); background:var(--accent-soft); padding:3px 8px; border-radius:6px; }
+  .card p{ line-height:1.65; font-size:14.5px; margin:10px 0; }
+  .card p.soft{ color:var(--ink-soft); font-size:13.5px; }
+
+  .shape-grid{ display:flex; flex-direction:column; gap:8px; margin:14px 0; }
+  .shape-box{ background:var(--paper-2); border-radius:10px; padding:10px 12px; }
+  .shape-box b{ display:block; font-size:12.5px; margin-bottom:3px; color:var(--accent); }
+  .shape-box span{ font-size:12px; color:var(--ink-soft); line-height:1.45; }
+
+  .organelle-list{ display:flex; flex-direction:column; gap:7px; margin:14px 0; }
+  .organelle{ display:flex; gap:10px; align-items:flex-start; background:var(--paper-2); border-radius:10px; padding:9px 12px; }
+  .organelle .num{ font-family:var(--mono); font-weight:800; color:var(--accent); background:var(--accent-soft); width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0; margin-top:1px; }
+  .organelle b{ font-size:13px; display:block; }
+  .organelle span{ font-size:12px; color:var(--ink-soft); line-height:1.45; }
+
+  .table-scroll{ overflow-x:auto; margin:14px 0; }
+  table.celltable{ width:100%; border-collapse:collapse; font-size:12px; min-width:420px; }
+  table.celltable th{ background:var(--accent-soft); color:var(--accent); font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.03em; padding:7px 6px; text-align:center; }
+  table.celltable th:first-child{ text-align:left; }
+  table.celltable td{ padding:7px 6px; text-align:center; border-bottom:1px solid var(--paper-2); }
+  table.celltable td:first-child{ text-align:left; font-weight:600; }
+  table.celltable .yes{ color:var(--good); font-weight:800; }
+  table.celltable .no{ color:var(--bad); font-weight:800; }
+
+  .cta-row{ text-align:center; margin-top:8px; }
+  .btn{ font:inherit; font-weight:700; font-size:14.5px; color:var(--accent-ink); background:var(--accent); border:none; border-radius:10px; padding:13px 26px; cursor:pointer; box-shadow: 0 4px 0 0 color-mix(in srgb, var(--accent) 65%, black); }
+  .btn:active{ transform:translateY(3px); box-shadow:0 1px 0 0 color-mix(in srgb, var(--accent) 65%, black); }
+  .btn.secondary{ background:var(--paper-2); color:var(--ink); box-shadow:none; border:1px solid var(--card-edge); }
+  .btn.secondary:active{ transform:translateY(2px); }
+  .btn-row{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+
+  .quiz-top{ display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+  .progress-bar{ flex:1; height:6px; background:var(--paper-2); border-radius:4px; overflow:hidden; }
+  .progress-bar__fill{ height:100%; background:var(--accent); width:0%; transition:width .25s; }
+  .quiz-stats{ font-family:var(--mono); font-size:12.5px; color:var(--ink-soft); white-space:nowrap; }
+  .quiz-stats b{ color:var(--ink); }
+  .quiz-q{ font-size:15px; font-weight:600; line-height:1.4; margin: 12px 0 14px; text-wrap:balance; min-height:2.6em; }
+  .quiz-answers{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .quiz-answer{ background: var(--paper-2); border:1px solid var(--card-edge); border-radius:8px; padding:12px 10px; font-size:12.5px; color:var(--ink); text-align:left; cursor:pointer; font-family:var(--sans); line-height:1.3; }
+  .quiz-answer:active{ transform:scale(0.98); }
+  .quiz-answer.correct{ border-color:var(--good); background:var(--good-soft); color:var(--good); }
+  .quiz-answer.wrong{ border-color:var(--bad); background:var(--bad-soft); color:var(--bad); }
+  .quiz-answer[disabled]{ pointer-events:none; opacity:.9; }
+  .feedback{ margin-top:16px; min-height:40px; }
+  .feedback .explain{ font-size:13px; color:var(--ink-soft); line-height:1.5; }
+
+  .results-card{ text-align:center; }
+  .results-score{ font-family:var(--mono); font-weight:800; font-size:44px; color:var(--accent); margin:6px 0 2px; }
+  .results-sub{ color:var(--ink-soft); font-size:13.5px; margin-bottom:18px; }
+  .results-msg{ font-weight:700; font-size:16px; margin-bottom:18px; }
+  .new-record{ font-family: var(--mono); font-size:11px; letter-spacing:.08em; color: var(--accent); text-transform:uppercase; margin-bottom:14px; }
+</style>
+
+<div class="topbar">
+  <a class="back" href="../">&#8592; Biologia 5</a>
+  <div class="app-name">Komórka roślinna. Inne komórki</div>
+  <div class="tabs">
+    <button class="tab-btn active" id="tabLesson">Nauka</button>
+    <button class="tab-btn" id="tabTest">Test</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="view" id="view-lesson">
+    <div class="hero">
+      <h1>Rozdział II &middot; Temat 3<br>Komórka roślinna. Inne rodzaje komórek</h1>
+      <p>Czym komórka roślinna różni się od zwierzęcej — i jak zbudowane są komórki grzybów i bakterii.</p>
+    </div>
+
+    <div class="card">
+      <h2>Komórki jądrowe i bezjądrowe <span class="tag">podział</span></h2>
+      <p>Jedną z najważniejszych cech pozwalających rozróżnić komórki jest obecność jądra komórkowego. Komórki, w których ono występuje, nazywamy <b>komórkami jądrowymi</b> — należą do nich komórki zwierzęce, roślinne i grzybowe. Komórki bez jądra to <b>komórki bezjądrowe</b> — jedyną grupą organizmów o takich komórkach są <b>bakterie</b>.</p>
+      <p class="soft">Ciekawostka: komórki niektórych organizmów mają wiele jąder komórkowych — przykładem jest roślina wodna gałeczka kulista.</p>
+    </div>
+
+    <div class="card">
+      <h2>Kształty komórek roślinnych <span class="tag">forma = funkcja</span></h2>
+      <div class="shape-grid">
+        <div class="shape-box"><b>Komórki aparatu szparkowego</b><span>Mają kształt nasion fasoli. Występują w liściach — przez szparkę między nimi przenikają tlen i dwutlenek węgla.</span></div>
+        <div class="shape-box"><b>Włośniki</b><span>Długie komórki w tkance okrywającej korzenie. Ułatwiają wchłanianie wody i soli mineralnych.</span></div>
+        <div class="shape-box"><b>Komórki transportujące wodę</b><span>Długie, ułożone jedna nad drugą — przypominają rury.</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Budowa komórki roślinnej <span class="tag">8 elementów</span></h2>
+      <div class="organelle-list">
+        <div class="organelle"><span class="num">1</span><div><b>Błona komórkowa</b><span>Oddziela wnętrze komórki od otoczenia.</span></div></div>
+        <div class="organelle"><span class="num">2</span><div><b>Cytozol</b><span>Galaretowata substancja wypełniająca komórkę.</span></div></div>
+        <div class="organelle"><span class="num">3</span><div><b>Jądro komórkowe</b><span>Kieruje procesami zachodzącymi w komórce.</span></div></div>
+        <div class="organelle"><span class="num">4</span><div><b>Wakuola (wodniczka)</b><span>Duży pęcherz wypełniony głównie wodą — utrzymuje jej odpowiednią ilość w komórce.</span></div></div>
+        <div class="organelle"><span class="num">5</span><div><b>Mitochondrium</b><span>Dostarcza komórce energii.</span></div></div>
+        <div class="organelle"><span class="num">6</span><div><b>Rybosomy</b><span>Wytwarzają białka.</span></div></div>
+        <div class="organelle"><span class="num">7</span><div><b>Chloroplast</b><span>Zawiera chlorofil i przeprowadza fotosyntezę — wytwarza substancje pokarmowe.</span></div></div>
+        <div class="organelle"><span class="num">8</span><div><b>Ściana komórkowa</b><span>Zbudowana z celulozy. Nadaje komórce kształt i chroni ją przed uszkodzeniami oraz drobnoustrojami.</span></div></div>
+      </div>
+      <p class="soft">Elementy, których <b>nie ma</b> komórka zwierzęca, a ma roślinna: <b>chloroplasty</b> i <b>ściana komórkowa</b>.</p>
+    </div>
+
+    <div class="card">
+      <h2>Komórka bakteryjna <span class="tag">bez jądra</span></h2>
+      <p>Najbardziej charakterystyczną cechą komórki bakteryjnej jest <b>brak jądra komórkowego</b> — jego funkcję pełni <b>nić DNA</b> zanurzona w cytozolu. Komórkę otacza błona komórkowa, a na jej powierzchni znajduje się ściana komórkowa, a u niektórych bakterii także <b>otoczka śluzowa</b>, chroniąca m.in. przed wysychaniem. Część bakterii ma <b>rzęski</b>, dzięki którym może się poruszać.</p>
+    </div>
+
+    <div class="card">
+      <h2>Komórka grzybowa <span class="tag">bonus</span></h2>
+      <p>Komórka grzybowa przypomina budową komórkę zwierzęcą, ale — podobnie jak komórka roślinna — ma <b>ścianę komórkową</b>. Zbudowana jest ona jednak z innego cukru: <b>chityny</b>.</p>
+    </div>
+
+    <div class="card">
+      <h2>Porównanie rodzajów komórek <span class="tag">tabela</span></h2>
+      <div class="table-scroll">
+        <table class="celltable">
+          <tr><th>Składnik</th><th>Zwierzęca</th><th>Roślinna</th><th>Grzybowa</th><th>Bakteryjna</th></tr>
+          <tr><td>Błona komórkowa</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Cytozol</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Jądro komórkowe</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">✗</td></tr>
+          <tr><td>Mitochondria</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">✗</td><td class="no">✗</td></tr>
+          <tr><td>Rybosomy</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Chloroplasty</td><td class="no">✗</td><td class="yes">✓</td><td class="no">✗</td><td class="no">✗</td></tr>
+          <tr><td>Ściana komórkowa</td><td class="no">✗</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        </table>
+      </div>
+      <p class="soft">Wakuola występuje we wszystkich czterech rodzajach komórek — różni się tylko liczbą i wielkością (od jednej dużej po wiele drobnych).</p>
+    </div>
+
+    <div class="cta-row">
+      <button class="btn" id="btnGoTest">Przejdź do testu →</button>
+    </div>
+  </div>
+
+  <div class="view" id="view-test" hidden>
+    <div id="testIntro">
+      <div class="hero">
+        <h1>Test wiedzy</h1>
+        <p>10 pytań, bez zegara. Odpowiedz najlepiej jak potrafisz.</p>
+      </div>
+      <div class="cta-row"><button class="btn" id="btnStartQuiz">START</button></div>
+      <p class="results-sub" id="bestHint" style="text-align:center; margin-top:14px;"></p>
+    </div>
+
+    <div id="testPlay" hidden>
+      <div class="quiz-top">
+        <div class="progress-bar"><div class="progress-bar__fill" id="qProgressFill"></div></div>
+        <div class="quiz-stats">Pytanie <b id="qProgress">1/10</b> &nbsp;&middot;&nbsp; Wynik <b id="qScore">0</b></div>
+      </div>
+      <div class="card">
+        <div class="quiz-q" id="qQuestion"></div>
+        <div class="quiz-answers" id="qAnswers"></div>
+        <div class="feedback" id="qFeedback"></div>
+      </div>
+    </div>
+
+    <div id="testResults" hidden>
+      <div class="card results-card">
+        <div class="results-sub">Twój wynik</div>
+        <div class="results-score" id="rScore">0/10</div>
+        <p class="new-record" id="newRecord" hidden>★ NOWY REKORD ★</p>
+        <div class="results-msg" id="rMsg">Brawo!</div>
+        <div class="btn-row">
+          <button class="btn" id="btnRetry">Spróbuj ponownie</button>
+          <button class="btn secondary" id="btnBackLesson">Wróć do nauki</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var $ = function(id){ return document.getElementById(id); };
+  function shuffle(arr){ var a=arr.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+  function loadJSON(k,f){ try{ var v=localStorage.getItem(k); return v?JSON.parse(v):f; }catch(e){ return f; } }
+  function saveJSON(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+  function esc(s){ var d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+
+  var viewLesson = $('view-lesson'), viewTest = $('view-test');
+  var tabLesson = $('tabLesson'), tabTest = $('tabTest');
+  function showTab(name){
+    viewLesson.hidden = name !== 'lesson';
+    viewTest.hidden = name !== 'test';
+    tabLesson.classList.toggle('active', name==='lesson');
+    tabTest.classList.toggle('active', name==='test');
+    window.scrollTo(0,0);
+    if (name === 'test') Test.showIntro();
+  }
+  tabLesson.addEventListener('click', function(){ showTab('lesson'); });
+  tabTest.addEventListener('click', function(){ showTab('test'); });
+  $('btnGoTest').addEventListener('click', function(){ showTab('test'); });
+
+  var QUESTIONS = [
+    {q:"Jak nazywamy komórki, w których występuje jądro komórkowe?", o:["Komórki bezjądrowe","Komórki jądrowe","Komórki wtórne","Komórki proste"], c:1},
+    {q:"Które organizmy mają komórki bezjądrowe?", o:["Zwierzęta","Rośliny","Bakterie","Grzyby"], c:2},
+    {q:"Jaki kształt mają komórki tworzące aparat szparkowy liścia?", o:["Kształt kuli","Kształt nasion fasoli","Kształt sześcianu","Kształt gwiazdy"], c:1},
+    {q:"Czym są włośniki?", o:["Komórkami budującymi liście","Długimi komórkami korzenia ułatwiającymi wchłanianie wody","Komórkami odpowiedzialnymi za oddychanie","Komórkami tworzącymi kwiaty"], c:1},
+    {q:"Które dwa elementy komórki roślinnej NIE występują w komórce zwierzęcej?", o:["Jądro komórkowe i mitochondrium","Błona komórkowa i cytozol","Chloroplasty i ściana komórkowa","Rybosomy i wakuola"], c:2},
+    {q:"Jaką funkcję pełnią chloroplasty?", o:["Magazynują wodę","Przeprowadzają fotosyntezę","Chronią komórkę przed uszkodzeniem","Wytwarzają energię w oddychaniu"], c:1},
+    {q:"Z czego zbudowana jest ściana komórkowa komórki roślinnej?", o:["Z chityny","Z celulozy","Z białka","Z wapnia"], c:1},
+    {q:"Jaką funkcję pełni ściana komórkowa w komórce roślinnej?", o:["Wytwarza energię","Przeprowadza fotosyntezę","Nadaje kształt i chroni komórkę","Przechowuje DNA"], c:2},
+    {q:"Co zastępuje jądro komórkowe w komórce bakteryjnej?", o:["Wakuola","Nić DNA zanurzona w cytozolu","Chloroplast","Mitochondrium"], c:1},
+    {q:"Jaką funkcję pełni otoczka śluzowa u niektórych bakterii?", o:["Umożliwia fotosyntezę","Chroni przed wysychaniem","Magazynuje energię","Przechowuje DNA"], c:1},
+    {q:"Dzięki czemu niektóre bakterie mogą się poruszać?", o:["Dzięki chloroplastom","Dzięki wakuolom","Dzięki rzęskom","Dzięki mitochondriom"], c:2},
+    {q:"Z jakiego cukru zbudowana jest ściana komórkowa grzybów?", o:["Z celulozy","Z chityny","Z glukozy","Ze skrobi"], c:1},
+    {q:"Czy komórka grzybowa ma jądro komórkowe?", o:["Tak, podobnie jak komórka zwierzęca","Nie, tak jak komórka bakteryjna","Tylko czasami","Tylko u bardzo dużych grzybów"], c:0},
+    {q:"Które komórki mają chloroplasty?", o:["Tylko roślinne","Roślinne i grzybowe","Wszystkie komórki jądrowe","Roślinne i bakteryjne"], c:0},
+    {q:"Które rodzaje komórek mają ścianę komórkową?", o:["Tylko roślinne","Tylko zwierzęce","Roślinne, grzybowe i bakteryjne","Zwierzęce i roślinne"], c:2},
+    {q:"Które rodzaje komórek — według podręcznika — nie mają mitochondriów?", o:["Zwierzęce i roślinne","Grzybowe i bakteryjne","Tylko bakteryjne","Żadne"], c:1},
+    {q:"Czym jest gałeczka kulista, wspomniana jako ciekawostka?", o:["Rodzajem bakterii","Rośliną wodną o komórkach z wieloma jądrami","Rodzajem grzyba", "Zwierzęciem morskim"], c:1},
+    {q:"Które elementy występują we wszystkich czterech rodzajach komórek (zwierzęcej, roślinnej, grzybowej i bakteryjnej)?", o:["Błona komórkowa, cytozol i rybosomy","Tylko jądro komórkowe","Tylko chloroplasty","Tylko ściana komórkowa"], c:0}
+  ];
+
+  var LS_BEST = 'bio_komorka_roslinna_best_v1';
+
+  var Test = (function(){
+    var introEl = $('testIntro'), playEl = $('testPlay'), resultsEl = $('testResults');
+    var progFill = $('qProgressFill'), progText = $('qProgress'), scoreText = $('qScore');
+    var qEl = $('qQuestion'), answersEl = $('qAnswers'), feedbackEl = $('qFeedback');
+    var st = { queue:[], idx:0, score:0, locked:false };
+
+    function showIntro(){
+      introEl.hidden = false; playEl.hidden = true; resultsEl.hidden = true;
+      var best = loadJSON(LS_BEST, 0);
+      $('bestHint').textContent = best > 0 ? ('Twój rekord: ' + best + '/10') : '';
+    }
+    $('btnStartQuiz').addEventListener('click', start);
+    function start(){
+      st.queue = shuffle(QUESTIONS).slice(0, 10);
+      st.idx = 0; st.score = 0; st.locked = false;
+      introEl.hidden = true; resultsEl.hidden = true; playEl.hidden = false;
+      scoreText.textContent = '0';
+      showQuestion();
+    }
+    function showQuestion(){
+      st.locked = false;
+      var item = st.queue[st.idx];
+      var order = shuffle([0,1,2,3]);
+      var correctPos = order.indexOf(item.c);
+      progText.textContent = (st.idx+1) + '/' + st.queue.length;
+      progFill.style.width = ((st.idx)/st.queue.length*100) + '%';
+      scoreText.textContent = st.score;
+      qEl.textContent = item.q;
+      answersEl.innerHTML = order.map(function(oi){ return '<button class="quiz-answer">'+esc(item.o[oi])+'</button>'; }).join('');
+      var btns = answersEl.querySelectorAll('.quiz-answer');
+      for (var i=0;i<btns.length;i++){
+        (function(btn, isCorrect){ btn.addEventListener('click', function(){ answer(isCorrect, btn, correctPos); }); })(btns[i], i === correctPos);
+      }
+      feedbackEl.innerHTML = '';
+    }
+    function answer(isCorrect, btnEl, correctPos){
+      if (st.locked) return; st.locked = true;
+      var btns = answersEl.querySelectorAll('.quiz-answer');
+      for (var i=0;i<btns.length;i++) btns[i].disabled = true;
+      if (btns[correctPos]) btns[correctPos].classList.add('correct');
+      if (!isCorrect) btnEl.classList.add('wrong');
+      if (isCorrect){ st.score++; scoreText.textContent = st.score; feedbackEl.innerHTML = '<div class="explain">Dobrze! ✓</div>'; }
+      else { feedbackEl.innerHTML = '<div class="explain">Niepoprawnie — zaznaczono prawidłową odpowiedź.</div>'; }
+      setTimeout(function(){
+        st.idx++;
+        if (st.idx < st.queue.length) showQuestion(); else finish();
+      }, isCorrect ? 1100 : 1900);
+    }
+    function finish(){
+      playEl.hidden = true; resultsEl.hidden = false;
+      var best = loadJSON(LS_BEST, 0);
+      var isNew = st.score > best;
+      if (isNew){ saveJSON(LS_BEST, st.score); }
+      $('rScore').textContent = st.score + '/10';
+      $('newRecord').hidden = !isNew;
+      var msg = st.score >= 9 ? 'Znasz to na wyrywki! 🏆' : st.score >= 7 ? 'Bardzo dobrze!' : st.score >= 4 ? 'Nieźle, poćwicz jeszcze trochę.' : 'Wróć do części „Nauka" i spróbuj ponownie.';
+      $('rMsg').textContent = msg;
+    }
+    $('btnRetry').addEventListener('click', start);
+    $('btnBackLesson').addEventListener('click', function(){ showTab('lesson'); });
+    return { showIntro: showIntro };
+  })();
+})();
+</script>
