@@ -1,0 +1,343 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Powtórka przed kartkówką — Klasa 5</title>
+<meta name="theme-color" content="#dd5f2a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Powtórka">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMDAiIGZpbGw9IiNkZDVmMmEiLz4KPHRleHQgeD0iMjU2IiB5PSIzMjAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIxNTAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuKckzwvdGV4dD4KPC9zdmc+Cg==">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMDAiIGZpbGw9IiNkZDVmMmEiLz4KPHRleHQgeD0iMjU2IiB5PSIzMjAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIxNTAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuKckzwvdGV4dD4KPC9zdmc+Cg==">
+<style>
+  :root{
+    --paper:#faf7f0; --paper-2:#f2ede2; --grid-line: rgba(64,84,120,0.10);
+    --ink:#20242c; --ink-soft:#5c6472; --card:#ffffff; --card-edge: rgba(32,36,44,0.10);
+    --accent:#dd5f2a; --accent-ink:#ffffff; --accent-soft:#fde6d8;
+    --good:#2f9e6e; --good-soft:#e1f5ec; --bad:#d64545; --bad-soft:#fbe4e4;
+    --sans: -apple-system, "Segoe UI", system-ui, Roboto, sans-serif;
+    --mono: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    --serif: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#15181f; --paper-2:#1b1f27; --grid-line: rgba(140,160,200,0.09);
+      --ink:#e9ebf0; --ink-soft:#9aa1ae; --card:#1e222b; --card-edge: rgba(255,255,255,0.08);
+      --accent:#f07a44; --accent-ink:#1a1006; --accent-soft:#3a2418;
+      --good:#4fc98d; --good-soft:#173226; --bad:#ef6b6b; --bad-soft:#3a1c1c;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#15181f; --paper-2:#1b1f27; --grid-line: rgba(140,160,200,0.09);
+    --ink:#e9ebf0; --ink-soft:#9aa1ae; --card:#1e222b; --card-edge: rgba(255,255,255,0.08);
+    --accent:#f07a44; --accent-ink:#1a1006; --accent-soft:#3a2418;
+    --good:#4fc98d; --good-soft:#173226; --bad:#ef6b6b; --bad-soft:#3a1c1c;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background: linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0/32px 32px, linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0/32px 32px, var(--paper);
+    color: var(--ink); font-family: var(--sans); min-height:100vh; -webkit-text-size-adjust: 100%;
+  }
+  *:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  h1,h2{ text-wrap:balance; }
+
+  .topbar{ position:sticky; top:0; z-index:20; display:flex; align-items:center; gap:10px; padding:10px 16px; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--card-edge); }
+  .topbar a.back{ color:var(--ink-soft); text-decoration:none; font-size:13px; font-weight:600; display:flex; align-items:center; gap:4px; }
+  .app-name{ font-weight:800; font-size:15px; margin-left:8px; }
+
+  .wrap{ max-width:720px; margin:0 auto; padding: 22px 16px 60px; }
+  .view[hidden]{ display:none; }
+  .hero{ text-align:center; padding: 14px 0 26px; }
+  .hero h1{ font-size:clamp(24px,6vw,30px); margin:0 0 8px; font-weight:800; }
+  .hero p{ color:var(--ink-soft); font-size:14.5px; max-width:48ch; margin:0 auto; line-height:1.5; }
+
+  .topic-chips{ display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:14px 0 22px; }
+  .topic-chips span{ background:var(--accent-soft); color:var(--accent); font-family:var(--mono); font-size:11.5px; font-weight:700; padding:6px 12px; border-radius:20px; }
+
+  .card{ background:var(--card); border:1px solid var(--card-edge); border-radius:14px; padding:20px; margin-bottom:16px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+
+  .cta-row{ text-align:center; margin-top:8px; }
+  .btn{ font:inherit; font-weight:700; font-size:14.5px; color:var(--accent-ink); background:var(--accent); border:none; border-radius:10px; padding:13px 26px; cursor:pointer; box-shadow: 0 4px 0 0 color-mix(in srgb, var(--accent) 65%, black); }
+  .btn:active{ transform:translateY(3px); box-shadow:0 1px 0 0 color-mix(in srgb, var(--accent) 65%, black); }
+  .btn.secondary{ background:var(--paper-2); color:var(--ink); box-shadow:none; border:1px solid var(--card-edge); }
+  .btn.secondary:active{ transform:translateY(2px); }
+  .btn-row{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+
+  .quiz-top{ display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+  .progress-bar{ flex:1; height:6px; background:var(--paper-2); border-radius:4px; overflow:hidden; }
+  .progress-bar__fill{ height:100%; background:var(--accent); width:0%; transition:width .25s; }
+  .quiz-stats{ font-family:var(--mono); font-size:12.5px; color:var(--ink-soft); white-space:nowrap; }
+  .quiz-stats b{ color:var(--ink); }
+  .quiz-card{ background:var(--card); border:1px solid var(--card-edge); border-radius:16px; padding:28px 20px; text-align:center; }
+  .quiz-topic-tag{ font-family:var(--mono); font-size:10.5px; font-weight:700; color:var(--accent); background:var(--accent-soft); display:inline-block; padding:3px 10px; border-radius:6px; margin-bottom:14px; letter-spacing:.02em; }
+  .quiz-hint{ font-size:12px; color:var(--ink-soft); margin-bottom:8px; }
+  .quiz-expr{ font-weight:700; font-size:clamp(24px,7vw,32px); margin:6px 0 22px; }
+  .quiz-expr.mono{ font-family:var(--mono); }
+  .quiz-expr.roman{ font-family:var(--serif); }
+  .answer-row{ display:flex; gap:10px; justify-content:center; align-items:center; }
+  .answer-row input{ font:inherit; font-weight:700; font-size:22px; text-align:center; width:130px; padding:10px 8px; border-radius:10px; border:2px solid var(--card-edge); background:var(--paper-2); color:var(--ink); }
+  .answer-row input.num-input{ font-family:var(--mono); width:120px; font-variant-numeric:tabular-nums; }
+  .answer-row input.roman-input{ font-family:var(--serif); text-transform:uppercase; }
+  .answer-row input:focus{ border-color:var(--accent); outline:none; }
+  .answer-row input.correct{ border-color:var(--good); background:var(--good-soft); color:var(--good); }
+  .answer-row input.wrong{ border-color:var(--bad); background:var(--bad-soft); color:var(--bad); }
+  .feedback{ margin-top:18px; min-height:52px; }
+  .feedback .msg{ font-weight:700; font-size:14.5px; }
+  .feedback .msg.good{ color:var(--good); }
+  .feedback .msg.bad{ color:var(--bad); }
+  .feedback .explain{ font-size:13px; color:var(--ink-soft); margin-top:5px; line-height:1.5; font-family:var(--mono); }
+
+  .results-card{ text-align:center; }
+  .results-score{ font-family:var(--mono); font-weight:800; font-size:44px; color:var(--accent); margin:6px 0 2px; }
+  .results-sub{ color:var(--ink-soft); font-size:13.5px; margin-bottom:18px; }
+  .results-msg{ font-weight:700; font-size:16px; margin-bottom:18px; }
+
+  .breakdown{ display:flex; flex-direction:column; gap:8px; margin:18px 0; text-align:left; }
+  .breakdown-row{ display:flex; align-items:center; gap:10px; }
+  .breakdown-row .bl{ font-size:12.5px; font-weight:600; width:150px; flex-shrink:0; }
+  .breakdown-row .bt{ flex:1; height:8px; background:var(--paper-2); border-radius:5px; overflow:hidden; }
+  .breakdown-row .bf{ height:100%; background:var(--accent); border-radius:5px; }
+  .breakdown-row .bv{ font-family:var(--mono); font-size:11.5px; color:var(--ink-soft); width:36px; text-align:right; flex-shrink:0; }
+</style>
+
+<div class="topbar">
+  <a class="back" href="../">&#8592; Matematyka 5</a>
+  <div class="app-name">Powtórka przed kartkówką</div>
+</div>
+
+<div class="wrap">
+  <div class="view" id="view-intro">
+    <div class="hero">
+      <h1>Powtórka przed kartkówką</h1>
+      <p>15 pytań mieszających trzy tematy naraz — dokładnie tak, jak może wyglądać prawdziwa kartkówka. Bez zegara, ale liczy się każda odpowiedź.</p>
+    </div>
+    <div class="topic-chips">
+      <span>Równania</span><span>Cyfry rzymskie</span><span>Obliczenia przybliżone</span>
+    </div>
+    <div class="cta-row"><button class="btn" id="btnStart">START POWTÓRKI</button></div>
+    <p class="results-sub" id="bestHint" style="text-align:center; margin-top:16px;"></p>
+  </div>
+
+  <div class="view" id="view-play" hidden>
+    <div class="quiz-top">
+      <div class="progress-bar"><div class="progress-bar__fill" id="qProgressFill"></div></div>
+      <div class="quiz-stats">Pytanie <b id="qProgress">1/15</b> &nbsp;·&nbsp; Wynik <b id="qScore">0</b></div>
+    </div>
+    <div class="quiz-card">
+      <div class="quiz-topic-tag" id="qTopicTag">Równania</div>
+      <div class="quiz-hint" id="qHint"></div>
+      <div class="quiz-expr" id="qExpr">?</div>
+      <div class="answer-row">
+        <input id="qInput" autocomplete="off">
+        <button class="btn" id="qSubmit">Sprawdź</button>
+      </div>
+      <div class="feedback" id="qFeedback"></div>
+    </div>
+  </div>
+
+  <div class="view" id="view-results" hidden>
+    <div class="card results-card">
+      <div class="results-sub">Twój wynik</div>
+      <div class="results-score" id="rScore">0/15</div>
+      <div class="results-msg" id="rMsg">Brawo!</div>
+      <div class="breakdown" id="rBreakdown"></div>
+      <div class="btn-row">
+        <button class="btn" id="btnRetry">Spróbuj ponownie</button>
+        <button class="btn secondary" id="btnHome">Wróć do menu</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var $ = function(id){ return document.getElementById(id); };
+  function randInt(min,max){ return Math.floor(Math.random()*(max-min+1))+min; }
+  function choice(a){ return a[Math.floor(Math.random()*a.length)]; }
+  function shuffle(arr){ var a=arr.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+  function loadJSON(k,f){ try{ var v=localStorage.getItem(k); return v?JSON.parse(v):f; }catch(e){ return f; } }
+  function saveJSON(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+  function roundTo(n, place){ return Math.round(n/place)*place; }
+
+  /* ============ Równania ============ */
+  function genAddEq(){
+    var x = randInt(1,40), a = randInt(1,30), b = x+a;
+    return { topic:'rownania', topicLabel:'Równania', hint:'Znajdź wartość x:', exprClass:'mono', expr:'x + '+a+' = '+b, type:'number', answer:x, explain:'x + '+a+' = '+b+'  →  x = '+b+' − '+a+' = '+x };
+  }
+  function genSubEq(){
+    var x = randInt(5,40), a = randInt(1,x-1), b = x-a;
+    return { topic:'rownania', topicLabel:'Równania', hint:'Znajdź wartość x:', exprClass:'mono', expr:'x − '+a+' = '+b, type:'number', answer:x, explain:'x − '+a+' = '+b+'  →  x = '+b+' + '+a+' = '+x };
+  }
+  function genRevSubEq(){
+    var a = randInt(10,50), x = randInt(1,a-1), b = a-x;
+    return { topic:'rownania', topicLabel:'Równania', hint:'Znajdź wartość x:', exprClass:'mono', expr:a+' − x = '+b, type:'number', answer:x, explain:a+' − x = '+b+'  →  x = '+a+' − '+b+' = '+x };
+  }
+  function genMulEq(){
+    var a = randInt(2,10), x = randInt(2,12), b = a*x;
+    return { topic:'rownania', topicLabel:'Równania', hint:'Znajdź wartość x:', exprClass:'mono', expr:a+' · x = '+b, type:'number', answer:x, explain:a+' · x = '+b+'  →  x = '+b+' : '+a+' = '+x };
+  }
+  function genDivEq(){
+    var a = randInt(2,10), b = randInt(2,12), x = a*b;
+    return { topic:'rownania', topicLabel:'Równania', hint:'Znajdź wartość x:', exprClass:'mono', expr:'x : '+a+' = '+b, type:'number', answer:x, explain:'x : '+a+' = '+b+'  →  x = '+b+' · '+a+' = '+x };
+  }
+  var ROWNANIA_GENS = [genAddEq, genSubEq, genRevSubEq, genMulEq, genDivEq];
+
+  /* ============ Cyfry rzymskie ============ */
+  var VALUES = [1000,900,500,400,100,90,50,40,10,9,5,4,1];
+  var SYMBOLS = ['M','CM','D','CD','C','XC','L','XL','X','IX','V','IV','I'];
+  function toRoman(num){
+    var n = num, roman = '', parts = [], nums = [];
+    for (var i=0;i<VALUES.length;i++){
+      while (n >= VALUES[i]){ roman += SYMBOLS[i]; parts.push(SYMBOLS[i]); nums.push(VALUES[i]); n -= VALUES[i]; }
+    }
+    return { roman:roman, parts:parts, nums:nums };
+  }
+  function genRoman(){
+    var n = randInt(1,200);
+    var r = toRoman(n);
+    var symsJoin = r.parts.join(' + '), numsJoin = r.nums.join(' + ');
+    var toArabic = Math.random() < 0.5;
+    if (toArabic){
+      return { topic:'rzymskie', topicLabel:'Cyfry rzymskie', hint:'Zapisz jako zwykłą liczbę:', exprClass:'roman', expr:r.roman, type:'number', answer:n, explain: r.roman+' = '+symsJoin+' = '+numsJoin+' = '+n };
+    } else {
+      return { topic:'rzymskie', topicLabel:'Cyfry rzymskie', hint:'Zapisz jako cyfry rzymskie:', exprClass:'mono', expr:String(n), type:'text', answer:r.roman, explain: n+' = '+numsJoin+' = '+symsJoin+' = '+r.roman };
+    }
+  }
+  var RZYMSKIE_GENS = [genRoman];
+
+  /* ============ Obliczenia przybliżone ============ */
+  var PLACE_NAME = { 10:'jedności', 100:'dziesiątek', 1000:'setek' };
+  var PLACE_WORD = { 10:'pełnych dziesiątek', 100:'pełnych setek', 1000:'pełnych tysięcy' };
+  function genRounding(){
+    var place = choice([10,100,1000]);
+    var range = place===10 ? [11,499] : place===100 ? [101,4999] : [1001,29999];
+    var n = randInt(range[0], range[1]);
+    if (n % place === 0) n += 1;
+    var checkDigit = Math.floor(n/(place/10)) % 10;
+    var rounded = roundTo(n, place);
+    var dir = checkDigit >= 5 ? 'w górę' : 'w dół';
+    return { topic:'przyblizone', topicLabel:'Obliczenia przybliżone', hint:'Zaokrąglij do '+PLACE_WORD[place]+':', exprClass:'mono', expr:String(n), type:'number', answer:rounded,
+      explain: 'Cyfra '+PLACE_NAME[place]+': '+checkDigit+' → zaokrąglamy '+dir+': '+n+' ≈ '+rounded };
+  }
+  function genEstimateSum(){
+    var baseA = randInt(1,9)*100, baseB = randInt(1,9)*100;
+    var a = baseA + randInt(-40,40), b = baseB + randInt(-40,40);
+    if (a<=0) a = baseA+10; if (b<=0) b = baseB+10;
+    var ra = roundTo(a,100), rb = roundTo(b,100);
+    var answer = ra+rb;
+    return { topic:'przyblizone', topicLabel:'Obliczenia przybliżone', hint:'Oszacuj wynik (zaokrąglij do pełnych setek):', exprClass:'mono', expr:a+' + '+b, type:'number', answer:answer,
+      explain: a+' ≈ '+ra+', '+b+' ≈ '+rb+' → '+ra+' + '+rb+' = '+answer };
+  }
+  function genEstimateProduct(){
+    var base = randInt(2,9)*10;
+    var a = base + randInt(-4,4);
+    if (a<=0) a = base+2;
+    var b = randInt(2,9);
+    var ra = roundTo(a,10);
+    var answer = ra*b;
+    return { topic:'przyblizone', topicLabel:'Obliczenia przybliżone', hint:'Oszacuj wynik (zaokrąglij pierwszy czynnik do dziesiątek):', exprClass:'mono', expr:a+' × '+b, type:'number', answer:answer,
+      explain: a+' ≈ '+ra+' → '+ra+' × '+b+' = '+answer };
+  }
+  var PRZYBLIZONE_GENS = [genRounding, genEstimateSum, genEstimateProduct];
+
+  var TOPIC_POOLS = [
+    { key:'rownania', label:'Równania', gens:ROWNANIA_GENS },
+    { key:'rzymskie', label:'Cyfry rzymskie', gens:RZYMSKIE_GENS },
+    { key:'przyblizone', label:'Obliczenia przybliżone', gens:PRZYBLIZONE_GENS }
+  ];
+
+  function buildQueue(){
+    var q = [];
+    TOPIC_POOLS.forEach(function(pool){
+      for (var i=0;i<5;i++){ q.push(choice(pool.gens)()); }
+    });
+    return shuffle(q);
+  }
+
+  var LS_BEST = 'powtorka_kartkowka_best_v1';
+
+  var viewIntro = $('view-intro'), viewPlay = $('view-play'), viewResults = $('view-results');
+  var progFill = $('qProgressFill'), progText = $('qProgress'), scoreText = $('qScore');
+  var topicTagEl = $('qTopicTag'), hintEl = $('qHint'), exprEl = $('qExpr'), inputEl = $('qInput'), submitBtn = $('qSubmit'), feedbackEl = $('qFeedback');
+  var st = { queue:[], idx:0, score:0, locked:false, byTopic:{} };
+
+  function showIntro(){
+    viewIntro.hidden = false; viewPlay.hidden = true; viewResults.hidden = true;
+    var best = loadJSON(LS_BEST, 0);
+    $('bestHint').textContent = best > 0 ? ('Twój rekord: ' + best + '/15') : '';
+  }
+  $('btnStart').addEventListener('click', start);
+  function start(){
+    st.queue = buildQueue();
+    st.idx = 0; st.score = 0; st.locked = false;
+    st.byTopic = { rownania:{c:0,t:0}, rzymskie:{c:0,t:0}, przyblizone:{c:0,t:0} };
+    viewIntro.hidden = true; viewResults.hidden = true; viewPlay.hidden = false;
+    scoreText.textContent = '0';
+    showQuestion();
+  }
+  function showQuestion(){
+    st.locked = false;
+    var item = st.queue[st.idx];
+    progText.textContent = (st.idx+1) + '/' + st.queue.length;
+    progFill.style.width = ((st.idx)/st.queue.length*100) + '%';
+    scoreText.textContent = st.score;
+    topicTagEl.textContent = item.topicLabel;
+    hintEl.textContent = item.hint;
+    exprEl.textContent = item.expr;
+    exprEl.className = 'quiz-expr ' + item.exprClass;
+    inputEl.value = '';
+    inputEl.className = item.type === 'number' ? 'num-input' : 'roman-input';
+    inputEl.setAttribute('inputmode', item.type === 'number' ? 'numeric' : 'text');
+    inputEl.disabled = false;
+    submitBtn.disabled = false;
+    feedbackEl.innerHTML = '';
+    inputEl.focus();
+  }
+  function submit(){
+    if (st.locked) return;
+    var raw = inputEl.value.trim();
+    if (raw === '') { inputEl.focus(); return; }
+    st.locked = true;
+    var item = st.queue[st.idx];
+    var correct;
+    if (item.type === 'number') correct = parseInt(raw,10) === item.answer;
+    else correct = raw.toUpperCase() === item.answer;
+    inputEl.disabled = true; submitBtn.disabled = true;
+    inputEl.classList.add(correct ? 'correct' : 'wrong');
+    st.byTopic[item.topic].t++;
+    if (correct){
+      st.score++; st.byTopic[item.topic].c++;
+      scoreText.textContent = st.score;
+      feedbackEl.innerHTML = '<div class="msg good">Dobrze! ✓</div><div class="explain">'+item.explain+'</div>';
+    } else {
+      feedbackEl.innerHTML = '<div class="msg bad">Prawidłowa odpowiedź: '+item.answer+'</div><div class="explain">'+item.explain+'</div>';
+    }
+    setTimeout(function(){
+      st.idx++;
+      if (st.idx < st.queue.length) showQuestion(); else finish();
+    }, correct ? 1300 : 2600);
+  }
+  submitBtn.addEventListener('click', submit);
+  inputEl.addEventListener('keydown', function(e){ if (e.key === 'Enter') submit(); });
+
+  function finish(){
+    viewPlay.hidden = true; viewResults.hidden = false;
+    var best = loadJSON(LS_BEST, 0);
+    var isNew = st.score > best;
+    if (isNew) saveJSON(LS_BEST, st.score);
+    $('rScore').textContent = st.score + '/' + st.queue.length;
+    var msg = st.score >= 13 ? 'Jesteś gotowy na kartkówkę! 🏆' : st.score >= 10 ? 'Dobrze — jeszcze trochę powtórki i będzie super.' : st.score >= 6 ? 'Nieźle, ale warto jeszcze poćwiczyć.' : 'Wróć do poszczególnych tematów w Matematyce i przećwicz je osobno.';
+    $('rMsg').textContent = msg;
+    var labels = { rownania:'Równania', rzymskie:'Cyfry rzymskie', przyblizone:'Obliczenia przybliżone' };
+    $('rBreakdown').innerHTML = Object.keys(st.byTopic).map(function(k){
+      var d = st.byTopic[k];
+      var pct = d.t ? Math.round((d.c/d.t)*100) : 0;
+      return '<div class="breakdown-row"><span class="bl">'+labels[k]+'</span><span class="bt"><span class="bf" style="width:'+pct+'%"></span></span><span class="bv">'+d.c+'/'+d.t+'</span></div>';
+    }).join('');
+  }
+  $('btnRetry').addEventListener('click', start);
+  $('btnHome').addEventListener('click', showIntro);
+
+  showIntro();
+})();
+</script>

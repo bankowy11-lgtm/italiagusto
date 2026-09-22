@@ -140,6 +140,8 @@
     { subject:'Matematyka', icon:'&#128209;', key:'rzym_best_v1', levels:['basic','big'] },
     { subject:'Matematyka', icon:'&#128209;', key:'przybl_best_v1', levels:['round','estimate'] },
     { subject:'Matematyka', icon:'&#128209;', key:'pierwsze_best_v1', levels:['easy','hard'] },
+    { subject:'Matematyka', icon:'&#128209;', key:'rownania_best_v1', levels:['addsub','muldiv'] },
+    { subject:'Matematyka', icon:'&#128209;', key:'powtorka_kartkowka_best_v1', levels:null, max:15 },
     { subject:'Historia', icon:'&#127963;&#65039;', key:'hist_zycie_pierwszych_ludzi_best_v1', levels:null },
     { subject:'Historia', icon:'&#127963;&#65039;', key:'hist_mezopotamia_best_v1', levels:null },
     { subject:'Historia', icon:'&#127963;&#65039;', key:'hist_egipt_faraonow_best_v1', levels:null },
@@ -153,7 +155,7 @@
     var bySubject = {};
     var totalEarned = 0, totalMax = 0;
     PROGRESS_MANIFEST.forEach(function(entry){
-      var max = (entry.levels ? entry.levels.length : 1) * 10;
+      var max = entry.max || ((entry.levels ? entry.levels.length : 1) * 10);
       var earned = 0;
       if (entry.levels){
         var obj = loadJSON(entry.key, {});

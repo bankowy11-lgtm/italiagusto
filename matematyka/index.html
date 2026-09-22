@@ -80,6 +80,11 @@
     <p>Tematy dokładnie według spisu treści podręcznika. Gotowe tematy otwierasz od razu — reszta pojawia się w miarę jak przerabiacie kolejne rozdziały.</p>
   </div>
 
+  <div class="chapter" data-c="0">
+    <div class="chapter__head"><span class="chapter__badge">📝</span><span class="chapter__title">Przygotowanie do kartkówki</span></div>
+    <div class="topic-list" id="ch0"></div>
+  </div>
+
   <div class="chapter" data-c="1">
     <div class="chapter__head"><span class="chapter__badge">I</span><span class="chapter__title">Liczby naturalne</span></div>
     <div class="topic-list" id="ch1"></div>
@@ -101,6 +106,10 @@
 <script>
 (function(){
   var chapters = {
+    ch0: [
+      {t:'Równania', pg:null, href:'rownania/'},
+      {t:'Powtórka przed kartkówką (równania, cyfry rzymskie, obliczenia przybliżone)', pg:null, href:'powtorka-kartkowka/'}
+    ],
     ch1: [
       {t:'Działania pamięciowe', pg:8, href:'dzialania-pamieciowe/'},
       {t:'Potęgowanie', pg:15, href:'potegowanie/'},
@@ -147,10 +156,11 @@
       var tag = ready ? 'a' : 'div';
       var hrefAttr = ready ? ' href="'+item.href+'"' : '';
       var cls = 'topic' + (ready?'':' disabled') + (item.review?' review':'');
+      var pgLabel = item.pg ? ('str. '+item.pg) : 'dodatkowo';
       return '<'+tag+' class="'+cls+'"'+hrefAttr+'>'+
         '<span class="idx">'+(i+1)+'.</span>'+
         '<span class="t">'+item.t+'</span>'+
-        '<span class="pg">str. '+item.pg+'</span>'+
+        '<span class="pg">'+pgLabel+'</span>'+
         '<span class="badge '+(ready?'ready':'soon')+'">'+(ready?'gotowe':'wkrótce')+'</span>'+
       '</'+tag+'>';
     }).join('');
