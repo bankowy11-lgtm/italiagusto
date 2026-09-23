@@ -1,0 +1,343 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Odmiana rzeczownika — Klasa 5</title>
+<meta name="theme-color" content="#8c3a4f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Odmiana rzeczownika">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMDAiIGZpbGw9IiM4YzNhNGYiLz4KPHRleHQgeD0iMjU2IiB5PSIzMjAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIyMDAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmYmVlZjEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjE8L3RleHQ+Cjwvc3ZnPgo=">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMDAiIGZpbGw9IiM4YzNhNGYiLz4KPHRleHQgeD0iMjU2IiB5PSIzMjAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIyMDAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmYmVlZjEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjE8L3RleHQ+Cjwvc3ZnPgo=">
+<style>
+  :root{
+    --paper:#faf5f6; --paper-2:#f2e8ea; --grid-line: rgba(120,60,80,0.09);
+    --ink:#291b1f; --ink-soft:#6b5a5e; --card:#ffffff; --card-edge: rgba(41,27,31,0.11);
+    --accent:#8c3a4f; --accent-ink:#ffffff; --accent-soft:#f1dde1;
+    --blue:#3f6f9e; --blue-soft:#e2ecf3;
+    --good:#2f9e6e; --good-soft:#e1f5ec; --bad:#c0483f; --bad-soft:#f8e2df;
+    --sans: -apple-system, "Segoe UI", system-ui, Roboto, sans-serif;
+    --mono: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#1a1315; --paper-2:#20181b; --grid-line: rgba(200,150,165,0.09);
+      --ink:#f0e6e8; --ink-soft:#ab9599; --card:#251b1e; --card-edge: rgba(255,255,255,0.08);
+      --accent:#e07a95; --accent-ink:#200a10; --accent-soft:#3a2228;
+      --blue:#7fb2e0; --blue-soft:#1c2a37;
+      --good:#4fc98d; --good-soft:#173226; --bad:#e07a6f; --bad-soft:#3a201c;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#1a1315; --paper-2:#20181b; --grid-line: rgba(200,150,165,0.09);
+    --ink:#f0e6e8; --ink-soft:#ab9599; --card:#251b1e; --card-edge: rgba(255,255,255,0.08);
+    --accent:#e07a95; --accent-ink:#200a10; --accent-soft:#3a2228;
+    --blue:#7fb2e0; --blue-soft:#1c2a37;
+    --good:#4fc98d; --good-soft:#173226; --bad:#e07a6f; --bad-soft:#3a201c;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background: linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0/32px 32px, linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0/32px 32px, var(--paper);
+    color: var(--ink); font-family: var(--sans); min-height:100vh; -webkit-text-size-adjust: 100%;
+  }
+  *:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  h1,h2{ text-wrap:balance; }
+
+  .topbar{ position:sticky; top:0; z-index:20; display:flex; align-items:center; gap:10px; padding:10px 16px; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--card-edge); }
+  .topbar a.back{ color:var(--ink-soft); text-decoration:none; font-size:13px; font-weight:600; display:flex; align-items:center; gap:4px; }
+  .app-name{ font-weight:800; font-size:15px; margin-left:8px; }
+  .tabs{ display:flex; gap:6px; margin-left:auto; background:var(--paper-2); border-radius:10px; padding:3px; }
+  .tab-btn{ font:inherit; font-weight:700; font-size:13px; color:var(--ink-soft); background:none; border:none; padding:8px 14px; border-radius:8px; cursor:pointer; }
+  .tab-btn.active{ background:var(--card); color:var(--accent); box-shadow:0 1px 3px var(--card-edge); }
+
+  .wrap{ max-width:720px; margin:0 auto; padding: 22px 16px 60px; }
+  .view[hidden]{ display:none; }
+  .hero{ text-align:center; padding: 14px 0 26px; }
+  .hero h1{ font-size:clamp(21px,6vw,27px); margin:0 0 8px; font-weight:800; }
+  .hero p{ color:var(--ink-soft); font-size:14.5px; max-width:46ch; margin:0 auto; line-height:1.5; }
+
+  .card{ background:var(--card); border:1px solid var(--card-edge); border-radius:14px; padding:20px 20px 22px; margin-bottom:16px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+  .card h2{ font-size:17.5px; margin:0 0 4px; display:flex; align-items:center; gap:9px; }
+  .card h2 .tag{ font-family:var(--mono); font-size:11px; font-weight:700; color:var(--accent); background:var(--accent-soft); padding:3px 8px; border-radius:6px; }
+  .card p{ line-height:1.65; font-size:14.5px; margin:10px 0; }
+  .card p.soft{ color:var(--ink-soft); font-size:13.5px; }
+  .wyraz{ font-weight:700; color:var(--accent); }
+
+  .case-table{ display:flex; flex-direction:column; gap:6px; margin:14px 0; }
+  .case-row{ display:grid; grid-template-columns:96px 1fr 90px; gap:8px; align-items:center; background:var(--paper-2); border-radius:8px; padding:7px 10px; }
+  .case-row.head{ background:none; font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-soft); padding-bottom:0; }
+  .case-row .cn{ font-weight:700; font-size:12.5px; }
+  .case-row .cq{ font-size:12px; color:var(--ink-soft); }
+  .case-row .cf{ font-family:var(--mono); font-weight:700; font-size:13px; text-align:right; }
+
+  .split-word{ text-align:center; font-family:var(--mono); font-weight:800; font-size:clamp(22px,6vw,28px); background:var(--paper-2); border-radius:10px; padding:16px; margin:14px 0; }
+  .split-word .temat{ color:var(--blue); }
+  .split-word .koncowka{ color:var(--accent); }
+  .legend-row{ display:flex; gap:16px; justify-content:center; font-size:12px; color:var(--ink-soft); margin-top:-4px; margin-bottom:14px; }
+  .legend-row span::before{ content:"●"; margin-right:5px; font-size:9px; vertical-align:1px; }
+  .legend-row .l1::before{ color:var(--blue); }
+  .legend-row .l2::before{ color:var(--accent); }
+
+  .pair-grid{ display:flex; flex-direction:column; gap:7px; margin:14px 0; }
+  .pair-row{ display:flex; align-items:center; gap:10px; background:var(--paper-2); border-radius:9px; padding:9px 12px; }
+  .pair-row .pw{ font-family:var(--mono); font-weight:700; font-size:14px; flex:1; }
+  .pair-row .parrow{ color:var(--ink-soft); }
+  .pair-row .palt{ font-family:var(--mono); font-weight:800; color:var(--accent); font-size:12.5px; background:var(--accent-soft); padding:3px 8px; border-radius:6px; flex-shrink:0; }
+
+  .cta-row{ text-align:center; margin-top:8px; }
+  .btn{ font:inherit; font-weight:700; font-size:14.5px; color:var(--accent-ink); background:var(--accent); border:none; border-radius:10px; padding:13px 26px; cursor:pointer; box-shadow: 0 4px 0 0 color-mix(in srgb, var(--accent) 65%, black); }
+  .btn:active{ transform:translateY(3px); box-shadow:0 1px 0 0 color-mix(in srgb, var(--accent) 65%, black); }
+  .btn.secondary{ background:var(--paper-2); color:var(--ink); box-shadow:none; border:1px solid var(--card-edge); }
+  .btn.secondary:active{ transform:translateY(2px); }
+  .btn-row{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+
+  .quiz-top{ display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+  .progress-bar{ flex:1; height:6px; background:var(--paper-2); border-radius:4px; overflow:hidden; }
+  .progress-bar__fill{ height:100%; background:var(--accent); width:0%; transition:width .25s; }
+  .quiz-stats{ font-family:var(--mono); font-size:12.5px; color:var(--ink-soft); white-space:nowrap; }
+  .quiz-stats b{ color:var(--ink); }
+  .quiz-q{ font-size:15px; font-weight:600; line-height:1.4; margin: 12px 0 14px; text-wrap:balance; min-height:2.6em; }
+  .quiz-answers{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .quiz-answer{ background: var(--paper-2); border:1px solid var(--card-edge); border-radius:8px; padding:12px 10px; font-size:12.5px; color:var(--ink); text-align:left; cursor:pointer; font-family:var(--sans); line-height:1.3; }
+  .quiz-answer:active{ transform:scale(0.98); }
+  .quiz-answer.correct{ border-color:var(--good); background:var(--good-soft); color:var(--good); }
+  .quiz-answer.wrong{ border-color:var(--bad); background:var(--bad-soft); color:var(--bad); }
+  .quiz-answer[disabled]{ pointer-events:none; opacity:.9; }
+  .feedback{ margin-top:16px; min-height:40px; }
+  .feedback .explain{ font-size:13px; color:var(--ink-soft); line-height:1.5; }
+
+  .results-card{ text-align:center; }
+  .results-score{ font-family:var(--mono); font-weight:800; font-size:44px; color:var(--accent); margin:6px 0 2px; }
+  .results-sub{ color:var(--ink-soft); font-size:13.5px; margin-bottom:18px; }
+  .results-msg{ font-weight:700; font-size:16px; margin-bottom:18px; }
+  .new-record{ font-family: var(--mono); font-size:11px; letter-spacing:.08em; color: var(--accent); text-transform:uppercase; margin-bottom:14px; }
+</style>
+
+<div class="topbar">
+  <a class="back" href="../">&#8592; Język polski</a>
+  <div class="app-name">Odmiana rzeczownika</div>
+  <div class="tabs">
+    <button class="tab-btn active" id="tabLesson">Nauka</button>
+    <button class="tab-btn" id="tabTest">Test</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="view" id="view-lesson">
+    <div class="hero">
+      <h1>Odmiana rzeczownika</h1>
+      <p>Liczby i przypadki, temat i końcówka, oboczności oraz e ruchome — cztery rzeczy, które warto znać razem.</p>
+    </div>
+
+    <div class="card">
+      <h2>Liczby rzeczownika <span class="tag">pojedyncza / mnoga</span></h2>
+      <p>Rzeczownik odmienia się przez <b>liczby</b>: <b>pojedynczą</b> (gdy mówimy o jednej rzeczy lub osobie) i <b>mnogą</b> (gdy mówimy o więcej niż jednej).</p>
+      <p><span class="wyraz">kot</span> (l. poj.) → <span class="wyraz">koty</span> (l. mn.) &nbsp;·&nbsp; <span class="wyraz">dom</span> → <span class="wyraz">domy</span> &nbsp;·&nbsp; <span class="wyraz">okno</span> → <span class="wyraz">okna</span></p>
+    </div>
+
+    <div class="card">
+      <h2>Przypadki <span class="tag">deklinacja</span></h2>
+      <p>Odmianę rzeczownika przez przypadki nazywamy <b>deklinacją</b>. W języku polskim jest <b>7 przypadków</b> — każdy odpowiada na inne pytanie.</p>
+      <div class="case-table">
+        <div class="case-row head"><span>Przypadek</span><span>Pytania</span><span>kot</span></div>
+        <div class="case-row"><span class="cn">Mianownik</span><span class="cq">kto? co?</span><span class="cf">kot</span></div>
+        <div class="case-row"><span class="cn">Dopełniacz</span><span class="cq">kogo? czego?</span><span class="cf">kota</span></div>
+        <div class="case-row"><span class="cn">Celownik</span><span class="cq">komu? czemu?</span><span class="cf">kotu</span></div>
+        <div class="case-row"><span class="cn">Biernik</span><span class="cq">kogo? co?</span><span class="cf">kota</span></div>
+        <div class="case-row"><span class="cn">Narzędnik</span><span class="cq">z kim? z czym?</span><span class="cf">kotem</span></div>
+        <div class="case-row"><span class="cn">Miejscownik</span><span class="cq">o kim? o czym?</span><span class="cf">kocie</span></div>
+        <div class="case-row"><span class="cn">Wołacz</span><span class="cq">o!</span><span class="cf">kocie!</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Temat i końcówka <span class="tag">budowa wyrazu</span></h2>
+      <p>Rzeczownik dzieli się na dwie części: <b>temat</b> — część niosącą znaczenie wyrazu (zwykle się nie zmienia), oraz <b>końcówkę</b> — część, która zmienia się w zależności od przypadka i liczby.</p>
+      <div class="split-word"><span class="temat">dom</span><span class="koncowka">u</span></div>
+      <div class="legend-row"><span class="l1">temat</span><span class="l2">końcówka</span></div>
+      <p class="soft">dom<b>Ø</b> (M.) · dom<b>u</b> (D.) · dom<b>owi</b> (C.) · dom<b>Ø</b> (B.) · dom<b>em</b> (N.) · dom<b>u</b> (Msc.)</p>
+    </div>
+
+    <div class="card">
+      <h2>Oboczności w temacie <span class="tag">zmiana głoski</span></h2>
+      <p>Czasem podczas odmiany <b>temat się zmienia</b> — taką wymianę głosek nazywamy <b>obocznością</b>. Najczęściej dotyczy to spółgłosek na końcu tematu.</p>
+      <div class="pair-grid">
+        <div class="pair-row"><span class="pw">ręka <span class="parrow">→</span> ręce</span><span class="palt">k : c</span></div>
+        <div class="pair-row"><span class="pw">noga <span class="parrow">→</span> nodze</span><span class="palt">g : dz</span></div>
+        <div class="pair-row"><span class="pw">mucha <span class="parrow">→</span> musze</span><span class="palt">ch : sz</span></div>
+        <div class="pair-row"><span class="pw">stół <span class="parrow">→</span> stołu</span><span class="palt">ó : o</span></div>
+        <div class="pair-row"><span class="pw">książka <span class="parrow">→</span> książce</span><span class="palt">k : c</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>E ruchome <span class="tag">znikająca samogłoska</span></h2>
+      <p><b>E ruchome</b> to samogłoska <b>e</b>, która pojawia się w jednej formie wyrazu, a <b>znika</b> w innej — najczęściej, gdy dodajemy końcówkę zaczynającą się od samogłoski.</p>
+      <div class="pair-grid">
+        <div class="pair-row"><span class="pw">sen <span class="parrow">→</span> snu</span><span class="palt">e znika</span></div>
+        <div class="pair-row"><span class="pw">dzień <span class="parrow">→</span> dnia</span><span class="palt">e znika</span></div>
+        <div class="pair-row"><span class="pw">pies <span class="parrow">→</span> psa</span><span class="palt">e znika</span></div>
+        <div class="pair-row"><span class="pw">ogień <span class="parrow">→</span> ognia</span><span class="palt">e znika</span></div>
+        <div class="pair-row"><span class="pw">chłopiec <span class="parrow">→</span> chłopca</span><span class="palt">e znika</span></div>
+      </div>
+      <p class="soft">Wskazówka: żeby sprawdzić, czy e jest ruchome, odmień wyraz przez dopełniacz (kogo? czego?) — jeśli e zniknie, to jest ruchome.</p>
+    </div>
+
+    <div class="cta-row">
+      <button class="btn" id="btnGoTest">Przejdź do testu →</button>
+    </div>
+  </div>
+
+  <div class="view" id="view-test" hidden>
+    <div id="testIntro">
+      <div class="hero">
+        <h1>Test wiedzy</h1>
+        <p>10 pytań, bez zegara. Odpowiedz najlepiej jak potrafisz.</p>
+      </div>
+      <div class="cta-row"><button class="btn" id="btnStartQuiz">START</button></div>
+      <p class="results-sub" id="bestHint" style="text-align:center; margin-top:14px;"></p>
+    </div>
+
+    <div id="testPlay" hidden>
+      <div class="quiz-top">
+        <div class="progress-bar"><div class="progress-bar__fill" id="qProgressFill"></div></div>
+        <div class="quiz-stats">Pytanie <b id="qProgress">1/10</b> &nbsp;·&nbsp; Wynik <b id="qScore">0</b></div>
+      </div>
+      <div class="card">
+        <div class="quiz-q" id="qQuestion"></div>
+        <div class="quiz-answers" id="qAnswers"></div>
+        <div class="feedback" id="qFeedback"></div>
+      </div>
+    </div>
+
+    <div id="testResults" hidden>
+      <div class="card results-card">
+        <div class="results-sub">Twój wynik</div>
+        <div class="results-score" id="rScore">0/10</div>
+        <p class="new-record" id="newRecord" hidden>★ NOWY REKORD ★</p>
+        <div class="results-msg" id="rMsg">Brawo!</div>
+        <div class="btn-row">
+          <button class="btn" id="btnRetry">Spróbuj ponownie</button>
+          <button class="btn secondary" id="btnBackLesson">Wróć do nauki</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var $ = function(id){ return document.getElementById(id); };
+  function shuffle(arr){ var a=arr.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+  function loadJSON(k,f){ try{ var v=localStorage.getItem(k); return v?JSON.parse(v):f; }catch(e){ return f; } }
+  function saveJSON(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+  function esc(s){ var d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+
+  var viewLesson = $('view-lesson'), viewTest = $('view-test');
+  var tabLesson = $('tabLesson'), tabTest = $('tabTest');
+  function showTab(name){
+    viewLesson.hidden = name !== 'lesson';
+    viewTest.hidden = name !== 'test';
+    tabLesson.classList.toggle('active', name==='lesson');
+    tabTest.classList.toggle('active', name==='test');
+    window.scrollTo(0,0);
+    if (name === 'test') Test.showIntro();
+  }
+  tabLesson.addEventListener('click', function(){ showTab('lesson'); });
+  tabTest.addEventListener('click', function(){ showTab('test'); });
+  $('btnGoTest').addEventListener('click', function(){ showTab('test'); });
+
+  var QUESTIONS = [
+    {q:"Rzeczownik „koty” jest w liczbie:", o:["Pojedynczej","Mnogiej","Podwójnej","Nijakiej"], c:1},
+    {q:"Wskaż formę liczby mnogiej (mianownik) rzeczownika „dom”.", o:["Domu","Domy","Domowi","Domem"], c:1},
+    {q:"Na jakie pytania odpowiada mianownik?", o:["Kogo? Czego?", "Kto? Co?", "Komu? Czemu?", "Z kim? Z czym?"], c:1},
+    {q:"Na jakie pytania odpowiada dopełniacz?", o:["Kto? Co?", "Kogo? Czego?", "Komu? Czemu?", "O kim? O czym?"], c:1},
+    {q:"Na jakie pytania odpowiada celownik?", o:["Kogo? Co?", "Z kim? Z czym?", "Komu? Czemu?", "Kto? Co?"], c:2},
+    {q:"Na jakie pytania odpowiada biernik?", o:["Kto? Co?", "Kogo? Czego?", "Kogo? Co?", "O kim? O czym?"], c:2},
+    {q:"Na jakie pytania odpowiada narzędnik?", o:["Komu? Czemu?", "Kogo? Co?", "Kto? Co?", "Z kim? Z czym?"], c:3},
+    {q:"Na jakie pytania odpowiada miejscownik?", o:["Z kim? Z czym?", "Kogo? Czego?", "O kim? O czym?", "Kto? Co?"], c:2},
+    {q:"Ile przypadków ma język polski?", o:["5", "6", "7", "8"], c:2},
+    {q:"Jak nazywa się przypadek używany przy zawołaniu, np. „Mamo!”?", o:["Mianownik", "Wołacz", "Biernik", "Narzędnik"], c:1},
+    {q:"Jak nazywa się odmiana rzeczownika przez przypadki?", o:["Koniugacja", "Deklinacja", "Derywacja", "Fleksja czasownika"], c:1},
+    {q:"Czym jest temat wyrazu?", o:["Częścią, która niesie znaczenie wyrazu", "Częścią, która zawsze się zmienia", "Ostatnią literą wyrazu", "Pytaniem przypadka"], c:0},
+    {q:"Czym jest końcówka wyrazu?", o:["Częścią niosącą znaczenie wyrazu", "Częścią, która zmienia się zależnie od przypadka i liczby", "Pierwszą literą wyrazu", "Liczbą rzeczownika"], c:1},
+    {q:"Wskaż temat rzeczownika „kotem” (kot + em).", o:["kot-", "kote-", "kotem-", "-em"], c:0},
+    {q:"Jaka jest końcówka rzeczownika „domu” w dopełniaczu?", o:["-u", "-a", "-owi", "-em"], c:0},
+    {q:"Jak nazywamy zmianę głoski w temacie podczas odmiany wyrazu?", o:["Końcówka", "Oboczność", "Deklinacja", "Wołacz"], c:1},
+    {q:"Jaka oboczność występuje w parze ręka — ręce?", o:["g : dz", "ch : sz", "k : c", "ó : o"], c:2},
+    {q:"Jaka oboczność występuje w parze noga — nodze?", o:["g : dz", "k : c", "ch : sz", "ó : o"], c:0},
+    {q:"Jaka oboczność występuje w parze stół — stołu?", o:["k : c", "g : dz", "ch : sz", "ó : o"], c:3},
+    {q:"Jaka oboczność występuje w parze mucha — musze?", o:["k : c", "g : dz", "ch : sz", "ó : o"], c:2},
+    {q:"Czym jest „e ruchome”?", o:["Samogłoską e, która znika lub pojawia się w odmianie wyrazu", "Zawsze stałą częścią tematu", "Rodzajem końcówki liczby mnogiej", "Znakiem interpunkcyjnym"], c:0},
+    {q:"W której formie znika e ruchome: „sen” czy „snu”?", o:["W formie „snu”", "W formie „sen”", "W obu formach", "W żadnej z nich"], c:0},
+    {q:"Który rzeczownik ma e ruchome (dopełniacz: psa)?", o:["Kot", "Pies", "Dom", "Stół"], c:1},
+    {q:"Dopełniacz (kogo? czego?) rzeczownika „dzień” to:", o:["Dzienia", "Dnia", "Dzień", "Dniu"], c:1},
+    {q:"Dopełniacz (kogo? czego?) rzeczownika „ogień” to:", o:["Ogienia", "Ognia", "Ogień", "Ogniu"], c:1}
+  ];
+
+  var LS_BEST = 'polski_odmiana_rzeczownika_best_v1';
+
+  var Test = (function(){
+    var introEl = $('testIntro'), playEl = $('testPlay'), resultsEl = $('testResults');
+    var progFill = $('qProgressFill'), progText = $('qProgress'), scoreText = $('qScore');
+    var qEl = $('qQuestion'), answersEl = $('qAnswers'), feedbackEl = $('qFeedback');
+    var st = { queue:[], idx:0, score:0, locked:false };
+
+    function showIntro(){
+      introEl.hidden = false; playEl.hidden = true; resultsEl.hidden = true;
+      var best = loadJSON(LS_BEST, 0);
+      $('bestHint').textContent = best > 0 ? ('Twój rekord: ' + best + '/10') : '';
+    }
+    $('btnStartQuiz').addEventListener('click', start);
+    function start(){
+      st.queue = shuffle(QUESTIONS).slice(0, 10);
+      st.idx = 0; st.score = 0; st.locked = false;
+      introEl.hidden = true; resultsEl.hidden = true; playEl.hidden = false;
+      scoreText.textContent = '0';
+      showQuestion();
+    }
+    function showQuestion(){
+      st.locked = false;
+      var item = st.queue[st.idx];
+      var order = shuffle([0,1,2,3]);
+      var correctPos = order.indexOf(item.c);
+      progText.textContent = (st.idx+1) + '/' + st.queue.length;
+      progFill.style.width = ((st.idx)/st.queue.length*100) + '%';
+      scoreText.textContent = st.score;
+      qEl.textContent = item.q;
+      answersEl.innerHTML = order.map(function(oi){ return '<button class="quiz-answer">'+esc(item.o[oi])+'</button>'; }).join('');
+      var btns = answersEl.querySelectorAll('.quiz-answer');
+      for (var i=0;i<btns.length;i++){
+        (function(btn, isCorrect){ btn.addEventListener('click', function(){ answer(isCorrect, btn, correctPos); }); })(btns[i], i === correctPos);
+      }
+      feedbackEl.innerHTML = '';
+    }
+    function answer(isCorrect, btnEl, correctPos){
+      if (st.locked) return; st.locked = true;
+      var btns = answersEl.querySelectorAll('.quiz-answer');
+      for (var i=0;i<btns.length;i++) btns[i].disabled = true;
+      if (btns[correctPos]) btns[correctPos].classList.add('correct');
+      if (!isCorrect) btnEl.classList.add('wrong');
+      if (isCorrect){ st.score++; scoreText.textContent = st.score; feedbackEl.innerHTML = '<div class="explain">Dobrze! ✓</div>'; }
+      else { feedbackEl.innerHTML = '<div class="explain">Niepoprawnie — zaznaczono prawidłową odpowiedź.</div>'; }
+      setTimeout(function(){
+        st.idx++;
+        if (st.idx < st.queue.length) showQuestion(); else finish();
+      }, isCorrect ? 1100 : 1900);
+    }
+    function finish(){
+      playEl.hidden = true; resultsEl.hidden = false;
+      var best = loadJSON(LS_BEST, 0);
+      var isNew = st.score > best;
+      if (isNew){ saveJSON(LS_BEST, st.score); }
+      $('rScore').textContent = st.score + '/10';
+      $('newRecord').hidden = !isNew;
+      var msg = st.score >= 9 ? 'Gramatyka to dla Ciebie pestka! 🏆' : st.score >= 7 ? 'Bardzo dobrze!' : st.score >= 4 ? 'Nieźle, poćwicz jeszcze trochę.' : 'Wróć do części „Nauka" i spróbuj ponownie.';
+      $('rMsg').textContent = msg;
+    }
+    $('btnRetry').addEventListener('click', start);
+    $('btnBackLesson').addEventListener('click', function(){ showTab('lesson'); });
+    return { showIntro: showIntro };
+  })();
+})();
+</script>

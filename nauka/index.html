@@ -110,7 +110,7 @@
 (function(){
   var subjects = [
     { icon:'&#128209;', title:'Matematyka', desc:'Liczby naturalne, figury geometryczne, ułamki zwykłe', href:'../matematyka/', ready:true },
-    { icon:'&#128214;', title:'Język polski', desc:'Gramatyka, ortografia, lektury', href:null, ready:false },
+    { icon:'&#128214;', title:'Język polski', desc:'Gramatyka, ortografia, lektury', href:'../jezyk-polski/', ready:true },
     { icon:'&#127793;', title:'Biologia', desc:'Świat roślin, zwierząt i zjawisk przyrody', href:'../biologia/', ready:true },
     { icon:'&#127963;&#65039;', title:'Historia', desc:'Dawne dzieje i wydarzenia', href:'../historia/', ready:true },
     { icon:'&#127468;&#127463;', title:'Język angielski', desc:'Słownictwo i gramatyka', href:null, ready:false },
@@ -148,7 +148,8 @@
     { subject:'Biologia', icon:'&#127793;', key:'bio_skladniki_chemiczne_best_v1', levels:null },
     { subject:'Biologia', icon:'&#127793;', key:'bio_komorka_zwierzeca_best_v1', levels:null },
     { subject:'Biologia', icon:'&#127793;', key:'bio_komorka_roslinna_best_v1', levels:null },
-    { subject:'Biologia', icon:'&#127793;', key:'bio_grzyby_porosty_best_v1', levels:null }
+    { subject:'Biologia', icon:'&#127793;', key:'bio_grzyby_porosty_best_v1', levels:null },
+    { subject:'Język polski', icon:'&#128214;', key:'polski_odmiana_rzeczownika_best_v1', levels:null }
   ];
   function loadJSON(k,f){ try{ var v=localStorage.getItem(k); return v!==null?JSON.parse(v):f; }catch(e){ return f; } }
   function computeProgress(){
