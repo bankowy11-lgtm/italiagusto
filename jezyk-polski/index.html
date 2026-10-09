@@ -76,6 +76,11 @@
     <div class="topic-list" id="ch0"></div>
   </div>
 
+  <div class="chapter">
+    <div class="chapter__head"><span class="chapter__badge">📚</span><span class="chapter__title">Lektury</span></div>
+    <div class="topic-list" id="ch1"></div>
+  </div>
+
   <p class="progress-note">Kolejne tematy z gramatyki i lektur będą się tu pojawiać.</p>
 </div>
 
@@ -84,13 +89,20 @@
   var topics = [
     {t:'Odmiana rzeczownika: przypadki, temat i końcówka, oboczności, e ruchome', href:'odmiana-rzeczownika/'}
   ];
-  var el = document.getElementById('ch0');
-  el.innerHTML = topics.map(function(item, i){
-    return '<a class="topic" href="'+item.href+'">'+
-      '<span class="idx">'+(i+1)+'.</span>'+
-      '<span class="t">'+item.t+'</span>'+
-      '<span class="badge ready">gotowe</span>'+
-    '</a>';
-  }).join('');
+  var lektury = [
+    {t:'„W pustyni i w puszczy” — Henryk Sienkiewicz', href:'w-pustyni-i-w-puszczy/'}
+  ];
+  function render(id, list){
+    var el = document.getElementById(id);
+    el.innerHTML = list.map(function(item, i){
+      return '<a class="topic" href="'+item.href+'">'+
+        '<span class="idx">'+(i+1)+'.</span>'+
+        '<span class="t">'+item.t+'</span>'+
+        '<span class="badge ready">gotowe</span>'+
+      '</a>';
+    }).join('');
+  }
+  render('ch0', topics);
+  render('ch1', lektury);
 })();
 </script>
