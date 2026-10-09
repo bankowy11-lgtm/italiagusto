@@ -61,6 +61,7 @@
   .topic .pg{ font-family:var(--mono); font-size:11px; color:var(--ink-soft); flex-shrink:0; }
   .topic .badge{ font-family:var(--mono); font-size:10px; font-weight:700; padding:3px 8px; border-radius:6px; flex-shrink:0; letter-spacing:.02em; }
   .topic .badge.ready{ background:var(--good-soft); color:var(--good); }
+  .topic .badge.test{ background:var(--accent-soft); color:var(--accent); }
   .topic .badge.soon{ background:var(--paper-2); color:var(--ink-soft); }
   .topic.disabled{ opacity:.62; cursor:default; }
   .topic.review{ font-style:italic; }
@@ -116,12 +117,12 @@
       {t:'Kolejność wykonywania działań', pg:20, href:'kolejnosc-dzialan/'},
       {t:'Cyfry rzymskie', pg:26, href:'cyfry-rzymskie/'},
       {t:'Obliczenia przybliżone', pg:33, href:'obliczenia-przyblizone/'},
-      {t:'Dodawanie i odejmowanie pisemne', pg:38, href:null},
-      {t:'Mnożenie pisemne', pg:43, href:null},
-      {t:'Dzielenie i podzielność', pg:48, href:null},
+      {t:'Dodawanie i odejmowanie pisemne', pg:38, href:'test-dzial-1/#t=pisemne', badge:'test'},
+      {t:'Mnożenie pisemne', pg:43, href:'test-dzial-1/#t=pisemne', badge:'test'},
+      {t:'Dzielenie i podzielność', pg:48, href:'test-dzial-1/#t=podziel', badge:'test'},
       {t:'Liczby pierwsze i liczby złożone', pg:53, href:'liczby-pierwsze/'},
-      {t:'Dzielenie pisemne', pg:58, href:null},
-      {t:'Powtórzenie przed klasówką', pg:64, href:null, review:true}
+      {t:'Dzielenie pisemne', pg:58, href:'test-dzial-1/#t=pisemne', badge:'test'},
+      {t:'Powtórzenie przed klasówką — test całego działu (do druku lub na tablecie)', pg:64, href:'test-dzial-1/', review:true}
     ],
     ch2: [
       {t:'Płaszczyzna, proste i półproste', pg:72, href:null},
@@ -161,7 +162,7 @@
         '<span class="idx">'+(i+1)+'.</span>'+
         '<span class="t">'+item.t+'</span>'+
         '<span class="pg">'+pgLabel+'</span>'+
-        '<span class="badge '+(ready?'ready':'soon')+'">'+(ready?'gotowe':'wkrótce')+'</span>'+
+        '<span class="badge '+(item.badge ? item.badge : (ready?'ready':'soon'))+'">'+(item.badge ? item.badge : (ready?'gotowe':'wkrótce'))+'</span>'+
       '</'+tag+'>';
     }).join('');
   });
