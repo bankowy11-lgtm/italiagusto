@@ -56,6 +56,7 @@
   .topic .pg{ font-family:var(--mono); font-size:11px; color:var(--ink-soft); flex-shrink:0; }
   .topic .badge{ font-family:var(--mono); font-size:10px; font-weight:700; padding:3px 8px; border-radius:6px; flex-shrink:0; letter-spacing:.02em; }
   .topic .badge.ready{ background:var(--good-soft); color:var(--good); }
+  .topic .badge.test{ background:var(--accent-soft); color:var(--accent); }
   .topic .badge.soon{ background:var(--paper-2); color:var(--ink-soft); }
   .topic.disabled{ opacity:.62; cursor:default; }
   .topic.review{ font-style:italic; }
@@ -94,10 +95,10 @@
       {t:'Życie pierwszych ludzi', pg:8, href:'zycie-pierwszych-ludzi/'},
       {t:'Miasta-państwa Mezopotamii', pg:14, href:'miasta-panstwa-mezopotamii/'},
       {t:'W Egipcie faraonów', pg:20, href:'w-egipcie-faraonow/'},
-      {t:'W starożytnym Izraelu', pg:26, href:null},
-      {t:'Cywilizacje Indii i Chin', pg:30, href:null},
-      {t:'Od hieroglifów do alfabetu', pg:35, href:null},
-      {t:'Podsumowanie rozdziału I', pg:42, href:null, review:true}
+      {t:'W starożytnym Izraelu', pg:26, href:'test-rozdzial-1/#t=l4', badge:'test'},
+      {t:'Cywilizacje Indii i Chin', pg:30, href:'test-rozdzial-1/#t=l5', badge:'test'},
+      {t:'Od hieroglifów do alfabetu', pg:35, href:'test-rozdzial-1/#t=l6', badge:'test'},
+      {t:'Podsumowanie rozdziału I — test całego rozdziału (do druku lub na tablecie)', pg:42, href:'test-rozdzial-1/', review:true}
     ],
     ch2: [
       {t:'Demokratyczne Ateny', pg:44, href:null},
@@ -162,7 +163,7 @@
         '<span class="idx">'+(i+1)+'.</span>'+
         '<span class="t">'+item.t+'</span>'+
         '<span class="pg">str. '+item.pg+'</span>'+
-        '<span class="badge '+(ready?'ready':'soon')+'">'+(ready?'gotowe':'wkrótce')+'</span>'+
+        '<span class="badge '+(item.badge ? item.badge : (ready?'ready':'soon'))+'">'+(item.badge ? item.badge : (ready?'gotowe':'wkrótce'))+'</span>'+
       '</'+tag+'>';
     }).join('');
   });
