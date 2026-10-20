@@ -1,0 +1,188 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panel rodzica — Nauka</title>
+<meta name="theme-color" content="#dd5f2a">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="../shared/nauka.css">
+<script src="../shared/app.js"></script>
+
+<div class="topbar">
+  <a class="back" href="../nauka/">&#8592; Nauka</a>
+  <div class="app-name">Panel rodzica</div>
+</div>
+
+<div class="wrap">
+  <div class="hero">
+    <h1>Panel rodzica</h1>
+    <p>Jak idzie nauka: aktywność, wyniki z podziałem na przedmioty i tematy oraz kopia zapasowa. Dane są tylko na tym urządzeniu.</p>
+  </div>
+
+  <div class="tiles" id="tiles"></div>
+
+  <div class="card">
+    <h2>Aktywność <span class="tag">ostatnie 14 dni</span></h2>
+    <div class="chart" id="chart"></div>
+    <div class="chart-labels" id="chartLabels"></div>
+    <p class="soft" id="chartNote"></p>
+  </div>
+
+  <div class="card">
+    <h2>Przedmioty</h2>
+    <div id="subjects"></div>
+  </div>
+
+  <div class="card">
+    <h2>Wyniki według tematów</h2>
+    <div class="table-scroll"><table class="t" id="topicTable"></table></div>
+  </div>
+
+  <div class="card">
+    <h2>Błędy do powtórki</h2>
+    <div id="srBox"></div>
+    <div class="cta-row"><a class="btn small secondary" href="../powtorka/">Otwórz powtórkę błędów</a> <a class="btn small secondary" href="../plan/">Plan sprawdzianów</a></div>
+  </div>
+
+  <div class="card" id="offline">
+    <h2>Praca bez internetu</h2>
+    <p class="soft" id="offStatus">Sprawdzam…</p>
+    <div class="cta-row"><button class="btn small" id="btnOffline">Zapisz wszystko do pracy offline</button></div>
+    <p class="soft" id="offMsg" style="margin-top:8px"></p>
+  </div>
+
+  <div class="card">
+    <h2>Kopia zapasowa</h2>
+    <p class="soft">Kopia zawiera wyniki, historię podejść, błędy do powtórki i plan sprawdzianów. Przydaje się przy zmianie telefonu lub po wyczyszczeniu danych przeglądarki.</p>
+    <div class="btn-row" style="margin:10px 0">
+      <button class="btn small" id="btnExport">Pobierz kopię</button>
+    </div>
+    <label class="fld" for="fileImp">Wczytaj kopię z pliku</label>
+    <input type="file" id="fileImp" accept="application/json,.json">
+    <label class="fld" for="selMode">Sposób wczytania</label>
+    <select id="selMode"><option value="merge">Połącz z obecnymi danymi (zalecane)</option><option value="replace">Zastąp obecne dane</option></select>
+    <div class="cta-row"><button class="btn small secondary" id="btnImport">Wczytaj</button></div>
+    <div id="impMsg"></div>
+  </div>
+
+  <div class="card">
+    <h2>Usuń dane</h2>
+    <p class="soft">Usuwa wyniki, historię, błędy do powtórki i plan z tego urządzenia. Wcześniej warto pobrać kopię.</p>
+    <div class="cta-row"><button class="btn small danger" id="btnReset">Usuń wszystkie dane nauki</button></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var N = window.Nauka, U = N.util, DAY = N._DAY;
+  var $ = function(id){ return document.getElementById(id); };
+  var MON = ['sty','lut','mar','kwi','maj','cze','lip','sie','wrz','paź','lis','gru'];
+  function pctOf(a){ return N.stats.pct(a.sc, a.mx); }
+  function fmtTs(t){ var d = new Date(t); return d.getDate() + ' ' + MON[d.getMonth()]; }
+  function cls(p){ return p >= 85 ? 'good' : p >= 65 ? 'warn' : 'bad'; }
+
+  function render(){
+    var att = N.attempts(), now = Date.now();
+    var last30 = att.filter(function(a){ return now - a.t <= 30 * DAY; });
+    var days30 = {}; last30.forEach(function(a){ days30[U.dayKey(a.t)] = 1; });
+    var avg30 = last30.length ? Math.round(last30.reduce(function(s,a){ return s + pctOf(a); }, 0) / last30.length) : 0;
+    var sr = N.sr.all();
+    $('tiles').innerHTML =
+      '<div class="tile"><div class="v">' + N.stats.streak() + '</div><div class="k">dni nauki z rzędu</div></div>' +
+      '<div class="tile"><div class="v">' + Object.keys(days30).length + '</div><div class="k">dni z nauką (30 dni)</div></div>' +
+      '<div class="tile"><div class="v">' + last30.length + '</div><div class="k">podejść do testów (30 dni)</div></div>' +
+      '<div class="tile ' + (last30.length ? cls(avg30) : '') + '"><div class="v">' + (last30.length ? avg30 + '%' : '—') + '</div><div class="k">średni wynik (30 dni)</div></div>' +
+      '<div class="tile ' + (sr.length ? 'bad' : 'good') + '"><div class="v">' + sr.length + '</div><div class="k">błędów do opanowania</div></div>' +
+      '<div class="tile good"><div class="v">' + N.sr.mastered() + '</div><div class="k">opanowanych błędów</div></div>';
+
+    // chart 14 days
+    var cols = '', labs = '', counts = [], max = 1, i;
+    for (i = 13; i >= 0; i--){
+      var key = U.dayKey(now - i * DAY);
+      var c = att.filter(function(a){ return U.dayKey(a.t) === key; }).length;
+      counts.push({ key:key, c:c }); if (c > max) max = c;
+    }
+    counts.forEach(function(d){
+      var h = d.c ? Math.max(8, Math.round(d.c / max * 80)) : 2;
+      cols += '<div class="col" title="' + d.key + ': ' + d.c + '"><i class="' + (d.c ? '' : 'zero') + '" style="height:' + h + 'px"></i></div>';
+      labs += '<span>' + parseInt(d.key.slice(8), 10) + '</span>';
+    });
+    $('chart').innerHTML = cols; $('chartLabels').innerHTML = labs;
+    var total14 = counts.reduce(function(s,d){ return s + d.c; }, 0), active14 = counts.filter(function(d){ return d.c; }).length;
+    $('chartNote').textContent = total14 ? 'W ostatnich 14 dniach: ' + total14 + ' ' + U.plural(total14,'podejście','podejścia','podejść') + ' w ' + active14 + ' ' + U.plural(active14,'dniu','dniach','dniach') + '.' : 'W ostatnich 14 dniach nie było jeszcze żadnego podejścia do testu.';
+
+    // subjects
+    var stats = N.stats.byTopic(), html = '';
+    N.subjectOrder.forEach(function(s){
+      var topics = N.catalog.filter(function(c){ return c.s === s; });
+      var sat = att.filter(function(a){ return a.s === s; });
+      var avg = sat.length ? Math.round(sat.reduce(function(x,a){ return x + pctOf(a); }, 0) / sat.length) : 0;
+      var weak = topics.filter(function(t){ var st = stats[t.k]; if (!st) return false; var eff = Math.round((st.bestPct + (st.last == null ? st.bestPct : st.last)) / 2); return eff < 65; }).map(function(t){ return t.l; });
+      var untouched = topics.filter(function(t){ return !stats[t.k]; }).length;
+      var errs = sr.filter(function(x){ return x.s === s; }).length;
+      html += '<div class="row"><div class="grow"><div class="name">' + N.subjects[s].i + ' ' + N.subjects[s].l + '</div><div class="meta">' +
+        (sat.length ? sat.length + ' ' + U.plural(sat.length,'podejście','podejścia','podejść') + ' · ostatnio ' + fmtTs(sat[sat.length-1].t) : 'brak podejść') + ' · nieruszone tematy: ' + untouched + '/' + topics.length + (errs ? ' · błędów w banku: ' + errs : '') + '</div>' +
+        (weak.length ? '<div class="meta" style="color:var(--bad);font-weight:700">Do powtórki: ' + U.esc(weak.join(', ')) + '</div>' : '') +
+        (sat.length ? '<div class="bar ' + cls(avg) + '" style="margin-top:6px"><i style="width:' + avg + '%"></i></div>' : '') + '</div>' +
+        '<span class="pill ' + (sat.length ? cls(avg) : 'mute') + '">' + (sat.length ? avg + '%' : '—') + '</span></div>';
+    });
+    $('subjects').innerHTML = html;
+
+    // topic table
+    var rows = '<tr><th>Temat</th><th class="num">Podejść</th><th class="num">Ostatni</th><th class="num">Najlepszy</th></tr>';
+    N.subjectOrder.forEach(function(s){
+      N.catalog.filter(function(c){ return c.s === s; }).forEach(function(t){
+        var st = stats[t.k];
+        rows += '<tr><td>' + N.subjects[s].i + ' <a href="' + N.base + t.h + '" style="color:inherit">' + U.esc(t.l) + '</a></td><td class="num">' + (st ? st.n : 0) + '</td><td class="num">' + (st && st.last != null ? st.last + '%' : '—') + '</td><td class="num">' + (st && st.bestPct ? st.bestPct + '%' : '—') + '</td></tr>';
+      });
+    });
+    $('topicTable').innerHTML = rows;
+
+    // SR box
+    var due = N.sr.due();
+    $('srBox').innerHTML = sr.length
+      ? '<p>W banku: <b>' + sr.length + '</b> ' + U.plural(sr.length,'pytanie','pytania','pytań') + ', do powtórki teraz: <b>' + due.length + '</b>. Opanowane do tej pory: <b>' + N.sr.mastered() + '</b>.</p>'
+      : '<p class="soft">Brak błędów w banku — albo jeszcze nie było testów, albo wszystko poszło dobrze.</p>';
+  }
+
+  function renderOffline(){
+    N.offline.status().then(function(s){
+      if (!s.supported){ $('offStatus').textContent = 'Ta przeglądarka nie obsługuje trybu offline.'; $('btnOffline').hidden = true; return; }
+      $('offStatus').innerHTML = s.have >= s.total ? 'Gotowe: wszystkie strony (' + s.have + '/' + s.total + ') są zapisane i działają bez internetu.' : 'Zapisano ' + s.have + ' z ' + s.total + ' stron. Zapisz resztę, żeby uczyć się bez internetu.';
+    });
+  }
+  $('btnOffline').addEventListener('click', function(){
+    var b = $('btnOffline'); b.disabled = true;
+    N.offline.precache(function(done, total){ $('offMsg').textContent = 'Zapisuję… ' + done + '/' + total; }).then(function(r){
+      $('offMsg').textContent = r.fail ? 'Zapisano ' + r.done + ' stron, ' + r.fail + ' się nie udało (sprawdź połączenie).' : 'Gotowe — zapisano ' + r.done + ' stron.';
+      b.disabled = false; renderOffline();
+    }).catch(function(e){ $('offMsg').textContent = e.message; b.disabled = false; });
+  });
+
+  $('btnExport').addEventListener('click', function(){
+    var blob = new Blob([JSON.stringify(N.exportAll(), null, 1)], { type:'application/json' });
+    var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'nauka-kopia-' + U.todayKey() + '.json';
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){ URL.revokeObjectURL(a.href); }, 2000);
+  });
+  $('btnImport').addEventListener('click', function(){
+    var f = $('fileImp').files[0], box = $('impMsg');
+    if (!f){ box.innerHTML = '<div class="notice warn">Najpierw wybierz plik z kopią.</div>'; return; }
+    var mode = $('selMode').value;
+    if (mode === 'replace' && !window.confirm('Zastąpić obecne dane danymi z pliku?')) return;
+    var r = new FileReader();
+    r.onload = function(){
+      try{
+        var n = N.importAll(JSON.parse(r.result), mode);
+        box.innerHTML = '<div class="notice good">Wczytano kopię (' + n + ' ' + U.plural(n,'zbiór danych','zbiory danych','zbiorów danych') + ').</div>'; render();
+      }catch(e){ box.innerHTML = '<div class="notice bad">' + U.esc(e.message || 'Nie udało się wczytać pliku.') + '</div>'; }
+    };
+    r.onerror = function(){ box.innerHTML = '<div class="notice bad">Nie udało się odczytać pliku.</div>'; };
+    r.readAsText(f);
+  });
+  $('btnReset').addEventListener('click', function(){
+    var t = window.prompt('Aby usunąć wszystkie dane nauki z tego urządzenia, wpisz słowo USUŃ.');
+    if (t && t.trim().toUpperCase() === 'USUŃ'){ N.resetAll(); render(); }
+  });
+
+  render(); renderOffline();
+})();
+</script>

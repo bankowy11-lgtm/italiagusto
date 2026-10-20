@@ -75,6 +75,21 @@
   .progress-row .pr-bar{ flex:1; height:8px; background:var(--paper-2); border-radius:5px; overflow:hidden; }
   .progress-row .pr-fill{ height:100%; background:var(--accent); border-radius:5px; }
   .progress-row .pr-val{ font-family:var(--mono); font-size:11px; color:var(--ink-soft); width:52px; text-align:right; flex-shrink:0; }
+
+  .today{ display:flex; flex-direction:column; gap:10px; margin-bottom:22px; }
+  .tcard{ display:flex; align-items:center; gap:14px; background:var(--card); border:1px solid var(--card-edge); border-radius:14px; padding:14px 16px; text-decoration:none; color:var(--ink); }
+  a.tcard:active{ transform:scale(0.99); }
+  .tcard .t-ic{ font-size:22px; width:44px; height:44px; border-radius:12px; background:var(--accent-soft); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .tcard .t-body{ flex:1; min-width:0; }
+  .tcard .t-title{ font-weight:800; font-size:14.5px; }
+  .tcard .t-sub{ font-size:12.5px; color:var(--ink-soft); margin-top:2px; line-height:1.4; }
+  .tcard .t-go{ font-family:var(--mono); font-weight:800; color:var(--accent); font-size:18px; }
+  .tcard.alert{ border-color:var(--accent); }
+  .tcard.alert .t-sub{ color:var(--ink); }
+  .subject .s-title, .subject .s-desc, .tcard .t-title, .tcard .t-sub{ display:block; }
+  .today-links{ display:flex; gap:8px; flex-wrap:wrap; }
+  .today-links a, .today-links button{ flex:1; min-width:150px; font:inherit; font-size:12.5px; font-weight:700; color:var(--ink-soft); text-decoration:none; text-align:center; background:var(--card); border:1px solid var(--card-edge); border-radius:12px; padding:11px 10px; cursor:pointer; }
+  .today-links .ok{ color:var(--good); }
 </style>
 
 <div class="wrap">
@@ -83,6 +98,8 @@
     <h1>Nauka — Klasa 5</h1>
     <p>Jedno miejsce na naukę i testy ze wszystkich przedmiotów. Zaczynamy od matematyki — kolejne przedmioty będą dochodzić z czasem.</p>
   </div>
+
+  <div class="today" id="today"></div>
 
   <div class="progress-card" id="progressCard" hidden>
     <div class="progress-head">
@@ -106,6 +123,36 @@
   <p class="footnote">Strona rośnie sukcesywnie — nowe przedmioty pojawią się tutaj, gdy będą gotowe.</p>
 </div>
 
+<script src="../shared/app.js"></script>
+<script>
+(function(){
+  if (!window.Nauka) return;
+  var N = Nauka, U = N.util, el = document.getElementById('today'), h = '';
+  var due = N.sr.due().length, bank = N.sr.all().length;
+  if (due){
+    h += '<a class="tcard alert" href="../powtorka/"><span class="t-ic">&#128260;</span><span class="t-body"><span class="t-title">Powtórka błędów: ' + due + ' ' + U.plural(due,'pytanie','pytania','pytań') + ' czeka</span><span class="t-sub">Krótka seria pomaga zapamiętać to, w czym był błąd.</span></span><span class="t-go">&rarr;</span></a>';
+  } else if (bank){
+    h += '<a class="tcard" href="../powtorka/"><span class="t-ic">&#9989;</span><span class="t-body"><span class="t-title">Na dziś nic do powtórki</span><span class="t-sub">W banku błędów jest ' + bank + ' ' + U.plural(bank,'pytanie','pytania','pytań') + ' — wrócą w odpowiednim czasie.</span></span><span class="t-go">&rarr;</span></a>';
+  }
+  var up = N.plan.upcoming()[0];
+  if (up){
+    var subj = N.subjects[up.s], cd = N.plan.countdown(up.date);
+    h += '<a class="tcard' + (cd === 'dziś' || cd === 'jutro' ? ' alert' : '') + '" href="../plan/"><span class="t-ic">&#128197;</span><span class="t-body"><span class="t-title">Najbliższy sprawdzian: ' + (subj ? subj.l : '') + ' — ' + cd + '</span><span class="t-sub">' + U.esc(up.title || 'Sprawdzian') + ' · tematów: ' + up.topics.length + '. Zobacz, co jeszcze powtórzyć.</span></span><span class="t-go">&rarr;</span></a>';
+  } else {
+    h += '<a class="tcard" href="../plan/"><span class="t-ic">&#128197;</span><span class="t-body"><span class="t-title">Plan sprawdzianów</span><span class="t-sub">Wpisz datę kartkówki lub klasówki, a aplikacja podpowie, co powtórzyć.</span></span><span class="t-go">&rarr;</span></a>';
+  }
+  h += '<div class="today-links"><a href="../rodzic/">&#128106; Panel rodzica</a><a href="../powtorka/">&#128260; Powtórka błędów</a><span id="offChip" style="display:none"></span></div>';
+  el.innerHTML = h;
+  N.offline.status().then(function(s){
+    if (!s.supported) return;
+    var chip = document.createElement('a'); chip.href = '../rodzic/#offline';
+    if (s.have >= s.total){ chip.className = 'ok'; chip.innerHTML = '&#128246; Działa bez internetu &#10003;'; }
+    else { chip.innerHTML = '&#128246; Zapisz do pracy offline (' + s.have + '/' + s.total + ')'; }
+    var holder = document.getElementById('offChip'); holder.parentNode.replaceChild(chip, holder);
+  });
+  N.offline.auto();
+})();
+</script>
 <script>
 (function(){
   var subjects = [

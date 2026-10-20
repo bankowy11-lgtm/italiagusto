@@ -193,6 +193,7 @@
   </div>
 </div>
 
+<script src="../../shared/app.js" data-subj="matematyka" data-key="pierwsze_best_v1" data-label="Liczby pierwsze i złożone"></script>
 <script>
 (function(){
   "use strict";
@@ -305,6 +306,7 @@
       st.locked = true;
       var chosen = btn.dataset.v;
       var correct = chosen === st.current.answer;
+      if (window.Nauka) Nauka.answered({type:'mcq', q:'Czy liczba ' + st.current.n + ' jest pierwsza, czy złożona?', o:['Pierwsza','Złożona'], c:(st.current.answer === 'prime' ? 0 : 1), e:st.current.explain||''}, correct);
       var btns = choicesEl.querySelectorAll('.choice-btn');
       for (var i=0;i<btns.length;i++){
         btns[i].disabled = true;
@@ -325,6 +327,7 @@
     });
 
     function finish(){
+      if (window.Nauka) Nauka.attempt({score: st.score, max: st.total, level: st.level && st.level.key});
       playEl.hidden = true; resultsEl.hidden = false;
       progFill.style.width = '100%';
       var best = loadJSON(LS_BEST, {});

@@ -243,6 +243,7 @@
   </div>
 </div>
 
+<script src="../../shared/app.js" data-subj="matematyka" data-key="test_dzial1_best_v1" data-label="Test z działu I (liczby naturalne)"></script>
 <script>
 (function(){
   "use strict";
@@ -803,6 +804,7 @@
       t.parts.forEach(function(p,pi){
         var key = 't'+t.id+'-'+pi, val = a[key];
         var ok = isCorrect(p, val);
+        if (!silent && window.Nauka && (p.kind === 'num' || p.kind === 'roman')) Nauka.answered({type:(p.kind === 'num' ? 'num' : 'text'), q:((t.text ? t.text.replace(/<[^>]+>/g, '') + ' ' : '') + String(p.prompt || '').replace(/<[^>]+>/g, '')).trim(), hint:t.title.replace(/<[^>]+>/g, ''), suffix:'', answer:p.answer, e:p.explain||''}, ok);
         total++; if (ok) got++;
         if (!byTopic[t.topic]) byTopic[t.topic] = {c:0,t:0};
         byTopic[t.topic].t++; if (ok) byTopic[t.topic].c++;
@@ -827,6 +829,7 @@
     $('checkRow').hidden = true;
     renderSummary(got, total, byTopic);
     if (!silent){
+      if (window.Nauka) Nauka.attempt({score:got, max:total});
       var isFull = cur.topics.length === TOPICS.length;
       if (isFull){ var best = loadJSON(LS_BEST, 0); if (got > best) saveJSON(LS_BEST, got); }
       saveDraft();

@@ -1,0 +1,137 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan sprawdzianów — Nauka</title>
+<meta name="theme-color" content="#dd5f2a">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="../shared/nauka.css">
+<script src="../shared/app.js"></script>
+
+<div class="topbar">
+  <a class="back" href="../nauka/">&#8592; Nauka</a>
+  <div class="app-name">Plan sprawdzianów</div>
+</div>
+
+<div class="wrap">
+  <div class="hero">
+    <h1>Plan sprawdzianów</h1>
+    <p>Wpisz datę kartkówki lub klasówki i tematy. Aplikacja pokaże, ile dni zostało i które tematy trzeba jeszcze powtórzyć.</p>
+  </div>
+
+  <div id="upcoming"></div>
+
+  <div class="card">
+    <h2>Dodaj sprawdzian</h2>
+    <label class="fld" for="fDate">Data</label>
+    <input type="date" id="fDate">
+    <label class="fld" for="fSubj">Przedmiot</label>
+    <select id="fSubj"></select>
+    <label class="fld" for="fTitle">Nazwa (niewymagana)</label>
+    <input type="text" id="fTitle" maxlength="60" placeholder="np. Kartkówka z równań">
+    <label class="fld">Tematy ze sprawdzianu</label>
+    <div class="checks" id="fTopics"></div>
+    <p class="soft" id="fErr" style="color:var(--bad);font-weight:700;margin-top:10px" hidden></p>
+    <div class="cta-row"><button class="btn" id="btnAdd">Dodaj do planu</button></div>
+  </div>
+
+  <div class="card" id="pastCard" hidden>
+    <h2>Minione sprawdziany</h2>
+    <div id="past"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var N = window.Nauka, U = N.util;
+  var $ = function(id){ return document.getElementById(id); };
+  var MONTHS = ['sty','lut','mar','kwi','maj','cze','lip','sie','wrz','paź','lis','gru'];
+  var DAYS = ['nd','pn','wt','śr','czw','pt','sob'];
+  function fmtDate(key){ var d = new Date(key + 'T00:00:00'); return DAYS[d.getDay()] + ', ' + d.getDate() + ' ' + MONTHS[d.getMonth()]; }
+
+  function status(topicStat){
+    if (!topicStat || !topicStat.n && !topicStat.bestPct) return { cls:'mute', txt:'nie ćwiczone', pct:0, bar:'' };
+    var p = topicStat.bestPct;
+    var recent = topicStat.last == null ? p : topicStat.last;
+    var eff = Math.round((p + recent) / 2);
+    if (eff >= 85) return { cls:'good', txt:'opanowane', pct:eff, bar:'good' };
+    if (eff >= 65) return { cls:'warn', txt:'jeszcze poćwicz', pct:eff, bar:'warn' };
+    return { cls:'bad', txt:'do powtórki', pct:eff, bar:'bad' };
+  }
+
+  function examCard(ex, past){
+    var stats = N.stats.byTopic();
+    var topics = ex.topics.map(function(k){ return N.byKey[k]; }).filter(Boolean);
+    var sts = topics.map(function(t){ return status(stats[t.k]); });
+    var avg = sts.length ? Math.round(sts.reduce(function(a,s){ return a + s.pct; }, 0) / sts.length) : 0;
+    var weakest = null;
+    topics.forEach(function(t, i){ if (!weakest || sts[i].pct < weakest.s.pct) weakest = { t:t, s:sts[i] }; });
+    var errs = N.sr.all().filter(function(it){ return ex.topics.indexOf(it.k) !== -1; });
+    var errsDue = N.sr.due({ keys: ex.topics });
+    var subj = N.subjects[ex.s];
+    var h = '<div class="card"><h2>' + (subj ? subj.i + ' ' : '') + U.esc(ex.title || (subj ? subj.l : 'Sprawdzian')) +
+      '<span class="tag">' + fmtDate(ex.date) + ' · ' + (past ? 'minął' : N.plan.countdown(ex.date)) + '</span></h2>';
+    if (!past){
+      h += '<p class="soft" style="margin:6px 0 4px">Gotowość: <b style="color:var(--ink)">' + avg + '%</b></p><div class="bar ' + (avg >= 85 ? 'good' : avg >= 65 ? 'warn' : 'bad') + '"><i style="width:' + avg + '%"></i></div>';
+    }
+    h += '<div style="margin-top:8px">';
+    topics.forEach(function(t, i){
+      var s = sts[i];
+      h += '<div class="row"><div class="grow"><div class="name">' + U.esc(t.l) + '</div><div class="meta">' + (s.pct ? 'wynik ok. ' + s.pct + '%' : 'jeszcze nie rozwiązywany') + '</div></div><span class="pill ' + s.cls + '">' + s.txt + '</span>' + (past ? '' : '<a class="btn small secondary" href="' + N.base + t.h + '">Ćwicz</a>') + '</div>';
+    });
+    h += '</div>';
+    if (!past){
+      if (weakest && weakest.s.pct < 85){
+        h += '<div class="notice ' + (weakest.s.pct < 65 ? 'bad' : 'warn') + '">' + (weakest.s.pct ? 'Zacznij od: ' : 'Zacznij od tematu: ') + '<b>' + U.esc(weakest.t.l) + '</b>' + (weakest.s.pct ? ' (' + weakest.s.pct + '%)' : '') + '.</div>';
+      } else if (topics.length){
+        h += '<div class="notice good">Wszystkie tematy wyglądają dobrze. Wystarczy krótka powtórka przed sprawdzianem.</div>';
+      }
+      if (errs.length){
+        h += '<div class="notice warn">W banku błędów jest ' + errs.length + ' ' + U.plural(errs.length,'pytanie','pytania','pytań') + ' z tych tematów' + (errsDue.length ? ' (' + errsDue.length + ' do powtórki teraz)' : '') + '.</div>' +
+          '<div class="cta-row" style="margin-top:6px"><a class="btn small" href="' + N.base + 'powtorka/?k=' + ex.topics.join(',') + '">Powtórz błędy z tych tematów</a></div>';
+      }
+    }
+    h += '<div style="text-align:right;margin-top:10px"><button type="button" class="btn small danger" data-del="' + ex.id + '">Usuń</button></div></div>';
+    return h;
+  }
+
+  function render(){
+    var up = N.plan.upcoming(), all = N.plan.list(), t = U.todayKey();
+    var past = all.filter(function(e){ return e.date < t; }).reverse();
+    $('upcoming').innerHTML = up.length ? up.map(function(e){ return examCard(e, false); }).join('') : '<div class="card"><p class="soft center" style="text-align:center">Brak zaplanowanych sprawdzianów. Dodaj pierwszy poniżej.</p></div>';
+    $('pastCard').hidden = !past.length;
+    $('past').innerHTML = past.slice(0, 8).map(function(e){
+      var subj = N.subjects[e.s];
+      return '<div class="row"><div class="grow"><div class="name">' + (subj ? subj.i + ' ' : '') + U.esc(e.title || (subj ? subj.l : 'Sprawdzian')) + '</div><div class="meta">' + fmtDate(e.date) + ' · ' + e.topics.length + ' ' + U.plural(e.topics.length,'temat','tematy','tematów') + '</div></div><button type="button" class="btn small danger" data-del="' + e.id + '">Usuń</button></div>';
+    }).join('');
+  }
+
+  function renderTopics(){
+    var s = $('fSubj').value;
+    $('fTopics').innerHTML = N.catalog.filter(function(c){ return c.s === s; }).map(function(c){
+      return '<label><input type="checkbox" value="' + c.k + '"><span>' + U.esc(c.l) + '</span></label>';
+    }).join('');
+  }
+
+  $('fSubj').innerHTML = N.subjectOrder.map(function(s){ return '<option value="' + s + '">' + N.subjects[s].i + ' ' + N.subjects[s].l + '</option>'; }).join('');
+  $('fSubj').addEventListener('change', renderTopics);
+  $('fDate').min = U.todayKey();
+  (function(){ var d = new Date(Date.now() + 3 * 86400000); $('fDate').value = U.dayKey(d.getTime()); })();
+
+  $('btnAdd').addEventListener('click', function(){
+    var date = $('fDate').value, s = $('fSubj').value, title = $('fTitle').value.trim();
+    var topics = Array.prototype.map.call($('fTopics').querySelectorAll('input:checked'), function(i){ return i.value; });
+    var err = !date ? 'Wybierz datę sprawdzianu.' : date < U.todayKey() ? 'Data nie może być z przeszłości.' : !topics.length ? 'Zaznacz przynajmniej jeden temat.' : '';
+    $('fErr').hidden = !err; $('fErr').textContent = err;
+    if (err) return;
+    N.plan.add({ date: date, s: s, title: title, topics: topics });
+    $('fTitle').value = ''; renderTopics(); render();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  document.addEventListener('click', function(e){
+    var b = e.target.closest('[data-del]'); if (!b) return;
+    if (window.confirm('Usunąć ten sprawdzian z planu?')){ N.plan.remove(b.getAttribute('data-del')); render(); }
+  });
+
+  renderTopics(); render();
+})();
+</script>

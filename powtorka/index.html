@@ -1,0 +1,206 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Powtórka błędów — Nauka</title>
+<meta name="theme-color" content="#dd5f2a">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="../shared/nauka.css">
+<script src="../shared/app.js"></script>
+
+<div class="topbar">
+  <a class="back" href="../nauka/">&#8592; Nauka</a>
+  <div class="app-name">Powtórka błędów</div>
+</div>
+
+<div class="wrap">
+  <div id="viewIntro">
+    <div class="hero">
+      <h1>Powtórka błędów</h1>
+      <p>Pytania, w których zdarzył się błąd, wracają do Ciebie po 1, 3 i 7 dniach, aż je opanujesz. Cztery poprawne odpowiedzi z rzędu i pytanie znika z listy.</p>
+    </div>
+    <div class="tiles" id="tiles"></div>
+    <div class="card" id="filterCard">
+      <p class="sec-label">Przedmiot</p>
+      <div class="chips" id="subjChips"></div>
+      <label class="fld" for="selSize">Ile pytań w jednej serii?</label>
+      <select id="selSize"><option value="5">5</option><option value="10" selected>10</option><option value="20">20</option></select>
+      <p class="soft" id="filterNote" style="margin-top:10px"></p>
+    </div>
+    <div class="cta-row"><button class="btn" id="btnStart">Zacznij powtórkę</button></div>
+    <div id="emptyMsg"></div>
+    <div class="card" id="listCard" style="margin-top:18px" hidden>
+      <p class="sec-label">W banku błędów</p>
+      <div id="bankList"></div>
+    </div>
+  </div>
+
+  <div id="viewPlay" hidden>
+    <div class="progress"><i id="pFill"></i></div>
+    <div class="pstats">Pytanie <b id="pNum">1/10</b> · poprawne <b id="pOk">0</b></div>
+    <div class="card">
+      <div><span class="tag" id="qTag"></span> <a class="soft" id="qLink" href="#" style="margin-left:8px;font-size:12px">Zobacz lekcję</a></div>
+      <div class="q-hint" id="qHint" style="margin-top:10px"></div>
+      <div id="qBody"></div>
+      <div class="fb" id="fb" aria-live="polite"></div>
+      <div class="cta-row" id="nextRow" hidden><button class="btn" id="btnNext">Dalej →</button></div>
+    </div>
+  </div>
+
+  <div id="viewDone" hidden>
+    <div class="card center">
+      <p class="soft">Koniec serii</p>
+      <div class="big" id="doneScore">0/0</div>
+      <p id="doneMsg" style="font-weight:700"></p>
+      <p class="soft" id="doneNote"></p>
+      <div class="btn-row" style="margin-top:14px">
+        <button class="btn" id="btnMore">Kolejna seria</button>
+        <a class="btn secondary" href="../nauka/">Wróć do nauki</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var N = window.Nauka, U = N.util;
+  var $ = function(id){ return document.getElementById(id); };
+  function shuffle(a){ a = a.slice(); for (var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+
+  var params = new URLSearchParams(location.search);
+  var keyFilter = params.get('k') ? params.get('k').split(',').filter(Boolean) : null;
+  var subj = params.get('s') || '';
+  var st = { queue:[], idx:0, ok:0, first:0, mastered:0, locked:false };
+
+  function filterObj(){ var f = {}; if (keyFilter) f.keys = keyFilter; if (subj) f.subj = subj; return f; }
+  function inScope(it){ return (!keyFilter || keyFilter.indexOf(it.k) !== -1); }
+  function fmtDue(ts){
+    var n = U.daysBetween(U.todayKey(), U.dayKey(ts));
+    return n <= 0 ? 'dziś' : n === 1 ? 'jutro' : 'za ' + n + ' ' + U.plural(n,'dzień','dni','dni');
+  }
+
+  function renderIntro(){
+    var all = N.sr.all().filter(inScope);
+    var due = N.sr.due(filterObj());
+    var dueAllSubj = N.sr.due(keyFilter ? { keys:keyFilter } : {});
+    $('tiles').innerHTML =
+      '<div class="tile ' + (due.length ? 'bad' : 'good') + '"><div class="v">' + due.length + '</div><div class="k">do powtórki teraz</div></div>' +
+      '<div class="tile"><div class="v">' + all.length + '</div><div class="k">w banku błędów</div></div>' +
+      '<div class="tile good"><div class="v">' + N.sr.mastered() + '</div><div class="k">opanowanych</div></div>';
+    var chips = '<button type="button" class="chip' + (!subj ? ' on' : '') + '" data-s="">Wszystkie<span class="cnt">' + dueAllSubj.length + '</span></button>';
+    N.subjectOrder.forEach(function(s){
+      var c = dueAllSubj.filter(function(it){ return it.s === s; }).length;
+      var tot = all.filter(function(it){ return it.s === s; }).length;
+      if (!tot) return;
+      chips += '<button type="button" class="chip' + (subj === s ? ' on' : '') + '" data-s="' + s + '">' + N.subjects[s].i + ' ' + N.subjects[s].l + '<span class="cnt">' + c + '</span></button>';
+    });
+    $('subjChips').innerHTML = chips;
+    $('filterNote').textContent = keyFilter ? 'Pokazuję tylko błędy z wybranych tematów (np. z planu sprawdzianu).' : 'Liczba przy przedmiocie to pytania do powtórki teraz.';
+    $('btnStart').disabled = !due.length; $('btnStart').style.display = due.length ? '' : 'none';
+    var empty = '';
+    if (!all.length) empty = '<div class="notice good">Brak błędów do powtórki. Rozwiązuj testy w przedmiotach — pytania, w których się pomylisz, pojawią się tutaj.</div>';
+    else if (!due.length){
+      var nx = N.sr.all().filter(inScope).map(function(it){ return it.d; }).sort(function(a,b){ return a-b; })[0];
+      empty = '<div class="notice good">Nic do powtórki na teraz. Najbliższe pytanie wraca <b>' + (nx ? fmtDue(nx) : '') + '</b>.</div>';
+    }
+    $('emptyMsg').innerHTML = empty;
+    var list = N.sr.all().filter(inScope).sort(function(a,b){ return a.d - b.d; });
+    $('listCard').hidden = !list.length;
+    $('bankList').innerHTML = list.slice(0, 40).map(function(it){
+      var dueNow = it.d <= Date.now();
+      var qtxt = it.tp === 'mcq' ? it.q : (it.h ? it.h + ' ' : '') + it.q.replace(/<[^>]+>/g, '') + (it.sx ? ' ' + it.sx : '');
+      return '<div class="row"><div class="grow"><div class="name">' + U.esc(qtxt.length > 110 ? qtxt.slice(0,108) + '…' : qtxt) + '</div><div class="meta">' + N.subjects[it.s].i + ' ' + U.esc(it.l) + ' · błędów: ' + it.n + ' · opanowanie ' + it.b + '/4</div></div><span class="pill ' + (dueNow ? 'bad' : 'mute') + '">' + (dueNow ? 'teraz' : fmtDue(it.d)) + '</span></div>';
+    }).join('') + (list.length > 40 ? '<p class="soft">…i ' + (list.length - 40) + ' więcej.</p>' : '');
+  }
+  $('subjChips').addEventListener('click', function(e){
+    var b = e.target.closest('.chip'); if (!b) return; subj = b.getAttribute('data-s'); renderIntro();
+  });
+  $('btnStart').addEventListener('click', start);
+  $('btnMore').addEventListener('click', function(){ show('viewIntro'); renderIntro(); window.scrollTo(0,0); });
+
+  function show(id){ ['viewIntro','viewPlay','viewDone'].forEach(function(v){ $(v).hidden = v !== id; }); }
+
+  function start(){
+    var size = parseInt($('selSize').value, 10);
+    st.queue = N.sr.due(filterObj()).slice(0, size).map(function(it){ return { it:it, retry:false }; });
+    if (!st.queue.length) return;
+    st.idx = 0; st.ok = 0; st.first = 0; st.mastered = 0; st.total = st.queue.length;
+    show('viewPlay'); window.scrollTo(0,0); showQ();
+  }
+
+  function qHtml(it){ return it.html ? U.safeHtml(it.q) : U.esc(it.q); }
+
+  function showQ(){
+    var cur = st.queue[st.idx]; var it = cur.it; st.locked = false;
+    $('pNum').textContent = Math.min(st.idx + 1, st.queue.length) + '/' + st.queue.length;
+    $('pOk').textContent = st.ok;
+    $('pFill').style.width = (st.idx / st.queue.length * 100) + '%';
+    $('qTag').textContent = N.subjects[it.s].i + ' ' + it.l + (cur.retry ? ' · jeszcze raz' : '');
+    $('qLink').href = N.base + (N.byKey[it.k] ? N.byKey[it.k].h : 'nauka/');
+    $('qHint').textContent = it.tp === 'mcq' ? '' : (it.h || '');
+    $('fb').innerHTML = ''; $('nextRow').hidden = true;
+    var body = $('qBody');
+    if (it.tp === 'mcq'){
+      var order = shuffle(it.o.map(function(_, i){ return i; }));
+      body.innerHTML = '<div class="q-text">' + U.esc(it.q) + '</div><div class="opts">' + order.map(function(oi){ return '<button type="button" class="opt" data-i="' + oi + '">' + U.esc(it.o[oi]) + '</button>'; }).join('') + '</div>';
+      Array.prototype.forEach.call(body.querySelectorAll('.opt'), function(b){ b.addEventListener('click', function(){ answerMcq(parseInt(b.getAttribute('data-i'),10), b); }); });
+    } else {
+      body.innerHTML = '<div class="q-expr">' + qHtml(it) + (it.sx ? ' ' + U.esc(it.sx) : '') + '</div><div class="ans-row"><input id="numIn" type="text" autocomplete="off" ' + (it.tp === 'num' ? 'inputmode="numeric"' : 'autocapitalize="characters"') + ' aria-label="Odpowiedź"><button type="button" class="btn" id="btnCheck">Sprawdź</button></div>';
+      var inp = $('numIn'); inp.focus();
+      $('btnCheck').addEventListener('click', answerNum);
+      inp.addEventListener('keydown', function(e){ if (e.key === 'Enter') answerNum(); });
+    }
+  }
+
+  function afterAnswer(ok, extraHtml){
+    var cur = st.queue[st.idx], it = cur.it, res = '';
+    if (!cur.retry){
+      st.first++;
+      var r = N.sr.grade(it.id, ok);
+      if (ok){ st.ok++; if (r === 'mastered'){ st.mastered++; res = '<br>Opanowane — to pytanie znika z powtórek. 🎉'; } else res = '<br>Wróci za kilka dni.'; }
+      else { st.queue.push({ it: it, retry: true }); res = '<br>Zobaczysz je jeszcze raz na końcu serii.'; }
+    }
+    $('pOk').textContent = st.ok;
+    $('fb').innerHTML = '<div class="v ' + (ok ? 'good' : 'bad') + '">' + (ok ? 'Dobrze! ✓' : 'Niepoprawnie') + '</div>' + extraHtml + (it.e ? '<div>' + U.esc(it.e) + '</div>' : '') + '<div class="soft">' + res.replace(/^<br>/, '') + '</div>';
+    var last = st.idx === st.queue.length - 1;
+    $('btnNext').textContent = last ? 'Zobacz wynik' : 'Dalej →';
+    $('nextRow').hidden = false; $('btnNext').focus();
+  }
+
+  function answerMcq(chosen, btn){
+    if (st.locked) return; st.locked = true;
+    var it = st.queue[st.idx].it, ok = chosen === it.c;
+    Array.prototype.forEach.call($('qBody').querySelectorAll('.opt'), function(b){
+      var i = parseInt(b.getAttribute('data-i'), 10); b.disabled = true;
+      if (i === it.c) b.classList.add('correct'); else if (b === btn) b.classList.add('wrong');
+    });
+    afterAnswer(ok, ok ? '' : '<div>Poprawna odpowiedź: <b>' + U.esc(it.o[it.c]) + '</b></div>');
+  }
+  function answerNum(){
+    if (st.locked) return;
+    var it = st.queue[st.idx].it, inp = $('numIn'), raw = inp.value.trim();
+    if (!raw){ inp.focus(); return; }
+    st.locked = true;
+    var ok;
+    if (it.tp === 'num'){ var c = raw.replace(/[\s ]/g, ''); ok = /^-?\d+$/.test(c) && parseInt(c, 10) === Number(it.a); }
+    else ok = raw.toUpperCase() === String(it.a).toUpperCase();
+    inp.disabled = true; $('btnCheck').disabled = true; inp.classList.add(ok ? 'correct' : 'wrong');
+    afterAnswer(ok, ok ? '' : '<div>Poprawna odpowiedź: <b>' + U.esc(it.a) + '</b></div>');
+  }
+  $('btnNext').addEventListener('click', function(){
+    st.idx++;
+    if (st.idx < st.queue.length) showQ(); else finish();
+  });
+
+  function finish(){
+    show('viewDone'); window.scrollTo(0,0);
+    $('doneScore').textContent = st.ok + '/' + st.first;
+    var p = st.first ? st.ok / st.first : 0;
+    $('doneMsg').textContent = p >= 0.9 ? 'Świetnie — błędy naprawione! 🏆' : p >= 0.6 ? 'Dobrze, jeszcze trochę ćwiczeń.' : 'Te pytania wrócą — to normalne, tak się uczy.';
+    var left = N.sr.due(filterObj()).length;
+    $('doneNote').textContent = (st.mastered ? 'Opanowane w tej serii: ' + st.mastered + '. ' : '') + (left ? 'Do powtórki zostało jeszcze ' + left + ' ' + U.plural(left,'pytanie','pytania','pytań') + '.' : 'Na dziś nie ma już nic do powtórki.');
+    $('btnMore').textContent = left ? 'Kolejna seria' : 'Wróć do listy';
+  }
+
+  renderIntro();
+})();
+</script>

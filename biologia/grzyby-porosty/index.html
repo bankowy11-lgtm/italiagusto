@@ -203,6 +203,7 @@
   </div>
 </div>
 
+<script src="../../shared/app.js" data-subj="biologia" data-key="bio_grzyby_porosty_best_v1" data-label="Grzyby i porosty"></script>
 <script>
 (function(){
   "use strict";
@@ -288,6 +289,7 @@
     }
     function answer(isCorrect, btnEl, correctPos){
       if (st.locked) return; st.locked = true;
+      if (window.Nauka){ var qi = st.queue[st.idx]; Nauka.answered({type:'mcq', q:qi.q, o:qi.o, c:qi.c, e:qi.e||''}, isCorrect); }
       var btns = answersEl.querySelectorAll('.quiz-answer');
       for (var i=0;i<btns.length;i++) btns[i].disabled = true;
       if (btns[correctPos]) btns[correctPos].classList.add('correct');
@@ -300,6 +302,7 @@
       }, isCorrect ? 1100 : 1900);
     }
     function finish(){
+      if (window.Nauka) Nauka.attempt({score: st.score, max: st.queue.length});
       playEl.hidden = true; resultsEl.hidden = false;
       var best = loadJSON(LS_BEST, 0);
       var isNew = st.score > best;

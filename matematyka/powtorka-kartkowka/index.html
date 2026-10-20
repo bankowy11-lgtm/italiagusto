@@ -148,6 +148,7 @@
   </div>
 </div>
 
+<script src="../../shared/app.js" data-subj="matematyka" data-key="powtorka_kartkowka_best_v1" data-label="Powtórka przed kartkówką"></script>
 <script>
 (function(){
   "use strict";
@@ -304,6 +305,7 @@
     else correct = raw.toUpperCase() === item.answer;
     inputEl.disabled = true; submitBtn.disabled = true;
     inputEl.classList.add(correct ? 'correct' : 'wrong');
+    if (window.Nauka) Nauka.answered({type:(item.type === 'number' ? 'num' : 'text'), q:String(item.expr), hint:item.hint||'', suffix:'', answer:item.answer, e:item.explain||''}, correct);
     st.byTopic[item.topic].t++;
     if (correct){
       st.score++; st.byTopic[item.topic].c++;
@@ -321,6 +323,7 @@
   inputEl.addEventListener('keydown', function(e){ if (e.key === 'Enter') submit(); });
 
   function finish(){
+    if (window.Nauka) Nauka.attempt({score: st.score, max: st.queue.length});
     viewPlay.hidden = true; viewResults.hidden = false;
     var best = loadJSON(LS_BEST, 0);
     var isNew = st.score > best;

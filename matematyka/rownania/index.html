@@ -212,6 +212,7 @@
   </div>
 </div>
 
+<script src="../../shared/app.js" data-subj="matematyka" data-key="rownania_best_v1" data-label="Równania"></script>
 <script>
 (function(){
   "use strict";
@@ -316,6 +317,7 @@
       var correct = val === st.current.answer;
       inputEl.disabled = true; submitBtn.disabled = true;
       inputEl.classList.add(correct ? 'correct' : 'wrong');
+      if (window.Nauka) Nauka.answered({type:'num', q:String(st.current.expr), hint:st.current.hint||'', suffix:'', answer:st.current.answer, e:st.current.explain||'', html:/<sup>/.test(String(st.current.expr))}, correct);
       if (correct){
         st.score++;
         scoreText.textContent = st.score;
@@ -332,6 +334,7 @@
     inputEl.addEventListener('keydown', function(e){ if (e.key === 'Enter') submit(); });
 
     function finish(){
+      if (window.Nauka) Nauka.attempt({score: st.score, max: st.total, level: st.level && st.level.key});
       playEl.hidden = true; resultsEl.hidden = false;
       progFill.style.width = '100%';
       var best = loadJSON(LS_BEST, {});

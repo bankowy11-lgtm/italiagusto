@@ -273,6 +273,7 @@
   </div>
 </div>
 
+<script src="../../shared/app.js" data-subj="biologia" data-key="bio_budowa_komorek_best_v1" data-label="Budowa komórek — test"></script>
 <script>
 (function(){
   "use strict";
@@ -534,6 +535,7 @@
     var a = readAnswers(), got = 0, byTopic = {};
     cur.items.forEach(function(it,i){
       var ok = a.c[i] === it.c;
+      if (!silent && window.Nauka) Nauka.answered({type:'mcq', q:it.q, o:it.o, c:it.c, e:it.e||''}, ok);
       if (ok) got++;
       if (!byTopic[it.t]) byTopic[it.t] = {c:0,t:0};
       byTopic[it.t].t++; if (ok) byTopic[it.t].c++;
@@ -567,6 +569,7 @@
     var total = got + tGot, max = cur.items.length + tTotal;
     renderSummary(got, cur.items.length, tGot, tTotal, byTopic);
     if (!silent){
+      if (window.Nauka) Nauka.attempt({score:total, max:max});
       if (cur.topics.length === CELLS.length && cur.n === 20 && cur.withTable){ var best = loadJSON(LS_BEST, 0); if (total > best) saveJSON(LS_BEST, total); }
       saveDraft();
       $('summary').scrollIntoView({behavior:'smooth', block:'start'});
