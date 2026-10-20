@@ -225,16 +225,27 @@
   }
   function precache(progress){
     if (!('caches' in window)) return Promise.reject(new Error('Ta przeglądarka nie obsługuje trybu offline.'));
-    var list = urls(), done = 0, fail = 0;
+    var list = urls(), done = 0, finished = 0;
+    function fetchOne(c, u){
+      return fetch(u, { cache:'reload' }).then(function(res){
+        if (!res || !res.ok) return false;
+        return c.put(u, res).then(function(){ return true; });
+      }).catch(function(){ return false; });
+    }
     return caches.open(CACHE_NAME).then(function(c){
+      var failed = [];
       return list.reduce(function(p, u){
-        return p.then(function(){
-          return fetch(u, { cache:'reload' }).then(function(res){
-            if (res && res.ok) return c.put(u, res).then(function(){ done++; }); fail++;
-          }).catch(function(){ fail++; }).then(function(){ if (progress) progress(done + fail, list.length); });
-        });
-      }, Promise.resolve());
-    }).then(function(){ write(K_PRE, Date.now()); return { done:done, fail:fail, total:list.length }; });
+        return p.then(function(){ return fetchOne(c, u).then(function(ok){ finished++; if (ok) done++; else failed.push(u); if (progress) progress(finished, list.length); }); });
+      }, Promise.resolve()).then(function(){
+        return failed.reduce(function(p, u){
+          return p.then(function(){ return fetchOne(c, u).then(function(ok){ if (ok){ done++; } }); });
+        }, Promise.resolve());
+      });
+    }).then(function(){
+      var fail = list.length - done;
+      if (!fail) write(K_PRE, Date.now());
+      return { done:done, fail:fail, total:list.length };
+    });
   }
   function autoPrecache(){
     if (!('caches' in window) || !navigator.onLine) return;
