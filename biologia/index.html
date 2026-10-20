@@ -75,6 +75,7 @@
     <p>Tematy według spisu treści podręcznika „Puls życia". Gotowe tematy otwierasz od razu — reszta pojawia się w miarę jak przerabiacie kolejne rozdziały.</p>
   </div>
 
+  <div class="chapter" data-c="0"><div class="chapter__head"><span class="chapter__badge" style="background:var(--accent)">&#128221;</span><span class="chapter__title">Przygotowanie do sprawdzianu</span></div><div class="topic-list" id="ch0"></div></div>
   <div class="chapter" data-c="1"><div class="chapter__head"><span class="chapter__badge">I</span><span class="chapter__title">Biologia — nauka o życiu</span></div><div class="topic-list" id="ch1"></div></div>
   <div class="chapter" data-c="2"><div class="chapter__head"><span class="chapter__badge">II</span><span class="chapter__title">Budowa i czynności życiowe organizmów</span></div><div class="topic-list" id="ch2"></div></div>
   <div class="chapter" data-c="3"><div class="chapter__head"><span class="chapter__badge">III</span><span class="chapter__title">Wirusy, bakterie, protisty i grzyby</span></div><div class="topic-list" id="ch3"></div></div>
@@ -127,6 +128,20 @@
       {t:'Podsumowanie rozdziału V', pg:154, href:null, review:true}
     ]
   };
+  (function(){
+    var el = document.getElementById('ch0');
+    var list = [
+      {t:'Budowa komórki: zwierzęcej, roślinnej, grzybowej i bakteryjnej — test (do druku lub na tablecie)', pg:'29–38', href:'test-budowa-komorek/'}
+    ];
+    el.innerHTML = list.map(function(item, i){
+      return '<a class="topic" href="'+item.href+'">'+
+        '<span class="idx">'+(i+1)+'.</span>'+
+        '<span class="t">'+item.t+'</span>'+
+        '<span class="pg">str. '+item.pg+'</span>'+
+        '<span class="badge ready">gotowe</span>'+
+      '</a>';
+    }).join('');
+  })();
   Object.keys(chapters).forEach(function(key, ci){
     var el = document.getElementById(key);
     document.querySelector('.chapter[data-c="'+(ci+1)+'"] .chapter__badge').style.background = badgeColors[ci];
