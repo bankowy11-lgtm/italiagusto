@@ -1,0 +1,23 @@
+{
+  "id": "/italiagusto/nauka/",
+  "name": "Nauka — Klasa 5",
+  "short_name": "Nauka 5",
+  "description": "Nauka i testy dla klasy 5: matematyka, język polski, biologia, historia i geografia.",
+  "lang": "pl",
+  "start_url": "../nauka/?source=app",
+  "scope": "../",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#faf7f0",
+  "theme_color": "#dd5f2a",
+  "categories": ["education"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Powtórka błędów", "short_name": "Powtórka", "url": "../powtorka/", "icons": [ { "src": "icons/icon-96.png", "sizes": "96x96", "type": "image/png" } ] },
+    { "name": "Plan sprawdzianów", "short_name": "Plan", "url": "../plan/", "icons": [ { "src": "icons/icon-96.png", "sizes": "96x96", "type": "image/png" } ] }
+  ]
+}

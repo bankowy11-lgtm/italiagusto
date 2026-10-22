@@ -204,7 +204,7 @@
 
   /* ---------- tryb offline ---------- */
   function urls(){
-    var u = ['nauka/', 'powtorka/', 'plan/', 'rodzic/', 'shared/app.js', 'shared/nauka.css'];
+    var u = ['nauka/', 'powtorka/', 'plan/', 'rodzic/', 'shared/app.js', 'shared/nauka.css', 'shared/manifest.webmanifest', 'shared/icons/icon-192.png', 'shared/icons/icon-512.png', 'shared/icons/icon-maskable-512.png', 'shared/icons/icon-96.png'];
     SUBJECT_ORDER.forEach(function(s){ u.push(SUBJECTS[s].h); });
     CATALOG.forEach(function(c){ u.push(c.h); });
     u.push('stacja-gier/');
