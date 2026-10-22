@@ -1,0 +1,133 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zainstaluj aplikację — Nauka</title>
+<meta name="theme-color" content="#dd5f2a">
+<link rel="manifest" href="../shared/manifest.webmanifest">
+<link rel="stylesheet" href="../shared/nauka.css">
+<script src="../shared/app.js"></script>
+
+<div class="topbar">
+  <a class="back" href="../nauka/">&#8592; Nauka</a>
+  <div class="app-name">Zainstaluj aplikację</div>
+</div>
+
+<div class="wrap">
+  <div class="hero">
+    <h1>Zainstaluj „Nauka 5” na tablecie</h1>
+    <p>Ta strona sprawdza urządzenie i mówi, co jeszcze trzeba zrobić. Zainstalowana aplikacja ma własną ikonę i jest widoczna w Family Link jako osobna aplikacja.</p>
+  </div>
+
+  <div class="card center" id="installCard">
+    <div id="verdict" class="notice warn">Sprawdzam urządzenie…</div>
+    <div class="btn-row" style="margin-top:6px">
+      <button class="btn" id="btnInstall" hidden>Zainstaluj aplikację</button>
+    </div>
+    <p class="soft" id="installMsg" style="margin-top:10px"></p>
+  </div>
+
+  <div class="card">
+    <h2>Wynik sprawdzenia</h2>
+    <div id="checks"></div>
+  </div>
+
+  <div class="card">
+    <h2>Jeśli przycisk się nie pojawia</h2>
+    <p class="soft">Wykonaj po kolei, po każdym kroku odśwież tę stronę:</p>
+    <ol style="line-height:1.7;font-size:14px;padding-left:20px;margin:6px 0">
+      <li>Użyj przeglądarki <b>Chrome</b> (nie Samsung Internet, nie wbudowanej przeglądarki). Aktualizacja: Sklep Play → Chrome → Aktualizuj.</li>
+      <li>Wyłącz tryb <b>„Wersja na komputer”</b> w menu ⋮ i nie używaj trybu incognito.</li>
+      <li>Zaktualizuj <b>Usługi Google Play</b> i zaloguj się w Sklepie Play.</li>
+      <li>Zostaw tę stronę otwartą na 30 sekund, potem odśwież ją raz (potrzebny jest wczytany moduł offline).</li>
+      <li>W menu ⋮ poszukaj <b>„Zainstaluj aplikację”</b>. Opcja „Dodaj do ekranu głównego” tworzy tylko skrót, który Family Link nie widzi.</li>
+      <li>Na koncie dziecka Family Link może wymagać zatwierdzenia instalacji. Sprawdź powiadomienia na telefonie rodzica.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>Chrome pisze „aplikacja już zainstalowana”?</h2>
+    <p class="soft">To znaczy, że na tablecie jest już zainstalowana aplikacja z tego samego adresu. Może to być stara wersja „Nauka” albo aplikacja <b>Italia Gusto</b>, bo obie są pod jednym adresem strony.</p>
+    <ol style="line-height:1.7;font-size:14px;padding-left:20px;margin:6px 0">
+      <li>Przejrzyj listę aplikacji na tablecie (Ustawienia → Aplikacje) i poszukaj pozycji <b>„Nauka”</b>, <b>„Nauka 5”</b>, <b>„Nauka – Klasa 5”</b> lub <b>„Italia Gusto”</b>.</li>
+      <li>W pasku adresu Chrome wpisz <b>chrome://webapks</b> — pokaże wszystkie aplikacje zainstalowane z Chrome razem z adresem. Zapisz nazwy, które tam widzisz.</li>
+      <li>Jeśli jest tam stara „Nauka”: otwórz ją z ikony. To wystarczy, bo Family Link zobaczy ją pod jej nazwą. Jeśli jest stara i niepełna (bez ikony, inna nazwa), <b>odinstaluj ją</b> (przytrzymaj ikonę → Odinstaluj) i zainstaluj ponownie na tej stronie.</li>
+      <li>Jeśli „już zainstalowana” dotyczy aplikacji <b>Italia Gusto</b>, zostaw ją i napisz do mnie. Wtedy rozdzielę adresy obu aplikacji, żeby się nie zasłaniały.</li>
+    </ol>
+  </div>
+
+  <div class="card" id="afterCard" hidden>
+    <h2>Aplikacja jest już zainstalowana</h2>
+    <p>Otwierasz ją teraz jako aplikację, więc w Family Link szukaj pozycji <b>„Nauka 5”</b> w limitach aplikacji i ustaw dla niej brak limitu lub „Zawsze dozwolone”.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var $ = function(id){ return document.getElementById(id); };
+  var ua = navigator.userAgent || '';
+  var deferred = null;
+
+  window.addEventListener('beforeinstallprompt', function(e){ e.preventDefault(); deferred = e; run(); });
+  window.addEventListener('appinstalled', function(){ deferred = null; $('installMsg').textContent = 'Zainstalowano! Znajdź ikonę „Nauka 5” na ekranie głównym lub w liście aplikacji.'; $('btnInstall').hidden = true; run(); });
+
+  function row(ok, title, hint){
+    return '<div class="row"><div class="grow"><div class="name">' + title + '</div>' + (hint ? '<div class="meta">' + hint + '</div>' : '') + '</div><span class="pill ' + (ok === true ? 'good' : ok === false ? 'bad' : 'warn') + '">' + (ok === true ? 'OK' : ok === false ? 'problem' : 'sprawdź') + '</span></div>';
+  }
+
+  function check(){
+    var isAndroid = /Android/i.test(ua);
+    var samsung = /SamsungBrowser/i.test(ua);
+    var otherBrowser = /(EdgA|OPR\/|OPT\/|Firefox|FxiOS|DuckDuckGo|Vivaldi|UCBrowser)/i.test(ua);
+    var chrome = /Chrome\//.test(ua) && !samsung && !otherBrowser;
+    var desktopMode = !isAndroid && /Linux|X11/.test(ua) && (navigator.maxTouchPoints > 0);
+    var standalone = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
+    var link = document.querySelector('link[rel=manifest]');
+    var swSupported = 'serviceWorker' in navigator;
+    var controlled = swSupported && !!navigator.serviceWorker.controller;
+    return Promise.all([
+      link ? fetch(link.href).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; }) : Promise.resolve(null)
+    ]).then(function(res){
+      var m = res[0];
+      var icons = (m && m.icons) || [];
+      var has192 = icons.some(function(i){ return /192|512/.test(i.sizes); }), has512 = icons.some(function(i){ return /512/.test(i.sizes); });
+      return { isAndroid:isAndroid, samsung:samsung, chrome:chrome, desktopMode:desktopMode, standalone:standalone, secure:window.isSecureContext, sw:swSupported, controlled:controlled, manifest:!!m, icons:has192 && has512, prompt:!!deferred, otherBrowser:otherBrowser };
+    });
+  }
+
+  function run(){
+    check().then(function(c){
+      var h = '';
+      h += row(c.secure, 'Bezpieczne połączenie (https)', c.secure ? '' : 'Strona musi być otwarta przez https.');
+      h += row(c.isAndroid || c.desktopMode ? (c.isAndroid ? true : false) : null, 'System Android', c.isAndroid ? '' : (c.desktopMode ? 'Przeglądarka działa w trybie „Wersja na komputer” — wyłącz go w menu ⋮.' : 'Instalacja jako aplikacja z Family Link dotyczy tabletów i telefonów z Androidem.'));
+      h += row(c.chrome ? true : (c.samsung || c.otherBrowser ? false : null), 'Przeglądarka Chrome', c.samsung ? 'Używasz Samsung Internet. Otwórz ten adres w Chrome.' : c.otherBrowser ? 'Używasz innej przeglądarki niż Chrome. Otwórz ten adres w Chrome.' : (c.chrome ? '' : 'Nie rozpoznano przeglądarki. Użyj Chrome.'));
+      h += row(c.sw, 'Obsługa trybu offline', c.sw ? '' : 'Ta przeglądarka nie obsługuje modułu offline (service worker).');
+      h += row(c.controlled ? true : null, 'Moduł offline aktywny na tej stronie', c.controlled ? '' : 'Poczekaj chwilę i odśwież stronę jeden raz.');
+      h += row(c.manifest && c.icons, 'Plik aplikacji (manifest) i ikony', c.manifest ? (c.icons ? '' : 'Brakuje ikon 192 i 512 px.') : 'Nie udało się wczytać pliku manifestu.');
+      h += row(c.prompt ? true : (c.standalone ? true : null), c.standalone ? 'Uruchomiona jako aplikacja' : 'Przeglądarka oferuje instalację', c.standalone ? '' : (c.prompt ? 'Można zainstalować — użyj przycisku powyżej.' : 'Jeszcze nie zgłosiła gotowości. Wykonaj kroki z listy poniżej i odśwież.'));
+      $('checks').innerHTML = h;
+      $('afterCard').hidden = !c.standalone;
+      $('btnInstall').hidden = !c.prompt || c.standalone;
+      var v = $('verdict');
+      if (c.standalone){ v.className = 'notice good'; v.textContent = 'Aplikacja jest już zainstalowana i uruchomiona jako aplikacja.'; }
+      else if (c.prompt){ v.className = 'notice good'; v.textContent = 'Wszystko gotowe. Naciśnij przycisk, aby zainstalować aplikację.'; }
+      else if (!c.chrome && (c.samsung || c.otherBrowser)){ v.className = 'notice bad'; v.textContent = 'Otwórz ten adres w przeglądarce Chrome — w tej instalacja jako aplikacja nie zadziała.'; }
+      else if (c.desktopMode){ v.className = 'notice bad'; v.textContent = 'Wyłącz tryb „Wersja na komputer” w menu ⋮ i odśwież stronę.'; }
+      else if (!c.controlled){ v.className = 'notice warn'; v.textContent = 'Poczekaj kilkanaście sekund i odśwież stronę — przeglądarka przygotowuje aplikację.'; }
+      else { v.className = 'notice warn'; v.textContent = 'Przeglądarka jeszcze nie pokazuje instalacji. Wykonaj kroki z listy poniżej, a potem odśwież stronę.'; }
+    });
+  }
+
+  $('btnInstall').addEventListener('click', function(){
+    if (!deferred) return;
+    deferred.prompt();
+    deferred.userChoice.then(function(r){
+      $('installMsg').textContent = r.outcome === 'accepted' ? 'Instalacja rozpoczęta. Za chwilę ikona „Nauka 5” pojawi się na ekranie głównym.' : 'Instalację anulowano. Możesz spróbować ponownie.';
+      deferred = null; run();
+    });
+  });
+
+  run();
+  // the browser may announce readiness a few seconds after load
+  setTimeout(run, 4000); setTimeout(run, 12000);
+})();
+</script>

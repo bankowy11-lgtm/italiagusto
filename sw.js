@@ -4,7 +4,7 @@ const ASSETS = ['./', './index.html'];
 
 // Aplikacja do nauki (Klasa 5) — osobna pamięć i strategia „najpierw sieć, w razie braku internetu pamięć”.
 const NAUKA_CACHE = 'nauka-v1';
-const NAUKA_PATHS = ['nauka/', 'matematyka/', 'historia/', 'biologia/', 'jezyk-polski/', 'geografia/', 'powtorka/', 'plan/', 'rodzic/', 'shared/', 'stacja-gier/', 'potegowanie/'];
+const NAUKA_PATHS = ['nauka/', 'matematyka/', 'historia/', 'biologia/', 'jezyk-polski/', 'geografia/', 'powtorka/', 'plan/', 'rodzic/', 'instaluj/', 'shared/', 'stacja-gier/', 'potegowanie/'];
 const NETWORK_TIMEOUT = 4000;
 
 self.addEventListener('install', e => {

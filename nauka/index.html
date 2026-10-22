@@ -142,6 +142,8 @@
     h += '<a class="tcard" href="../plan/"><span class="t-ic">&#128197;</span><span class="t-body"><span class="t-title">Plan sprawdzianów</span><span class="t-sub">Wpisz datę kartkówki lub klasówki, a aplikacja podpowie, co powtórzyć.</span></span><span class="t-go">&rarr;</span></a>';
   }
   h += '<div class="today-links"><a href="../rodzic/">&#128106; Panel rodzica</a><a href="../powtorka/">&#128260; Powtórka błędów</a><span id="offChip" style="display:none"></span></div>';
+  var installed = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
+  if (!installed) h += '<div class="today-links" style="margin-top:8px"><a href="../instaluj/">&#128242; Zainstaluj jako aplikację (Family Link)</a></div>';
   el.innerHTML = h;
   N.offline.status().then(function(s){
     if (!s.supported) return;
