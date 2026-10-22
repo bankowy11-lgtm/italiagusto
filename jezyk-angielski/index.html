@@ -1,0 +1,112 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Język angielski — Klasa 5</title>
+<meta name="theme-color" content="#2f6fb5">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Angielski 5">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMDAiIGZpbGw9IiMyZjZmYjUiLz4KPHRleHQgeD0iMjU2IiB5PSIzNDAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIyMzAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNlYWYyZmMiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkVuPC90ZXh0Pgo8L3N2Zz4K">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMDAiIGZpbGw9IiMyZjZmYjUiLz4KPHRleHQgeD0iMjU2IiB5PSIzNDAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIyMzAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNlYWYyZmMiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkVuPC90ZXh0Pgo8L3N2Zz4K">
+<style>
+  :root{
+    --paper:#f5f8fc; --paper-2:#e9eff7; --grid-line: rgba(47,111,181,0.09);
+    --ink:#1c2430; --ink-soft:#5a6778; --card:#ffffff; --card-edge: rgba(28,36,48,0.11);
+    --accent:#2f6fb5; --accent-ink:#ffffff; --accent-soft:#dde9f7;
+    --good:#2f9e6e; --good-soft:#e1f5ec;
+    --sans: -apple-system, "Segoe UI", system-ui, Roboto, sans-serif;
+    --mono: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#10161f; --paper-2:#161e29; --grid-line: rgba(120,170,230,0.09);
+      --ink:#e6ecf4; --ink-soft:#98a6b8; --card:#1a2330; --card-edge: rgba(255,255,255,0.08);
+      --accent:#6aa8ef; --accent-ink:#08121d; --accent-soft:#1d3250;
+      --good:#4fc98d; --good-soft:#173226;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#10161f; --paper-2:#161e29; --grid-line: rgba(120,170,230,0.09);
+    --ink:#e6ecf4; --ink-soft:#98a6b8; --card:#1a2330; --card-edge: rgba(255,255,255,0.08);
+    --accent:#6aa8ef; --accent-ink:#08121d; --accent-soft:#1d3250;
+    --good:#4fc98d; --good-soft:#173226;
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0;
+    background: linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0/32px 32px, linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0/32px 32px, var(--paper);
+    color:var(--ink); font-family:var(--sans); min-height:100vh;
+  }
+  .top-nav{ display:flex; margin-bottom:4px; max-width:680px; margin-left:auto; margin-right:auto; padding-top:28px; }
+  .top-nav a{ display:inline-flex; align-items:center; gap:5px; color:var(--ink-soft); text-decoration:none; font-size:12.5px; font-weight:600; padding:6px 18px; }
+  .wrap{ max-width:680px; margin:0 auto; padding:2px 16px 60px; }
+  .hero{ text-align:center; padding: 10px 0 30px; }
+  .hero .eyebrow{ font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); font-weight:700; }
+  .hero h1{ font-size:clamp(26px,7vw,34px); margin:8px 0 8px; font-weight:800; text-wrap:balance; }
+  .hero p{ color:var(--ink-soft); font-size:14.5px; max-width:44ch; margin:0 auto; line-height:1.55; }
+
+  .chapter{ margin-bottom:28px; }
+  .chapter__head{ display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+  .chapter__badge{ width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-family:var(--mono); font-size:16px; color:#fff; background:var(--accent); flex-shrink:0; }
+  .chapter__title{ font-size:18px; font-weight:800; }
+
+  .topic-list{ display:flex; flex-direction:column; gap:7px; }
+  .topic{ display:flex; align-items:center; gap:12px; background:var(--card); border:1px solid var(--card-edge); border-radius:10px; padding:11px 14px; text-decoration:none; color:var(--ink); }
+  a.topic:active{ transform:scale(0.99); }
+  .topic .idx{ font-family:var(--mono); font-size:12px; color:var(--ink-soft); width:20px; flex-shrink:0; }
+  .topic .t{ flex:1; font-size:14px; font-weight:600; }
+  .topic .pg{ font-family:var(--mono); font-size:11px; color:var(--ink-soft); flex-shrink:0; }
+  .topic .badge{ font-family:var(--mono); font-size:10px; font-weight:700; padding:3px 8px; border-radius:6px; flex-shrink:0; letter-spacing:.02em; }
+  .topic .badge.ready{ background:var(--good-soft); color:var(--good); }
+
+  .progress-note{ text-align:center; font-size:12.5px; color:var(--ink-soft); margin: 30px 0 0; line-height:1.6; }
+  .topic.disabled{ opacity:.55; }
+  .topic .badge.soon{ background:var(--paper-2); color:var(--ink-soft); }
+</style>
+
+<div class="top-nav"><a href="../nauka/">&#8592; Nauka — Klasa 5</a></div>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="eyebrow">Klasa 5</div>
+    <h1>Język angielski — nauka i testy</h1>
+    <p>Tematy według spisu treści podręcznika. Gotowe testy otwierasz od razu — kolejne unity pojawią się przed kolejnymi sprawdzianami.</p>
+  </div>
+
+  <div class="chapter"><div class="chapter__head"><span class="chapter__badge">0</span><span class="chapter__title">Welcome</span></div><div class="topic-list" id="ch0"></div></div>
+  <div class="chapter"><div class="chapter__head"><span class="chapter__badge">1</span><span class="chapter__title">Unit 1 — One big family</span></div><div class="topic-list" id="ch1"></div></div>
+  <div class="chapter"><div class="chapter__head"><span class="chapter__badge">2</span><span class="chapter__title">Unit 2 — What’s your job?</span></div><div class="topic-list" id="ch2"></div></div>
+  <div class="chapter"><div class="chapter__head"><span class="chapter__badge">3</span><span class="chapter__title">Unit 3 — Where I live</span></div><div class="topic-list" id="ch3"></div></div>
+  <div class="chapter"><div class="chapter__head"><span class="chapter__badge">4</span><span class="chapter__title">Unit 4 — Be active!</span></div><div class="topic-list" id="ch4"></div></div>
+  <div class="chapter"><div class="chapter__head"><span class="chapter__badge">5</span><span class="chapter__title">Unit 5 — The animal world</span></div><div class="topic-list" id="ch5"></div></div>
+  <div class="chapter"><div class="chapter__head"><span class="chapter__badge">6</span><span class="chapter__title">Unit 6 — I love sport!</span></div><div class="topic-list" id="ch6"></div></div>
+  <div class="chapter"><div class="chapter__head"><span class="chapter__badge">7</span><span class="chapter__title">Unit 7 — Let’s go on holiday!</span></div><div class="topic-list" id="ch7"></div></div>
+  <div class="chapter"><div class="chapter__head"><span class="chapter__badge">8</span><span class="chapter__title">Unit 8 — What’s cooking?</span></div><div class="topic-list" id="ch8"></div></div>
+
+  <p class="progress-note">Kolejne unity pojawią się tu przed sprawdzianami. Wyślij zdjęcia stron z książki, a test będzie dopasowany do Waszego zakresu.</p>
+</div>
+
+<link rel="manifest" href="../shared/manifest.webmanifest">
+<script src="../shared/app.js"></script>
+<script>
+(function(){
+  var units = {
+    ch0: [{t:'Welcome: kraje, narodowości, pokoje, there is / there are, have got', pg:4, href:null}],
+    ch1: [{t:'Test: rodzina, wygląd i charakter, like, What … like?, przedstawianie się, czytanie i słuchanie', pg:8, href:'unit-1-one-big-family/'}],
+    ch2: [{t:'Jobs, places of work, Present simple', pg:22, href:null}],
+    ch3: [{t:'Shops, quantities, want / want to, possessive pronouns', pg:36, href:null}],
+    ch4: [{t:'Free-time activities, holiday clubs, Present continuous', pg:50, href:null}],
+    ch5: [{t:'Animal features, comparatives, superlatives', pg:64, href:null}],
+    ch6: [{t:'Winter and water sports, sports equipment, adverbs, Past simple: be', pg:78, href:null}],
+    ch7: [{t:'Holiday places, clothes for a school trip, Past simple', pg:92, href:null}],
+    ch8: [{t:'Special meals, cooking phrases, going to, imperatives', pg:106, href:null}]
+  };
+  Object.keys(units).forEach(function(id){
+    document.getElementById(id).innerHTML = units[id].map(function(item, i){
+      var ready = !!item.href, tag = ready ? 'a' : 'div';
+      return '<'+tag+' class="topic'+(ready?'':' disabled')+'"'+(ready ? ' href="'+item.href+'"' : '')+'>'+
+        '<span class="idx">'+(i+1)+'.</span><span class="t">'+item.t+'</span><span class="pg">str. '+item.pg+'</span>'+
+        '<span class="badge '+(ready?'ready':'soon')+'">'+(ready?'gotowe':'wkrótce')+'</span></'+tag+'>';
+    }).join('');
+  });
+})();
+</script>

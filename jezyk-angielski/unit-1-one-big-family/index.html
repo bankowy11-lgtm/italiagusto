@@ -1,0 +1,588 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unit 1: One big family — Angielski</title>
+<meta name="theme-color" content="#2f6fb5">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Angielski: Unit 1">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMDAiIGZpbGw9IiMyZjZmYjUiLz4KPHRleHQgeD0iMjU2IiB5PSIzNDAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIyMzAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNlYWYyZmMiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkVuPC90ZXh0Pgo8L3N2Zz4K">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMDAiIGZpbGw9IiMyZjZmYjUiLz4KPHRleHQgeD0iMjU2IiB5PSIzNDAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIyMzAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNlYWYyZmMiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkVuPC90ZXh0Pgo8L3N2Zz4K">
+<style>
+  :root{
+    --paper:#f5f8fc; --paper-2:#e9eff7; --grid-line: rgba(47,111,181,0.09);
+    --ink:#1c2430; --ink-soft:#5a6778; --card:#ffffff; --card-edge: rgba(28,36,48,0.11);
+    --accent:#2f6fb5; --accent-ink:#ffffff; --accent-soft:#dde9f7;
+    --good:#2f9e6e; --good-soft:#e1f5ec; --bad:#c0483f; --bad-soft:#f8e2df;
+    --sans: -apple-system, "Segoe UI", system-ui, Roboto, sans-serif;
+    --mono: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#10161f; --paper-2:#161e29; --grid-line: rgba(120,170,230,0.09);
+      --ink:#e6ecf4; --ink-soft:#98a6b8; --card:#1a2330; --card-edge: rgba(255,255,255,0.08);
+      --accent:#6aa8ef; --accent-ink:#08121d; --accent-soft:#1d3250;
+      --good:#4fc98d; --good-soft:#173226; --bad:#e07a6f; --bad-soft:#3a201c;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#10161f; --paper-2:#161e29; --grid-line: rgba(120,170,230,0.09);
+    --ink:#e6ecf4; --ink-soft:#98a6b8; --card:#1a2330; --card-edge: rgba(255,255,255,0.08);
+    --accent:#6aa8ef; --accent-ink:#08121d; --accent-soft:#1d3250;
+    --good:#4fc98d; --good-soft:#173226; --bad:#e07a6f; --bad-soft:#3a201c;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background: linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0/32px 32px, linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0/32px 32px, var(--paper);
+    color: var(--ink); font-family: var(--sans); min-height:100vh; -webkit-text-size-adjust: 100%;
+  }
+  *:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  h1,h2{ text-wrap:balance; }
+  [hidden]{ display:none !important; }
+
+  .topbar{ position:sticky; top:0; z-index:20; display:flex; align-items:center; gap:10px; padding:10px 16px; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--card-edge); }
+  .topbar a.back{ color:var(--ink-soft); text-decoration:none; font-size:13px; font-weight:600; display:flex; align-items:center; gap:4px; }
+  .app-name{ font-weight:800; font-size:15px; margin-left:8px; }
+
+  .wrap{ max-width:820px; margin:0 auto; padding: 22px 16px 70px; }
+  .hero{ text-align:center; padding: 14px 0 22px; }
+  .hero h1{ font-size:clamp(24px,6vw,30px); margin:0 0 8px; font-weight:800; }
+  .hero p{ color:var(--ink-soft); font-size:14.5px; max-width:56ch; margin:0 auto; line-height:1.55; }
+
+  .card{ background:var(--card); border:1px solid var(--card-edge); border-radius:14px; padding:20px; margin-bottom:16px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+  .cta-row{ text-align:center; margin-top:14px; }
+  .btn{ font:inherit; font-weight:700; font-size:14.5px; color:var(--accent-ink); background:var(--accent); border:none; border-radius:10px; padding:13px 24px; cursor:pointer; min-height:46px; box-shadow: 0 4px 0 0 color-mix(in srgb, var(--accent) 65%, black); }
+  .btn:active{ transform:translateY(3px); box-shadow:0 1px 0 0 color-mix(in srgb, var(--accent) 65%, black); }
+  .btn.secondary{ background:var(--paper-2); color:var(--ink); box-shadow:none; border:1px solid var(--card-edge); }
+  .btn.secondary:active{ transform:translateY(2px); }
+  .btn.small{ font-size:13px; padding:9px 14px; min-height:40px; }
+  .btn-row{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+
+  .intro-label{ font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 10px; }
+  .tchips{ display:flex; flex-wrap:wrap; gap:8px; }
+  .tchip{ font:inherit; font-size:13px; font-weight:700; border-radius:22px; padding:10px 15px; min-height:42px; cursor:pointer; border:2px solid var(--card-edge); background:var(--paper-2); color:var(--ink-soft); text-align:left; }
+  .tchip.on{ background:var(--accent-soft); color:var(--accent); border-color:var(--accent); }
+  .tchip .tp{ font-family:var(--mono); font-size:11px; opacity:.75; margin-left:6px; }
+  .intro-row{ display:flex; flex-wrap:wrap; gap:16px; align-items:center; margin-top:16px; }
+  .intro-row label{ font-size:13.5px; font-weight:600; display:flex; align-items:center; gap:8px; }
+  .intro-row select{ font:inherit; font-size:14px; padding:8px 10px; border-radius:8px; border:2px solid var(--card-edge); background:var(--paper-2); color:var(--ink); min-height:40px; }
+  .intro-row input[type=checkbox]{ width:20px; height:20px; accent-color:var(--accent); }
+  .intro-sum{ margin-top:14px; font-family:var(--mono); font-size:12.5px; color:var(--ink-soft); }
+  .intro-sum b{ color:var(--ink); }
+  .feature-list{ margin:0; padding-left:18px; font-size:13.5px; line-height:1.7; color:var(--ink-soft); }
+  .footnote{ font-size:12px; color:var(--ink-soft); line-height:1.5; margin:12px 0 0; }
+
+  .toolbar{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:14px; }
+  .toolbar .sp{ flex:1; }
+  .variant{ font-family:var(--mono); font-size:12px; color:var(--ink-soft); }
+
+  .sheet-head{ margin-bottom:14px; }
+  .sheet-head h2{ margin:0 0 4px; font-size:22px; }
+  .sheet-head .sub{ font-size:13px; color:var(--ink-soft); }
+  .print-head{ display:none; }
+  .instr{ font-size:13px; color:var(--ink-soft); margin:0 0 12px; }
+  .sec-title{ font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); margin:20px 0 10px; }
+
+  .q{ background:var(--card); border:1px solid var(--card-edge); border-radius:14px; padding:16px 18px 18px; margin-bottom:12px; }
+  .q-head{ display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; }
+  .q-num{ flex-shrink:0; width:30px; height:30px; border-radius:50%; background:var(--accent); color:var(--accent-ink); font-family:var(--mono); font-weight:800; font-size:14px; display:flex; align-items:center; justify-content:center; margin-top:-2px; }
+  .q-text{ flex:1; font-weight:700; font-size:15px; line-height:1.45; }
+  .q-tag{ font-family:var(--mono); font-size:10px; font-weight:700; color:var(--accent); background:var(--accent-soft); padding:3px 8px; border-radius:6px; white-space:nowrap; flex-shrink:0; max-width:150px; overflow:hidden; text-overflow:ellipsis; }
+  .opts{ display:grid; gap:8px; margin-left:42px; }
+  .opt{ display:flex; gap:10px; align-items:flex-start; text-align:left; font:inherit; font-size:14px; line-height:1.4; color:var(--ink); background:var(--paper-2); border:2px solid var(--card-edge); border-radius:10px; padding:11px 13px; min-height:46px; cursor:pointer; }
+  .opt .ol{ font-family:var(--mono); font-weight:800; color:var(--ink-soft); flex-shrink:0; width:18px; }
+  .opt[aria-pressed="true"]{ background:var(--accent-soft); border-color:var(--accent); }
+  .opt[aria-pressed="true"] .ol{ color:var(--accent); }
+  .q.checked .opt{ pointer-events:none; }
+  .opt.correct{ background:var(--good-soft) !important; border-color:var(--good) !important; color:var(--good); }
+  .opt.correct .ol{ color:var(--good) !important; }
+  .opt.wrong{ background:var(--bad-soft) !important; border-color:var(--bad) !important; color:var(--bad); }
+  .opt.wrong .ol{ color:var(--bad) !important; }
+  .q-res{ margin:10px 0 0 42px; font-size:13px; line-height:1.5; color:var(--ink-soft); }
+  .q-res b.good{ color:var(--good); } .q-res b.bad{ color:var(--bad); }
+
+  textarea.oa{ display:block; width:calc(100% - 42px); margin-left:42px; font:inherit; font-size:14.5px; line-height:1.5; padding:11px 13px; min-height:90px; border-radius:10px; border:2px solid var(--card-edge); background:var(--paper-2); color:var(--ink); resize:vertical; }
+  textarea.oa:focus{ border-color:var(--accent); outline:none; }
+  .model-btn{ margin:10px 0 0 42px; }
+  .model{ margin:10px 0 0 42px; padding:12px 14px; border-radius:10px; background:var(--good-soft); color:var(--ink); font-size:13.5px; line-height:1.55; border-left:4px solid var(--good); }
+  .model b{ color:var(--good); }
+  .print-only{ display:none; }
+
+  .summary{ text-align:center; }
+  .summary .sc{ font-family:var(--mono); font-weight:800; font-size:44px; color:var(--accent); margin:4px 0 2px; }
+  .summary .sub{ color:var(--ink-soft); font-size:13.5px; margin-bottom:10px; }
+  .summary .msg{ font-weight:700; font-size:16px; margin-bottom:14px; }
+  .breakdown{ display:flex; flex-direction:column; gap:8px; margin:16px 0; text-align:left; }
+  .breakdown-row{ display:flex; align-items:center; gap:10px; }
+  .breakdown-row .bl{ font-size:12.5px; font-weight:600; width:190px; flex-shrink:0; }
+  .breakdown-row .bt{ flex:1; height:8px; background:var(--paper-2); border-radius:5px; overflow:hidden; }
+  .breakdown-row .bf{ display:block; height:100%; background:var(--accent); border-radius:5px; }
+  .breakdown-row .bv{ font-family:var(--mono); font-size:11.5px; color:var(--ink-soft); width:44px; text-align:right; flex-shrink:0; }
+  .weak{ font-size:13px; color:var(--ink-soft); margin-bottom:14px; line-height:1.5; }
+
+  .key-sheet{ display:none; }
+  @media screen{ .key-sheet.show{ display:block; } }
+  .key-sheet h2{ margin:0 0 10px; font-size:19px; }
+  .key-row{ padding:7px 0; border-top:1px solid var(--card-edge); font-size:13.5px; line-height:1.55; }
+  .key-row .kn{ display:inline-block; font-family:var(--mono); font-weight:800; color:var(--accent); min-width:28px; }
+  .key-row .ka{ font-family:var(--mono); font-weight:800; margin-right:8px; }
+  .key-row .kx{ display:block; margin-left:28px; font-size:12px; color:var(--ink-soft); }
+
+
+  .passage{ background:var(--accent-soft); border-radius:14px; padding:14px 16px; margin:18px 0 12px; }
+  .pass-title{ font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+  .pass-text{ font-size:15px; line-height:1.65; }
+  .pass-text.script{ margin-top:10px; padding-top:10px; border-top:1px dashed var(--accent); }
+  .audio{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+  .speed{ font:inherit; font-size:13px; padding:7px 10px; border-radius:8px; border:2px solid var(--card-edge); background:var(--card); color:var(--ink); min-height:40px; }
+  .audio-note{ margin-top:8px; font-size:12.5px; color:var(--ink-soft); }
+  .pass-print{ font-size:10pt; font-style:italic; }
+
+  /* ================= PRINT ================= */
+  @media print{
+    @page{ size:A4; margin:11mm 14mm; }
+    html,body{ background:#fff !important; color:#000 !important; min-height:0; }
+    body{ font-family: "Segoe UI", Arial, sans-serif; font-size:10.5pt; }
+    .topbar,.toolbar,.screen-only,.intro,.summary,.btn,.q-tag,.q-res,.model-btn,.sheet-head,.model,textarea.oa{ display:none !important; }
+    .print-only{ display:block; }
+    .wrap{ max-width:none; padding:0; }
+    .print-head{ display:block; margin-bottom:4mm; }
+    .print-head h1{ font-size:15pt; margin:0 0 3mm; }
+    .print-head .ph-row{ display:flex; gap:8mm; font-size:10.5pt; margin-bottom:2mm; }
+    .print-head .ph-row span.fill{ flex:1; border-bottom:1px solid #000; height:6mm; }
+    .print-head .ph-meta{ font-size:8.5pt; color:#444; }
+    .instr{ color:#000; font-size:9.5pt; }
+    .sec-title{ color:#000; font-size:8.5pt; margin:4mm 0 2mm; border-bottom:0.5pt solid #000; padding-bottom:1mm; }
+    .q{ background:none !important; border:none !important; border-radius:0; padding:0 0 2.5mm; margin:0 0 1.5mm; break-inside:avoid; page-break-inside:avoid; }
+    .q-head{ margin-bottom:1.5mm; gap:3mm; }
+    .q-num{ background:none !important; color:#000 !important; border:1.5px solid #000; width:7mm; height:7mm; font-size:10pt; margin-top:0; }
+    .q-text{ font-size:10.5pt; }
+    .opts{ margin-left:10mm; gap:1mm; }
+    .opt{ background:none !important; border:none !important; border-radius:0; padding:0; min-height:0; color:#000 !important; font-size:10.5pt; }
+    .opt .ol{ color:#000 !important; font-size:10.5pt; }
+    .opt[aria-pressed="true"]{ background:none !important; }
+    .lines{ display:block; margin:2mm 0 0 10mm; }
+    .lines i{ display:block; height:7.5mm; border-bottom:0.6pt solid #666; }
+    .passage{ background:none !important; border:1px solid #000; border-radius:0; padding:3mm 4mm; margin:3mm 0 2mm; break-inside:avoid; break-after:avoid; page-break-after:avoid; }
+    .q{ padding-bottom:1.8mm !important; margin-bottom:1mm !important; }
+    .opt,.opt .ol,.q-text{ font-size:10pt !important; }
+    .lines i{ height:7mm; }
+    .pass-title{ color:#000; }
+    .pass-text{ font-size:10.5pt; }
+    .passage.listen .pass-text.script{ display:none !important; }
+    .key-sheet{ display:none !important; }
+    body[data-print="key"] .test-sheet{ display:none !important; }
+    body[data-print="key"] .key-sheet{ display:block !important; }
+    .key-row{ border-top:0.5pt solid #999; font-size:10pt; break-inside:avoid; }
+    .key-row .kx{ color:#333; }
+    .key-sheet h2{ font-size:14pt; }
+  }
+</style>
+
+<div class="topbar">
+  <a class="back" href="../">&#8592; Język angielski</a>
+  <div class="app-name">Unit 1 — One big family</div>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <div class="intro" id="viewIntro">
+    <div class="hero">
+      <h1>Unit 1: One big family</h1>
+      <p>Słownictwo (rodzina, opisywanie ludzi), gramatyka (like, What … like? / look like?, have got), przedstawianie się, czytanie e-maila i słuchanie. Każdy wariant jest losowany na nowo. Rozwiązujesz na ekranie albo drukujesz.</p>
+    </div>
+    <div class="card">
+      <p class="intro-label">Z jakich tematów ma być test?</p>
+      <div class="tchips" id="tchips"></div>
+      <div class="intro-row">
+        <label>Pytań ze słownictwa i gramatyki:
+          <select id="selN"><option value="10">10</option><option value="20" selected>20</option><option value="30">30</option></select>
+        </label>
+        <label><input type="checkbox" id="chkOpen" checked> Dołącz zadania pisemne</label>
+      </div>
+      <div class="intro-sum" id="introSum"></div>
+      <div class="btn-row" style="margin-top:14px;">
+        <button class="btn small secondary" id="btnAll">Zaznacz wszystkie tematy</button>
+      </div>
+    </div>
+    <div class="card">
+      <p class="intro-label">Jak to działa</p>
+      <ul class="feature-list">
+        <li><b>Na tablecie:</b> klikasz odpowiedzi, a na końcu „Sprawdź test”. Za każde pytanie 1 punkt.</li>
+        <li><b>Słuchanie:</b> przycisk „Odtwórz” czyta tekst po angielsku głosem urządzenia (można odtworzyć kilka razy, także wolniej). Tekst pojawia się po sprawdzeniu testu.</li>
+        <li><b>Zadania pisemne</b> piszesz po angielsku, a potem porównujesz z przykładową odpowiedzią i oceniasz sam.</li>
+        <li><b>Wydruk (opcja):</b> „Drukuj test” przygotowuje kartkę A4. „Drukuj klucz” daje osobną kartkę z odpowiedziami i tekstami do nagrań (rodzic czyta je na głos).</li>
+      </ul>
+      <p class="footnote">Pytania opracowano na podstawie spisu treści podręcznika (Unit 1, str. 8–21) i typowego słownictwa na tym poziomie. Teksty i nagrania są własne. Zakres może się nieco różnić od Waszej książki.</p>
+    </div>
+    <div class="cta-row"><button class="btn" id="btnStart">START TESTU</button></div>
+    <p class="intro-sum" id="bestHint" style="text-align:center; margin-top:16px;"></p>
+  </div>
+
+  <!-- ============ SHEET ============ -->
+  <div id="viewSheet" hidden>
+    <div class="toolbar">
+      <button class="btn small secondary" id="btnTopics">&#8592; Tematy</button>
+      <span class="variant" id="variantLabel"></span>
+      <span class="sp"></span>
+      <button class="btn small secondary" id="btnPrintTest">Drukuj test</button>
+      <button class="btn small secondary" id="btnPrintKey">Drukuj klucz</button>
+      <button class="btn small secondary" id="btnToggleKey">Pokaż klucz</button>
+      <button class="btn small secondary" id="btnNew">Nowy wariant</button>
+    </div>
+
+    <div class="test-sheet" id="testSheet">
+      <div class="print-head">
+        <h1>Angielski, klasa 5 — Unit 1: One big family</h1>
+        <div class="ph-row"><span>Imię i nazwisko:</span><span class="fill"></span><span>Data:</span><span class="fill" style="max-width:35mm"></span><span>Wynik:</span><span class="fill" style="max-width:25mm"></span><span id="phMax"></span></div>
+        <div class="ph-meta" id="phMeta"></div>
+      </div>
+      <div class="sheet-head">
+        <h2>Test</h2>
+        <div class="sub" id="sheetSub"></div>
+      </div>
+      <p class="instr">W każdym pytaniu zaznacz jedną poprawną odpowiedź (Choose the correct answer).</p>
+      <div id="closedQs"></div>
+      <div id="openWrap" hidden>
+        <div class="sec-title">Zadania pisemne — odpowiedz po angielsku (Writing)</div>
+        <div id="openQs"></div>
+      </div>
+      <div class="cta-row screen-only" id="checkRow"><button class="btn" id="btnCheck">Sprawdź test</button></div>
+      <div class="card summary" id="summary" hidden></div>
+    </div>
+
+    <div class="key-sheet card" id="keySheet"></div>
+  </div>
+</div>
+
+<link rel="manifest" href="../../shared/manifest.webmanifest">
+<script src="../../shared/app.js" data-subj="jezyk-angielski" data-key="ang_unit1_best_v1" data-label="Unit 1 — One big family"></script>
+<script>
+(function(){
+  "use strict";
+  var $ = function(id){ return document.getElementById(id); };
+  function loadJSON(k,f){ try{ var v=localStorage.getItem(k); return v?JSON.parse(v):f; }catch(e){ return f; } }
+  function saveJSON(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+  function esc(s){ var d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+
+  var rng = Math.random;
+  function mulberry32(a){ return function(){ a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function shuffle(arr){ var a=arr.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(rng()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+
+  var TOPICS = [
+    {k:'vf', l:'Rodzina (family members)', pg:8},
+    {k:'vd', l:'Wygląd i charakter (describing people)', pg:11},
+    {k:'g1', l:'Lubię / nie lubię (like)', pg:10},
+    {k:'g2', l:'What … like? / look like? / have got', pg:12},
+    {k:'fn', l:'Przedstawianie się (introductions)', pg:16},
+    {k:'rd', l:'Czytanie: e-mail', pg:15},
+    {k:'ls', l:'Słuchanie (listening)', pg:9}
+  ];
+  var LABEL = {}; TOPICS.forEach(function(x){ LABEL[x.k] = x.l; });
+  var BLOCK_T = ['rd','ls'];
+  var BLOCK_SIZE = { rd:5, ls:4 };
+  var LETTERS = ['A','B','C','D'];
+  var N_OPEN = 3;
+
+  var POOL = [{"t":"vf","q":"My mother’s mother is my ___.","o":["grandmother","aunt","cousin","sister"],"c":0,"e":"Mother’s mother = grandmother (babcia)."},{"t":"vf","q":"My father’s brother is my ___.","o":["uncle","cousin","grandfather","son"],"c":0,"e":"Father’s brother = uncle (wujek)."},{"t":"vf","q":"My uncle’s daughter is my ___.","o":["cousin","sister","aunt","daughter"],"c":0,"e":"Dzieci wujka lub cioci to cousins (kuzyni)."},{"t":"vf","q":"My mother’s sister is my ___.","o":["aunt","uncle","cousin","sister"],"c":0,"e":"Mother’s sister = aunt (ciocia)."},{"t":"vf","q":"My parents’ parents are my ___.","o":["grandparents","cousins","uncles","brothers"],"c":0,"e":"Grandparents = babcia i dziadek."},{"t":"vf","q":"Which word means ‘wujek’?","o":["uncle","aunt","cousin","grandfather"],"c":0,"e":"uncle = wujek, aunt = ciocia."},{"t":"vf","q":"Which word means ‘babcia’?","o":["grandmother","aunt","mother","sister"],"c":0,"e":"grandmother (też grandma) = babcia."},{"t":"vf","q":"Which word means ‘kuzyn / kuzynka’?","o":["cousin","uncle","parent","brother"],"c":0,"e":"cousin = kuzyn lub kuzynka."},{"t":"vf","q":"Which word means ‘rodzice’?","o":["parents","cousins","children","relatives"],"c":0,"e":"parents = rodzice. relatives to krewni."},{"t":"vf","q":"Which word means ‘córka’?","o":["daughter","son","sister","aunt"],"c":0,"e":"daughter = córka, son = syn."},{"t":"vf","q":"Which word means ‘dziadek’?","o":["grandfather","uncle","father","brother"],"c":0,"e":"grandfather (też grandpa) = dziadek."},{"t":"vf","q":"Which word is NOT a family member?","o":["neighbour","aunt","cousin","uncle"],"c":0,"e":"neighbour = sąsiad, nie członek rodziny."},{"t":"vf","q":"Which word means the same as ‘mum’?","o":["mother","sister","aunt","parent"],"c":0,"e":"mum = mother (mama)."},{"t":"vf","q":"My aunt’s husband is my ___.","o":["uncle","cousin","grandfather","brother"],"c":0,"e":"Mąż cioci to uncle."},{"t":"vf","q":"My dad’s father is my ___.","o":["grandfather","uncle","brother","cousin"],"c":0,"e":"Dad’s father = grandfather."},{"t":"vf","q":"Tom is Anna’s son. Anna is Tom’s ___.","o":["mother","sister","aunt","daughter"],"c":0,"e":"Skoro Tom jest synem Anny, Anna jest jego mother."},{"t":"vf","q":"Sara is my aunt’s daughter. Sara is my ___.","o":["cousin","sister","niece","mother"],"c":0,"e":"Córka cioci to cousin."},{"t":"vd","q":"Which word describes hair?","o":["curly","tall","young","friendly"],"c":0,"e":"curly hair = kręcone włosy."},{"t":"vd","q":"Which word is NOT a hair colour?","o":["curly","brown","black","blond"],"c":0,"e":"curly to kształt włosów (kręcone), a nie kolor."},{"t":"vd","q":"She’s got ___ eyes.","o":["blue","long","tall","young"],"c":0,"e":"Kolor oczu: blue, green, brown…"},{"t":"vd","q":"The opposite of ‘tall’ is ___.","o":["short","old","long","small"],"c":0,"e":"tall ≠ short (wysoki – niski)."},{"t":"vd","q":"The opposite of ‘young’ is ___.","o":["old","short","tall","long"],"c":0,"e":"young ≠ old (młody – stary)."},{"t":"vd","q":"The opposite of ‘straight’ (hair) is ___.","o":["curly","short","fair","tall"],"c":0,"e":"straight hair ≠ curly hair."},{"t":"vd","q":"A person who makes you laugh is ___.","o":["funny","shy","angry","tired"],"c":0,"e":"funny = zabawny."},{"t":"vd","q":"A person who doesn’t like talking to new people is ___.","o":["shy","friendly","funny","kind"],"c":0,"e":"shy = nieśmiały."},{"t":"vd","q":"A person who is nice to everybody is ___.","o":["friendly","shy","sad","short"],"c":0,"e":"friendly = przyjazny."},{"t":"vd","q":"Which word means ‘kręcone’ (about hair)?","o":["curly","straight","short","long"],"c":0,"e":"curly = kręcone, straight = proste."},{"t":"vd","q":"Which word means ‘proste’ (about hair)?","o":["straight","curly","tall","fair"],"c":0,"e":"straight = proste."},{"t":"vd","q":"Which word means ‘nieśmiały’?","o":["shy","funny","kind","clever"],"c":0,"e":"shy = nieśmiały."},{"t":"vd","q":"Which word means ‘wysoki’?","o":["tall","short","young","old"],"c":0,"e":"tall = wysoki."},{"t":"vd","q":"Which word means ‘niski’ (about a person)?","o":["short","tall","long","young"],"c":0,"e":"short = niski (o człowieku) lub krótki."},{"t":"vd","q":"Which phrase means ‘jasne włosy’?","o":["fair hair","dark hair","curly hair","long hair"],"c":0,"e":"fair hair = jasne (blond) włosy, dark hair = ciemne."},{"t":"vd","q":"Which sentence describes someone’s appearance?","o":["She’s tall and she’s got long hair.","She’s very kind and funny.","She likes swimming.","She’s from Poland."],"c":0,"e":"Wygląd (appearance): wzrost, włosy, oczy."},{"t":"vd","q":"Which word describes character, not appearance?","o":["friendly","tall","curly","blue"],"c":0,"e":"friendly opisuje charakter."},{"t":"vd","q":"Which phrase is correct?","o":["long, dark hair","hair long dark","dark long hairs","hairs long dark"],"c":0,"e":"Najpierw przymiotniki, potem hair (nie hairs): long, dark hair."},{"t":"g1","q":"What ___ you like?","o":["do","does","are","is"],"c":0,"e":"Z you używamy do: What do you like?"},{"t":"g1","q":"What ___ your brother like?","o":["does","do","has","are"],"c":0,"e":"Z he/she/it używamy does: What does your brother like?"},{"t":"g1","q":"She ___ pizza.","o":["likes","like","liking","is like"],"c":0,"e":"W 3. osobie liczby pojedynczej dodajemy -s: she likes."},{"t":"g1","q":"He doesn’t ___ carrots.","o":["like","likes","liking","to likes"],"c":0,"e":"Po doesn’t zawsze czasownik w podstawowej formie: doesn’t like."},{"t":"g1","q":"I like ___.","o":["swimming","swim","swims","to swims"],"c":0,"e":"Po like często dajemy -ing: I like swimming."},{"t":"g1","q":"My sister ___ like spiders.","o":["doesn’t","don’t","isn’t","hasn’t"],"c":0,"e":"My sister = she, więc doesn’t."},{"t":"g1","q":"Do you like cats? – Yes, I ___.","o":["do","like","am","have"],"c":0,"e":"Krótka odpowiedź: Yes, I do."},{"t":"g1","q":"Does he like music? – No, he ___.","o":["doesn’t","don’t","isn’t","hasn’t"],"c":0,"e":"Krótka odpowiedź: No, he doesn’t."},{"t":"g1","q":"___ does your mum like? – She likes dancing.","o":["What","Who","Where","When"],"c":0,"e":"Pytamy o rzecz, więc What."},{"t":"g1","q":"Which sentence about a dad is correct?","o":["My dad likes cooking.","My dad like cooking.","My dad is like cooking.","My dad likes cook."],"c":0,"e":"My dad = he, więc likes + cooking."},{"t":"g1","q":"Which sentence about football is correct?","o":["They don’t like football.","They doesn’t like football.","They not like football.","They aren’t like football."],"c":0,"e":"Z they używamy don’t."},{"t":"g1","q":"Choose the best answer: ‘What do you like doing?’","o":["I like reading.","I’m reading.","I read now.","I like read."],"c":0,"e":"Odpowiadamy: I like + czasownik z -ing."},{"t":"g1","q":"Which verb means ‘nie znoszę’?","o":["hate","love","like","want"],"c":0,"e":"hate = nie znoszę, love = uwielbiam."},{"t":"g1","q":"Which verb means ‘uwielbiam’?","o":["love","hate","dislike","need"],"c":0,"e":"love = uwielbiam."},{"t":"g1","q":"Which word means ‘nie lubić’?","o":["dislike","love","enjoy","want"],"c":0,"e":"dislike = nie lubić (przeciwieństwo like)."},{"t":"g1","q":"‘Does she like dogs?’ – Which answer is correct?","o":["Yes, she does.","Yes, she likes.","Yes, she is.","Yes, she do."],"c":0,"e":"Krótka odpowiedź: Yes, she does."},{"t":"g2","q":"Which question asks about someone’s appearance?","o":["What does she look like?","What is she like?","What does she like?","What is she doing?"],"c":0,"e":"What does she look like? = jak ona wygląda?"},{"t":"g2","q":"Which question asks about someone’s likes?","o":["What does she like?","What does she look like?","What is she doing?","Where is she?"],"c":0,"e":"What does she like? = co ona lubi?"},{"t":"g2","q":"‘What’s your cousin like?’ – Which answer fits?","o":["He’s very friendly and funny.","He likes pizza.","Yes, he is.","In London."],"c":0,"e":"What’s he like? pyta o charakter: jaki on jest?"},{"t":"g2","q":"‘What does your uncle look like?’ – Which answer fits?","o":["He’s tall and he’s got a beard.","He’s kind and funny.","He likes cooking.","He’s a teacher."],"c":0,"e":"look like = wygląd: wzrost, włosy, broda…"},{"t":"g2","q":"She ___ got long, curly hair.","o":["has","have","is","does"],"c":0,"e":"She has got = ona ma."},{"t":"g2","q":"I ___ got two brothers and a sister.","o":["have","has","am","do"],"c":0,"e":"I have got = ja mam."},{"t":"g2","q":"My grandfather ___ got grey hair.","o":["has","have","is","does"],"c":0,"e":"My grandfather = he, więc has got."},{"t":"g2","q":"He ___ got a sister.","o":["hasn’t","haven’t","doesn’t","isn’t"],"c":0,"e":"Przeczenie: hasn’t got."},{"t":"g2","q":"___ you got any cousins? – Yes, I have.","o":["Have","Has","Do","Are"],"c":0,"e":"Pytanie z you: Have you got…?"},{"t":"g2","q":"___ she got blue eyes? – No, she hasn’t.","o":["Has","Have","Is","Does"],"c":0,"e":"Pytanie z she: Has she got…?"},{"t":"g2","q":"Which sentence about a girl’s appearance is correct?","o":["She’s tall and she’s got fair hair.","She’s got tall and she has fair hair.","She has tall and she is fair hair.","She is got tall."],"c":0,"e":"Wzrost: is tall. Włosy: has got fair hair."},{"t":"g2","q":"Which sentence describes character?","o":["My aunt is very kind.","My aunt is tall.","My aunt has got dark hair.","My aunt is 40."],"c":0,"e":"kind (miła) opisuje charakter."},{"t":"g2","q":"What ___ your grandma look like?","o":["does","do","is","has"],"c":0,"e":"Z grandma (she) używamy does: What does she look like?"},{"t":"g2","q":"What ___ your brother like? – He’s quiet but friendly.","o":["is","does","do","has"],"c":0,"e":"What is he like? pyta o charakter, a odpowiedź to opis charakteru."},{"t":"g2","q":"‘I’ve got’ means ___.","o":["I have got","I am got","I has got","I do got"],"c":0,"e":"’ve to skrót od have."},{"t":"g2","q":"Which sentence about hair is correct?","o":["He hasn’t got curly hair.","He haven’t got curly hair.","He doesn’t got curly hair.","He isn’t got curly hair."],"c":0,"e":"Przeczenie z he: hasn’t got."},{"t":"fn","q":"Which greeting is more formal?","o":["Good morning. How do you do?","Hi! What’s up?","Hey, you!","Yo!"],"c":0,"e":"Formalnie: Good morning, How do you do?"},{"t":"fn","q":"You meet your headteacher. What do you say?","o":["Good morning, Mrs Brown. Pleased to meet you.","Hi! What’s up?","Hey, you!","Hello, mate!"],"c":0,"e":"Do nauczyciela i osób dorosłych mówimy grzecznie, formalnie."},{"t":"fn","q":"Which sentence is informal?","o":["Hi, I’m Kate. Nice to meet you!","Good afternoon. My name is Mrs Kate Green.","How do you do?","It is a pleasure to meet you."],"c":0,"e":"Hi, I’m… to nieformalne przedstawienie się."},{"t":"fn","q":"How do you introduce your friend Ben to your mum?","o":["Mum, this is my friend Ben.","Mum, he is my friend Ben, hello.","Mum, that Ben is my friend.","Mum, here Ben."],"c":0,"e":"Przedstawiamy kogoś zwrotem This is…"},{"t":"fn","q":"‘Nice to meet you.’ – What do you answer?","o":["Nice to meet you, too.","Thank you, I am fine.","You are welcome.","Yes, I do."],"c":0,"e":"Odpowiadamy: Nice to meet you, too."},{"t":"fn","q":"‘How are you?’ – Choose the best informal answer.","o":["I’m fine, thanks. And you?","My name is Tom.","Nice to meet you.","I’m twelve."],"c":0,"e":"Na How are you? odpowiadamy: I’m fine, thanks. And you?"},{"t":"fn","q":"‘How do you do?’ is ___.","o":["a formal greeting when you meet somebody for the first time","a question about your health that needs a long answer","an informal way to say goodbye","a question about what you do at school"],"c":0,"e":"How do you do? to formalne powitanie przy pierwszym spotkaniu."},{"t":"fn","q":"Which is the best way to say who you are in a formal situation?","o":["My name is Anna Nowak. Pleased to meet you.","I’m Anna! What’s up?","Anna here, hi!","Call me Annie!"],"c":0,"e":"Formalnie: My name is… Pleased to meet you."}];
+  var BLOCKS = [{"id":"r1","t":"rd","title":"E-mail od Lucy","text":"Hi Marta!\nMy name’s Lucy and I’m eleven. I live in Manchester with my mum, my dad and my little brother, Sam. He’s six and he’s very funny. I’ve got long, curly brown hair and green eyes. My best friend is Emma. She’s tall and she’s got straight fair hair. I like swimming and drawing, but I don’t like football. What do you like?\nWrite soon!\nLucy","qs":[{"t":"rd","q":"How old is Lucy?","o":["Eleven.","Six.","Ten.","Twelve."],"c":0,"e":"„I’m eleven.”"},{"t":"rd","q":"Who does Lucy live with?","o":["Her mum, dad and little brother.","Her grandparents.","Her cousin and aunt.","Only her mum."],"c":0,"e":"„I live … with my mum, my dad and my little brother, Sam.”"},{"t":"rd","q":"What is Lucy’s brother like?","o":["He’s very funny.","He’s very shy.","He’s tall.","He’s eleven."],"c":0,"e":"„He’s six and he’s very funny.” (What is he like? = charakter)"},{"t":"rd","q":"What does Emma look like?","o":["She’s tall with straight fair hair.","She’s short with curly dark hair.","She’s got long curly brown hair and green eyes.","She’s very funny."],"c":0,"e":"„She’s tall and she’s got straight fair hair.” Długie kręcone włosy ma Lucy."},{"t":"rd","q":"What doesn’t Lucy like?","o":["Football.","Swimming.","Drawing.","Emma."],"c":0,"e":"„I like swimming and drawing, but I don’t like football.”"}]},{"id":"r2","t":"rd","title":"E-mail od Paula","text":"Dear Tom,\nThanks for your email! I’ve got a big family. My grandmother, Rose, is seventy. She’s got short grey hair and she’s very kind. My uncle Jack is tall and he’s got a beard. He’s funny and he likes cooking. My cousin Zoe is twelve. She’s shy, but she’s got a lot of friends. She likes dancing. We often have lunch together on Sundays. Please tell me about your family!\nBest wishes,\nPaul","qs":[{"t":"rd","q":"How old is Paul’s grandmother?","o":["Seventy.","Sixty.","Twelve.","Forty."],"c":0,"e":"„My grandmother, Rose, is seventy.”"},{"t":"rd","q":"What does Uncle Jack look like?","o":["He’s tall and he’s got a beard.","He’s short with grey hair.","He’s shy.","He likes cooking."],"c":0,"e":"„My uncle Jack is tall and he’s got a beard.”"},{"t":"rd","q":"What is Zoe like?","o":["She’s shy, but she’s got a lot of friends.","She’s very funny.","She likes cooking.","She’s seventy."],"c":0,"e":"„She’s shy, but she’s got a lot of friends.”"},{"t":"rd","q":"What does Zoe like?","o":["Dancing.","Cooking.","Swimming.","Football."],"c":0,"e":"„She likes dancing.”"},{"t":"rd","q":"When does the family have lunch together?","o":["On Sundays.","On Fridays.","Every day.","On Saturdays."],"c":0,"e":"„We often have lunch together on Sundays.”"}]},{"id":"r3","t":"rd","title":"Opis zdjęcia rodzinnego","text":"Hello! I’m Ben and I’m ten. This is my family photo. My mum is next to my dad. She’s got long, dark hair and brown eyes. She’s a nurse. My dad is short and he’s got a moustache. He’s funny. My sister, Ella, is eight. She’s got curly fair hair and she’s very friendly. My grandparents are in the photo, too. Grandpa Joe is old, but he’s very active. He likes walking.","qs":[{"t":"rd","q":"How old is Ben?","o":["Ten.","Eight.","Eleven.","Twelve."],"c":0,"e":"„I’m Ben and I’m ten.”"},{"t":"rd","q":"What does Ben’s mum look like?","o":["She’s got long, dark hair and brown eyes.","She’s got short fair hair.","She’s got a moustache.","She’s got curly fair hair."],"c":0,"e":"„She’s got long, dark hair and brown eyes.”"},{"t":"rd","q":"What is Ben’s dad like?","o":["He’s funny.","He’s a nurse.","He’s shy.","He’s eight."],"c":0,"e":"„He’s funny.” Wąsy i niski wzrost to wygląd."},{"t":"rd","q":"What does Ella look like?","o":["She’s got curly fair hair.","She’s got long dark hair.","She’s got short grey hair.","She’s got a moustache."],"c":0,"e":"„She’s got curly fair hair.”"},{"t":"rd","q":"What does Grandpa Joe like?","o":["Walking.","Cooking.","Dancing.","Swimming."],"c":0,"e":"„He likes walking.”"}]},{"id":"l1","t":"ls","title":"Rodzinne zdjęcie","text":"This is a picture of my family. In the middle is my grandmother. She’s got short grey hair and glasses. Next to her is my grandfather. He’s tall and he’s got a big smile. On the left is my mum. She’s got long dark hair. On the right is my dad. He’s got a beard. In front of them is my little sister, Mia. She’s five and she’s got curly fair hair.","qs":[{"t":"ls","q":"Who has got short grey hair and glasses?","o":["The grandmother.","The mother.","The sister.","The grandfather."],"c":0,"e":"„My grandmother. She’s got short grey hair and glasses.”"},{"t":"ls","q":"Who has got a beard?","o":["The dad.","The grandfather.","The little sister.","The mum."],"c":0,"e":"„My dad. He’s got a beard.”"},{"t":"ls","q":"How old is Mia?","o":["Five.","Fifteen.","Six.","Eight."],"c":0,"e":"„She’s five.” Uważaj: five ≠ fifteen."},{"t":"ls","q":"What does Mia look like?","o":["She’s got curly fair hair.","She’s got long dark hair.","She’s got short grey hair.","She’s got straight brown hair."],"c":0,"e":"„She’s got curly fair hair.”"}]},{"id":"l2","t":"ls","title":"Co lubi rodzina Kasi","text":"Hi, I’m Kasia. I’ve got two brothers. Tomek is thirteen. He likes playing computer games, but he doesn’t like reading. My little brother, Piotr, is seven. He loves drawing and he likes dinosaurs. My mum likes cooking and my dad likes cycling. I like dancing, but I don’t like cooking!","qs":[{"t":"ls","q":"Who likes playing computer games?","o":["Tomek.","Piotr.","Kasia’s dad.","Kasia."],"c":0,"e":"„Tomek … likes playing computer games.”"},{"t":"ls","q":"What does Piotr love?","o":["Drawing.","Cooking.","Cycling.","Reading."],"c":0,"e":"„He loves drawing.”"},{"t":"ls","q":"What does Kasia’s dad like?","o":["Cycling.","Cooking.","Dancing.","Drawing."],"c":0,"e":"„My dad likes cycling.”"},{"t":"ls","q":"What doesn’t Kasia like?","o":["Cooking.","Dancing.","Reading.","Dinosaurs."],"c":0,"e":"„I like dancing, but I don’t like cooking!”"}]},{"id":"l3","t":"ls","title":"Najlepszy przyjaciel","text":"My best friend is Oliver. He’s eleven. He’s tall and he’s got dark, curly hair and brown eyes. He’s very funny and kind. He’s not shy. He’s got two sisters, but he hasn’t got a brother. He likes football and music. He doesn’t like maths.","qs":[{"t":"ls","q":"What does Oliver look like?","o":["He’s tall with dark, curly hair and brown eyes.","He’s short with fair hair and blue eyes.","He’s tall with straight fair hair.","He’s very funny and kind."],"c":0,"e":"„He’s tall and he’s got dark, curly hair and brown eyes.”"},{"t":"ls","q":"What is Oliver like?","o":["He’s funny and kind.","He’s shy.","He’s tall.","He’s eleven."],"c":0,"e":"„He’s very funny and kind. He’s not shy.”"},{"t":"ls","q":"How many sisters has Oliver got?","o":["Two.","One.","Three.","None."],"c":0,"e":"„He’s got two sisters.”"},{"t":"ls","q":"What doesn’t Oliver like?","o":["Maths.","Football.","Music.","His sisters."],"c":0,"e":"„He doesn’t like maths.”"}]}];
+  var OPEN = [{"t":"wr","q":"Write 3–4 sentences about a person in your family. Say what he or she looks like and what he or she is like.","m":"My cousin Anna is twelve. She is tall and she has got long, straight fair hair and blue eyes. She is very friendly and funny. She likes dancing."},{"t":"wr","q":"Write the start of an email reply to a new friend. Say who you are, how old you are, who is in your family and what you like.","m":"Hi Lucy! Thanks for your email. My name is Jan and I’m eleven. I live in Poznań with my mum, my dad and my sister. I like football and drawing, but I don’t like swimming. What about you? Write soon! Jan"},{"t":"wr","q":"Write two short introductions: one informal (to a new classmate) and one formal (to your headteacher).","m":"Informal: Hi, I’m Jan. Nice to meet you! — Formal: Good morning, Mrs Green. My name is Jan Kowalski. Pleased to meet you."}];
+  var BYID = {}; BLOCKS.forEach(function(b){ BYID[b.id] = b; });
+
+  var COUNT = {}; TOPICS.forEach(function(x){ COUNT[x.k] = 0; });
+  POOL.forEach(function(q){ COUNT[q.t]++; });
+  BLOCKS.forEach(function(b){ COUNT[b.t] += b.qs.length; });
+
+  var LS_BEST = 'ang_unit1_best_v1';
+  var LS_DRAFT = 'ang_unit1_draft_v1';
+  var cur = { seed:0, topics:[], n:20, withOpen:true, items:[], open:[], checked:false };
+  var introSel = {}; TOPICS.forEach(function(x){ introSel[x.k] = true; });
+
+  function regTopics(topics){ return topics.filter(function(t){ return BLOCK_T.indexOf(t) === -1; }); }
+
+  function build(seed, topics, n, withOpen){
+    rng = mulberry32(seed);
+    var reg = regTopics(topics);
+    var order = shuffle(reg);
+    var lists = {}; order.forEach(function(t){ lists[t] = shuffle(POOL.filter(function(q){ return q.t === t; })); });
+    var picked = [], seen = {}, guard = 0;
+    while (picked.length < n && guard < 5000){
+      var progressed = false;
+      for (var i=0;i<order.length && picked.length<n;i++){
+        var L = lists[order[i]];
+        while (L.length){ var q = L.shift(); if (seen[q.q]) continue; seen[q.q] = 1; picked.push(q); progressed = true; break; }
+      }
+      if (!progressed) break;
+      guard++;
+    }
+    picked.sort(function(a,b){ return reg.indexOf(a.t) - reg.indexOf(b.t) || 0; });
+    function mk(q, blk, first){
+      var perm = shuffle([0,1,2,3]);
+      return { t:q.t, q:q.q, o:perm.map(function(i){ return q.o[i]; }), c:perm.indexOf(q.c), e:q.e||'', blk:blk||'', first:!!first };
+    }
+    var items = picked.map(function(q){ return mk(q); });
+    BLOCK_T.forEach(function(bt){
+      if (topics.indexOf(bt) === -1) return;
+      var b = shuffle(BLOCKS.filter(function(x){ return x.t === bt; }))[0];
+      b.qs.forEach(function(q, i){ items.push(mk(q, b.id, i === 0)); });
+    });
+    var open = [];
+    if (withOpen){ var ch = shuffle(OPEN).slice(0, N_OPEN); open = OPEN.filter(function(o){ return ch.indexOf(o) !== -1; }); }
+    return { items:items, open:open };
+  }
+
+  function parseHash(){
+    var o = {}; var h = location.hash.replace(/^#/,''); if (!h) return o;
+    h.split('&').forEach(function(kv){ var a = kv.split('='); if (a[0]) o[a[0]] = decodeURIComponent(a.slice(1).join('=')||''); });
+    return o;
+  }
+  function setHash(){
+    var all = cur.topics.length === TOPICS.length;
+    var h = '#w='+cur.seed + (all ? '' : '&t='+cur.topics.join(',')) + (cur.n!==20 ? '&n='+cur.n : '') + (cur.withOpen ? '' : '&o=0');
+    try{ history.replaceState(null,'',location.pathname+location.search+h); }catch(e){ location.hash = h; }
+  }
+  function clearHash(){ try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){ location.hash=''; } }
+  function randomSeed(){ return Math.floor(Math.random()*900000)+100000; }
+
+  /* ---------- intro ---------- */
+  function selectedTopics(){ return TOPICS.filter(function(x){ return introSel[x.k]; }).map(function(x){ return x.k; }); }
+  function introCounts(){
+    var sel = selectedTopics(), reg = regTopics(sel);
+    var avail = POOL.filter(function(q){ return reg.indexOf(q.t) !== -1; }).length;
+    var n = reg.length ? Math.min(parseInt($('selN').value,10), avail) : 0;
+    var blocks = (sel.indexOf('rd') !== -1 ? BLOCK_SIZE.rd : 0) + (sel.indexOf('ls') !== -1 ? BLOCK_SIZE.ls : 0);
+    return { sel:sel, n:n, blocks:blocks, total:n + blocks };
+  }
+  function renderIntro(){
+    $('tchips').innerHTML = TOPICS.map(function(x){
+      return '<button type="button" class="tchip'+(introSel[x.k]?' on':'')+'" data-k="'+x.k+'" aria-pressed="'+(!!introSel[x.k])+'">'+esc(x.l)+'<span class="tp">'+(BLOCK_T.indexOf(x.k) !== -1 ? BLOCK_SIZE[x.k]+' pytań' : COUNT[x.k]+' pytań')+'</span></button>';
+    }).join('');
+    var c = introCounts(), open = $('chkOpen').checked ? N_OPEN : 0;
+    $('introSum').innerHTML = c.sel.length ? ('Test: <b>'+c.total+'</b> '+(c.total === 1 ? 'pytanie' : 'pytań')+' (maks. <b>'+c.total+'</b> pkt)' + (c.blocks ? ' w tym <b>'+c.blocks+'</b> do tekstu lub nagrania' : '') + (open ? ' + <b>'+open+'</b> zadania pisemne' : '')) : 'Zaznacz przynajmniej jeden temat.';
+    $('btnStart').disabled = !c.sel.length; $('btnStart').style.opacity = c.sel.length ? '1' : '.5';
+    var best = loadJSON(LS_BEST, 0);
+    $('bestHint').textContent = best > 0 ? ('Najlepszy wynik pełnego testu (29 pkt): '+best+'/29') : '';
+  }
+  $('tchips').addEventListener('click', function(e){
+    var b = e.target.closest('.tchip'); if (!b) return;
+    var k = b.getAttribute('data-k'); introSel[k] = !introSel[k]; renderIntro();
+  });
+  $('btnAll').addEventListener('click', function(){ TOPICS.forEach(function(x){ introSel[x.k]=true; }); renderIntro(); });
+  $('selN').addEventListener('change', renderIntro);
+  $('chkOpen').addEventListener('change', renderIntro);
+  $('btnStart').addEventListener('click', function(){ openSheet(randomSeed(), selectedTopics(), parseInt($('selN').value,10), $('chkOpen').checked, true); });
+  function showIntro(){ stopSpeech(); $('viewIntro').hidden = false; $('viewSheet').hidden = true; window.scrollTo(0,0); renderIntro(); }
+
+  /* ---------- sheet ---------- */
+  function openSheet(seed, topics, n, withOpen, fresh){
+    stopSpeech();
+    cur.seed = seed; cur.topics = TOPICS.map(function(x){return x.k;}).filter(function(k){ return topics.indexOf(k)!==-1; });
+    cur.n = n; cur.withOpen = withOpen; cur.checked = false;
+    var b = build(seed, cur.topics, n, withOpen);
+    cur.items = b.items; cur.open = b.open;
+    setHash();
+    $('viewIntro').hidden = true; $('viewSheet').hidden = false;
+    renderSheet();
+    if (fresh) saveDraft(); else restoreDraft();
+    window.scrollTo(0,0);
+  }
+  function passageHTML(b){
+    if (b.t === 'rd'){
+      return '<section class="passage"><div class="pass-title">Przeczytaj tekst i odpowiedz na pytania · <span lang="en">'+esc(b.title)+'</span></div><div class="pass-text" lang="en">'+esc(b.text).replace(/\n/g,'<br>')+'</div></section>';
+    }
+    return '<section class="passage listen" data-blk="'+b.id+'"><div class="pass-title">&#127911; Posłuchaj nagrania i odpowiedz na pytania</div>' +
+      '<div class="audio screen-only"><button type="button" class="btn small" data-play="'+b.id+'">&#9654; Odtwórz</button> <button type="button" class="btn small secondary" data-stop="1">&#9632; Stop</button> ' +
+      '<select class="speed" data-speed="1" aria-label="Szybkość nagrania"><option value="0.8">Wolno</option><option value="0.95" selected>Normalnie</option></select></div>' +
+      '<div class="soft screen-only audio-note" data-note="'+b.id+'">Możesz odtworzyć nagranie kilka razy. Tekst pokaże się po sprawdzeniu testu.</div>' +
+      '<div class="print-only pass-print">Listening: rodzic czyta głośno tekst z klucza odpowiedzi (dwa razy, spokojnie).</div>' +
+      '<div class="pass-text script" lang="en" hidden>'+esc(b.text)+'</div></section>';
+  }
+  function qHTML(it, i){
+    var h = '';
+    if (it.first) h += passageHTML(BYID[it.blk]);
+    h += '<section class="q" data-i="'+i+'"><div class="q-head"><span class="q-num">'+(i+1)+'</span><span class="q-text" lang="en">'+esc(it.q)+'</span><span class="q-tag">'+esc(LABEL[it.t].split(' (')[0])+'</span></div><div class="opts">';
+    h += it.o.map(function(txt,k){ return '<button type="button" class="opt" data-k="'+k+'" aria-pressed="false"><span class="ol">'+LETTERS[k]+')</span><span class="ot" lang="en">'+esc(txt)+'</span></button>'; }).join('');
+    h += '</div><div class="q-res screen-only"></div></section>';
+    return h;
+  }
+  function oHTML(o, i){
+    var num = cur.items.length + 1 + i;
+    return '<section class="q open" data-o="'+i+'"><div class="q-head"><span class="q-num">'+num+'</span><span class="q-text" lang="en">'+esc(o.q)+'</span><span class="q-tag">Pisanie</span></div>'+
+      '<textarea class="oa screen-only" data-o="'+i+'" rows="4" lang="en" placeholder="Write your answer in English…"></textarea>'+
+      '<div class="lines print-only"><i></i><i></i><i></i><i></i></div>'+
+      '<button type="button" class="btn small secondary model-btn screen-only" data-model="'+i+'">Pokaż przykładową odpowiedź</button>'+
+      '<div class="model screen-only" data-model-box="'+i+'" hidden><b>Przykładowa odpowiedź:</b> <span lang="en">'+esc(o.m)+'</span></div></section>';
+  }
+  function renderSheet(){
+    $('closedQs').innerHTML = cur.items.map(qHTML).join('');
+    $('openQs').innerHTML = cur.open.map(oHTML).join('');
+    $('openWrap').hidden = !cur.open.length;
+    $('variantLabel').textContent = 'Wariant nr ' + cur.seed;
+    $('sheetSub').textContent = cur.items.length + ' pytań' + (cur.open.length ? ' + ' + cur.open.length + ' zad. pisemne' : '') + ' · wariant ' + cur.seed;
+    $('phMax').textContent = '/ ' + cur.items.length + ' pkt';
+    $('phMeta').textContent = 'Wariant ' + cur.seed + (cur.topics.length === TOPICS.length ? '' : ' · tematy: ' + cur.topics.map(function(k){ return LABEL[k].split(' (')[0]; }).join(', '));
+    $('summary').hidden = true; $('summary').innerHTML = '';
+    $('checkRow').hidden = false;
+    $('keySheet').innerHTML = keyHTML();
+    $('keySheet').classList.remove('show'); $('btnToggleKey').textContent = 'Pokaż klucz';
+  }
+  function keyHTML(){
+    var h = '<h2>Klucz odpowiedzi — wariant '+cur.seed+' ('+cur.items.length+' pkt)</h2>';
+    var shown = {};
+    cur.items.forEach(function(it,i){
+      if (it.blk && !shown[it.blk]){
+        shown[it.blk] = 1; var b = BYID[it.blk];
+        h += '<div class="key-row"><b>' + (b.t === 'ls' ? 'Listening — tekst do przeczytania na głos (dwa razy):' : 'Reading — ' + esc(b.title) + ':') + '</b><span class="kx" lang="en" style="font-size:12.5px;color:inherit">' + esc(b.text).replace(/\n/g,'<br>') + '</span></div>';
+      }
+      h += '<div class="key-row"><span class="kn">'+(i+1)+'.</span><span class="ka">'+LETTERS[it.c]+'</span><span lang="en">'+esc(it.o[it.c])+'</span>' + (it.e ? '<span class="kx">'+esc(it.e)+'</span>' : '') + '</div>';
+    });
+    cur.open.forEach(function(o,i){
+      h += '<div class="key-row"><span class="kn">'+(cur.items.length+1+i)+'.</span><b>Zadanie pisemne — przykład:</b> <span lang="en">'+esc(o.m)+'</span></div>';
+    });
+    return h;
+  }
+
+  /* ---------- listening (speech synthesis) ---------- */
+  function stopSpeech(){ try{ if ('speechSynthesis' in window) speechSynthesis.cancel(); }catch(e){} }
+  function speak(id, rate){
+    var b = BYID[id], note = document.querySelector('[data-note="'+id+'"]');
+    if (!('speechSynthesis' in window)){ if (note) note.textContent = 'Ta przeglądarka nie potrafi czytać nagrań. Poproś rodzica o przeczytanie tekstu z klucza odpowiedzi.'; return; }
+    stopSpeech();
+    var u = new SpeechSynthesisUtterance(b.text.replace(/\n/g, ' '));
+    u.lang = 'en-GB'; u.rate = rate;
+    var voices = speechSynthesis.getVoices() || [];
+    var v = voices.filter(function(x){ return /^en[-_]GB/i.test(x.lang); })[0] || voices.filter(function(x){ return /^en/i.test(x.lang); })[0];
+    if (v) u.voice = v;
+    else if (voices.length && note) note.textContent = 'Na tym urządzeniu nie ma angielskiego głosu. Zainstaluj go w ustawieniach Androida (Synteza mowy) albo poproś rodzica o przeczytanie tekstu z klucza.';
+    speechSynthesis.speak(u);
+  }
+  $('closedQs').addEventListener('click', function(e){
+    var p = e.target.closest('[data-play]'); if (p){ var sec = p.closest('.passage'); var sp = sec.querySelector('.speed'); speak(p.getAttribute('data-play'), parseFloat(sp.value)); return; }
+    if (e.target.closest('[data-stop]')){ stopSpeech(); return; }
+  });
+  window.addEventListener('pagehide', stopSpeech);
+
+  /* ---------- answers: read / draft ---------- */
+  function readAnswers(){
+    var a = { c:[], o:[] };
+    cur.items.forEach(function(it,i){
+      var el = $('closedQs').querySelector('.q[data-i="'+i+'"] .opt[aria-pressed="true"]');
+      a.c.push(el ? parseInt(el.getAttribute('data-k'),10) : -1);
+    });
+    cur.open.forEach(function(o,i){ var t = $('openQs').querySelector('textarea[data-o="'+i+'"]'); a.o.push(t ? t.value : ''); });
+    return a;
+  }
+  function anyAnswered(){ var a = readAnswers(); return a.c.some(function(v){return v>=0;}) || a.o.some(function(v){return v.trim()!=='';}); }
+  function saveDraft(){ saveJSON(LS_DRAFT, { seed:cur.seed, topics:cur.topics, n:cur.n, o:cur.withOpen, answers:readAnswers(), checked:cur.checked }); }
+  function restoreDraft(){
+    var d = loadJSON(LS_DRAFT, null);
+    if (!d || d.seed !== cur.seed || (d.topics||[]).join(',') !== cur.topics.join(',') || d.n !== cur.n || d.o !== cur.withOpen){ saveDraft(); return; }
+    var a = d.answers || {c:[],o:[]};
+    cur.items.forEach(function(it,i){
+      var k = a.c[i];
+      if (k >= 0){ var el = $('closedQs').querySelector('.q[data-i="'+i+'"] .opt[data-k="'+k+'"]'); if (el) el.setAttribute('aria-pressed','true'); }
+    });
+    cur.open.forEach(function(o,i){ var t = $('openQs').querySelector('textarea[data-o="'+i+'"]'); if (t && a.o[i]) t.value = a.o[i]; });
+    if (d.checked) checkTest(true);
+  }
+  $('closedQs').addEventListener('click', function(e){
+    var b = e.target.closest('.opt'); if (!b || cur.checked) return;
+    var q = b.closest('.q'); var all = q.querySelectorAll('.opt');
+    for (var i=0;i<all.length;i++) all[i].setAttribute('aria-pressed', all[i]===b ? 'true' : 'false');
+    saveDraft();
+  });
+  $('openQs').addEventListener('input', function(){ saveDraft(); });
+  $('openQs').addEventListener('click', function(e){
+    var b = e.target.closest('.model-btn'); if (!b) return;
+    var box = $('openQs').querySelector('[data-model-box="'+b.getAttribute('data-model')+'"]');
+    var show = box.hidden; box.hidden = !show; b.textContent = show ? 'Ukryj przykładową odpowiedź' : 'Pokaż przykładową odpowiedź';
+  });
+
+  /* ---------- check ---------- */
+  function checkTest(silent){
+    var a = readAnswers(), got = 0, byTopic = {};
+    stopSpeech();
+    cur.items.forEach(function(it,i){
+      var ok = a.c[i] === it.c;
+      if (!silent && window.Nauka && !it.blk) Nauka.answered({type:'mcq', q:it.q, o:it.o, c:it.c, e:it.e||''}, ok);
+      if (ok) got++;
+      if (!byTopic[it.t]) byTopic[it.t] = {c:0,t:0};
+      byTopic[it.t].t++; if (ok) byTopic[it.t].c++;
+      var qEl = $('closedQs').querySelector('.q[data-i="'+i+'"]');
+      qEl.classList.add('checked');
+      var opts = qEl.querySelectorAll('.opt');
+      for (var k=0;k<opts.length;k++){
+        opts[k].disabled = true;
+        if (k === it.c) opts[k].classList.add('correct'); else if (k === a.c[i]) opts[k].classList.add('wrong');
+      }
+      qEl.querySelector('.q-res').innerHTML = (ok ? '<b class="good">✓ Dobrze.</b> ' : '<b class="bad">✗ ' + (a.c[i] < 0 ? 'Brak odpowiedzi.' : 'Błędnie.') + '</b> Poprawna odpowiedź: <span lang="en">' + esc(LETTERS[it.c]+') '+it.o[it.c]) + '</span>. ') + esc(it.e);
+    });
+    var scripts = $('closedQs').querySelectorAll('.passage.listen .script'); for (var s=0;s<scripts.length;s++) scripts[s].hidden = false;
+    var auds = $('closedQs').querySelectorAll('.passage .audio-note'); for (var an=0;an<auds.length;an++) auds[an].hidden = true;
+    var tas = $('openQs').querySelectorAll('textarea'); for (var t=0;t<tas.length;t++) tas[t].disabled = true;
+    var boxes = $('openQs').querySelectorAll('.model'); for (var m=0;m<boxes.length;m++) boxes[m].hidden = false;
+    var mb = $('openQs').querySelectorAll('.model-btn'); for (var n=0;n<mb.length;n++) mb[n].hidden = true;
+    cur.checked = true; $('checkRow').hidden = true;
+    var total = cur.items.length;
+    renderSummary(got, total, byTopic);
+    if (!silent){
+      if (window.Nauka) Nauka.attempt({score:got, max:total});
+      if (cur.topics.length === TOPICS.length && cur.n === 20){ var best = loadJSON(LS_BEST, 0); if (got > best) saveJSON(LS_BEST, got); }
+      saveDraft();
+      $('summary').scrollIntoView({behavior:'smooth', block:'start'});
+    }
+    return { got:got, total:total, byTopic:byTopic };
+  }
+  function renderSummary(got, total, byTopic){
+    var pct = total ? Math.round(got/total*100) : 0;
+    var msg = pct >= 90 ? 'Excellent! Świetny wynik 🇬🇧' : pct >= 75 ? 'Bardzo dobrze — powtórz jeszcze błędy.' : pct >= 50 ? 'Nieźle, ale warto jeszcze powtórzyć słówka i gramatykę.' : 'Wróć do słówek i gramatyki z Unit 1 i spróbuj ponownie.';
+    var weak = Object.keys(byTopic).filter(function(k){ return byTopic[k].c/byTopic[k].t < 0.7; }).map(function(k){ return LABEL[k]; });
+    var h = '<div class="sub">Twój wynik</div><div class="sc">'+got+'/'+total+'</div><div class="sub">'+pct+'%</div><div class="msg">'+msg+'</div>';
+    if (weak.length) h += '<div class="weak"><b>Do powtórki:</b> '+esc(weak.join(', '))+'</div>';
+    if (cur.open.length) h += '<div class="weak">Zadania pisemne porównaj z przykładowymi odpowiedziami powyżej i oceń samodzielnie. Ważne, żeby zdania były poprawne i na temat, niekoniecznie takie same.</div>';
+    h += '<div class="breakdown">'+TOPICS.filter(function(x){ return byTopic[x.k]; }).map(function(x){
+      var d = byTopic[x.k], pc = d.t ? Math.round(d.c/d.t*100) : 0;
+      return '<div class="breakdown-row"><span class="bl">'+esc(x.l.split(' (')[0])+'</span><span class="bt"><span class="bf" style="width:'+pc+'%"></span></span><span class="bv">'+d.c+'/'+d.t+'</span></div>';
+    }).join('')+'</div>';
+    h += '<div class="btn-row"><button class="btn" id="btnAgainNew">Nowy wariant</button><button class="btn secondary" id="btnAgainSame">Ten sam wariant od nowa</button><button class="btn secondary" id="btnPrintAfter">Drukuj test</button></div>';
+    var el = $('summary'); el.innerHTML = h; el.hidden = false;
+    $('btnAgainNew').addEventListener('click', newVariant);
+    $('btnAgainSame').addEventListener('click', function(){ saveJSON(LS_DRAFT, null); openSheet(cur.seed, cur.topics, cur.n, cur.withOpen, true); });
+    $('btnPrintAfter').addEventListener('click', function(){ doPrint('test'); });
+  }
+  $('btnCheck').addEventListener('click', function(){ checkTest(false); });
+
+  /* ---------- toolbar / print ---------- */
+  function newVariant(){
+    if (!cur.checked && anyAnswered() && !window.confirm('Rozpocząć nowy wariant? Wpisane odpowiedzi zostaną utracone.')) return;
+    openSheet(randomSeed(), cur.topics, cur.n, cur.withOpen, true);
+  }
+  $('btnNew').addEventListener('click', newVariant);
+  $('btnTopics').addEventListener('click', function(){
+    if (!cur.checked && anyAnswered() && !window.confirm('Wrócić do wyboru tematów? Wpisane odpowiedzi zostaną utracone.')) return;
+    saveJSON(LS_DRAFT, null); clearHash(); showIntro();
+  });
+  $('btnToggleKey').addEventListener('click', function(){
+    var k = $('keySheet'), on = !k.classList.contains('show');
+    k.classList.toggle('show', on); $('btnToggleKey').textContent = on ? 'Ukryj klucz' : 'Pokaż klucz';
+  });
+  function doPrint(mode){ stopSpeech(); document.body.setAttribute('data-print', mode); setTimeout(function(){ window.print(); }, 60); }
+  window.addEventListener('afterprint', function(){ document.body.removeAttribute('data-print'); });
+  $('btnPrintTest').addEventListener('click', function(){ doPrint('test'); });
+  $('btnPrintKey').addEventListener('click', function(){ doPrint('key'); });
+
+  /* ---------- boot ---------- */
+  window.__ET = { build:build, POOL:POOL, BLOCKS:BLOCKS, OPEN:OPEN, getCur:function(){ return cur; }, check:checkTest, TOPICS:TOPICS };
+  (function boot(){
+    var o = parseHash(), seed = parseInt(o.w,10);
+    var tp = (o.t ? o.t.split(',') : TOPICS.map(function(x){return x.k;})).filter(function(k){ return LABEL[k]; });
+    if (!tp.length) tp = TOPICS.map(function(x){return x.k;});
+    TOPICS.forEach(function(x){ introSel[x.k] = tp.indexOf(x.k) !== -1; });
+    var n = [10,20,30].indexOf(parseInt(o.n,10)) !== -1 ? parseInt(o.n,10) : 20;
+    $('selN').value = String(n); $('chkOpen').checked = o.o !== '0';
+    if (seed > 0 && seed < 2147483647) openSheet(seed, tp, n, o.o !== '0', false);
+    else showIntro();
+  })();
+})();
+</script>
