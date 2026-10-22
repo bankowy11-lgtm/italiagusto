@@ -1,0 +1,588 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unit 2: What’s your job? — Angielski</title>
+<meta name="theme-color" content="#2f6fb5">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Angielski: Unit 2">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMDAiIGZpbGw9IiMyZjZmYjUiLz4KPHRleHQgeD0iMjU2IiB5PSIzNDAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIyMzAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNlYWYyZmMiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkVuPC90ZXh0Pgo8L3N2Zz4K">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMDAiIGZpbGw9IiMyZjZmYjUiLz4KPHRleHQgeD0iMjU2IiB5PSIzNDAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCBzZXJpZiIgZm9udC1zaXplPSIyMzAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNlYWYyZmMiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkVuPC90ZXh0Pgo8L3N2Zz4K">
+<style>
+  :root{
+    --paper:#f5f8fc; --paper-2:#e9eff7; --grid-line: rgba(47,111,181,0.09);
+    --ink:#1c2430; --ink-soft:#5a6778; --card:#ffffff; --card-edge: rgba(28,36,48,0.11);
+    --accent:#2f6fb5; --accent-ink:#ffffff; --accent-soft:#dde9f7;
+    --good:#2f9e6e; --good-soft:#e1f5ec; --bad:#c0483f; --bad-soft:#f8e2df;
+    --sans: -apple-system, "Segoe UI", system-ui, Roboto, sans-serif;
+    --mono: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#10161f; --paper-2:#161e29; --grid-line: rgba(120,170,230,0.09);
+      --ink:#e6ecf4; --ink-soft:#98a6b8; --card:#1a2330; --card-edge: rgba(255,255,255,0.08);
+      --accent:#6aa8ef; --accent-ink:#08121d; --accent-soft:#1d3250;
+      --good:#4fc98d; --good-soft:#173226; --bad:#e07a6f; --bad-soft:#3a201c;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#10161f; --paper-2:#161e29; --grid-line: rgba(120,170,230,0.09);
+    --ink:#e6ecf4; --ink-soft:#98a6b8; --card:#1a2330; --card-edge: rgba(255,255,255,0.08);
+    --accent:#6aa8ef; --accent-ink:#08121d; --accent-soft:#1d3250;
+    --good:#4fc98d; --good-soft:#173226; --bad:#e07a6f; --bad-soft:#3a201c;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background: linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0/32px 32px, linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0/32px 32px, var(--paper);
+    color: var(--ink); font-family: var(--sans); min-height:100vh; -webkit-text-size-adjust: 100%;
+  }
+  *:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  h1,h2{ text-wrap:balance; }
+  [hidden]{ display:none !important; }
+
+  .topbar{ position:sticky; top:0; z-index:20; display:flex; align-items:center; gap:10px; padding:10px 16px; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--card-edge); }
+  .topbar a.back{ color:var(--ink-soft); text-decoration:none; font-size:13px; font-weight:600; display:flex; align-items:center; gap:4px; }
+  .app-name{ font-weight:800; font-size:15px; margin-left:8px; }
+
+  .wrap{ max-width:820px; margin:0 auto; padding: 22px 16px 70px; }
+  .hero{ text-align:center; padding: 14px 0 22px; }
+  .hero h1{ font-size:clamp(24px,6vw,30px); margin:0 0 8px; font-weight:800; }
+  .hero p{ color:var(--ink-soft); font-size:14.5px; max-width:56ch; margin:0 auto; line-height:1.55; }
+
+  .card{ background:var(--card); border:1px solid var(--card-edge); border-radius:14px; padding:20px; margin-bottom:16px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+  .cta-row{ text-align:center; margin-top:14px; }
+  .btn{ font:inherit; font-weight:700; font-size:14.5px; color:var(--accent-ink); background:var(--accent); border:none; border-radius:10px; padding:13px 24px; cursor:pointer; min-height:46px; box-shadow: 0 4px 0 0 color-mix(in srgb, var(--accent) 65%, black); }
+  .btn:active{ transform:translateY(3px); box-shadow:0 1px 0 0 color-mix(in srgb, var(--accent) 65%, black); }
+  .btn.secondary{ background:var(--paper-2); color:var(--ink); box-shadow:none; border:1px solid var(--card-edge); }
+  .btn.secondary:active{ transform:translateY(2px); }
+  .btn.small{ font-size:13px; padding:9px 14px; min-height:40px; }
+  .btn-row{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+
+  .intro-label{ font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 10px; }
+  .tchips{ display:flex; flex-wrap:wrap; gap:8px; }
+  .tchip{ font:inherit; font-size:13px; font-weight:700; border-radius:22px; padding:10px 15px; min-height:42px; cursor:pointer; border:2px solid var(--card-edge); background:var(--paper-2); color:var(--ink-soft); text-align:left; }
+  .tchip.on{ background:var(--accent-soft); color:var(--accent); border-color:var(--accent); }
+  .tchip .tp{ font-family:var(--mono); font-size:11px; opacity:.75; margin-left:6px; }
+  .intro-row{ display:flex; flex-wrap:wrap; gap:16px; align-items:center; margin-top:16px; }
+  .intro-row label{ font-size:13.5px; font-weight:600; display:flex; align-items:center; gap:8px; }
+  .intro-row select{ font:inherit; font-size:14px; padding:8px 10px; border-radius:8px; border:2px solid var(--card-edge); background:var(--paper-2); color:var(--ink); min-height:40px; }
+  .intro-row input[type=checkbox]{ width:20px; height:20px; accent-color:var(--accent); }
+  .intro-sum{ margin-top:14px; font-family:var(--mono); font-size:12.5px; color:var(--ink-soft); }
+  .intro-sum b{ color:var(--ink); }
+  .feature-list{ margin:0; padding-left:18px; font-size:13.5px; line-height:1.7; color:var(--ink-soft); }
+  .footnote{ font-size:12px; color:var(--ink-soft); line-height:1.5; margin:12px 0 0; }
+
+  .toolbar{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:14px; }
+  .toolbar .sp{ flex:1; }
+  .variant{ font-family:var(--mono); font-size:12px; color:var(--ink-soft); }
+
+  .sheet-head{ margin-bottom:14px; }
+  .sheet-head h2{ margin:0 0 4px; font-size:22px; }
+  .sheet-head .sub{ font-size:13px; color:var(--ink-soft); }
+  .print-head{ display:none; }
+  .instr{ font-size:13px; color:var(--ink-soft); margin:0 0 12px; }
+  .sec-title{ font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); margin:20px 0 10px; }
+
+  .q{ background:var(--card); border:1px solid var(--card-edge); border-radius:14px; padding:16px 18px 18px; margin-bottom:12px; }
+  .q-head{ display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; }
+  .q-num{ flex-shrink:0; width:30px; height:30px; border-radius:50%; background:var(--accent); color:var(--accent-ink); font-family:var(--mono); font-weight:800; font-size:14px; display:flex; align-items:center; justify-content:center; margin-top:-2px; }
+  .q-text{ flex:1; font-weight:700; font-size:15px; line-height:1.45; }
+  .q-tag{ font-family:var(--mono); font-size:10px; font-weight:700; color:var(--accent); background:var(--accent-soft); padding:3px 8px; border-radius:6px; white-space:nowrap; flex-shrink:0; max-width:150px; overflow:hidden; text-overflow:ellipsis; }
+  .opts{ display:grid; gap:8px; margin-left:42px; }
+  .opt{ display:flex; gap:10px; align-items:flex-start; text-align:left; font:inherit; font-size:14px; line-height:1.4; color:var(--ink); background:var(--paper-2); border:2px solid var(--card-edge); border-radius:10px; padding:11px 13px; min-height:46px; cursor:pointer; }
+  .opt .ol{ font-family:var(--mono); font-weight:800; color:var(--ink-soft); flex-shrink:0; width:18px; }
+  .opt[aria-pressed="true"]{ background:var(--accent-soft); border-color:var(--accent); }
+  .opt[aria-pressed="true"] .ol{ color:var(--accent); }
+  .q.checked .opt{ pointer-events:none; }
+  .opt.correct{ background:var(--good-soft) !important; border-color:var(--good) !important; color:var(--good); }
+  .opt.correct .ol{ color:var(--good) !important; }
+  .opt.wrong{ background:var(--bad-soft) !important; border-color:var(--bad) !important; color:var(--bad); }
+  .opt.wrong .ol{ color:var(--bad) !important; }
+  .q-res{ margin:10px 0 0 42px; font-size:13px; line-height:1.5; color:var(--ink-soft); }
+  .q-res b.good{ color:var(--good); } .q-res b.bad{ color:var(--bad); }
+
+  textarea.oa{ display:block; width:calc(100% - 42px); margin-left:42px; font:inherit; font-size:14.5px; line-height:1.5; padding:11px 13px; min-height:90px; border-radius:10px; border:2px solid var(--card-edge); background:var(--paper-2); color:var(--ink); resize:vertical; }
+  textarea.oa:focus{ border-color:var(--accent); outline:none; }
+  .model-btn{ margin:10px 0 0 42px; }
+  .model{ margin:10px 0 0 42px; padding:12px 14px; border-radius:10px; background:var(--good-soft); color:var(--ink); font-size:13.5px; line-height:1.55; border-left:4px solid var(--good); }
+  .model b{ color:var(--good); }
+  .print-only{ display:none; }
+
+  .summary{ text-align:center; }
+  .summary .sc{ font-family:var(--mono); font-weight:800; font-size:44px; color:var(--accent); margin:4px 0 2px; }
+  .summary .sub{ color:var(--ink-soft); font-size:13.5px; margin-bottom:10px; }
+  .summary .msg{ font-weight:700; font-size:16px; margin-bottom:14px; }
+  .breakdown{ display:flex; flex-direction:column; gap:8px; margin:16px 0; text-align:left; }
+  .breakdown-row{ display:flex; align-items:center; gap:10px; }
+  .breakdown-row .bl{ font-size:12.5px; font-weight:600; width:190px; flex-shrink:0; }
+  .breakdown-row .bt{ flex:1; height:8px; background:var(--paper-2); border-radius:5px; overflow:hidden; }
+  .breakdown-row .bf{ display:block; height:100%; background:var(--accent); border-radius:5px; }
+  .breakdown-row .bv{ font-family:var(--mono); font-size:11.5px; color:var(--ink-soft); width:44px; text-align:right; flex-shrink:0; }
+  .weak{ font-size:13px; color:var(--ink-soft); margin-bottom:14px; line-height:1.5; }
+
+  .key-sheet{ display:none; }
+  @media screen{ .key-sheet.show{ display:block; } }
+  .key-sheet h2{ margin:0 0 10px; font-size:19px; }
+  .key-row{ padding:7px 0; border-top:1px solid var(--card-edge); font-size:13.5px; line-height:1.55; }
+  .key-row .kn{ display:inline-block; font-family:var(--mono); font-weight:800; color:var(--accent); min-width:28px; }
+  .key-row .ka{ font-family:var(--mono); font-weight:800; margin-right:8px; }
+  .key-row .kx{ display:block; margin-left:28px; font-size:12px; color:var(--ink-soft); }
+
+
+  .passage{ background:var(--accent-soft); border-radius:14px; padding:14px 16px; margin:18px 0 12px; }
+  .pass-title{ font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+  .pass-text{ font-size:15px; line-height:1.65; }
+  .pass-text.script{ margin-top:10px; padding-top:10px; border-top:1px dashed var(--accent); }
+  .audio{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+  .speed{ font:inherit; font-size:13px; padding:7px 10px; border-radius:8px; border:2px solid var(--card-edge); background:var(--card); color:var(--ink); min-height:40px; }
+  .audio-note{ margin-top:8px; font-size:12.5px; color:var(--ink-soft); }
+  .pass-print{ font-size:10pt; font-style:italic; }
+
+  /* ================= PRINT ================= */
+  @media print{
+    @page{ size:A4; margin:11mm 14mm; }
+    html,body{ background:#fff !important; color:#000 !important; min-height:0; }
+    body{ font-family: "Segoe UI", Arial, sans-serif; font-size:10.5pt; }
+    .topbar,.toolbar,.screen-only,.intro,.summary,.btn,.q-tag,.q-res,.model-btn,.sheet-head,.model,textarea.oa{ display:none !important; }
+    .print-only{ display:block; }
+    .wrap{ max-width:none; padding:0; }
+    .print-head{ display:block; margin-bottom:4mm; }
+    .print-head h1{ font-size:15pt; margin:0 0 3mm; }
+    .print-head .ph-row{ display:flex; gap:8mm; font-size:10.5pt; margin-bottom:2mm; }
+    .print-head .ph-row span.fill{ flex:1; border-bottom:1px solid #000; height:6mm; }
+    .print-head .ph-meta{ font-size:8.5pt; color:#444; }
+    .instr{ color:#000; font-size:9.5pt; }
+    .sec-title{ color:#000; font-size:8.5pt; margin:4mm 0 2mm; border-bottom:0.5pt solid #000; padding-bottom:1mm; }
+    .q{ background:none !important; border:none !important; border-radius:0; padding:0 0 2.5mm; margin:0 0 1.5mm; break-inside:avoid; page-break-inside:avoid; }
+    .q-head{ margin-bottom:1.5mm; gap:3mm; }
+    .q-num{ background:none !important; color:#000 !important; border:1.5px solid #000; width:7mm; height:7mm; font-size:10pt; margin-top:0; }
+    .q-text{ font-size:10.5pt; }
+    .opts{ margin-left:10mm; gap:1mm; }
+    .opt{ background:none !important; border:none !important; border-radius:0; padding:0; min-height:0; color:#000 !important; font-size:10.5pt; }
+    .opt .ol{ color:#000 !important; font-size:10.5pt; }
+    .opt[aria-pressed="true"]{ background:none !important; }
+    .lines{ display:block; margin:2mm 0 0 10mm; }
+    .lines i{ display:block; height:7.5mm; border-bottom:0.6pt solid #666; }
+    .passage{ background:none !important; border:1px solid #000; border-radius:0; padding:3mm 4mm; margin:3mm 0 2mm; break-inside:avoid; break-after:avoid; page-break-after:avoid; }
+    .q{ padding-bottom:1.8mm !important; margin-bottom:1mm !important; }
+    .opt,.opt .ol,.q-text{ font-size:10pt !important; }
+    .lines i{ height:7mm; }
+    .pass-title{ color:#000; }
+    .pass-text{ font-size:10.5pt; }
+    .passage.listen .pass-text.script{ display:none !important; }
+    .key-sheet{ display:none !important; }
+    body[data-print="key"] .test-sheet{ display:none !important; }
+    body[data-print="key"] .key-sheet{ display:block !important; }
+    .key-row{ border-top:0.5pt solid #999; font-size:10pt; break-inside:avoid; }
+    .key-row .kx{ color:#333; }
+    .key-sheet h2{ font-size:14pt; }
+  }
+</style>
+
+<div class="topbar">
+  <a class="back" href="../">&#8592; Język angielski</a>
+  <div class="app-name">Unit 2 — What’s your job?</div>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <div class="intro" id="viewIntro">
+    <div class="hero">
+      <h1>Unit 2: What’s your job?</h1>
+      <p>Zawody i miejsca pracy, Present simple (do / does), przysłówki częstotliwości, życzenia i gratulacje, czytanie i słuchanie. Każdy wariant jest losowany na nowo. Rozwiązujesz na ekranie albo drukujesz.</p>
+    </div>
+    <div class="card">
+      <p class="intro-label">Z jakich tematów ma być test?</p>
+      <div class="tchips" id="tchips"></div>
+      <div class="intro-row">
+        <label>Pytań ze słownictwa i gramatyki:
+          <select id="selN"><option value="10">10</option><option value="20" selected>20</option><option value="30">30</option></select>
+        </label>
+        <label><input type="checkbox" id="chkOpen" checked> Dołącz zadania pisemne</label>
+      </div>
+      <div class="intro-sum" id="introSum"></div>
+      <div class="btn-row" style="margin-top:14px;">
+        <button class="btn small secondary" id="btnAll">Zaznacz wszystkie tematy</button>
+      </div>
+    </div>
+    <div class="card">
+      <p class="intro-label">Jak to działa</p>
+      <ul class="feature-list">
+        <li><b>Na tablecie:</b> klikasz odpowiedzi, a na końcu „Sprawdź test”. Za każde pytanie 1 punkt.</li>
+        <li><b>Słuchanie:</b> przycisk „Odtwórz” czyta tekst po angielsku głosem urządzenia (można odtworzyć kilka razy, także wolniej). Tekst pojawia się po sprawdzeniu testu.</li>
+        <li><b>Zadania pisemne</b> piszesz po angielsku, a potem porównujesz z przykładową odpowiedzią i oceniasz sam.</li>
+        <li><b>Wydruk (opcja):</b> „Drukuj test” przygotowuje kartkę A4. „Drukuj klucz” daje osobną kartkę z odpowiedziami i tekstami do nagrań (rodzic czyta je na głos).</li>
+      </ul>
+      <p class="footnote">Pytania opracowano na podstawie zakresu Unit 2 (str. 22–35: zawody, miejsca pracy, Present simple, how often, życzenia i gratulacje). Wszystkie teksty i nagrania są własne, nie są kopiami z książki.</p>
+    </div>
+    <div class="cta-row"><button class="btn" id="btnStart">START TESTU</button></div>
+    <p class="intro-sum" id="bestHint" style="text-align:center; margin-top:16px;"></p>
+  </div>
+
+  <!-- ============ SHEET ============ -->
+  <div id="viewSheet" hidden>
+    <div class="toolbar">
+      <button class="btn small secondary" id="btnTopics">&#8592; Tematy</button>
+      <span class="variant" id="variantLabel"></span>
+      <span class="sp"></span>
+      <button class="btn small secondary" id="btnPrintTest">Drukuj test</button>
+      <button class="btn small secondary" id="btnPrintKey">Drukuj klucz</button>
+      <button class="btn small secondary" id="btnToggleKey">Pokaż klucz</button>
+      <button class="btn small secondary" id="btnNew">Nowy wariant</button>
+    </div>
+
+    <div class="test-sheet" id="testSheet">
+      <div class="print-head">
+        <h1>Angielski, klasa 5 — Unit 2: What’s your job?</h1>
+        <div class="ph-row"><span>Imię i nazwisko:</span><span class="fill"></span><span>Data:</span><span class="fill" style="max-width:35mm"></span><span>Wynik:</span><span class="fill" style="max-width:25mm"></span><span id="phMax"></span></div>
+        <div class="ph-meta" id="phMeta"></div>
+      </div>
+      <div class="sheet-head">
+        <h2>Test</h2>
+        <div class="sub" id="sheetSub"></div>
+      </div>
+      <p class="instr">W każdym pytaniu zaznacz jedną poprawną odpowiedź (Choose the correct answer).</p>
+      <div id="closedQs"></div>
+      <div id="openWrap" hidden>
+        <div class="sec-title">Zadania pisemne — odpowiedz po angielsku (Writing)</div>
+        <div id="openQs"></div>
+      </div>
+      <div class="cta-row screen-only" id="checkRow"><button class="btn" id="btnCheck">Sprawdź test</button></div>
+      <div class="card summary" id="summary" hidden></div>
+    </div>
+
+    <div class="key-sheet card" id="keySheet"></div>
+  </div>
+</div>
+
+<link rel="manifest" href="../../shared/manifest.webmanifest">
+<script src="../../shared/app.js" data-subj="jezyk-angielski" data-key="ang_unit2_best_v1" data-label="Unit 2 — What’s your job?"></script>
+<script>
+(function(){
+  "use strict";
+  var $ = function(id){ return document.getElementById(id); };
+  function loadJSON(k,f){ try{ var v=localStorage.getItem(k); return v?JSON.parse(v):f; }catch(e){ return f; } }
+  function saveJSON(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+  function esc(s){ var d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+
+  var rng = Math.random;
+  function mulberry32(a){ return function(){ a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function shuffle(arr){ var a=arr.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(rng()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+
+  var TOPICS = [
+    {k:'ju', l:'Zawody (jobs)', pg:22},
+    {k:'jp', l:'Miejsca pracy (places of work)', pg:25},
+    {k:'p1', l:'Present simple (do / does)', pg:24},
+    {k:'p2', l:'Częstotliwość i pory dnia (how often)', pg:27},
+    {k:'fn', l:'Życzenia i gratulacje (wishes)', pg:30},
+    {k:'rd', l:'Czytanie: opisy zawodów', pg:29},
+    {k:'ls', l:'Słuchanie (listening)', pg:23}
+  ];
+  var LABEL = {}; TOPICS.forEach(function(x){ LABEL[x.k] = x.l; });
+  var BLOCK_T = ['rd','ls'];
+  var BLOCK_SIZE = { rd:5, ls:4 };
+  var LETTERS = ['A','B','C','D'];
+  var N_OPEN = 3;
+
+  var POOL = [{"t":"ju","q":"A person who looks after sick animals is a ___.","o":["vet","farmer","pilot","waiter"],"c":0,"e":"vet = weterynarz."},{"t":"ju","q":"A person who flies a plane is a ___.","o":["pilot","chef","singer","vet"],"c":0,"e":"pilot = pilot."},{"t":"ju","q":"A person who cooks in a restaurant is a ___.","o":["chef","waiter","farmer","footballer"],"c":0,"e":"chef = szef kuchni, kucharz."},{"t":"ju","q":"A person who brings food to the tables in a restaurant is a ___.","o":["waiter","chef","pilot","hairdresser"],"c":0,"e":"waiter = kelner."},{"t":"ju","q":"A person who puts out fires is a ___.","o":["firefighter","police officer","farmer","actor"],"c":0,"e":"firefighter = strażak."},{"t":"ju","q":"A person who plays football for a team is a ___.","o":["footballer","singer","actor","farmer"],"c":0,"e":"footballer = piłkarz."},{"t":"ju","q":"A person who cuts people’s hair is a ___.","o":["hairdresser","doctor","vet","waiter"],"c":0,"e":"hairdresser = fryzjer."},{"t":"ju","q":"A person who grows food and keeps animals on a farm is a ___.","o":["farmer","pilot","chef","singer"],"c":0,"e":"farmer = rolnik."},{"t":"ju","q":"A person who sings songs is a ___.","o":["singer","actor","footballer","vet"],"c":0,"e":"singer = piosenkarz, śpiewak."},{"t":"ju","q":"A person who plays a character in a film is an ___.","o":["actor","farmer","pilot","chef"],"c":0,"e":"actor = aktor. Przed samogłoską: an actor."},{"t":"ju","q":"A person who helps sick people is a ___.","o":["doctor","singer","footballer","hairdresser"],"c":0,"e":"doctor = lekarz."},{"t":"ju","q":"A person who works in a shop and helps customers is a ___.","o":["shop assistant","firefighter","pilot","vet"],"c":0,"e":"shop assistant = sprzedawca."},{"t":"ju","q":"A person who works at a desk in an office is an ___.","o":["office worker","actor","farmer","firefighter"],"c":0,"e":"office worker = pracownik biurowy."},{"t":"ju","q":"A person who works for the police is a ___.","o":["police officer","chef","singer","waiter"],"c":0,"e":"police officer = policjant."},{"t":"ju","q":"Which word means ‘strażak’?","o":["firefighter","footballer","farmer","vet"],"c":0,"e":"firefighter = strażak."},{"t":"ju","q":"Which word means ‘fryzjer’?","o":["hairdresser","doctor","actor","waiter"],"c":0,"e":"hairdresser = fryzjer."},{"t":"ju","q":"Which word means ‘kelner’?","o":["waiter","chef","pilot","farmer"],"c":0,"e":"waiter = kelner."},{"t":"ju","q":"Which word means ‘rolnik’?","o":["farmer","footballer","firefighter","vet"],"c":0,"e":"farmer = rolnik."},{"t":"ju","q":"Which word means ‘piłkarz’?","o":["footballer","firefighter","farmer","pilot"],"c":0,"e":"footballer = piłkarz."},{"t":"ju","q":"Which sentence about a vet is correct?","o":["My sister is a vet.","My sister is vet.","My sister is an vet.","My sister a vet."],"c":0,"e":"Przed nazwą zawodu używamy a/an: a vet."},{"t":"ju","q":"Which sentence is correct about an actor?","o":["He is an actor.","He is a actor.","He is actor.","He an actor."],"c":0,"e":"actor zaczyna się od samogłoski, więc an actor."},{"t":"jp","q":"Doctors work in a ___.","o":["surgery","stadium","farm","studio"],"c":0,"e":"surgery = gabinet lekarski."},{"t":"jp","q":"Pilots work at an ___.","o":["airport","office","theatre","farm"],"c":0,"e":"airport = lotnisko."},{"t":"jp","q":"Farmers work on a ___.","o":["farm","stadium","studio","theatre"],"c":0,"e":"farm = gospodarstwo, farma."},{"t":"jp","q":"Firefighters work at a fire ___.","o":["station","stadium","salon","surgery"],"c":0,"e":"fire station = remiza strażacka."},{"t":"jp","q":"Footballers play in a ___.","o":["stadium","surgery","studio","airport"],"c":0,"e":"stadium = stadion."},{"t":"jp","q":"Police officers work at a police ___.","o":["station","salon","stadium","studio"],"c":0,"e":"police station = komisariat."},{"t":"jp","q":"Office workers work in an ___.","o":["office","airport","farm","theatre"],"c":0,"e":"office = biuro."},{"t":"jp","q":"Hairdressers work in a hair ___.","o":["salon","station","stadium","studio"],"c":0,"e":"hair salon = salon fryzjerski."},{"t":"jp","q":"Singers record songs in a ___.","o":["studio","farm","surgery","fire station"],"c":0,"e":"studio = studio nagrań."},{"t":"jp","q":"Actors work in a ___.","o":["theatre","airport","farm","police station"],"c":0,"e":"theatre = teatr."},{"t":"jp","q":"Waiters and chefs work in a ___.","o":["restaurant","stadium","surgery","farm"],"c":0,"e":"restaurant = restauracja."},{"t":"jp","q":"Which word means ‘lotnisko’?","o":["airport","office","stadium","farm"],"c":0,"e":"airport = lotnisko."},{"t":"jp","q":"Which word means ‘teatr’?","o":["theatre","studio","station","surgery"],"c":0,"e":"theatre = teatr."},{"t":"jp","q":"Which word means ‘stadion’?","o":["stadium","studio","station","salon"],"c":0,"e":"stadium = stadion. Uważaj na podobne słowa: studio, station."},{"t":"jp","q":"Which word means ‘remiza strażacka’?","o":["fire station","police station","surgery","hair salon"],"c":0,"e":"fire station = remiza (straż pożarna)."},{"t":"jp","q":"Which word means ‘gabinet lekarski’?","o":["surgery","studio","salon","stadium"],"c":0,"e":"surgery = gabinet lekarski."},{"t":"jp","q":"Which place of work is for animals and crops?","o":["farm","stadium","studio","airport"],"c":0,"e":"farm = gospodarstwo, tam pracuje farmer."},{"t":"jp","q":"Which person works at a stadium?","o":["A footballer.","A doctor.","A pilot.","A vet."],"c":0,"e":"Piłkarz pracuje na stadionie."},{"t":"jp","q":"Which person works at an airport?","o":["A pilot.","A farmer.","A hairdresser.","An actor."],"c":0,"e":"Pilot pracuje na lotnisku."},{"t":"jp","q":"Where does a hairdresser work?","o":["In a hair salon.","In a surgery.","At a stadium.","On a farm."],"c":0,"e":"hairdresser – hair salon."},{"t":"p1","q":"My mum ___ in a hospital.","o":["works","work","working","is work"],"c":0,"e":"Z he/she/it dodajemy -s: works."},{"t":"p1","q":"My dad and my uncle ___ on a farm.","o":["work","works","working","is work"],"c":0,"e":"Z they (my dad and my uncle) bez -s: work."},{"t":"p1","q":"She ___ work in a restaurant. (nie pracuje)","o":["doesn’t","don’t","isn’t","not"],"c":0,"e":"Przeczenie z she: doesn’t + czasownik bez -s."},{"t":"p1","q":"They ___ work at the weekend. (nie pracują)","o":["don’t","doesn’t","aren’t","not"],"c":0,"e":"Przeczenie z they: don’t."},{"t":"p1","q":"___ your brother like his job?","o":["Does","Do","Is","Has"],"c":0,"e":"Pytanie z he/she/it: Does …?"},{"t":"p1","q":"___ you work in an office?","o":["Do","Does","Are","Have"],"c":0,"e":"Pytanie z you: Do …?"},{"t":"p1","q":"Does she work in a library? – Yes, she ___.","o":["does","do","is","works"],"c":0,"e":"Krótka odpowiedź: Yes, she does."},{"t":"p1","q":"Do they work on Sundays? – No, they ___.","o":["don’t","doesn’t","aren’t","haven’t"],"c":0,"e":"Krótka odpowiedź: No, they don’t."},{"t":"p1","q":"What ___ your mum do?","o":["does","do","is","has"],"c":0,"e":"Z your mum (she) używamy does: What does your mum do?"},{"t":"p1","q":"What do you do? – ___","o":["I’m a pilot.","I’m fine.","I’m eleven.","I’m from Spain."],"c":0,"e":"What do you do? pyta o zawód."},{"t":"p1","q":"Where ___ your dad work?","o":["does","do","is","has"],"c":0,"e":"Where does your dad work?"},{"t":"p1","q":"What time ___ she go to work?","o":["does","do","is","has"],"c":0,"e":"What time does she go to work?"},{"t":"p1","q":"Why ___ he like his job?","o":["does","do","is","has"],"c":0,"e":"Why does he like his job?"},{"t":"p1","q":"He ___ at seven o’clock every morning. (wstaje)","o":["gets up","get up","getting up","is get up"],"c":0,"e":"He + -s: gets up."},{"t":"p1","q":"My neighbour ___ work in the evening. (nie pracuje)","o":["doesn’t","don’t","isn’t","not"],"c":0,"e":"My neighbour = he/she, więc doesn’t."},{"t":"p1","q":"Which sentence about animals is correct?","o":["He works with animals.","He work with animals.","He works with animal.","He is works with animals."],"c":0,"e":"Present simple z he: works."},{"t":"p1","q":"Which question is correct?","o":["Does she work in a library?","Do she work in a library?","Does she works in a library?","Is she work in a library?"],"c":0,"e":"Does + she + czasownik bez -s."},{"t":"p1","q":"Which negative sentence is correct?","o":["My stepsister doesn’t work in a school.","My stepsister don’t work in a school.","My stepsister doesn’t works in a school.","My stepsister not work in a school."],"c":0,"e":"doesn’t + czasownik bez -s."},{"t":"p1","q":"When ___ you work? – I work on Mondays.","o":["do","does","are","have"],"c":0,"e":"When do you work?"},{"t":"p1","q":"Tom ___ pizzas in a restaurant.","o":["makes","make","making","is make"],"c":0,"e":"Tom = he, więc makes."},{"t":"p2","q":"I ___ go to school on Saturday. (nigdy)","o":["never","always","usually","often"],"c":0,"e":"never = nigdy."},{"t":"p2","q":"Which word means ‘zawsze’?","o":["always","never","sometimes","usually"],"c":0,"e":"always = zawsze (np. every day)."},{"t":"p2","q":"Which word means ‘czasami’?","o":["sometimes","usually","always","never"],"c":0,"e":"sometimes = czasami."},{"t":"p2","q":"Which word means ‘zwykle’?","o":["usually","never","always","once"],"c":0,"e":"usually = zwykle."},{"t":"p2","q":"Which word means ‘często’?","o":["often","never","always","once"],"c":0,"e":"often = często."},{"t":"p2","q":"Which sentence has the correct word order?","o":["My dad usually works at the weekend.","My dad works usually at the weekend.","Usually my dad at the weekend works.","My dad works at the weekend usually."],"c":0,"e":"Przysłówek częstotliwości stoi przed czasownikiem: usually works."},{"t":"p2","q":"She is ___ late for school. She is late every day.","o":["always","never","sometimes","once"],"c":0,"e":"every day = always."},{"t":"p2","q":"How ___ do you go to the dentist? – Once a year.","o":["often","many","much","old"],"c":0,"e":"How often …? pyta, jak często."},{"t":"p2","q":"‘Twice a week’ means ___.","o":["two times in one week","every day","one time in a month","never"],"c":0,"e":"twice = dwa razy."},{"t":"p2","q":"‘Every day’ is ___.","o":["always","never","sometimes","once"],"c":0,"e":"every day = always."},{"t":"p2","q":"‘Zero times a week’ is ___.","o":["never","always","often","usually"],"c":0,"e":"never = zero razy."},{"t":"p2","q":"Which answer fits ‘How often do you work?’","o":["Twice a week.","At seven o’clock.","In a restaurant.","Because I like it."],"c":0,"e":"How often? – Twice a week."},{"t":"p2","q":"Which answer fits ‘What time does she go to work?’","o":["At seven o’clock.","Twice a week.","In a restaurant.","Because she likes it."],"c":0,"e":"What time? – At seven o’clock."},{"t":"p2","q":"Which answer fits ‘Where does he work?’","o":["In a restaurant.","At seven o’clock.","Twice a week.","Because he likes it."],"c":0,"e":"Where? – In a restaurant."},{"t":"p2","q":"Which answer fits ‘Why does he like his job?’","o":["Because it’s fun.","On Mondays.","In a studio.","Twice a week."],"c":0,"e":"Why? – Because …"},{"t":"p2","q":"Which question asks about frequency?","o":["How often do you work?","What time do you work?","Where do you work?","Why do you work?"],"c":0,"e":"How often …? pyta o częstotliwość."},{"t":"p2","q":"I read a book ___ the evening.","o":["in","on","at","by"],"c":0,"e":"Mówimy: in the morning / afternoon / evening."},{"t":"p2","q":"We have lunch ___ one o’clock.","o":["at","in","on","by"],"c":0,"e":"Przy godzinie używamy at."},{"t":"p2","q":"I drink milk ___ breakfast time.","o":["at","in","on","with"],"c":0,"e":"at breakfast / lunch / dinner time."},{"t":"p2","q":"He works ___ the week and rests at the weekend.","o":["during","on","at","in"],"c":0,"e":"during the week = w ciągu tygodnia."},{"t":"p2","q":"Which sentence about the weekend is correct?","o":["She never works at the weekend.","She works never at the weekend.","She doesn’t never work at the weekend.","She never doesn’t work."],"c":0,"e":"never stoi przed czasownikiem i sam tworzy przeczenie."},{"t":"fn","q":"I’m keeping my ___ crossed for you.","o":["fingers","hands","arms","legs"],"c":0,"e":"I’m keeping my fingers crossed = trzymam kciuki."},{"t":"fn","q":"Tomorrow is your friend’s first day at a new school. What do you say?","o":["I wish you all the best of luck.","Congratulations on your first day!","Keep up the good work!","You deserve a pat on the back!"],"c":0,"e":"Przed wydarzeniem życzymy powodzenia."},{"t":"fn","q":"Your friend got a very good mark. What do you say?","o":["Great job!","Good luck for tomorrow!","I’m keeping my fingers crossed.","I wish you all the best of luck."],"c":0,"e":"Po sukcesie chwalimy: Great job!"},{"t":"fn","q":"Your friend won a school competition. What do you say?","o":["Congratulations!","Good luck for tomorrow!","Fingers crossed!","I wish you luck for the test."],"c":0,"e":"Po zwycięstwie gratulujemy: Congratulations!"},{"t":"fn","q":"‘You deserve a pat on the back!’ means ___.","o":["You did something very well.","You have a bad back.","You are late.","You are ill."],"c":0,"e":"Wyrażenie oznacza pochwałę: należy Ci się uznanie."},{"t":"fn","q":"‘Keep up the good work!’ means ___.","o":["Continue working well.","Stop working now.","Work at home.","Start a new job."],"c":0,"e":"Keep up the good work = tak trzymaj."},{"t":"fn","q":"Which phrase means ‘Trzymam kciuki’?","o":["I’m keeping my fingers crossed.","I’m keeping my hands closed.","I keep fingers crossing.","I cross my fingers keep."],"c":0,"e":"Poprawna wersja: I’m keeping my fingers crossed."},{"t":"fn","q":"Which phrase do we say AFTER a success?","o":["Congratulations!","I wish you all the best of luck.","Good luck!","Fingers crossed!"],"c":0,"e":"Po sukcesie: Congratulations!"},{"t":"fn","q":"Which phrase do we say BEFORE an important event?","o":["I wish you all the best of luck.","Great job!","Congratulations!","You deserve a pat on the back!"],"c":0,"e":"Przed wydarzeniem: I wish you all the best of luck."},{"t":"fn","q":"‘I’m excited about the play this evening.’ Which answer is best?","o":["I wish you all the best of luck.","Congratulations on your job!","You deserve a pat on the back!","Keep up the good work."],"c":0,"e":"Przed przedstawieniem życzymy powodzenia."},{"t":"fn","q":"‘Great job!’ is ___.","o":["praise (pochwała)","a question","a goodbye","a wish before an exam"],"c":0,"e":"Great job! to pochwała po dobrze wykonanym zadaniu."},{"t":"fn","q":"Complete: ‘Congratulations ___ your first day!’","o":["on","in","at","to"],"c":0,"e":"Congratulations on …"},{"t":"fn","q":"Complete: ‘I wish you all the best ___ luck.’","o":["of","for","on","at"],"c":0,"e":"all the best of luck."},{"t":"fn","q":"Complete: ‘Good luck ___ your first day.’","o":["for","on","at","by"],"c":0,"e":"Good luck for …"},{"t":"fn","q":"Complete: ‘Keep ___ the good work!’","o":["up","down","in","at"],"c":0,"e":"Keep up the good work!"},{"t":"fn","q":"Complete: ‘You ___ a pat on the back!’","o":["deserve","deserves","deserving","need to"],"c":0,"e":"You deserve …"}];
+  var BLOCKS = [{"id":"r1","t":"rd","title":"Rodzinne zawody Oli","text":"My name’s Ola and I’m eleven. This is my family’s job album. My mum is a vet. She works in a surgery in our town and she looks after dogs, cats and rabbits. She gets up at six o’clock every morning. My dad is a pilot. He flies planes to Spain and Italy, so he often works at the weekend. My grandad is a farmer. He works on a farm and he has got forty cows. I want to be a chef because I love cooking!","qs":[{"t":"rd","q":"What does Ola’s mum do?","o":["She’s a vet.","She’s a pilot.","She’s a farmer.","She’s a chef."],"c":0,"e":"„My mum is a vet.”"},{"t":"rd","q":"Where does Ola’s dad fly to?","o":["Spain and Italy.","Poland and France.","China and Spain.","The UK and Germany."],"c":0,"e":"„He flies planes to Spain and Italy.”"},{"t":"rd","q":"What time does Ola’s mum get up?","o":["At six o’clock.","At seven o’clock.","At eight o’clock.","At five o’clock."],"c":0,"e":"„She gets up at six o’clock every morning.”"},{"t":"rd","q":"How many cows has Ola’s grandad got?","o":["Forty.","Fourteen.","Four.","Fifty."],"c":0,"e":"„… he has got forty cows.”"},{"t":"rd","q":"What does Ola want to be?","o":["A chef.","A vet.","A pilot.","A farmer."],"c":0,"e":"„I want to be a chef because I love cooking!”"}]},{"id":"r2","t":"rd","title":"Dzień strażaka","text":"Hi, I’m Jack and I’m a firefighter. I work at a fire station in London. I usually start work at seven o’clock in the morning and finish at seven in the evening. I work four days a week. In the morning I always check the fire engine. At lunch time we usually cook together. Sometimes there is a big fire and we go out quickly. I never work on my birthday!","qs":[{"t":"rd","q":"Where does Jack work?","o":["At a fire station.","In a hospital.","At an airport.","In a restaurant."],"c":0,"e":"„I work at a fire station in London.”"},{"t":"rd","q":"What time does Jack usually start work?","o":["At seven o’clock in the morning.","At seven o’clock in the evening.","At nine o’clock.","At six o’clock."],"c":0,"e":"„I usually start work at seven o’clock in the morning.”"},{"t":"rd","q":"How many days a week does Jack work?","o":["Four.","Five.","Seven.","Three."],"c":0,"e":"„I work four days a week.”"},{"t":"rd","q":"What does Jack always do in the morning?","o":["He checks the fire engine.","He cooks lunch.","He goes home.","He visits his family."],"c":0,"e":"„In the morning I always check the fire engine.”"},{"t":"rd","q":"When does Jack never work?","o":["On his birthday.","On Mondays.","At lunch time.","In the evening."],"c":0,"e":"„I never work on my birthday!”"}]},{"id":"r3","t":"rd","title":"Fryzjerka Emma","text":"Emma is a hairdresser. She works in a hair salon near the market. The salon opens at nine o’clock and closes at six o’clock. Emma has got ten customers every day. She often cuts her friends’ hair on Sundays, but she doesn’t work on Mondays. Her favourite part of the job is talking to people. In the evening she sometimes sings in a school choir. She doesn’t like cooking, so she usually has dinner in a restaurant.","qs":[{"t":"rd","q":"Where does Emma work?","o":["In a hair salon.","In a restaurant.","In a surgery.","At a school."],"c":0,"e":"„She works in a hair salon near the market.”"},{"t":"rd","q":"What time does the salon open?","o":["At nine o’clock.","At six o’clock.","At eight o’clock.","At ten o’clock."],"c":0,"e":"„The salon opens at nine o’clock …”"},{"t":"rd","q":"How many customers has Emma got every day?","o":["Ten.","Two.","Twenty.","Six."],"c":0,"e":"„Emma has got ten customers every day.”"},{"t":"rd","q":"Which day doesn’t Emma work?","o":["Monday.","Sunday.","Friday.","Saturday."],"c":0,"e":"„… she doesn’t work on Mondays.”"},{"t":"rd","q":"What does Emma sometimes do in the evening?","o":["She sings in a school choir.","She cooks dinner.","She cuts hair.","She works in a salon."],"c":0,"e":"„In the evening she sometimes sings in a school choir.”"}]},{"id":"l1","t":"ls","title":"Trzy zawody","text":"My name’s Tom. My uncle Dave is a waiter. He works in a restaurant in the city centre. My aunt Rita is a singer. She works in a music studio, and she sometimes sings in a theatre. My cousin Max is a footballer. He plays in a big stadium every Saturday.","qs":[{"t":"ls","q":"What is Tom’s uncle’s job?","o":["He’s a waiter.","He’s a chef.","He’s a singer.","He’s a footballer."],"c":0,"e":"„My uncle Dave is a waiter.”"},{"t":"ls","q":"Where does aunt Rita work?","o":["In a music studio.","In a restaurant.","In a stadium.","In a surgery."],"c":0,"e":"„She works in a music studio.”"},{"t":"ls","q":"Where does Rita sometimes sing?","o":["In a theatre.","In a stadium.","In a restaurant.","In a station."],"c":0,"e":"„… she sometimes sings in a theatre.”"},{"t":"ls","q":"When does Max play in the stadium?","o":["Every Saturday.","Every Sunday.","Twice a week.","Every day."],"c":0,"e":"„He plays in a big stadium every Saturday.”"}]},{"id":"l2","t":"ls","title":"Jak często?","text":"Hi, I’m Mia. I always get up at seven o’clock. I usually have breakfast with my parents. I often walk to school with my friend, but sometimes my dad takes me by car. I never go to school on Sundays! In the evening I play the guitar twice a week.","qs":[{"t":"ls","q":"What time does Mia get up?","o":["At seven o’clock.","At eight o’clock.","At six o’clock.","At nine o’clock."],"c":0,"e":"„I always get up at seven o’clock.”"},{"t":"ls","q":"Who does Mia usually have breakfast with?","o":["Her parents.","Her friend.","Her teacher.","Her cousin."],"c":0,"e":"„I usually have breakfast with my parents.”"},{"t":"ls","q":"How does Mia sometimes go to school?","o":["By car.","By bus.","By train.","By bike."],"c":0,"e":"„… sometimes my dad takes me by car.”"},{"t":"ls","q":"How often does Mia play the guitar?","o":["Twice a week.","Every day.","Once a month.","Never."],"c":0,"e":"„I play the guitar twice a week.”"}]},{"id":"l3","t":"ls","title":"Pierwszy dzień w nowej szkole","text":"Dad: Good morning, Anna! Today is your first day at the new school. Anna: I’m a bit scared. Dad: Don’t worry. I wish you all the best of luck. Anna: Thanks, Dad! Later, after school. Anna: Dad, I got ten points in my first test! Dad: Great job! Congratulations! You deserve a pat on the back.","qs":[{"t":"ls","q":"Whose first day is it?","o":["Anna’s.","Dad’s.","Mum’s.","Ola’s."],"c":0,"e":"„Today is your first day at the new school” — mówi tata do Anny."},{"t":"ls","q":"How does Anna feel in the morning?","o":["A bit scared.","Very happy.","Angry.","Tired."],"c":0,"e":"„I’m a bit scared.”"},{"t":"ls","q":"What does Dad say before school?","o":["I wish you all the best of luck.","Congratulations!","Great job!","Keep up the good work."],"c":0,"e":"„I wish you all the best of luck.”"},{"t":"ls","q":"What did Anna get in the test?","o":["Ten points.","Two points.","Twelve points.","Nothing."],"c":0,"e":"„I got ten points in my first test!”"}]}];
+  var OPEN = [{"t":"wr","q":"Write 3–4 sentences about the job of a person in your family. Say what he or she does and where he or she works.","m":"My uncle is a vet. He works in a surgery in our town. He looks after dogs and cats. He likes his job."},{"t":"wr","q":"Write 3–4 sentences about your week. Use always, usually, often, sometimes or never.","m":"I always get up at seven o’clock. I usually walk to school with my friend. I often play football on Saturdays. I never go to school on Sundays."},{"t":"wr","q":"Your friend is in a school play tomorrow. Write two short sentences to wish him or her luck, and one sentence to congratulate after the play.","m":"I’m keeping my fingers crossed for you. I wish you all the best of luck. After the play: Great job! Congratulations!"},{"t":"wr","q":"What job do you want to do in the future? Write 3 sentences: where you work, what you do and why you like it.","m":"I want to be a vet. I work in a surgery and I look after animals. I like it because I love dogs and cats."}];
+  var BYID = {}; BLOCKS.forEach(function(b){ BYID[b.id] = b; });
+
+  var COUNT = {}; TOPICS.forEach(function(x){ COUNT[x.k] = 0; });
+  POOL.forEach(function(q){ COUNT[q.t]++; });
+  BLOCKS.forEach(function(b){ COUNT[b.t] += b.qs.length; });
+
+  var LS_BEST = 'ang_unit2_best_v1';
+  var LS_DRAFT = 'ang_unit2_draft_v1';
+  var cur = { seed:0, topics:[], n:20, withOpen:true, items:[], open:[], checked:false };
+  var introSel = {}; TOPICS.forEach(function(x){ introSel[x.k] = true; });
+
+  function regTopics(topics){ return topics.filter(function(t){ return BLOCK_T.indexOf(t) === -1; }); }
+
+  function build(seed, topics, n, withOpen){
+    rng = mulberry32(seed);
+    var reg = regTopics(topics);
+    var order = shuffle(reg);
+    var lists = {}; order.forEach(function(t){ lists[t] = shuffle(POOL.filter(function(q){ return q.t === t; })); });
+    var picked = [], seen = {}, guard = 0;
+    while (picked.length < n && guard < 5000){
+      var progressed = false;
+      for (var i=0;i<order.length && picked.length<n;i++){
+        var L = lists[order[i]];
+        while (L.length){ var q = L.shift(); if (seen[q.q]) continue; seen[q.q] = 1; picked.push(q); progressed = true; break; }
+      }
+      if (!progressed) break;
+      guard++;
+    }
+    picked.sort(function(a,b){ return reg.indexOf(a.t) - reg.indexOf(b.t) || 0; });
+    function mk(q, blk, first){
+      var perm = shuffle([0,1,2,3]);
+      return { t:q.t, q:q.q, o:perm.map(function(i){ return q.o[i]; }), c:perm.indexOf(q.c), e:q.e||'', blk:blk||'', first:!!first };
+    }
+    var items = picked.map(function(q){ return mk(q); });
+    BLOCK_T.forEach(function(bt){
+      if (topics.indexOf(bt) === -1) return;
+      var b = shuffle(BLOCKS.filter(function(x){ return x.t === bt; }))[0];
+      b.qs.forEach(function(q, i){ items.push(mk(q, b.id, i === 0)); });
+    });
+    var open = [];
+    if (withOpen){ var ch = shuffle(OPEN).slice(0, N_OPEN); open = OPEN.filter(function(o){ return ch.indexOf(o) !== -1; }); }
+    return { items:items, open:open };
+  }
+
+  function parseHash(){
+    var o = {}; var h = location.hash.replace(/^#/,''); if (!h) return o;
+    h.split('&').forEach(function(kv){ var a = kv.split('='); if (a[0]) o[a[0]] = decodeURIComponent(a.slice(1).join('=')||''); });
+    return o;
+  }
+  function setHash(){
+    var all = cur.topics.length === TOPICS.length;
+    var h = '#w='+cur.seed + (all ? '' : '&t='+cur.topics.join(',')) + (cur.n!==20 ? '&n='+cur.n : '') + (cur.withOpen ? '' : '&o=0');
+    try{ history.replaceState(null,'',location.pathname+location.search+h); }catch(e){ location.hash = h; }
+  }
+  function clearHash(){ try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){ location.hash=''; } }
+  function randomSeed(){ return Math.floor(Math.random()*900000)+100000; }
+
+  /* ---------- intro ---------- */
+  function selectedTopics(){ return TOPICS.filter(function(x){ return introSel[x.k]; }).map(function(x){ return x.k; }); }
+  function introCounts(){
+    var sel = selectedTopics(), reg = regTopics(sel);
+    var avail = POOL.filter(function(q){ return reg.indexOf(q.t) !== -1; }).length;
+    var n = reg.length ? Math.min(parseInt($('selN').value,10), avail) : 0;
+    var blocks = (sel.indexOf('rd') !== -1 ? BLOCK_SIZE.rd : 0) + (sel.indexOf('ls') !== -1 ? BLOCK_SIZE.ls : 0);
+    return { sel:sel, n:n, blocks:blocks, total:n + blocks };
+  }
+  function renderIntro(){
+    $('tchips').innerHTML = TOPICS.map(function(x){
+      return '<button type="button" class="tchip'+(introSel[x.k]?' on':'')+'" data-k="'+x.k+'" aria-pressed="'+(!!introSel[x.k])+'">'+esc(x.l)+'<span class="tp">'+(BLOCK_T.indexOf(x.k) !== -1 ? BLOCK_SIZE[x.k]+' pytań' : COUNT[x.k]+' pytań')+'</span></button>';
+    }).join('');
+    var c = introCounts(), open = $('chkOpen').checked ? N_OPEN : 0;
+    $('introSum').innerHTML = c.sel.length ? ('Test: <b>'+c.total+'</b> '+(c.total === 1 ? 'pytanie' : 'pytań')+' (maks. <b>'+c.total+'</b> pkt)' + (c.blocks ? ' w tym <b>'+c.blocks+'</b> do tekstu lub nagrania' : '') + (open ? ' + <b>'+open+'</b> zadania pisemne' : '')) : 'Zaznacz przynajmniej jeden temat.';
+    $('btnStart').disabled = !c.sel.length; $('btnStart').style.opacity = c.sel.length ? '1' : '.5';
+    var best = loadJSON(LS_BEST, 0);
+    $('bestHint').textContent = best > 0 ? ('Najlepszy wynik pełnego testu (29 pkt): '+best+'/29') : '';
+  }
+  $('tchips').addEventListener('click', function(e){
+    var b = e.target.closest('.tchip'); if (!b) return;
+    var k = b.getAttribute('data-k'); introSel[k] = !introSel[k]; renderIntro();
+  });
+  $('btnAll').addEventListener('click', function(){ TOPICS.forEach(function(x){ introSel[x.k]=true; }); renderIntro(); });
+  $('selN').addEventListener('change', renderIntro);
+  $('chkOpen').addEventListener('change', renderIntro);
+  $('btnStart').addEventListener('click', function(){ openSheet(randomSeed(), selectedTopics(), parseInt($('selN').value,10), $('chkOpen').checked, true); });
+  function showIntro(){ stopSpeech(); $('viewIntro').hidden = false; $('viewSheet').hidden = true; window.scrollTo(0,0); renderIntro(); }
+
+  /* ---------- sheet ---------- */
+  function openSheet(seed, topics, n, withOpen, fresh){
+    stopSpeech();
+    cur.seed = seed; cur.topics = TOPICS.map(function(x){return x.k;}).filter(function(k){ return topics.indexOf(k)!==-1; });
+    cur.n = n; cur.withOpen = withOpen; cur.checked = false;
+    var b = build(seed, cur.topics, n, withOpen);
+    cur.items = b.items; cur.open = b.open;
+    setHash();
+    $('viewIntro').hidden = true; $('viewSheet').hidden = false;
+    renderSheet();
+    if (fresh) saveDraft(); else restoreDraft();
+    window.scrollTo(0,0);
+  }
+  function passageHTML(b){
+    if (b.t === 'rd'){
+      return '<section class="passage"><div class="pass-title">Przeczytaj tekst i odpowiedz na pytania · <span lang="en">'+esc(b.title)+'</span></div><div class="pass-text" lang="en">'+esc(b.text).replace(/\n/g,'<br>')+'</div></section>';
+    }
+    return '<section class="passage listen" data-blk="'+b.id+'"><div class="pass-title">&#127911; Posłuchaj nagrania i odpowiedz na pytania</div>' +
+      '<div class="audio screen-only"><button type="button" class="btn small" data-play="'+b.id+'">&#9654; Odtwórz</button> <button type="button" class="btn small secondary" data-stop="1">&#9632; Stop</button> ' +
+      '<select class="speed" data-speed="1" aria-label="Szybkość nagrania"><option value="0.8">Wolno</option><option value="0.95" selected>Normalnie</option></select></div>' +
+      '<div class="soft screen-only audio-note" data-note="'+b.id+'">Możesz odtworzyć nagranie kilka razy. Tekst pokaże się po sprawdzeniu testu.</div>' +
+      '<div class="print-only pass-print">Listening: rodzic czyta głośno tekst z klucza odpowiedzi (dwa razy, spokojnie).</div>' +
+      '<div class="pass-text script" lang="en" hidden>'+esc(b.text)+'</div></section>';
+  }
+  function qHTML(it, i){
+    var h = '';
+    if (it.first) h += passageHTML(BYID[it.blk]);
+    h += '<section class="q" data-i="'+i+'"><div class="q-head"><span class="q-num">'+(i+1)+'</span><span class="q-text" lang="en">'+esc(it.q)+'</span><span class="q-tag">'+esc(LABEL[it.t].split(' (')[0])+'</span></div><div class="opts">';
+    h += it.o.map(function(txt,k){ return '<button type="button" class="opt" data-k="'+k+'" aria-pressed="false"><span class="ol">'+LETTERS[k]+')</span><span class="ot" lang="en">'+esc(txt)+'</span></button>'; }).join('');
+    h += '</div><div class="q-res screen-only"></div></section>';
+    return h;
+  }
+  function oHTML(o, i){
+    var num = cur.items.length + 1 + i;
+    return '<section class="q open" data-o="'+i+'"><div class="q-head"><span class="q-num">'+num+'</span><span class="q-text" lang="en">'+esc(o.q)+'</span><span class="q-tag">Pisanie</span></div>'+
+      '<textarea class="oa screen-only" data-o="'+i+'" rows="4" lang="en" placeholder="Write your answer in English…"></textarea>'+
+      '<div class="lines print-only"><i></i><i></i><i></i><i></i></div>'+
+      '<button type="button" class="btn small secondary model-btn screen-only" data-model="'+i+'">Pokaż przykładową odpowiedź</button>'+
+      '<div class="model screen-only" data-model-box="'+i+'" hidden><b>Przykładowa odpowiedź:</b> <span lang="en">'+esc(o.m)+'</span></div></section>';
+  }
+  function renderSheet(){
+    $('closedQs').innerHTML = cur.items.map(qHTML).join('');
+    $('openQs').innerHTML = cur.open.map(oHTML).join('');
+    $('openWrap').hidden = !cur.open.length;
+    $('variantLabel').textContent = 'Wariant nr ' + cur.seed;
+    $('sheetSub').textContent = cur.items.length + ' pytań' + (cur.open.length ? ' + ' + cur.open.length + ' zad. pisemne' : '') + ' · wariant ' + cur.seed;
+    $('phMax').textContent = '/ ' + cur.items.length + ' pkt';
+    $('phMeta').textContent = 'Wariant ' + cur.seed + (cur.topics.length === TOPICS.length ? '' : ' · tematy: ' + cur.topics.map(function(k){ return LABEL[k].split(' (')[0]; }).join(', '));
+    $('summary').hidden = true; $('summary').innerHTML = '';
+    $('checkRow').hidden = false;
+    $('keySheet').innerHTML = keyHTML();
+    $('keySheet').classList.remove('show'); $('btnToggleKey').textContent = 'Pokaż klucz';
+  }
+  function keyHTML(){
+    var h = '<h2>Klucz odpowiedzi — wariant '+cur.seed+' ('+cur.items.length+' pkt)</h2>';
+    var shown = {};
+    cur.items.forEach(function(it,i){
+      if (it.blk && !shown[it.blk]){
+        shown[it.blk] = 1; var b = BYID[it.blk];
+        h += '<div class="key-row"><b>' + (b.t === 'ls' ? 'Listening — tekst do przeczytania na głos (dwa razy):' : 'Reading — ' + esc(b.title) + ':') + '</b><span class="kx" lang="en" style="font-size:12.5px;color:inherit">' + esc(b.text).replace(/\n/g,'<br>') + '</span></div>';
+      }
+      h += '<div class="key-row"><span class="kn">'+(i+1)+'.</span><span class="ka">'+LETTERS[it.c]+'</span><span lang="en">'+esc(it.o[it.c])+'</span>' + (it.e ? '<span class="kx">'+esc(it.e)+'</span>' : '') + '</div>';
+    });
+    cur.open.forEach(function(o,i){
+      h += '<div class="key-row"><span class="kn">'+(cur.items.length+1+i)+'.</span><b>Zadanie pisemne — przykład:</b> <span lang="en">'+esc(o.m)+'</span></div>';
+    });
+    return h;
+  }
+
+  /* ---------- listening (speech synthesis) ---------- */
+  function stopSpeech(){ try{ if ('speechSynthesis' in window) speechSynthesis.cancel(); }catch(e){} }
+  function speak(id, rate){
+    var b = BYID[id], note = document.querySelector('[data-note="'+id+'"]');
+    if (!('speechSynthesis' in window)){ if (note) note.textContent = 'Ta przeglądarka nie potrafi czytać nagrań. Poproś rodzica o przeczytanie tekstu z klucza odpowiedzi.'; return; }
+    stopSpeech();
+    var u = new SpeechSynthesisUtterance(b.text.replace(/\n/g, ' '));
+    u.lang = 'en-GB'; u.rate = rate;
+    var voices = speechSynthesis.getVoices() || [];
+    var v = voices.filter(function(x){ return /^en[-_]GB/i.test(x.lang); })[0] || voices.filter(function(x){ return /^en/i.test(x.lang); })[0];
+    if (v) u.voice = v;
+    else if (voices.length && note) note.textContent = 'Na tym urządzeniu nie ma angielskiego głosu. Zainstaluj go w ustawieniach Androida (Synteza mowy) albo poproś rodzica o przeczytanie tekstu z klucza.';
+    speechSynthesis.speak(u);
+  }
+  $('closedQs').addEventListener('click', function(e){
+    var p = e.target.closest('[data-play]'); if (p){ var sec = p.closest('.passage'); var sp = sec.querySelector('.speed'); speak(p.getAttribute('data-play'), parseFloat(sp.value)); return; }
+    if (e.target.closest('[data-stop]')){ stopSpeech(); return; }
+  });
+  window.addEventListener('pagehide', stopSpeech);
+
+  /* ---------- answers: read / draft ---------- */
+  function readAnswers(){
+    var a = { c:[], o:[] };
+    cur.items.forEach(function(it,i){
+      var el = $('closedQs').querySelector('.q[data-i="'+i+'"] .opt[aria-pressed="true"]');
+      a.c.push(el ? parseInt(el.getAttribute('data-k'),10) : -1);
+    });
+    cur.open.forEach(function(o,i){ var t = $('openQs').querySelector('textarea[data-o="'+i+'"]'); a.o.push(t ? t.value : ''); });
+    return a;
+  }
+  function anyAnswered(){ var a = readAnswers(); return a.c.some(function(v){return v>=0;}) || a.o.some(function(v){return v.trim()!=='';}); }
+  function saveDraft(){ saveJSON(LS_DRAFT, { seed:cur.seed, topics:cur.topics, n:cur.n, o:cur.withOpen, answers:readAnswers(), checked:cur.checked }); }
+  function restoreDraft(){
+    var d = loadJSON(LS_DRAFT, null);
+    if (!d || d.seed !== cur.seed || (d.topics||[]).join(',') !== cur.topics.join(',') || d.n !== cur.n || d.o !== cur.withOpen){ saveDraft(); return; }
+    var a = d.answers || {c:[],o:[]};
+    cur.items.forEach(function(it,i){
+      var k = a.c[i];
+      if (k >= 0){ var el = $('closedQs').querySelector('.q[data-i="'+i+'"] .opt[data-k="'+k+'"]'); if (el) el.setAttribute('aria-pressed','true'); }
+    });
+    cur.open.forEach(function(o,i){ var t = $('openQs').querySelector('textarea[data-o="'+i+'"]'); if (t && a.o[i]) t.value = a.o[i]; });
+    if (d.checked) checkTest(true);
+  }
+  $('closedQs').addEventListener('click', function(e){
+    var b = e.target.closest('.opt'); if (!b || cur.checked) return;
+    var q = b.closest('.q'); var all = q.querySelectorAll('.opt');
+    for (var i=0;i<all.length;i++) all[i].setAttribute('aria-pressed', all[i]===b ? 'true' : 'false');
+    saveDraft();
+  });
+  $('openQs').addEventListener('input', function(){ saveDraft(); });
+  $('openQs').addEventListener('click', function(e){
+    var b = e.target.closest('.model-btn'); if (!b) return;
+    var box = $('openQs').querySelector('[data-model-box="'+b.getAttribute('data-model')+'"]');
+    var show = box.hidden; box.hidden = !show; b.textContent = show ? 'Ukryj przykładową odpowiedź' : 'Pokaż przykładową odpowiedź';
+  });
+
+  /* ---------- check ---------- */
+  function checkTest(silent){
+    var a = readAnswers(), got = 0, byTopic = {};
+    stopSpeech();
+    cur.items.forEach(function(it,i){
+      var ok = a.c[i] === it.c;
+      if (!silent && window.Nauka && !it.blk) Nauka.answered({type:'mcq', q:it.q, o:it.o, c:it.c, e:it.e||''}, ok);
+      if (ok) got++;
+      if (!byTopic[it.t]) byTopic[it.t] = {c:0,t:0};
+      byTopic[it.t].t++; if (ok) byTopic[it.t].c++;
+      var qEl = $('closedQs').querySelector('.q[data-i="'+i+'"]');
+      qEl.classList.add('checked');
+      var opts = qEl.querySelectorAll('.opt');
+      for (var k=0;k<opts.length;k++){
+        opts[k].disabled = true;
+        if (k === it.c) opts[k].classList.add('correct'); else if (k === a.c[i]) opts[k].classList.add('wrong');
+      }
+      qEl.querySelector('.q-res').innerHTML = (ok ? '<b class="good">✓ Dobrze.</b> ' : '<b class="bad">✗ ' + (a.c[i] < 0 ? 'Brak odpowiedzi.' : 'Błędnie.') + '</b> Poprawna odpowiedź: <span lang="en">' + esc(LETTERS[it.c]+') '+it.o[it.c]) + '</span>. ') + esc(it.e);
+    });
+    var scripts = $('closedQs').querySelectorAll('.passage.listen .script'); for (var s=0;s<scripts.length;s++) scripts[s].hidden = false;
+    var auds = $('closedQs').querySelectorAll('.passage .audio-note'); for (var an=0;an<auds.length;an++) auds[an].hidden = true;
+    var tas = $('openQs').querySelectorAll('textarea'); for (var t=0;t<tas.length;t++) tas[t].disabled = true;
+    var boxes = $('openQs').querySelectorAll('.model'); for (var m=0;m<boxes.length;m++) boxes[m].hidden = false;
+    var mb = $('openQs').querySelectorAll('.model-btn'); for (var n=0;n<mb.length;n++) mb[n].hidden = true;
+    cur.checked = true; $('checkRow').hidden = true;
+    var total = cur.items.length;
+    renderSummary(got, total, byTopic);
+    if (!silent){
+      if (window.Nauka) Nauka.attempt({score:got, max:total});
+      if (cur.topics.length === TOPICS.length && cur.n === 20){ var best = loadJSON(LS_BEST, 0); if (got > best) saveJSON(LS_BEST, got); }
+      saveDraft();
+      $('summary').scrollIntoView({behavior:'smooth', block:'start'});
+    }
+    return { got:got, total:total, byTopic:byTopic };
+  }
+  function renderSummary(got, total, byTopic){
+    var pct = total ? Math.round(got/total*100) : 0;
+    var msg = pct >= 90 ? 'Excellent! Świetny wynik 🇬🇧' : pct >= 75 ? 'Bardzo dobrze — powtórz jeszcze błędy.' : pct >= 50 ? 'Nieźle, ale warto jeszcze powtórzyć słówka i gramatykę.' : 'Wróć do słówek i gramatyki z Unit 2 i spróbuj ponownie.';
+    var weak = Object.keys(byTopic).filter(function(k){ return byTopic[k].c/byTopic[k].t < 0.7; }).map(function(k){ return LABEL[k]; });
+    var h = '<div class="sub">Twój wynik</div><div class="sc">'+got+'/'+total+'</div><div class="sub">'+pct+'%</div><div class="msg">'+msg+'</div>';
+    if (weak.length) h += '<div class="weak"><b>Do powtórki:</b> '+esc(weak.join(', '))+'</div>';
+    if (cur.open.length) h += '<div class="weak">Zadania pisemne porównaj z przykładowymi odpowiedziami powyżej i oceń samodzielnie. Ważne, żeby zdania były poprawne i na temat, niekoniecznie takie same.</div>';
+    h += '<div class="breakdown">'+TOPICS.filter(function(x){ return byTopic[x.k]; }).map(function(x){
+      var d = byTopic[x.k], pc = d.t ? Math.round(d.c/d.t*100) : 0;
+      return '<div class="breakdown-row"><span class="bl">'+esc(x.l.split(' (')[0])+'</span><span class="bt"><span class="bf" style="width:'+pc+'%"></span></span><span class="bv">'+d.c+'/'+d.t+'</span></div>';
+    }).join('')+'</div>';
+    h += '<div class="btn-row"><button class="btn" id="btnAgainNew">Nowy wariant</button><button class="btn secondary" id="btnAgainSame">Ten sam wariant od nowa</button><button class="btn secondary" id="btnPrintAfter">Drukuj test</button></div>';
+    var el = $('summary'); el.innerHTML = h; el.hidden = false;
+    $('btnAgainNew').addEventListener('click', newVariant);
+    $('btnAgainSame').addEventListener('click', function(){ saveJSON(LS_DRAFT, null); openSheet(cur.seed, cur.topics, cur.n, cur.withOpen, true); });
+    $('btnPrintAfter').addEventListener('click', function(){ doPrint('test'); });
+  }
+  $('btnCheck').addEventListener('click', function(){ checkTest(false); });
+
+  /* ---------- toolbar / print ---------- */
+  function newVariant(){
+    if (!cur.checked && anyAnswered() && !window.confirm('Rozpocząć nowy wariant? Wpisane odpowiedzi zostaną utracone.')) return;
+    openSheet(randomSeed(), cur.topics, cur.n, cur.withOpen, true);
+  }
+  $('btnNew').addEventListener('click', newVariant);
+  $('btnTopics').addEventListener('click', function(){
+    if (!cur.checked && anyAnswered() && !window.confirm('Wrócić do wyboru tematów? Wpisane odpowiedzi zostaną utracone.')) return;
+    saveJSON(LS_DRAFT, null); clearHash(); showIntro();
+  });
+  $('btnToggleKey').addEventListener('click', function(){
+    var k = $('keySheet'), on = !k.classList.contains('show');
+    k.classList.toggle('show', on); $('btnToggleKey').textContent = on ? 'Ukryj klucz' : 'Pokaż klucz';
+  });
+  function doPrint(mode){ stopSpeech(); document.body.setAttribute('data-print', mode); setTimeout(function(){ window.print(); }, 60); }
+  window.addEventListener('afterprint', function(){ document.body.removeAttribute('data-print'); });
+  $('btnPrintTest').addEventListener('click', function(){ doPrint('test'); });
+  $('btnPrintKey').addEventListener('click', function(){ doPrint('key'); });
+
+  /* ---------- boot ---------- */
+  window.__ET = { build:build, POOL:POOL, BLOCKS:BLOCKS, OPEN:OPEN, getCur:function(){ return cur; }, check:checkTest, TOPICS:TOPICS };
+  (function boot(){
+    var o = parseHash(), seed = parseInt(o.w,10);
+    var tp = (o.t ? o.t.split(',') : TOPICS.map(function(x){return x.k;})).filter(function(k){ return LABEL[k]; });
+    if (!tp.length) tp = TOPICS.map(function(x){return x.k;});
+    TOPICS.forEach(function(x){ introSel[x.k] = tp.indexOf(x.k) !== -1; });
+    var n = [10,20,30].indexOf(parseInt(o.n,10)) !== -1 ? parseInt(o.n,10) : 20;
+    $('selN').value = String(n); $('chkOpen').checked = o.o !== '0';
+    if (seed > 0 && seed < 2147483647) openSheet(seed, tp, n, o.o !== '0', false);
+    else showIntro();
+  })();
+})();
+</script>

@@ -35,6 +35,7 @@
     {s:'jezyk-polski', k:'polski_pustynia_puszcza_best_v1', l:'„W pustyni i w puszczy”', h:'jezyk-polski/w-pustyni-i-w-puszczy/', mx:15},
     {s:'jezyk-angielski', k:'ang_welcome_best_v1', l:'Welcome Unit', h:'jezyk-angielski/welcome-unit/', mx:29},
     {s:'jezyk-angielski', k:'ang_unit1_best_v1', l:'Unit 1 — One big family', h:'jezyk-angielski/unit-1-one-big-family/', mx:29},
+    {s:'jezyk-angielski', k:'ang_unit2_best_v1', l:'Unit 2 — What’s your job?', h:'jezyk-angielski/unit-2-whats-your-job/', mx:29},
     {s:'biologia', k:'bio_skladniki_chemiczne_best_v1', l:'Składniki chemiczne organizmów', h:'biologia/skladniki-chemiczne-organizmow/', mx:10},
     {s:'biologia', k:'bio_komorka_zwierzeca_best_v1', l:'Budowa komórki zwierzęcej', h:'biologia/budowa-komorki-zwierzecej/', mx:10},
     {s:'biologia', k:'bio_komorka_roslinna_best_v1', l:'Komórka roślinna. Inne rodzaje komórek', h:'biologia/komorka-roslinna/', mx:10},
