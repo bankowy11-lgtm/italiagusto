@@ -85,16 +85,17 @@
   var chapters = {
     ch1: [
       {t:'Mapa i skala', pg:8, href:'mapa-i-skala/', ready:true},
-      {t:'Odległości na mapie i w terenie', pg:11, href:null, ready:false},
-      {t:'Ukształtowanie powierzchni na mapach', pg:15, href:null, ready:false},
-      {t:'Czytamy mapę najbliższej okolicy', pg:21, href:null, ready:false}
+      {t:'Odległości na mapie i w terenie', pg:12, href:'test-rozdzial-1/#t=l2', ready:true, badge:'test'},
+      {t:'Ukształtowanie powierzchni na mapach', pg:15, href:'test-rozdzial-1/#t=l3', ready:true, badge:'test'},
+      {t:'Czytamy mapę najbliższej okolicy', pg:21, href:'test-rozdzial-1/#t=l4', ready:true, badge:'test'},
+      {t:'Podsumowanie rozdziału 1 — test całego rozdziału (do druku lub na tablecie)', pg:28, href:'test-rozdzial-1/', ready:true, badge:'test'}
     ]
   };
   Object.keys(chapters).forEach(function(id){
     var el = document.getElementById(id);
     if (!el) return;
     el.innerHTML = chapters[id].map(function(item, i){
-      var badge = item.ready ? '<span class="badge ready">gotowe</span>' : '';
+      var badge = item.ready ? '<span class="badge ready">'+(item.badge || 'gotowe')+'</span>' : '';
       var pgLabel = item.pg ? ('str. '+item.pg) : '';
       if (item.ready){
         return '<a class="topic" href="'+item.href+'">'+
