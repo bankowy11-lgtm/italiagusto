@@ -45,6 +45,7 @@
     {s:'historia', k:'hist_mezopotamia_best_v1', l:'Miasta-państwa Mezopotamii', h:'historia/miasta-panstwa-mezopotamii/', mx:10},
     {s:'historia', k:'hist_egipt_faraonow_best_v1', l:'W Egipcie faraonów', h:'historia/w-egipcie-faraonow/', mx:10},
     {s:'historia', k:'hist_rozdzial1_best_v1', l:'Test z rozdziału I (historia)', h:'historia/test-rozdzial-1/', mx:20},
+    {s:'historia', k:'hist_rozdzial2_best_v1', l:'Test: Sparta, wojny z Persami i kultura Grecji', h:'historia/test-rozdzial-2/', mx:20},
     {s:'geografia', k:'geo_mapa_i_skala_best_v1', l:'Mapa i skala', h:'geografia/mapa-i-skala/', mx:10},
     {s:'geografia', k:'geo_rozdzial1_best_v1', l:'Test z rozdziału 1: Mapa Polski', h:'geografia/test-rozdzial-1/', mx:20}
   ];
