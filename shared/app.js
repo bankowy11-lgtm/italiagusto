@@ -31,6 +31,7 @@
     {s:'matematyka', k:'rownania_best_v1', l:'Równania', h:'matematyka/rownania/', mx:20, lv:['addsub','muldiv']},
     {s:'matematyka', k:'powtorka_kartkowka_best_v1', l:'Powtórka przed kartkówką', h:'matematyka/powtorka-kartkowka/', mx:15},
     {s:'matematyka', k:'test_dzial1_best_v1', l:'Test z działu I (liczby naturalne)', h:'matematyka/test-dzial-1/', mx:50},
+    {s:'matematyka', k:'geom_figury1_best_v1', l:'Figury geometryczne: lekcje 1–3', h:'matematyka/test-figury-1/', mx:20},
     {s:'jezyk-polski', k:'polski_odmiana_rzeczownika_best_v1', l:'Odmiana rzeczownika', h:'jezyk-polski/odmiana-rzeczownika/', mx:10},
     {s:'jezyk-polski', k:'polski_pustynia_puszcza_best_v1', l:'„W pustyni i w puszczy”', h:'jezyk-polski/w-pustyni-i-w-puszczy/', mx:15},
     {s:'jezyk-angielski', k:'ang_welcome_best_v1', l:'Welcome Unit', h:'jezyk-angielski/welcome-unit/', mx:29},
