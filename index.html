@@ -1700,7 +1700,9 @@ function clearDoneOrders() {
 }
 
 function renderShoppingTab(orders) {
-  const activeOrders = orders.filter(o => o.status !== 'done');
+  // Lista zakupów = tylko to, co jeszcze trzeba kupić: zamówienia Nowe i W realizacji.
+  // Status 'Gotowe do odbioru' (ready) i 'Zrealizowane' (done) oznacza, że towar jest już kupiony.
+  const activeOrders = orders.filter(o => o.status !== 'done' && o.status !== 'ready');
   const aggregate = {};
   activeOrders.forEach(o => {
     o.items.forEach(item => {
@@ -1712,7 +1714,7 @@ function renderShoppingTab(orders) {
   });
   const items = Object.entries(aggregate);
   if (!items.length) return `<h2 class="admin-section-title">Lista zakupów</h2>
-    <div class="no-orders"><div class="no-orders-icon">🛍️</div><div style="font-size:16px;margin-bottom:6px">Brak aktywnych zamówień</div><div style="font-size:13px;color:var(--muted)">Lista zakupów generuje się automatycznie z nowych zamówień.</div></div>`;
+    <div class="no-orders"><div class="no-orders-icon">🛍️</div><div style="font-size:16px;margin-bottom:6px">Brak towarów do kupienia</div><div style="font-size:13px;color:var(--muted)">Lista zakupów generuje się automatycznie z zamówień Nowe i W realizacji. Zamówienia Gotowe do odbioru są pomijane.</div></div>`;
   const listHTML = items.map(([key, item]) => {
     const checked = !!state.shopChecked[key];
     const qtyText = item.type === 'unit'
@@ -1725,7 +1727,7 @@ function renderShoppingTab(orders) {
     </div>`;
   }).join('');
   return `<h2 class="admin-section-title">Lista zakupów</h2>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:20px">Automatycznie wygenerowana z <strong style="color:var(--text)">${activeOrders.length}</strong> aktywnych zamówień. Zaznaczaj produkty gdy zostaną zakupione.</p>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:20px">Automatycznie wygenerowana z <strong style="color:var(--text)">${activeOrders.length}</strong> zamówień (Nowe i W realizacji – Gotowe do odbioru są pomijane). Zaznaczaj produkty gdy zostaną zakupione.</p>
     <div class="shopping-list">${listHTML}</div>
     <button class="shop-clear-btn" onclick="clearShopChecked()">↺ Odznacz wszystkie</button>
     <button class="shop-clear-btn" style="margin-left:10px" onclick="printShoppingList()">🖨️ Drukuj listę</button>`;
