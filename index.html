@@ -1050,6 +1050,7 @@ function renderProducts() {
     case 'name-desc': filtered.sort((a, b) => b.name.localeCompare(a.name, 'pl')); break;
     case 'price-asc': filtered.sort((a, b) => (a.unitPrice || Infinity) - (b.unitPrice || Infinity)); break;
     case 'price-desc': filtered.sort((a, b) => b.unitPrice - a.unitPrice); break;
+    default: filtered.sort((a, b) => b.id - a.id); break;
   }
   const count = document.getElementById('product-count');
   if (count) count.textContent = filtered.length + ' produktów';
