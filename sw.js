@@ -1,5 +1,5 @@
 // Aplikacja winiarska (strona główna) — logika bez zmian.
-const CACHE = 'italia-gusto-v1';
+const CACHE = 'italia-gusto-v2';
 const ASSETS = ['./', './index.html'];
 
 // Aplikacja do nauki (Klasa 5) — osobna pamięć i strategia „najpierw sieć, w razie braku internetu pamięć”.
